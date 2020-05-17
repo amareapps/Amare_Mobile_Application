@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:local="clr-namespace:Chatter.Classes" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
-             x:Class="Chatter.View.ViewProfile" BackgroundColor="White">
+             x:Class="Chatter.View.ViewProfile" BackgroundColor="#EEEEEE">
     <Page.Resources>
         <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
     </Page.Resources>
@@ -25,7 +25,6 @@
                                     <StackLayout>
                                         <Frame HasShadow="True"
                                                BorderColor="DarkGray"
-                                               CornerRadius="5"
                                                Margin="0"
                                                Padding="0"
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -41,8 +40,8 @@
                         <IndicatorView x:Name="indicatorView" AbsoluteLayout.LayoutBounds="0.5,1,1,0.05" AbsoluteLayout.LayoutFlags="All"
                                     IndicatorColor="LightGray" BackgroundColor="Transparent" 
                                     IndicatorView.ItemsSourceBy="galleryView"
-                                    SelectedIndicatorColor="Black"
-                                    HorizontalOptions="Center"/>
+                                    SelectedIndicatorColor="Accent"
+                                    HorizontalOptions="Center" IndicatorSize="10"/>
                     </AbsoluteLayout>
                 </Frame>
             <Frame HasShadow="True" Grid.Row="1">

@@ -5173,13 +5173,14 @@ public final class R {
     public static final int profile_white=0x7f07015d;
     public static final int register=0x7f07015e;
     public static final int reload=0x7f07015f;
-    public static final int send=0x7f070160;
-    public static final int settings=0x7f070161;
-    public static final int show=0x7f070162;
-    public static final int tooltip_frame_dark=0x7f070163;
-    public static final int tooltip_frame_light=0x7f070164;
-    public static final int tzuyu=0x7f070165;
-    public static final int up=0x7f070166;
+    public static final int searchicon=0x7f070160;
+    public static final int send=0x7f070161;
+    public static final int settings=0x7f070162;
+    public static final int show=0x7f070163;
+    public static final int tooltip_frame_dark=0x7f070164;
+    public static final int tooltip_frame_light=0x7f070165;
+    public static final int tzuyu=0x7f070166;
+    public static final int up=0x7f070167;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

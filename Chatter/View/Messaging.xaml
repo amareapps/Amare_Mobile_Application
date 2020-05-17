@@ -4,11 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:Chatter.Classes" 
-             xmlns:local2="clr-namespace:Chatter"
              xmlns:local1="clr-namespace:ChatUIXForms.Helpers" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:local2="clr-namespace:Chatter"
              mc:Ignorable="d"
-             x:Class="Chatter.Messaging" Title="Message" IconImageSource="message.png" BackgroundColor="#fffcf3">
+             x:Class="Chatter.Messaging" Title="Message" IconImageSource="message.png" BackgroundColor="#EEEEEE">
     <Page.Resources>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>
         <local1:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
@@ -21,7 +20,7 @@
                     <RowDefinition Height="AUTO"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <BoxView BackgroundColor="#fffcf3" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <!--<Frame Grid.Column="1" Grid.Row="0" CornerRadius="40" 
                                            HeightRequest="35"
@@ -59,15 +58,15 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="40"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ImageButton Source="camera.png" BackgroundColor="Blue" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
-                    <Entry x:Name="messageEntry" TextChanged="messageEntry_TextChanged"  Placeholder="Enter Message" Grid.Column="1"></Entry>
+                    <ImageButton Source="chatcamera.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
+                    <local2:RoundedEntry x:Name="messageEntry"  Placeholder="Enter Message" Grid.Column="1" FontSize="Small"></local2:RoundedEntry>
                     <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="2">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
                     <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="send.png" Aspect="Fill" HeightRequest="40" WidthRequest="40" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="2"></ImageButton>
-                        </Grid>
+                </Grid>
             </Frame>
         </StackLayout>
     </ContentPage.Content>

@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj": {}
+    "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj": {
+    "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj",
         "projectName": "Chatter.Android",
-        "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj",
-        "packagesPath": "C:\\Users\\Kent\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\obj\\",
+        "projectPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj": {
-                "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj"
+              "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\Chatter.csproj": {
+                "projectPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\Chatter.csproj"
               }
             }
           }
@@ -98,20 +98,20 @@
         }
       }
     },
-    "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj": {
+    "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\Chatter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\Chatter.csproj",
         "projectName": "Chatter",
-        "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj",
-        "packagesPath": "C:\\Users\\Kent\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\obj\\",
+        "projectPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\Chatter.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -245,7 +245,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
