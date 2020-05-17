@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:Local="clr-namespace:Chatter"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.OffscreenPageLimit="2"
+             android:TabbedPage.IsSwipePagingEnabled="True"
+             android:TabbedPage.IsSmoothScrollEnabled="True"
+             x:Class="Chatter.MainPage" BarBackgroundColor="#98000b" UnselectedTabColor="White" SelectedTabColor="Gray">
+    <TabbedPage.Children>
+        <Local:Profile IconImageSource="profile.png"></Local:Profile>
+        <Local:Discover IconImageSource="discover.png"></Local:Discover>
+        <Local:InboxMessaging IconImageSource="message.png"></Local:InboxMessaging>
+    </TabbedPage.Children>
+</TabbedPage>

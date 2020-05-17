@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Chatter.Discover"
+             xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:control="http://xamarin.com/schemas/2014/forms" BackgroundColor="#fffcf3">
+    <ContentPage.Content>
+        <Grid Padding="5,15,5,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <control:CarouselView Grid.Row="0" Grid.Column="0" CurrentItemChanged="carouselImage_CurrentItemChanged" x:Name="carouselImage" ItemsSource="{Binding imageSources}">
+                <control:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame IsClippedToBounds="True" Padding="0" Margin="0,50,0,0" CornerRadius="20" HasShadow="True">
+                            <AbsoluteLayout>
+                                <ActivityIndicator BindingContext="{x:Reference userImage}" IsRunning="{Binding IsLoading}" Color="#98000b" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                                <ffimageloading:CachedImage x:Name="userImage" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
+                                       AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
+                                <Label Text="{Binding username}" TextColor="White" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center"                         
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       AbsoluteLayout.LayoutBounds="0.1,0.9,-1,-1">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                                        </TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </AbsoluteLayout>
+                        </Frame>
+                    </DataTemplate>
+                </control:CarouselView.ItemTemplate>
+            </control:CarouselView>
+            <Grid Margin="10" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ImageButton
+                             WidthRequest="70"
+                             HeightRequest="70"
+                             BackgroundColor="Transparent"  
+                             Padding="10" 
+                             Source="close.png" 
+                             Grid.Column="0" 
+                             x:Name="dislikeButton" 
+                             VerticalOptions="Center" 
+                             HorizontalOptions="Center" Clicked="dislikeButton_Clicked"/>
+                <ImageButton 
+                             WidthRequest="60"
+                             HeightRequest="60"
+                             Padding="10" 
+                             Source="reload.png" 
+                             Grid.Column="1" 
+                             BackgroundColor="Transparent"
+                             x:Name="reloadButton" 
+                             VerticalOptions="Center" 
+                             HorizontalOptions="Center" Clicked="reloadButton_Clicked"/>
+                <ImageButton 
+                             WidthRequest="70"
+                             HeightRequest="70"
+                             Padding="10"
+                             Source="heart.png" 
+                             Grid.Column="2" 
+                             BackgroundColor="Transparent" 
+                             x:Name="heartButton" 
+                             VerticalOptions="Center" 
+                             HorizontalOptions="Center" 
+                             Clicked="heartButton_Clicked"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

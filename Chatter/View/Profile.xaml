@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:control="http://xamarin.com/schemas/2014/forms" 
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             mc:Ignorable="d"
+             x:Class="Chatter.Profile" BackgroundColor="#fffcf3">
+    <ContentPage.Content>
+        <Grid Margin="0,20,0,0" BackgroundColor="#fffcf3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Take Photo</x:String>
+                        <x:String>Choose from Gallery</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <StackLayout>
+            </StackLayout>
+            <!-- <Label Padding="0,20,0,0"  Grid.Row="0" x:Name="nameLabel" FontAttributes="Bold" Text="Chou Tzu-yu" FontSize="Large"  HorizontalOptions="Center"/> -->
+            <Frame CornerRadius="20" HasShadow="True" OutlineColor="Black"
+                       HeightRequest="200"
+                       WidthRequest="200"
+                       HorizontalOptions="Center"
+                       Padding="0"
+                       Margin="10,20,10,10"
+                       Grid.Row="1"
+                       IsClippedToBounds="True">
+                <ImageButton x:Name="ProfileImage" Source="tzuyu.jpg" Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
+            </Frame>
+            <Grid Padding="0" Margin="15,0,15,0"  Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ImageButton Padding="5" BackgroundColor="#fffcf3" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0"
+                       Clicked="EditButton_Clicked"/>
+                <ActivityIndicator IsRunning="False"    HeightRequest="40" WidthRequest="40"
+                         IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+                <ImageButton Padding="5" BackgroundColor="#fffcf3" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80" x:Name="CameraButton" Source="camera.png" Grid.Column="1" Grid.Row="1" Clicked="CameraButton_Clicked"/>
+                <ImageButton Padding="5" BackgroundColor="#fffcf3" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80" x:Name="UpdateProfileButton" Source="edit.png" Grid.Column="2" Grid.Row="0" Clicked="UpdateProfileButton_Clicked"/>
+            </Grid>
+            <StackLayout Grid.Row="3" BackgroundColor="#f2f2f2" Margin="0,90,0,0" Padding="0,0,0,0">
+                <cards:CarouselView x:Name="autoSlider">
+                    <cards:CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type View}">
+                            <StackLayout Padding="40,5,40,5" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image Source="FINAL_AMERA.png" Aspect="AspectFill" WidthRequest="400"/>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label Text="Swipe around the world" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"></Label>
+                                <Label Text="Passport to anywhere with Amare!" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label Text="Control Your Profile" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"></Label>
+                                <Label Text="Limit what others see with Amare" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                            </StackLayout>
+                        </x:Array>
+                    </cards:CarouselView.ItemsSource>
+                </cards:CarouselView>
+                <Button HorizontalOptions="Center" VerticalOptions="End" FontSize="Medium" CornerRadius="30" Text="Share Amare" TextColor="#fffcf3" BackgroundColor="#98000b"></Button>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
