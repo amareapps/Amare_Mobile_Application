@@ -29,16 +29,16 @@ namespace Chatter.View {
         private global::Xamarin.Forms.Label lblAbout;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry aboutEntry;
+        private global::Chatter.RoundedEntry aboutEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Editor jobEntry;
+        private global::Chatter.RoundedEntry jobEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry companyEntry;
+        private global::Chatter.RoundedEntry companyEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry schoolEntry;
+        private global::Chatter.RoundedEntry schoolEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Switch ageSwitch;
@@ -56,10 +56,10 @@ namespace Chatter.View {
             imagePicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "imagePicker");
             imageGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "imageGrid");
             lblAbout = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblAbout");
-            aboutEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "aboutEntry");
-            jobEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "jobEntry");
-            companyEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "companyEntry");
-            schoolEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "schoolEntry");
+            aboutEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Chatter.RoundedEntry>(this, "aboutEntry");
+            jobEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Chatter.RoundedEntry>(this, "jobEntry");
+            companyEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Chatter.RoundedEntry>(this, "companyEntry");
+            schoolEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Chatter.RoundedEntry>(this, "schoolEntry");
             ageSwitch = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Switch>(this, "ageSwitch");
             distanceSwitch = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Switch>(this, "distanceSwitch");
             instagramButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "instagramButton");

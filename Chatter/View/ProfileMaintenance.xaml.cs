@@ -288,5 +288,9 @@ namespace Chatter
         {
             passwordEntry.IsPassword = passwordEntry.IsPassword ? false : true;
         }
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+
+        }
     }
 }

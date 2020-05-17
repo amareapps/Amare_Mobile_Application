@@ -4,11 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
-             x:Class="Chatter.Settings" BackgroundColor="#fffcf3">
+             x:Class="Chatter.Settings" BackgroundColor="#EEEEEE">
     <ContentPage.Content>
         <StackLayout>
             <Grid HeightRequest="50" Margin="0,0,0,10">
-                <BoxView BackgroundColor="#fffcf3" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label VerticalOptions="Center" FontSize="Large" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
             </Grid>
@@ -49,7 +49,7 @@
                     <Button Text="Help and Support" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
                 </StackLayout>
             </ScrollView>
-            <Button Margin="20,0,20,10" Text="LOGOUT" TextColor="#fffcf3" BackgroundColor="#98000b" CornerRadius="30" x:Name="logoutButton" VerticalOptions="EndAndExpand" Clicked="logoutButton_Clicked"></Button>
+            <Button Margin="20,0,20,10" Text="LOGOUT" TextColor="#EEEEEE" BackgroundColor="#98000b" CornerRadius="30" x:Name="logoutButton" VerticalOptions="EndAndExpand" Clicked="logoutButton_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

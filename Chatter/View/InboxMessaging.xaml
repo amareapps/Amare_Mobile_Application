@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:local="clr-namespace:Chatter.Classes" 
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:control="http://xamarin.com/schemas/2014/forms"    
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              mc:Ignorable="d"  
-             x:Class="Chatter.InboxMessaging" BackgroundColor="#fffcf3">
+             x:Class="Chatter.InboxMessaging" BackgroundColor="#EEEEEE">
     <Page.Resources>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>
     </Page.Resources>
@@ -19,7 +19,9 @@
                     <RowDefinition Height="AUTO"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <SearchBar Placeholder="Search matches" Grid.Row="0" Margin="0,0,0,10" HorizontalOptions="Start" VerticalOptions="Center"></SearchBar>
+                <Frame BackgroundColor="Transparent" BorderColor="Accent" CornerRadius="10" Padding="0,5,0,5" HorizontalOptions="Center" VerticalOptions="Center">
+                    <local:SearchBarNoUnderline Placeholder="Search for your matches..." CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center"></local:SearchBarNoUnderline>
+                </Frame>
                 <StackLayout Grid.Row="1">
                     <Label Text="Recent matches" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
                     <ScrollView Orientation="Horizontal">

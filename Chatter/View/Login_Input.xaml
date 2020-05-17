@@ -29,7 +29,7 @@
                 </Grid>
             </StackLayout>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
-                <Button BackgroundColor="#98000b" TextColor="#fffcf3" CornerRadius="20" x:Name="loginButton" Clicked="loginButton_Clicked" Text="LOG IN" FontSize="Medium" FontAttributes="Bold"></Button>
+                <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="20" x:Name="loginButton" Clicked="loginButton_Clicked" Text="LOG IN" FontSize="Medium" FontAttributes="Bold"></Button>
             </Frame>
         </StackLayout>
         <ActivityIndicator x:Name="activityIndicator" IsRunning="False" Color="#98000b" VerticalOptions="Center"
