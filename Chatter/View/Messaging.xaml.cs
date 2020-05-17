@@ -45,7 +45,11 @@ namespace Chatter
             Emoji = emoji;
             Image_Source = imagesource;
             InitializeComponent();
-            NavigationPage.SetHasBackButton(this,false);
+            this.Title = username;
+            //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
+            //((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Red;
+            NavigationPage.SetHasNavigationBar(this, true);
+            NavigationPage.SetHasBackButton(this,true);
             lblEmoji.Text = emoji;
             //userImage.Source = Image_Source;
         }
@@ -59,7 +63,7 @@ namespace Chatter
             await loadData();
             //scrollToBottom();
             ChatList.ItemsSource = chatModels.OrderByDescending(entry => entry.datetime);
-            lblReceiver.Text = Username;
+            //lblReceiver.Text = Username;
             //timer = new Timer();
             //timer.Elapsed += Timer_Elapsed;
             //timer.Interval = 1000;

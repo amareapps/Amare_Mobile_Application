@@ -79,7 +79,7 @@ namespace Chatter
                 await retrieveGallery();
                 await retrievInbox();
                 await loadRecentMatches();
-                App.Current.MainPage = new MainPage();
+                App.Current.MainPage = new NavigationPage(new MainPage());
                 //await Navigation.PushModalAsync(new MainPage());
                 activityIndicator.IsRunning = false;
                 await PopupNavigation.Instance.PopAsync(true);

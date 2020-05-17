@@ -166,7 +166,6 @@ namespace Chatter
         {
             if (e.CurrentItem == null)
                 return;
-
             currentItem = e.CurrentItem as ImageStorage;
             currentUserIdSelected = currentItem.id;
         }
@@ -217,6 +216,17 @@ namespace Chatter
             await api.saveToDislikedUser(user_id, currentUserIdSelected);
             imageSources.Remove(currentItem);
         }
+
+        private void swipeRight_Swiped(object sender, SwipedEventArgs e)
+        {
+            DisplayAlert("Swiped","Direction: Right","Okay");
+        }
+
+        private void swipeLeft_Swiped(object sender, SwipedEventArgs e)
+        {
+            DisplayAlert("Swiped", "Direction: Left", "Okay");
+        }
+
         private async void reloadButton_Clicked(object sender, EventArgs e)
         {
             string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");

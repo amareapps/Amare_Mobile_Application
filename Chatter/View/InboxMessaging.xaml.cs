@@ -147,7 +147,7 @@ namespace Chatter
         {
             modeler = e.Item as InboxModel;
             Messaging chatForm = new Messaging(modeler.user_id,modeler.session_id,modeler.username,modeler.image,modeler.emoji);
-            Navigation.PushModalAsync(chatForm);
+            Navigation.PushAsync(chatForm,false);
         }
         private async Task loadRecentMatches()
         {

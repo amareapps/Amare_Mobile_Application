@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              x:Class="Chatter.Discover"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:control="http://xamarin.com/schemas/2014/forms" BackgroundColor="#fffcf3">
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"  BackgroundColor="#fffcf3">
     <ContentPage.Content>
         <Grid Padding="5,15,5,5">
             <Grid.RowDefinitions>
@@ -17,8 +16,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <control:CarouselView Grid.Row="0" Grid.Column="0" CurrentItemChanged="carouselImage_CurrentItemChanged" x:Name="carouselImage" ItemsSource="{Binding imageSources}">
-                <control:CarouselView.ItemTemplate>
+            <CarouselView Grid.Row="0" Grid.Column="0" CurrentItemChanged="carouselImage_CurrentItemChanged" x:Name="carouselImage" ItemsSource="{Binding imageSources}">
+                <CarouselView.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Right,Left" x:Name="swipeLeft" Swiped="swipeLeft_Swiped"/>
+                </CarouselView.GestureRecognizers>
+                <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Frame IsClippedToBounds="True" Padding="0" Margin="0,50,0,0" CornerRadius="20" HasShadow="True">
                             <AbsoluteLayout>
@@ -36,8 +38,9 @@
                             </AbsoluteLayout>
                         </Frame>
                     </DataTemplate>
-                </control:CarouselView.ItemTemplate>
-            </control:CarouselView>
+                </CarouselView.ItemTemplate>
+
+            </CarouselView>
             <Grid Margin="10" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

@@ -108,7 +108,7 @@ namespace Chatter
                     await DisplayAlert("Oops!",value.username,"Okay");
                 }
                 Application.Current.Properties["Id"] = "\"" + value.id + "\"";
-                await Navigation.PushModalAsync(new MainPage());
+                App.Current.MainPage = new NavigationPage(new MainPage());
                 await Navigation.PopToRootAsync();
             }
         }

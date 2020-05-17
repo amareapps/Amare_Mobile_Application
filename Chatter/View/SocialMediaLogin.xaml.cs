@@ -247,7 +247,7 @@ namespace Chatter
         }
         private async Task loadMainPage()
         {
-            await Navigation.PushModalAsync(new MainPage());
+            App.Current.MainPage = new NavigationPage(new MainPage());
         }
         private async Task sampless()
         {

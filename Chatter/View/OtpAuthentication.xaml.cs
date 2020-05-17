@@ -44,7 +44,7 @@ namespace Chatter.View
             else
             {
                 Application.Current.Properties["Id"] = "\"" +user.id + "\"";
-                await Navigation.PushModalAsync(new MainPage());
+                App.Current.MainPage = new NavigationPage(new MainPage());
                 await Navigation.PopToRootAsync(false);
             }
         }
