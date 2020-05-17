@@ -63,7 +63,7 @@
             <Frame HasShadow="True" Grid.Row="2" Padding="0" Margin="0">
                 <Button Text="Report this user" BackgroundColor="White" TextColor="Red" FontSize="Medium"/>
             </Frame>
-                <StackLayout Grid.Row="3">
+                <StackLayout Grid.Row="3" x:Name="instaLayout">
                 <Label Text="Instagram Photos" FontSize="Large" TextColor="Black"></Label>
                 <ScrollView Orientation="Horizontal" >
                     <StackLayout x:Name="instagramAlbum" Orientation="Horizontal" HeightRequest="200">
@@ -77,7 +77,7 @@
                                        Padding="0"
                                        BorderColor="Red"
                                        IsClippedToBounds="True">
-                                        <ffimageloading:CachedImage Aspect="AspectFit"
+                                        <ffimageloading:CachedImage Aspect="AspectFill"
                                                    Source="{Binding image_url}"/>
                                     </Frame>
                                 </StackLayout>

@@ -54,7 +54,7 @@ namespace Chatter
                  await DisplayAlert("Nyek!", "May error", "Okay");
 
              */
-            await Navigation.PushModalAsync(new SocialMediaLogin(SocialMediaPlatform.Facebook));
+            await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Facebook));
         }
 
         private async void phoneRegister_Clicked(object sender, EventArgs e)

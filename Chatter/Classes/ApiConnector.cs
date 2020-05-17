@@ -23,6 +23,7 @@ namespace Chatter.Classes
         static readonly HttpClient client = new HttpClient();
         ClientWebSocket wsClient = new ClientWebSocket();
         ChatModel chatModel = new ChatModel();
+
         public async Task<string> insertToPhoneRegister(string number,string code)
         {
             var form = new MultipartFormDataContent();
@@ -435,6 +436,26 @@ namespace Chatter.Classes
            }
             var looper = JsonConvert.DeserializeObject<List<InstagramPhotosModel>>(response).ToList();
             return looper;
+        }
+        public async Task<string> checkIfAlreadyRegistered(string id)
+        {
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
+            string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=is_social_media_account_exists&user_id=" + id + "";
+            var request = await client.GetAsync(urlString);
+            request.EnsureSuccessStatusCode();
+            var response = await request.Content.ReadAsStringAsync();
+            //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
+            return response;
+            if (response.ToString().Contains("Undefined"))
+            {
+                return null;
+            }
+            var looper = JsonConvert.DeserializeObject<UserModel>(response, settings);
+            //return looper;
         }
     }
 }

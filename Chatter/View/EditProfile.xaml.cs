@@ -226,9 +226,15 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error",ex.ToString(),"Okay");
+                //await DisplayAlert("Error",ex.ToString(),"Okay");
                 return false;
             }
+        }
+
+        private void instagramButton_Clicked(object sender, EventArgs e)
+        {
+            SocialMediaLogin instagramLogin = new SocialMediaLogin(1,false,Application.Current.Properties["Id"].ToString());
+            Navigation.PushAsync(instagramLogin);
         }
     }
 }

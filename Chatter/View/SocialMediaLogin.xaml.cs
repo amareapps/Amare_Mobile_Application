@@ -1,5 +1,6 @@
 ﻿using Chatter.Classes;
 using Chatter.Model;
+using eliteKit.MarkupExtensions;
 using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using SQLite;
@@ -23,9 +24,10 @@ namespace Chatter
         ApiConnector api = new ApiConnector();
         public string client_ID = "249917976134115";
         public string ig_clientID = "273184830525964";
-        private string imageUrl;
+        private string userIdToSync;
         private int socialMedieChosen;
         string locationString;
+        bool isRegistration = true;
         public class SocialMediaPlatform {
             public static readonly int Facebook = 0;
             public static readonly int Instagram = 1;
@@ -35,11 +37,13 @@ namespace Chatter
         {
             DependencyService.Get<IClearCookies>().Clear();
         }
-        public SocialMediaLogin(int platform)
+        public SocialMediaLogin(int platform,bool _isRegistration = true,string user_id = "")
         {
             InitializeComponent();
-
+            isRegistration = _isRegistration;
             socialMedieChosen = platform;
+            DisplayAlert("hayss",isRegistration.ToString(),"Okay");
+            userIdToSync = user_id;
             var apiRequest = "";
             if (platform == SocialMediaPlatform.Facebook)
             {
@@ -80,10 +84,8 @@ namespace Chatter
             {
                 if(socialMedieChosen == SocialMediaPlatform.Facebook)
                     await getFacebookProfileAsync(accessToken);
-                if(socialMedieChosen == SocialMediaPlatform.Instagram)
-                {
+                else if(socialMedieChosen == SocialMediaPlatform.Instagram)
                     await getInstagramProfileAsync(accessToken);
-                }
             }
         }
         public async Task getFacebookProfileAsync(string accessToken)
@@ -102,13 +104,14 @@ namespace Chatter
                     userModel.id = profile.Id;
                     userModel.image = profile.Picture.Data.Url;
                     userModel.location = locationString;
+                    await sampless();
+                    await saveDataSqlite();
                 }
-                await sampless();
-                await saveDataSqlite();
             }
             catch(Exception ex)
             {
-                await DisplayAlert("Error!",ex.ToString(),"Okay");
+                await DisplayAlert("Connection Error","Unable to connect to Facebook, Please try again","Okay");
+                await Navigation.PopAsync(false);
             }
         }
         public async Task getInstagramProfileAsync(string accessToken)
@@ -152,8 +155,30 @@ namespace Chatter
                     var request = await cl.GetAsync(commander2);
                     //request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await DisplayAlert("Bbalabala", response.ToString(), "Okay");
                     var profile = JsonConvert.DeserializeObject<InstagramModel>(response);
+                    //var existingUser = ;
+                    if (!isRegistration)
+                    {
+                        await DisplayAlert("Anu ba to?","Tae","Okay");
+                        for (int a = 0; a < profile.Data.Length; a++)
+                        {
+                            await api.getInstagramPhotos(userIdToSync.Replace("\"",""), profile.Data[a].MediaUrl);
+                        }
+                        await DisplayAlert("Instagram", "", "Instagram Photos successfully synced");
+                        await Navigation.PopAsync(false);
+                        return;
+                    }
+                    var userExist = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(profile.Data[0].Id)).ToList();
+                    foreach(UserModel midek in userExist)
+                    {
+                        userModel = midek;
+                        break;
+                    }
+                    if(userExist.Count > 0)
+                    {
+                        await saveDataSqlite();
+                        return;
+                    }
                     userModel.username = profile.Data[0].Username;
                     userModel.id = profile.Data[0].Id;
                     userModel.image = profile.Data[0].MediaUrl;
@@ -161,6 +186,7 @@ namespace Chatter
                     {
                         await api.getInstagramPhotos(profile.Data[0].Id, profile.Data[a].MediaUrl);
                     }
+                    await DisplayAlert("anyare?","dsadasdasd","Okay");
                     userModel.location = locationString;
                     userModel.gender = "";
                     //await DisplayAlert("Checker", profile.Data[0].MediaUrl, "Okay");
@@ -175,7 +201,8 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Errorer",ex.ToString(),"Okay");
+                await DisplayAlert("Connection Error","Unable to connect to Instagram, Please try again","Okay");
+                await Navigation.PopAsync(false);
             }
         }
         private string ExtractAccessTokenFromUrl(string url)
@@ -234,6 +261,7 @@ namespace Chatter
             content.Add(new StringContent(userModel.gender), "gender");
             content.Add(new StringContent(userModel.location), "location");
             content.Add(new StringContent(userModel.image), "image");
+            await DisplayAlert("sdasda", content.ToString(),"Okay");
             var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_fb_user", content);
             request.EnsureSuccessStatusCode(); 
             var response = await request.Content.ReadAsStringAsync();

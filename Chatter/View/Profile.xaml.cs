@@ -16,6 +16,7 @@ using System.Timers;
 using Chatter.Classes;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
+using Android.Content.Res;
 
 namespace Chatter
 {
@@ -108,8 +109,7 @@ namespace Chatter
 
         private void UpdateProfileButton_Clicked(object sender, EventArgs e)
         {
-            EditProfile edit = new EditProfile();
-            Navigation.PushModalAsync(edit);
+            Navigation.PushModalAsync(new NavigationPage(new EditProfile()));
         }
         private void retrieveUserProp()
         {

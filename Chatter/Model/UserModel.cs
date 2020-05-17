@@ -14,10 +14,10 @@ namespace Chatter.Model
     {
         [PrimaryKey]
         public string id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string email { get; set; }
-        public string gender { get; set; }
+        public string username { get; set; } = "";
+        public string password { get; set; } = "";
+        public string email { get; set; } = "";
+        public string gender { get; set; } = "";
         public string location { get; set; }
         public string image { 
             get;
@@ -33,5 +33,6 @@ namespace Chatter.Model
         public string phone_number { get; set; } = "";
         public string birthdate
         { get; set; } = "";
+        public string interest { get; set; } = "";
     }   
 }

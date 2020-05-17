@@ -42,6 +42,11 @@ namespace Chatter.View
                 galleryModel.Add(list);
                 galleryView.ItemsSource = list;
                 //await DisplayAlert("Hayss", igPhotos, "Okay");
+                if (igPhotos == null)
+                {
+                    instaLayout.IsVisible = false;
+                    return;
+                }
                 foreach (var modeler in igPhotos)
                 {
                     instagramPhotos.Add(modeler);
@@ -50,7 +55,7 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error",ex.ToString(),"Okay");
+                //await DisplayAlert("Error",ex.ToString(),"Okay");
             }
         }   
     }
