@@ -36,6 +36,7 @@ namespace Chatter
         string userLoggedIn = Application.Current.Properties["Id"].ToString().Replace("\"", "");
         ClientWebSocket wsClient = new ClientWebSocket();
         FireStorage fireStorage = new FireStorage();
+        ApiConnector api = new ApiConnector();
         //System.Timers.Timer timer;
         public Messaging(string receiver_id,string session_id,string username,string imagesource,string emoji)
         {
@@ -195,6 +196,27 @@ namespace Chatter
         private async void LongPressEffect_LongPressed(object sender, EventArgs e)
         {
             await DisplayAlert("Test","Long pressed!","Okay");
+        }
+
+        private async void Menu1_Clicked(object sender, EventArgs e)
+        {
+            var unmatchUser =  await DisplayAlert("Unmatch user", "Are you sure you want to umnmatch " + Username + "?", "Yes","No");
+            if (unmatchUser)
+            {
+                var isSuccess = await api.unmatchUser(Session_Id);
+                if (isSuccess)
+                    await Navigation.PopAsync(false);
+                //Unmatch User
+            }
+        }
+        private async void Report_Clicked(object sender, EventArgs e)
+        {
+            var reportUser = await DisplayAlert("Unmatch user", "Are you sure you want to report" + Username + "?", "Yes", "No");
+            if (reportUser)
+            {
+
+                //Report User
+            }
         }
 
         private async void imagePicker_SelectedIndexChanged(object sender, EventArgs e)

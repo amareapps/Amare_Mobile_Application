@@ -28,6 +28,7 @@ namespace Chatter.iOS
             global::Xamarin.Forms.Forms.SetFlags(new[] { "CarouselView_Experimental", "IndicatorView_Experimental" });
             CarouselViewRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
+            //Xamarin.FormsMaps.Init();
             CachedImageRenderer.Init();
             CardsViewRenderer.Preserve();
             LoadApplication(new App());

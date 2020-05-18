@@ -39,7 +39,6 @@
                         </CarouselView>
                         <IndicatorView x:Name="indicatorView" AbsoluteLayout.LayoutBounds="0.5,1,1,0.05" AbsoluteLayout.LayoutFlags="All"
                                     IndicatorColor="LightGray" BackgroundColor="Transparent" 
-                                    IndicatorView.ItemsSourceBy="galleryView"
                                     SelectedIndicatorColor="Accent"
                                     HorizontalOptions="Center" IndicatorSize="10"/>
                     </AbsoluteLayout>

@@ -42,8 +42,23 @@ namespace Chatter
              loadRecentMatchesLocal();
              loadDataFromLocalDb();
         }
+        private void deleteSqliteData()
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<InboxModel>();
+                var table1 = conn.Table<InboxModel>().Delete(x => x.user_id != "");
+                conn.CreateTable<RecentMatchesModel>();
+                var table3 = conn.Table<RecentMatchesModel>().Delete(x => x.user_id != "");
+            }
+        }
         protected async override void OnAppearing()
         {
+            matchesModel.Clear();
+            deleteSqliteData();
             await refreshData();
             ClientWebSocket wsClient = new ClientWebSocket();
             await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.Url + ":8088"), CancellationToken.None);
@@ -177,7 +192,7 @@ namespace Chatter
                     //    var str = Convert.ToBase64String(bytes);
                    //     matches.image = str;
                    // }
-                    if (!matchesModel.Any(x => x.user_id == matches.user_id))
+                    //if (!matchesModel.Any(x => x.user_id == matches.user_id))
                         saveRecentToLocalDb(matches);
                 }
             }

@@ -100,6 +100,10 @@
               "target": "Package",
               "version": "[4.3.0, )"
             },
+            "Xam.Plugin.Geolocator": {
+              "target": "Package",
+              "version": "[4.5.0.6, )"
+            },
             "Xam.Plugin.Media": {
               "target": "Package",
               "version": "[4.0.1.5, )"
@@ -126,7 +130,11 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.4.0.991265, )"
+              "version": "[4.6.0.772, )"
+            },
+            "Xamarin.Forms.Maps": {
+              "target": "Package",
+              "version": "[4.6.0.772, )"
             },
             "Xamd.Plugins.Forms.ImageCarousel": {
               "target": "Package",

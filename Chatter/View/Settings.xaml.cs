@@ -7,6 +7,9 @@ using Xamarin.Forms.Xaml;
 using SQLite;
 using Chatter.Classes;
 using System.Linq;
+using Xamarin.Forms.Maps;
+using Plugin.Geolocator;
+using Chatter.View;
 
 namespace Chatter
 {
@@ -39,12 +42,12 @@ namespace Chatter
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Location not found. Please turn on your GPS.", "Okay");
                 }
             }
             else
             {
 
+                await Navigation.PushModalAsync(new MapViewer());
             }
         }
 

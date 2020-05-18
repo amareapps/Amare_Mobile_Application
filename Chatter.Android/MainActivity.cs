@@ -37,6 +37,7 @@ namespace Chatter.Droid
             ImageCarouselRenderer.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             RequestPermissions(permissionGroup, 0);
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CachedImageRenderer.Init(enableFastRenderer: true);

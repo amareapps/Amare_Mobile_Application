@@ -14,8 +14,9 @@
         <local1:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
     </Page.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Menu1" Order="Secondary" Priority="0" />
-        <ToolbarItem Name="Menu2" Order="Secondary" Priority="1" />
+        <ToolbarItem IconImageSource="camera.png" Order="Primary"></ToolbarItem>
+        <ToolbarItem Name="Unmatch" Order="Secondary" Clicked="Menu1_Clicked" Priority="0" />
+        <ToolbarItem Name="Report" Order="Secondary" Clicked="Report_Clicked" Priority="1" />
     </ContentPage.ToolbarItems>
     <StackLayout Margin="0,0,0,10">
         <ListView Grid.Row="1" Grid.ColumnSpan="5"  x:Name="ChatList"  ItemSelected="ChatList_ItemSelected" ItemTapped="ChatList_ItemTapped"

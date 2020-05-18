@@ -1,6 +1,7 @@
 ﻿using Android.Graphics;
 using Android.Media;
 using Chatter.Model;
+using eliteKit.MarkupExtensions;
 using Newtonsoft.Json;
 using SQLite;
 using System;
@@ -456,6 +457,20 @@ namespace Chatter.Classes
             }
             var looper = JsonConvert.DeserializeObject<UserModel>(response, settings);
             //return looper;
+        }
+        public async Task<bool> unmatchUser(string sessionId)
+        {
+            try
+            {
+                var request = await client.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=unmatch_user&session_id=" + sessionId);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
