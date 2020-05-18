@@ -26,7 +26,7 @@ namespace Chatter {
         private global::Xamarin.Forms.ImageButton sendimageButton;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Chatter.RoundedEntry messageEntry;
+        private global::Xamarin.Forms.Entry messageEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Label lblEmoji;
@@ -40,7 +40,7 @@ namespace Chatter {
             ChatList = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "ChatList");
             imagePicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "imagePicker");
             sendimageButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "sendimageButton");
-            messageEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Chatter.RoundedEntry>(this, "messageEntry");
+            messageEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "messageEntry");
             lblEmoji = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "lblEmoji");
             sendButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "sendButton");
         }

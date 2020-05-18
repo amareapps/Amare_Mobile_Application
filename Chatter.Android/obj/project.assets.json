@@ -6220,24 +6220,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chris\\.nuget\\packages\\": {},
+    "C:\\Users\\Kent\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj",
       "projectName": "Chatter.Android",
-      "projectPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj",
-      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter.Android\\obj\\",
+      "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj",
+      "packagesPath": "C:\\Users\\Kent\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kent\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -6251,8 +6251,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\Chatter.csproj": {
-              "projectPath": "C:\\Users\\chris\\Desktop\\Amare_Mobile_Application\\Chatter\\Chatter.csproj"
+            "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj": {
+              "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj"
             }
           }
         }
