@@ -46,8 +46,7 @@ namespace Chatter
             }
             else
             {
-
-                await Navigation.PushModalAsync(new MapViewer());
+                await Navigation.PushAsync(new MapViewer());
             }
         }
 
@@ -104,7 +103,7 @@ namespace Chatter
         {
 
             deleteFromSqlite();
-            var navigationPages = Navigation.NavigationStack.ToList();
+            //var navigationPages = Navigation.NavigationStack.ToList();
             /*foreach (var page in navigationPages)
             {
                 DisplayAlert("Check!",page.ToString(),"Okay");

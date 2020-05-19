@@ -60,7 +60,7 @@ namespace Chatter
         private void EditButton_Clicked(object sender, EventArgs e)
         {
             Settings settinger = new Settings();
-            Navigation.PushModalAsync(settinger);
+            Navigation.PushModalAsync(new NavigationPage(settinger));
         }
         /*public void getImage()
         {

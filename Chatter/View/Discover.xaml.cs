@@ -24,6 +24,7 @@ using Xamarin.Essentials;
 using Chatter.View;
 using Rg.Plugins.Popup.Services;
 using Chatter.Classes;
+using System.Globalization;
 
 namespace Chatter
 {
@@ -37,7 +38,7 @@ namespace Chatter
         bool isLiked = false;
         private int liked_Id = 0;
         public string currentLocation = "", UserProfilePicture = "";
-        public string distanceFilter = "";
+        public string distanceFilter = "",ageFilter = "";
         bool hasSearchReference = true;
         public Discover()
         {
@@ -59,10 +60,15 @@ namespace Chatter
                     {
                         hasSearchReference = false;
                     }
+                    else
+                    {
+                        hasSearchReference = true;
+                    }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
                     {
                         distanceFilter = iniModel.maximum_distance;
+                        ageFilter = iniModel.age_range;
                         //       await DisplayAlert("Yes!!", "User ID:" + iniModel.user_id + " Maximum Distance:"+ iniModel.maximum_distance + " Age Range:" + iniModel.age_range, "Okay");
                     }
                     conn.CreateTable<UserModel>();
@@ -99,17 +105,24 @@ namespace Chatter
                         imageSources.Clear();
                         return;
                     }
+                    if (hasSearchReference)
+                    {
+                        imageSources.Clear();
+                    }
                     foreach (ImageStorage imageStorage in looper)
                     {
                         if (!imageSources.Any(x => x.id == imageStorage.id))
                         {
                             if (hasSearchReference == true)
                             {
-                                if (CheckSearching(imageStorage.location) == false)
+                                if (CheckSearching(imageStorage) == false)
                                 {
+
+                                    //await DisplayAlert("pumunta b dito?", imageStorage.birthdate, "Okay");
                                     continue;
                                 }
                             }
+                            //await DisplayAlert("nagcontinue ba?", imageStorage.birthdate, "Okay");
                             imageSources.Add(imageStorage);
                         }
                     }
@@ -119,7 +132,7 @@ namespace Chatter
             catch(Exception ex)
             {
                 imageSources.Clear();
-                await DisplayAlert("Discover", "No user to display","Okay");
+                await DisplayAlert("Discover", ex.ToString(),"Okay");
             }
         }
 
@@ -139,7 +152,7 @@ namespace Chatter
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateVisible", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await PopupNavigation.Instance.PushAsync(new AnimateMatched(UserProfilePicture,currentItem.image));
+                    await Navigation.PushModalAsync(new AnimateMatched(UserProfilePicture,currentItem.image));
                     //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
                     imageSources.Remove(currentItem);
                 }
@@ -191,14 +204,22 @@ namespace Chatter
                 }
             }
         }
-        private bool CheckSearching(string model)
+        private bool CheckSearching(ImageStorage model)
         {
             string[] currentLocArr = currentLocation.Split(',');
-            string[] otherUserLocArr = model.Split(',');
+            string[] otherUserLocArr = model.location.Split(',');
             Location myLocation = new Location(Convert.ToDouble(currentLocArr[0]), Convert.ToDouble(currentLocArr[1]));
             Location otherLocation = new Location(Convert.ToDouble(otherUserLocArr[0]), Convert.ToDouble(otherUserLocArr[1]));
             double kmDistance = Location.CalculateDistance(myLocation,otherLocation,DistanceUnits.Miles);
-            if (kmDistance <= Convert.ToDouble(distanceFilter))
+
+            //Convert Birthday to age
+            string format = "dd/MM/yyyy HH:mm:ss";
+            var birthdate = DateTime.ParseExact(model.birthdate,format, CultureInfo.InvariantCulture);
+
+            // Calculate the age.
+            int age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
+            //DisplayAlert("tae nmn", ageFilter + "nyare " + age.ToString() + "result: " + (age <= Convert.ToInt32(ageFilter)).ToString(),"okay");
+             if (kmDistance <= Convert.ToDouble(distanceFilter) && age <= Convert.ToInt32(ageFilter))
                 return true;
 
             return false;

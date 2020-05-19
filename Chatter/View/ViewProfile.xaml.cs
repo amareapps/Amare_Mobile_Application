@@ -57,6 +57,17 @@ namespace Chatter.View
             {
                 //await DisplayAlert("Error",ex.ToString(),"Okay");
             }
-        }   
+        }
+
+        private async void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            List<string> images = new List<string>();
+            foreach (var imageUrl in galleryModel[0].ToList())
+            {
+                images.Add(imageUrl.image);
+                break;
+            }
+            await Navigation.PushModalAsync(new ImageViewer(images));
+        }
     }
 }

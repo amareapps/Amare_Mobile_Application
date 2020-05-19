@@ -28,6 +28,17 @@
           "lib/monoandroid80/XFGloss.dll": {}
         }
       },
+      "Bolts/1.4.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid403/Bolts.AppLinks.dll": {},
+          "lib/MonoAndroid403/Bolts.Tasks.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid403/Bolts.AppLinks.dll": {},
+          "lib/MonoAndroid403/Bolts.Tasks.dll": {}
+        }
+      },
       "BouncyCastle.NetCore/1.8.3": {
         "type": "package",
         "dependencies": {
@@ -233,6 +244,65 @@
           "lib/netstandard2.1/Ubiety.Dns.Core.dll": {}
         }
       },
+      "Naxam.Fresco.Droid/1.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.FrescoDrawee.Droid": "1.5.0",
+          "Naxam.FrescoImagePipeline.Droid": "1.5.0"
+        },
+        "compile": {
+          "lib/MonoAndroid10/Naxam.Fresco.Droid.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/Naxam.Fresco.Droid.dll": {}
+        }
+      },
+      "Naxam.FrescoCore.Droid/1.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid10/Naxam.FrescoCore.Droid.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/Naxam.FrescoCore.Droid.dll": {}
+        }
+      },
+      "Naxam.FrescoDrawee.Droid/1.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.FrescoCore.Droid": "1.5.0"
+        },
+        "compile": {
+          "lib/MonoAndroid10/Naxam.FrescoDrawee.Droid.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/Naxam.FrescoDrawee.Droid.dll": {}
+        }
+      },
+      "Naxam.FrescoImagePipeline.Droid/1.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.FrescoImagePipelineBase.Droid": "1.5.0"
+        },
+        "compile": {
+          "lib/MonoAndroid10/Naxam.FrescoImagePipeline.Droid.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/Naxam.FrescoImagePipeline.Droid.dll": {}
+        }
+      },
+      "Naxam.FrescoImagePipelineBase.Droid/1.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Bolts": "1.4.0.1",
+          "Naxam.FrescoCore.Droid": "1.5.0"
+        },
+        "compile": {
+          "lib/MonoAndroid10/Naxam.FrescoImagePipelineBase.Droid.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/Naxam.FrescoImagePipelineBase.Droid.dll": {}
+        }
+      },
       "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
@@ -240,6 +310,24 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "PhotoBrowser.Forms/0.1.4": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Fresco.Droid": "1.5.0"
+        },
+        "compile": {
+          "lib/MonoAndroid/Stormlion.FrescoImageViewer.dll": {},
+          "lib/MonoAndroid/Stormlion.PhotoBrowser.Android.dll": {},
+          "lib/MonoAndroid/Stormlion.PhotoBrowser.dll": {},
+          "lib/MonoAndroid/Stormlion.PhotoDraweeView.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid/Stormlion.FrescoImageViewer.dll": {},
+          "lib/MonoAndroid/Stormlion.PhotoBrowser.Android.dll": {},
+          "lib/MonoAndroid/Stormlion.PhotoBrowser.dll": {},
+          "lib/MonoAndroid/Stormlion.PhotoDraweeView.dll": {}
         }
       },
       "Plugin.CurrentActivity/2.1.0.2": {
@@ -2041,6 +2129,7 @@
           "FirebaseStorage.net": "1.0.3",
           "Json.Net": "1.0.18",
           "MySql.Data": "8.0.19",
+          "PhotoBrowser.Forms": "0.1.4",
           "Plugin.Facebook": "1.0.0",
           "Plugin.Google": "1.0.1",
           "Plugin.Instagram": "1.0.0",
@@ -2087,6 +2176,19 @@
         "lib/netstandard2.0/XFGloss.xml",
         "lib/xamarinios10/XFGloss.dll",
         "lib/xamarinios10/XFGloss.xml"
+      ]
+    },
+    "Bolts/1.4.0.1": {
+      "sha512": "jP+DKZRTd/3+S7eN25bHhYrl+f5xh/gHtx9D6Z947bADQyPWrOY2FWtY7qrIlHNOwUaFFsljN1M4irI9sBpz1Q==",
+      "type": "package",
+      "path": "bolts/1.4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bolts.1.4.0.1.nupkg.sha512",
+        "bolts.nuspec",
+        "lib/MonoAndroid403/Bolts.AppLinks.dll",
+        "lib/MonoAndroid403/Bolts.Tasks.dll"
       ]
     },
     "BouncyCastle.NetCore/1.8.3": {
@@ -2533,6 +2635,66 @@
         "mysql.data.nuspec"
       ]
     },
+    "Naxam.Fresco.Droid/1.5.0": {
+      "sha512": "NiF1z6M2M93U7bLLwYfkiZyrE/gtco7eOLftmpl0c5qcP97+raBaL7+U36tAm/azBCQY5a2OzQyzje+Gcjx/fA==",
+      "type": "package",
+      "path": "naxam.fresco.droid/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Naxam.Fresco.Droid.dll",
+        "naxam.fresco.droid.1.5.0.nupkg.sha512",
+        "naxam.fresco.droid.nuspec"
+      ]
+    },
+    "Naxam.FrescoCore.Droid/1.5.0": {
+      "sha512": "1RUkvl/1hIOhdX4Dzszeaq3qxQAdj1SqxFK/sM8rjdkcO+HFHMl3CdRX28o79lXyIhIPpShJZq3Pci6MDHzFcQ==",
+      "type": "package",
+      "path": "naxam.frescocore.droid/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Naxam.FrescoCore.Droid.dll",
+        "naxam.frescocore.droid.1.5.0.nupkg.sha512",
+        "naxam.frescocore.droid.nuspec"
+      ]
+    },
+    "Naxam.FrescoDrawee.Droid/1.5.0": {
+      "sha512": "VDkf97vCFskK/zMOrwmCUCFVEnPKtFl6598kn2+PX229XMdEKFz3wqPOfHbuVCPayazixRKqA2yIhrq5FB9sZQ==",
+      "type": "package",
+      "path": "naxam.frescodrawee.droid/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Naxam.FrescoDrawee.Droid.dll",
+        "naxam.frescodrawee.droid.1.5.0.nupkg.sha512",
+        "naxam.frescodrawee.droid.nuspec"
+      ]
+    },
+    "Naxam.FrescoImagePipeline.Droid/1.5.0": {
+      "sha512": "aQNEERCMgjUGFTYlYkIavULXfa/Pdb13M760pTl/UGlG5BMfGegvP9VrIIjphLJbIS0k3L5BbStC3QQ+VZt39Q==",
+      "type": "package",
+      "path": "naxam.frescoimagepipeline.droid/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Naxam.FrescoImagePipeline.Droid.dll",
+        "naxam.frescoimagepipeline.droid.1.5.0.nupkg.sha512",
+        "naxam.frescoimagepipeline.droid.nuspec"
+      ]
+    },
+    "Naxam.FrescoImagePipelineBase.Droid/1.5.0": {
+      "sha512": "R9t8soD7BCfBQ94qWYRlhA1/i9ejLCE5p7i0WeqQtiqT+04hOf0pD7cd8cAhcqOapzjgwjq2ua3AtgnjSzGMUw==",
+      "type": "package",
+      "path": "naxam.frescoimagepipelinebase.droid/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Naxam.FrescoImagePipelineBase.Droid.dll",
+        "naxam.frescoimagepipelinebase.droid.1.5.0.nupkg.sha512",
+        "naxam.frescoimagepipelinebase.droid.nuspec"
+      ]
+    },
     "Newtonsoft.Json/12.0.3": {
       "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "type": "package",
@@ -2562,6 +2724,24 @@
         "newtonsoft.json.12.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "PhotoBrowser.Forms/0.1.4": {
+      "sha512": "qN9LeAB5SNUxkFf2Tublxo2iJQZiRHytv8l2ntJ24TtC6I9C4gcwRe66aHNW8vVrs03fZwVtlf/PmlPaYK6xNA==",
+      "type": "package",
+      "path": "photobrowser.forms/0.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/Stormlion.FrescoImageViewer.dll",
+        "lib/MonoAndroid/Stormlion.PhotoBrowser.Android.dll",
+        "lib/MonoAndroid/Stormlion.PhotoBrowser.dll",
+        "lib/MonoAndroid/Stormlion.PhotoDraweeView.dll",
+        "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll",
+        "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll",
+        "lib/netstandard2.0/Stormlion.PhotoBrowser.dll",
+        "photobrowser.forms.0.1.4.nupkg.sha512",
+        "photobrowser.forms.nuspec"
       ]
     },
     "Plugin.CurrentActivity/2.1.0.2": {
@@ -6373,6 +6553,7 @@
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v9.0": [
       "Chatter >= 1.0.0",
+      "PhotoBrowser.Forms >= 0.1.4",
       "Plugin.Facebook >= 1.0.0",
       "Plugin.Google >= 1.0.1",
       "Plugin.Instagram >= 1.0.0",
@@ -6431,6 +6612,10 @@
     "frameworks": {
       "monoandroid90": {
         "dependencies": {
+          "PhotoBrowser.Forms": {
+            "target": "Package",
+            "version": "[0.1.4, )"
+          },
           "Plugin.Facebook": {
             "target": "Package",
             "version": "[1.0.0, )"

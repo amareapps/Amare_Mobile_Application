@@ -472,5 +472,21 @@ namespace Chatter.Classes
                 return false;
             }
         }
+        public async Task updateUser(UserModel userModel)
+        {
+            var form = new MultipartFormDataContent();
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(userModel.id), "id");
+            content.Add(new StringContent(userModel.about), "about");
+            content.Add(new StringContent(userModel.job_title), "job_title");
+            content.Add(new StringContent(userModel.company), "company");
+            content.Add(new StringContent(userModel.school), "school");
+            content.Add(new StringContent(userModel.city), "city");
+            content.Add(new StringContent(userModel.show_age), "show_age");
+            content.Add(new StringContent(userModel.show_distance), "show_distance");
+            content.Add(new StringContent(userModel.location), "location");
+            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUser", content);
+            request.EnsureSuccessStatusCode();
+        }
     }
 }

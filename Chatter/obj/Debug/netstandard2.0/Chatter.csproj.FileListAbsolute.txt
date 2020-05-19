@@ -164,6 +164,7 @@ C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\Login.xaml.g.cs
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\Login_Input.xaml.g.cs
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\MainPage.xaml.g.cs
+C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\MapViewer.xaml.g.cs
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\Messaging.xaml.g.cs
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\NumberLogin.xaml.g.cs
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\OtpAuthentication.xaml.g.cs
@@ -172,13 +173,13 @@ C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\Settings.xaml.g.cs
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\SocialMediaLogin.xaml.g.cs
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\ViewProfile.xaml.g.cs
+C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.csproj.CoreCompileInputs.cache
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.AssemblyInfoInputs.cache
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.AssemblyInfo.cs
+C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.csproj.CopyComplete
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.dll
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\ref\Chatter.dll
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.pdb
 C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.csprojAssemblyReference.cache
-C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\MapViewer.xaml.g.cs
-C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\Chatter.csproj.CoreCompileInputs.cache
-C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Kent\Documents\Amare\amareapp-team-master\Chatter\obj\Debug\netstandard2.0\View\ImageViewer.xaml.g.cs

@@ -42,6 +42,10 @@
       "frameworks": {
         "xamarinios10": {
           "dependencies": {
+            "PhotoBrowser.Forms": {
+              "target": "Package",
+              "version": "[0.1.4, )"
+            },
             "Plugin.Facebook": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -156,6 +160,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "PhotoBrowser.Forms": {
+              "target": "Package",
+              "version": "[0.1.4, )"
             },
             "Plugin.Facebook": {
               "target": "Package",
