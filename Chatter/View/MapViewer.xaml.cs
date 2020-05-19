@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
-
+using Chatter.Classes;
 namespace Chatter.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class MapViewer : ContentPage
     {
+        ApiConnector api = new ApiConnector();
+        SqliteManager sqliteManager = new SqliteManager();
         public MapViewer()
         {
             InitializeComponent();
@@ -22,14 +25,25 @@ namespace Chatter.View
 
         }
 
-        private void map_MapClicked(object sender, MapClickedEventArgs e)
+        private async void map_MapClicked(object sender, MapClickedEventArgs e)
         {
+            string location;
             map.Pins.Clear();
             map.Pins.Add(new Pin
             {
                 Label = "Pin from tap",
                 Position = new Position(e.Position.Latitude, e.Position.Longitude)
             });
-        }
+            var isAccepted = await DisplayAlert("Select Location","Are you sure to this location?","Yes","No");
+            if (!isAccepted)
+                return;
+            //Update Location
+            var userModel = sqliteManager.getUserModel();
+            location = e.Position.Latitude.ToString() + "," + e.Position.Longitude.ToString();
+            userModel.location = location;
+            sqliteManager.updateUserModel(userModel);
+            await api.updateUser(sqliteManager.getUserModel());
+            await Navigation.PopAsync();
         }
     }
+}

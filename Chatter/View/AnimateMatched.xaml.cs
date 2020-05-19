@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace Chatter.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AnimateMatched
+    public partial class AnimateMatched : ContentPage
     {
         public string ImageOne, ImageTwo;
         public AnimateMatched(string userImage,string likedUserImage)

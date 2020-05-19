@@ -1,11 +1,12 @@
-﻿using SQLite;
+﻿using Android.Media;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Chatter.Model
 {
-    class ImageStorage
+    public class ImageStorage
     {
         [PrimaryKey]
         public string id
@@ -25,6 +26,10 @@ namespace Chatter.Model
         }
         public string location
         {
+            get;
+            set;
+        }
+        public string birthdate{
             get;
             set;
         }

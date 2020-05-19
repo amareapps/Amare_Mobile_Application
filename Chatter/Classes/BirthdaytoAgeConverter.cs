@@ -12,7 +12,7 @@ namespace Chatter.Classes
             var today = DateTime.Today;
             var birthdate = System.Convert.ToDateTime(value.ToString());
             // Calculate the age.
-            var age = today.Year - birthdate.Year;
+            var age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
             return age;
         }
 

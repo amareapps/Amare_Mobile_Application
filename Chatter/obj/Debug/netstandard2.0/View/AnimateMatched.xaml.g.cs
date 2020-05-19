@@ -14,7 +14,7 @@ namespace Chatter.View {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("View\\AnimateMatched.xaml")]
-    public partial class AnimateMatched : global::Rg.Plugins.Popup.Pages.PopupPage {
+    public partial class AnimateMatched : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::FFImageLoading.Forms.CachedImage heartImage;

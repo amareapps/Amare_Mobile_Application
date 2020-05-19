@@ -254,6 +254,18 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "PhotoBrowser.Forms/0.1.4": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "3.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Stormlion.PhotoBrowser.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Stormlion.PhotoBrowser.dll": {}
+        }
+      },
       "Plugin.Facebook/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -2110,6 +2122,24 @@
         "newtonsoft.json.12.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "PhotoBrowser.Forms/0.1.4": {
+      "sha512": "qN9LeAB5SNUxkFf2Tublxo2iJQZiRHytv8l2ntJ24TtC6I9C4gcwRe66aHNW8vVrs03fZwVtlf/PmlPaYK6xNA==",
+      "type": "package",
+      "path": "photobrowser.forms/0.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/Stormlion.FrescoImageViewer.dll",
+        "lib/MonoAndroid/Stormlion.PhotoBrowser.Android.dll",
+        "lib/MonoAndroid/Stormlion.PhotoBrowser.dll",
+        "lib/MonoAndroid/Stormlion.PhotoDraweeView.dll",
+        "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll",
+        "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll",
+        "lib/netstandard2.0/Stormlion.PhotoBrowser.dll",
+        "photobrowser.forms.0.1.4.nupkg.sha512",
+        "photobrowser.forms.nuspec"
       ]
     },
     "Plugin.Facebook/1.0.0": {
@@ -6180,6 +6210,7 @@
       "Json.Net >= 1.0.18",
       "MySql.Data >= 8.0.19",
       "NETStandard.Library >= 2.0.3",
+      "PhotoBrowser.Forms >= 0.1.4",
       "Plugin.Facebook >= 1.0.0",
       "Plugin.Google >= 1.0.1",
       "Plugin.Instagram >= 1.0.0",
@@ -6275,6 +6306,10 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "PhotoBrowser.Forms": {
+            "target": "Package",
+            "version": "[0.1.4, )"
           },
           "Plugin.Facebook": {
             "target": "Package",

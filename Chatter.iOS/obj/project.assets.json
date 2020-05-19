@@ -223,6 +223,20 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "PhotoBrowser.Forms/0.1.4": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MWPhotoBrowser.iOS": "2.1.4.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        }
+      },
       "Plugin.Facebook/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -276,6 +290,37 @@
         "runtime": {
           "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.dll": {},
           "lib/Xamarin.IOS/Rg.Plugins.Popup.dll": {}
+        }
+      },
+      "Ricardo.MBProgressHUD.iOS/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        }
+      },
+      "Ricardo.MWPhotoBrowser.iOS/2.1.4.1": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MBProgressHUD.iOS": "1.1.0",
+          "Ricardo.SDWebImage.iOS": "4.2.2.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        }
+      },
+      "Ricardo.SDWebImage.iOS/4.2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
         }
       },
       "SkiaSharp/1.68.0": {
@@ -1061,6 +1106,7 @@
           "FirebaseStorage.net": "1.0.3",
           "Json.Net": "1.0.18",
           "MySql.Data": "8.0.19",
+          "PhotoBrowser.Forms": "0.1.4",
           "Plugin.Facebook": "1.0.0",
           "Plugin.Google": "1.0.1",
           "Plugin.Instagram": "1.0.0",
@@ -1310,6 +1356,20 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "PhotoBrowser.Forms/0.1.4": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MWPhotoBrowser.iOS": "2.1.4.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        }
+      },
       "Plugin.Facebook/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -1363,6 +1423,37 @@
         "runtime": {
           "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.dll": {},
           "lib/Xamarin.IOS/Rg.Plugins.Popup.dll": {}
+        }
+      },
+      "Ricardo.MBProgressHUD.iOS/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        }
+      },
+      "Ricardo.MWPhotoBrowser.iOS/2.1.4.1": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MBProgressHUD.iOS": "1.1.0",
+          "Ricardo.SDWebImage.iOS": "4.2.2.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        }
+      },
+      "Ricardo.SDWebImage.iOS/4.2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
         }
       },
       "SkiaSharp/1.68.0": {
@@ -2078,6 +2169,7 @@
           "FirebaseStorage.net": "1.0.3",
           "Json.Net": "1.0.18",
           "MySql.Data": "8.0.19",
+          "PhotoBrowser.Forms": "0.1.4",
           "Plugin.Facebook": "1.0.0",
           "Plugin.Google": "1.0.1",
           "Plugin.Instagram": "1.0.0",
@@ -2327,6 +2419,20 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "PhotoBrowser.Forms/0.1.4": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MWPhotoBrowser.iOS": "2.1.4.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        }
+      },
       "Plugin.Facebook/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -2380,6 +2486,37 @@
         "runtime": {
           "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.dll": {},
           "lib/Xamarin.IOS/Rg.Plugins.Popup.dll": {}
+        }
+      },
+      "Ricardo.MBProgressHUD.iOS/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        }
+      },
+      "Ricardo.MWPhotoBrowser.iOS/2.1.4.1": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MBProgressHUD.iOS": "1.1.0",
+          "Ricardo.SDWebImage.iOS": "4.2.2.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        }
+      },
+      "Ricardo.SDWebImage.iOS/4.2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
         }
       },
       "SkiaSharp/1.68.0": {
@@ -3098,6 +3235,7 @@
           "FirebaseStorage.net": "1.0.3",
           "Json.Net": "1.0.18",
           "MySql.Data": "8.0.19",
+          "PhotoBrowser.Forms": "0.1.4",
           "Plugin.Facebook": "1.0.0",
           "Plugin.Google": "1.0.1",
           "Plugin.Instagram": "1.0.0",
@@ -3347,6 +3485,20 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "PhotoBrowser.Forms/0.1.4": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MWPhotoBrowser.iOS": "2.1.4.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll": {},
+          "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll": {}
+        }
+      },
       "Plugin.Facebook/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -3400,6 +3552,37 @@
         "runtime": {
           "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.dll": {},
           "lib/Xamarin.IOS/Rg.Plugins.Popup.dll": {}
+        }
+      },
+      "Ricardo.MBProgressHUD.iOS/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll": {}
+        }
+      },
+      "Ricardo.MWPhotoBrowser.iOS/2.1.4.1": {
+        "type": "package",
+        "dependencies": {
+          "Ricardo.MBProgressHUD.iOS": "1.1.0",
+          "Ricardo.SDWebImage.iOS": "4.2.2.1"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll": {}
+        }
+      },
+      "Ricardo.SDWebImage.iOS/4.2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll": {}
         }
       },
       "SkiaSharp/1.68.0": {
@@ -4118,6 +4301,7 @@
           "FirebaseStorage.net": "1.0.3",
           "Json.Net": "1.0.18",
           "MySql.Data": "8.0.19",
+          "PhotoBrowser.Forms": "0.1.4",
           "Plugin.Facebook": "1.0.0",
           "Plugin.Google": "1.0.1",
           "Plugin.Instagram": "1.0.0",
@@ -4641,6 +4825,24 @@
         "packageIcon.png"
       ]
     },
+    "PhotoBrowser.Forms/0.1.4": {
+      "sha512": "qN9LeAB5SNUxkFf2Tublxo2iJQZiRHytv8l2ntJ24TtC6I9C4gcwRe66aHNW8vVrs03fZwVtlf/PmlPaYK6xNA==",
+      "type": "package",
+      "path": "photobrowser.forms/0.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/Stormlion.FrescoImageViewer.dll",
+        "lib/MonoAndroid/Stormlion.PhotoBrowser.Android.dll",
+        "lib/MonoAndroid/Stormlion.PhotoBrowser.dll",
+        "lib/MonoAndroid/Stormlion.PhotoDraweeView.dll",
+        "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.dll",
+        "lib/Xamarin.iOS10/Stormlion.PhotoBrowser.iOS.dll",
+        "lib/netstandard2.0/Stormlion.PhotoBrowser.dll",
+        "photobrowser.forms.0.1.4.nupkg.sha512",
+        "photobrowser.forms.nuspec"
+      ]
+    },
     "Plugin.Facebook/1.0.0": {
       "sha512": "opQN23jqSZSkhD8AzU8A/jn7o/ef9jFs0PPNBhbXLuKEstliAEjky/BHKJd+uDHoGwg0Gj4cn9mgiRdgA3vXOg==",
       "type": "package",
@@ -4771,6 +4973,42 @@
         "readme.txt",
         "rg.plugins.popup.1.2.0.223.nupkg.sha512",
         "rg.plugins.popup.nuspec"
+      ]
+    },
+    "Ricardo.MBProgressHUD.iOS/1.1.0": {
+      "sha512": "yQj60zAc2C4jYmj+NJ6dAhkiS4heWtSrzq917njXJ3flBLOqPrk65yTq0HKAl7n86Cmep71biYSjTynzyETJsg==",
+      "type": "package",
+      "path": "ricardo.mbprogresshud.ios/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.iOS10/Ricardo.MBProgressHUD.iOS.dll",
+        "ricardo.mbprogresshud.ios.1.1.0.nupkg.sha512",
+        "ricardo.mbprogresshud.ios.nuspec"
+      ]
+    },
+    "Ricardo.MWPhotoBrowser.iOS/2.1.4.1": {
+      "sha512": "a+0HrVMzD2zD3sI8GFeHdEAzGKPe+axodpoEXYFUqFOB2O+yoIDLkU7LrjW1deq0/1yJCiQ8NvsSVYCr4J336Q==",
+      "type": "package",
+      "path": "ricardo.mwphotobrowser.ios/2.1.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.iOS10/Ricardo.MWPhotoBrowser.iOS.dll",
+        "ricardo.mwphotobrowser.ios.2.1.4.1.nupkg.sha512",
+        "ricardo.mwphotobrowser.ios.nuspec"
+      ]
+    },
+    "Ricardo.SDWebImage.iOS/4.2.2.1": {
+      "sha512": "rqG/qF8LYJmem8wA8Koa3lwhTTxTdfpHEIwS0o9vraVs0G3OYZvcM8g8GzGj9/WJCb9bYqfG6dcR96nvhRH9kQ==",
+      "type": "package",
+      "path": "ricardo.sdwebimage.ios/4.2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.iOS10/Ricardo.SDWebImage.iOS.dll",
+        "ricardo.sdwebimage.ios.4.2.2.1.nupkg.sha512",
+        "ricardo.sdwebimage.ios.nuspec"
       ]
     },
     "SkiaSharp/1.68.0": {
@@ -7410,6 +7648,7 @@
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
       "Chatter >= 1.0.0",
+      "PhotoBrowser.Forms >= 0.1.4",
       "Plugin.Facebook >= 1.0.0",
       "Plugin.Google >= 1.0.1",
       "Plugin.Instagram >= 1.0.0",
@@ -7461,6 +7700,10 @@
     "frameworks": {
       "xamarinios10": {
         "dependencies": {
+          "PhotoBrowser.Forms": {
+            "target": "Package",
+            "version": "[0.1.4, )"
+          },
           "Plugin.Facebook": {
             "target": "Package",
             "version": "[1.0.0, )"
