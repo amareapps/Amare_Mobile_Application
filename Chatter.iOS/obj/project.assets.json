@@ -7420,24 +7420,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kent\\.nuget\\packages\\": {},
+    "C:\\Users\\chris\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.iOS\\Chatter.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter.iOS\\Chatter.iOS.csproj",
       "projectName": "Chatter.iOS",
-      "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.iOS\\Chatter.iOS.csproj",
-      "packagesPath": "C:\\Users\\Kent\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.iOS\\obj\\",
+      "projectPath": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter.iOS\\Chatter.iOS.csproj",
+      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Kent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -7451,8 +7451,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj": {
-              "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj"
+            "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter\\Chatter.csproj": {
+              "projectPath": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter\\Chatter.csproj"
             }
           }
         }

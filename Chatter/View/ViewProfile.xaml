@@ -59,9 +59,9 @@
                     </StackLayout>
             </Frame>
             <Frame HasShadow="True" Grid.Row="2" Padding="0" Margin="0">
-                <Button Text="Report this user" BackgroundColor="White" TextColor="Red" FontSize="Medium"/>
+                <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium"/>
             </Frame>
-                <StackLayout Grid.Row="3" x:Name="instaLayout">
+                <StackLayout Grid.Row="3" x:Name="instaLayout" Padding="10">
                 <Label Text="Instagram Photos" FontSize="Large" TextColor="Black"></Label>
                 <ScrollView Orientation="Horizontal" >
                     <StackLayout x:Name="instagramAlbum" Orientation="Horizontal" HeightRequest="200">

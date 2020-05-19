@@ -50,12 +50,6 @@ namespace Chatter
             birthdatePicker.SetValue(DatePicker.MaximumDateProperty, DateTime.Now.AddYears(-18));
             birthdatePicker.SetValue(DatePicker.MinimumDateProperty, firstDay.AddYears(-60));
         }
-        public static int GetMonthDifference(DateTime startDate, DateTime endDate)
-        {
-            int monthsApart = 12 * (startDate.Year - endDate.Year) + startDate.Month - endDate.Month;
-            return Math.Abs(monthsApart);
-
-        }
 
         private void clearFields()
         {
@@ -158,10 +152,10 @@ namespace Chatter
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#fffcf8");
+                btn.BackgroundColor = Color.FromHex("#EEEEEE");
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#adadad");
+            btne.BackgroundColor = Color.FromHex("#98000b");
             gender = btne.Text;
         }
         private void Button_Interest(object sender, EventArgs e)
@@ -169,10 +163,10 @@ namespace Chatter
             var looper = gridInterest.Children.Where(x => x is Button);
             foreach(Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#fffcf8");
+                btn.BackgroundColor = Color.FromHex("#EEEEEE");
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#adadad");
+            btne.BackgroundColor = Color.FromHex("#98000b");
             interestIn = btne.Text;
         }
         private void nextContent(object sender, EventArgs e)

@@ -6390,24 +6390,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kent\\.nuget\\packages\\": {},
+    "C:\\Users\\chris\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj",
+      "projectUniqueName": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj",
       "projectName": "Chatter.Android",
-      "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\Chatter.Android.csproj",
-      "packagesPath": "C:\\Users\\Kent\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter.Android\\obj\\",
+      "projectPath": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter.Android\\Chatter.Android.csproj",
+      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Kent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -6421,8 +6421,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj": {
-              "projectPath": "C:\\Users\\Kent\\Documents\\Amare\\amareapp-team-master\\Chatter\\Chatter.csproj"
+            "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter\\Chatter.csproj": {
+              "projectPath": "C:\\Users\\chris\\Documents\\Amare_Mobile_Application\\Chatter\\Chatter.csproj"
             }
           }
         }
@@ -6496,7 +6496,7 @@
       "code": "NU1605",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package downgrade: Xamarin.Forms from 4.6.0.772 to 4.4.0.991265. Reference the package directly from the project to select a different version. \r\n Chatter.Android -> Xamarin.Forms.Maps 4.6.0.772 -> Xamarin.Forms (>= 4.6.0.772) \r\n Chatter.Android -> Xamarin.Forms (>= 4.4.0.991265)",
+      "message": "Detected package downgrade: Xamarin.Forms from 4.6.0.772 to 4.4.0.991265. Reference the package directly from the project to select a different version. \r\n Chatter.Android -> Chatter -> Xamarin.Forms (>= 4.6.0.772) \r\n Chatter.Android -> Xamarin.Forms (>= 4.4.0.991265)",
       "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "MonoAndroid,Version=v9.0"
@@ -6506,7 +6506,7 @@
       "code": "NU1605",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package downgrade: Xamarin.Forms from 4.6.0.772 to 4.4.0.991265. Reference the package directly from the project to select a different version. \r\n Chatter.Android -> Chatter -> Xamarin.Forms (>= 4.6.0.772) \r\n Chatter.Android -> Xamarin.Forms (>= 4.4.0.991265)",
+      "message": "Detected package downgrade: Xamarin.Forms from 4.6.0.772 to 4.4.0.991265. Reference the package directly from the project to select a different version. \r\n Chatter.Android -> Xamarin.Forms.Maps 4.6.0.772 -> Xamarin.Forms (>= 4.6.0.772) \r\n Chatter.Android -> Xamarin.Forms (>= 4.4.0.991265)",
       "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "MonoAndroid,Version=v9.0"

@@ -11,9 +11,16 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="200"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+            <Grid HeightRequest="60" Margin="0,0,0,10" Grid.Row="0">
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
+                <ImageButton BackgroundColor="Transparent"  VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="30" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
+                       Clicked="EditButton_Clicked"/>
+                <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
+            </Grid>
             <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -23,38 +30,25 @@
                 </Picker.ItemsSource>
             </Picker>
             <!-- <Label Padding="0,20,0,0"  Grid.Row="0" x:Name="nameLabel" FontAttributes="Bold" Text="Chou Tzu-yu" FontSize="Large"  HorizontalOptions="Center"/> -->
-            <Frame CornerRadius="20" HasShadow="True" OutlineColor="Black"
-                       HeightRequest="200"
-                       WidthRequest="200"
+            <Frame CornerRadius="20" BackgroundColor="Transparent" HasShadow="True"
+                       HeightRequest="250"
+                       WidthRequest="250"
                        HorizontalOptions="Center"
-                       Padding="0"
-                       Margin="10,20,10,30"
                        Grid.Row="1"
                        IsClippedToBounds="True">
-                <ImageButton x:Name="ProfileImage" Source="tzuyu.jpg" Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
+                <AbsoluteLayout>
+                    <ImageButton BackgroundColor="Transparent" Margin="5"
+                       Padding="5"
+                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+                       AbsoluteLayout.LayoutFlags="All" x:Name="ProfileImage" Source="tzuyu.jpg" Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
+                    <ImageButton AbsoluteLayout.LayoutBounds="1, 1, 35, 35"
+                            AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
+                                 HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
+                </AbsoluteLayout>
             </Frame>
-            <Grid Padding="0" Margin="15,0,15,0" Grid.Row="2" RowSpacing="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <ImageButton BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="1"
-                       Clicked="EditButton_Clicked"/>
-                <Label Text="Settings" VerticalOptions="Start" HorizontalOptions="Center" Grid.Column="0" Grid.Row="2"></Label>
-                <ImageButton BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80" x:Name="CameraButton" Source="camera.png" Grid.Column="1" Grid.Row="0" />
-                <Label Text="Edit Picture" VerticalOptions="Start" HorizontalOptions="Center" Grid.Column="1" Grid.Row="1"></Label>
-                <ActivityIndicator IsRunning="False"    HeightRequest="80" WidthRequest="80"
-                         IsVisible="False" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
-                <ImageButton Grid.Column="2" Grid.Row="1" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
-                <Label Text="Edit Profile" VerticalOptions="Start" HorizontalOptions="Center" Grid.Column="2" Grid.Row="2"></Label>
-            </Grid>
-            <StackLayout Grid.Row="3" BackgroundColor="#e6e6e6" Margin="0,50,0,0" Padding="0,0,0,0">
+            <ActivityIndicator IsRunning="False"  Grid.Row="2"  HeightRequest="80" WidthRequest="80"
+                         IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+            <StackLayout Grid.Row="3" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
                 <cards:CarouselView x:Name="autoSlider">
                     <cards:CarouselView.ItemsSource>
                         <x:Array Type="{x:Type View}">
