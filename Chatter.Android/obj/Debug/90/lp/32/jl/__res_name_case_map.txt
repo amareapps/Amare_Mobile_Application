@@ -1,2 +1,0 @@
-layout/photo_browser_overlay.axml;layout/photo_browser_overlay.xml
-drawable/btn_action_photobrowser_overlay.png;drawable/btn_action_photobrowser_overlay.png
