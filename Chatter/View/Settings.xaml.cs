@@ -46,7 +46,7 @@ namespace Chatter
             }
             else
             {
-                await Navigation.PushAsync(new MapViewer());
+                await Navigation.PushAsync(new MapViewer(locationString));
             }
         }
 
@@ -96,6 +96,12 @@ namespace Chatter
                 {
                     slider.Value = Convert.ToInt32(model.maximum_distance);
                     ageslider.Value = Convert.ToInt32(model.age_range);
+                }
+                conn.CreateTable<UserModel>();
+                var table2 = conn.Table<UserModel>().ToList();
+                foreach (UserModel model in table2)
+                {
+                    locationString = model.location;
                 }
             }
         }

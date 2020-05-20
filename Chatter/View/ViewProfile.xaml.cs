@@ -18,7 +18,7 @@ namespace Chatter.View
     {
         UserModel userModel = new UserModel();
         ApiConnector api = new ApiConnector();
-        ObservableCollection<List<GalleryModel>> galleryModel = new ObservableCollection<List<GalleryModel>>();
+        ObservableCollection<GalleryModel> galleryModel = new ObservableCollection<GalleryModel>();
         ObservableCollection<InstagramPhotosModel> instagramPhotos = new ObservableCollection<InstagramPhotosModel>();
         string userId;
         public ViewProfile(string id)
@@ -39,8 +39,11 @@ namespace Chatter.View
                 var list = await api.otherUserImageList(userId);
                 var igPhotos = await api.getIgPhotos(userId);
                 BindingContext = user;
-                galleryModel.Add(list);
-                galleryView.ItemsSource = list;
+                foreach (GalleryModel model in list)
+                {
+                    galleryModel.Add(model);
+                }
+                galleryView.ItemsSource = galleryModel;
                 //await DisplayAlert("Hayss", igPhotos, "Okay");
                 if (igPhotos == null)
                 {
@@ -62,12 +65,21 @@ namespace Chatter.View
         private async void ImageButton_Clicked(object sender, EventArgs e)
         {
             List<string> images = new List<string>();
-            foreach (var imageUrl in galleryModel[0].ToList())
+            foreach (GalleryModel imageUrl in galleryModel)
             {
                 images.Add(imageUrl.image);
-                break;
             }
-            await Navigation.PushModalAsync(new ImageViewer(images));
+            await Navigation.PushModalAsync(new NavigationPage(new ImageViewer(images,"Photos")));
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            List<string> images = new List<string>();
+            foreach (InstagramPhotosModel imageUrl in instagramPhotos)
+            {
+                images.Add(imageUrl.image_url);
+            }
+            await Navigation.PushModalAsync(new NavigationPage(new ImageViewer(images,"Instagram Photos")));
         }
     }
 }

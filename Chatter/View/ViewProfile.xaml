@@ -75,8 +75,12 @@
                                        Padding="0"
                                        BorderColor="Red"
                                        IsClippedToBounds="True">
-                                        <ffimageloading:CachedImage Aspect="AspectFill"
-                                                   Source="{Binding image_url}"/>
+                                            <ffimageloading:CachedImage Aspect="AspectFill"
+                                                   Source="{Binding image_url}">
+                                                <ffimageloading:CachedImage.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                </ffimageloading:CachedImage.GestureRecognizers>
+                                            </ffimageloading:CachedImage>
                                     </Frame>
                                 </StackLayout>
                             </DataTemplate>

@@ -63,6 +63,7 @@ namespace Chatter
                     else
                     {
                         hasSearchReference = true;
+                        imageSources.Clear();
                     }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
@@ -78,8 +79,8 @@ namespace Chatter
                         currentLocation = iniModel.location;
                         UserProfilePicture = iniModel.image;
                     }
-                    await loadData();
                 }
+                await loadData();
             }
             catch(Exception e)
             {
@@ -104,10 +105,6 @@ namespace Chatter
                         await DisplayAlert("Discover", "No user to display", "Okay");
                         imageSources.Clear();
                         return;
-                    }
-                    if (hasSearchReference)
-                    {
-                        imageSources.Clear();
                     }
                     foreach (ImageStorage imageStorage in looper)
                     {

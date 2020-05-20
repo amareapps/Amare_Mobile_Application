@@ -16,13 +16,21 @@ namespace Chatter.View
     {
         ApiConnector api = new ApiConnector();
         SqliteManager sqliteManager = new SqliteManager();
-        public MapViewer()
+        string[] locationPin;
+        public MapViewer(string location)
         {
             InitializeComponent();
+            locationPin = location.Split(',');
         }
         protected override void OnAppearing()
         {
-
+            Position position = new Position(Convert.ToDouble(locationPin[0]), Convert.ToDouble(locationPin[1]));
+            map.MoveToRegion(new MapSpan(position, 0.01, 0.01));
+            map.Pins.Add(new Pin
+            {
+                Label = "Pin from tap",
+                Position = new Position(position.Latitude,position.Longitude)
+            });
         }
 
         private async void map_MapClicked(object sender, MapClickedEventArgs e)

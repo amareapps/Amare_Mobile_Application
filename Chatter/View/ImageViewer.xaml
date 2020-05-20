@@ -3,28 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-
+            BackgroundColor="Black"
              mc:Ignorable="d"
              x:Class="Chatter.View.ImageViewer">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="saveMenu" Order="Secondary" Text="Save Image" Priority="0" />
+        <ToolbarItem Name="reportMenu" Order="Secondary" Text="Report" Priority="1" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <CarouselView Grid.Row="0" Grid.Column="0"  x:Name="carouselImage">
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame IsClippedToBounds="True" Padding="0" Margin="0,50,0,0" HasShadow="True">
-                            <AbsoluteLayout>
-                                <ffimageloading:CachedImage x:Name="ImageCol"  Aspect="AspectFit" Source="{Binding}" AbsoluteLayout.LayoutFlags="All"
-                                       AbsoluteLayout.LayoutBounds="0.1,0.9,1,1">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated" />
-                                        <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </AbsoluteLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
-        </AbsoluteLayout>
+        <StackLayout>
+            <CarouselView Grid.Row="0" Grid.Column="0" x:Name="carouselImage" IsSwipeEnabled="False" BackgroundColor="Black">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <AbsoluteLayout>
+                        <ffimageloading:CachedImage x:Name="ImageCol"  Aspect="AspectFit" Source="{Binding}" AbsoluteLayout.LayoutFlags="All"
+                                                   AbsoluteLayout.LayoutBounds="0.1,0.9,1,1">
+                            <ffimageloading:CachedImage.GestureRecognizers>
+                                <PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated" />
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                            </ffimageloading:CachedImage.GestureRecognizers>
+                        </ffimageloading:CachedImage>
+                      </AbsoluteLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+               <Button Text="Prev" Grid.Column="0" FontSize="Large" BackgroundColor="Black" TextColor="White" x:Name="btnPrev" Clicked="btnPrev_Clicked"></Button>
+               <Button Text="Next" Grid.Column="1" FontSize="Large" BackgroundColor="Black" TextColor="White" x:Name="btnNext" Clicked="btnNext_Clicked"></Button>
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
