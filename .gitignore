@@ -5,3 +5,6 @@
 .vs/Chatter/v16/.suo
 *.cache
 "Chatter.Android/bin/" 
+Chatter.Android/obj/
+Chatter.iOS/bin/
+Chatter.iOS/obj/
