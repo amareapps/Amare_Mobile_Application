@@ -11,7 +11,7 @@
     <ContentPage x:Name="emailContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
-                <Label Text="My &#x0a;email is..." FontSize="50" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="My &#x0a;email is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                 <local:RoundedEntry x:Name="emailEntry" HorizontalOptions="FillAndExpand" Placeholder="Email Address" FontSize="Medium" Grid.Row="0" VerticalOptions="CenterAndExpand" Margin="5"></local:RoundedEntry>
@@ -25,7 +25,7 @@
     <ContentPage x:Name="passwordContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
-                <Label Text="My &#x0a;password is..." FontSize="50" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="My &#x0a;password is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                 <local:RoundedEntry x:Name="passwordEntry" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Placeholder="Password" FontSize="Medium" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" IsPassword="True"/>
@@ -44,7 +44,7 @@
     <ContentPage  x:Name="nameContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
-                <Label Text="My &#x0a;name is..." FontSize="50" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="My &#x0a;name is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                 <local:RoundedEntry x:Name="userNameEntry" HorizontalOptions="FillAndExpand" Placeholder="First Name" FontSize="Medium" Grid.Row="0" VerticalOptions="CenterAndExpand" Margin="5"/>
@@ -58,7 +58,7 @@
     <ContentPage x:Name="birthdayContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
-                <Label Text="My &#x0a;birthday is..." FontSize="50" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="My &#x0a;birthday is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                 <DatePicker x:Name="birthdatePicker" FontSize="Title" Margin="5" Format="MM-dd-yyyy"></DatePicker>
@@ -76,7 +76,7 @@
     <ContentPage  x:Name="schoolContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
-                <Label Text="My &#x0a;university is..." FontSize="50" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="My &#x0a;university is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                 <local:RoundedEntry x:Name="universityEntry" TextChanged="universityEntry_TextChanged" HorizontalOptions="FillAndExpand" Placeholder="University Name" FontSize="Medium" Grid.Row="0" VerticalOptions="CenterAndExpand" Margin="5"/>
@@ -90,11 +90,11 @@
     <ContentPage  x:Name="genderContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
-                <Label Text="I am a..." FontSize="50" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="I am a..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid x:Name="iamGrid"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="50,0,50,0">
-                <Button Grid.Row="0" CornerRadius="30" Text="Woman" Clicked="Button_Clicked" BackgroundColor="#EEEEEE" TextColor="LightSlateGray" BorderWidth="2" BorderColor="#98000b"></Button>
-                <Button Grid.Row="1" CornerRadius="30" Text="Man" Clicked="Button_Clicked" BackgroundColor="#EEEEEE" TextColor="LightSlateGray" BorderWidth="2" BorderColor="#98000b"></Button>
+                <Button Grid.Row="0" CornerRadius="30" Text="Woman" Clicked="Button_Clicked" BackgroundColor="#b8b8b8" TextColor="#EEEEEE" FontAttributes="Bold"></Button>
+                <Button Grid.Row="1" CornerRadius="30" Text="Man" Clicked="Button_Clicked" BackgroundColor="#b8b8b8" TextColor="#EEEEEE" FontAttributes="Bold"></Button>
             </Grid>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
                 <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="CONTINUE" FontSize="Large" FontAttributes="Bold" Clicked="nextContent"></Button>
@@ -105,7 +105,7 @@
     <ContentPage  x:Name="interestContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
-                <Label Text="Show me" FontSize="50" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="Show me" FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid x:Name="gridInterest" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="50,0,50,0">
                 <Button Grid.Row="0" CornerRadius="30" Text="Women" Clicked="Button_Interest" BackgroundColor="#EEEEEE" TextColor="LightSlateGray" BorderWidth="2" BorderColor="#98000b"></Button>
@@ -119,19 +119,19 @@
     </ContentPage>
     <ContentPage  x:Name="pictureContent" BackgroundColor="#EEEEEE">
         <AbsoluteLayout>
-            <StackLayout Margin="20,10,20,20" AbsoluteLayout.LayoutFlags="All"
-              AbsoluteLayout.LayoutBounds="0,1,1,1">
-                <ImageButton Margin="0,10,0,0" Aspect="AspectFill" x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="600" Source="add_pic.png" >
-                </ImageButton>
-                <Picker x:Name="imagePicker" IsVisible="False" SelectedIndexChanged="imagePicker_SelectedIndexChanged"></Picker>
-                <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
-                    <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="REGISTER" FontSize="Large" FontAttributes="Bold" Clicked="continueButton_Clicked"></Button>
-                </Frame>
-            </StackLayout>
-            <ActivityIndicator x:Name="activityIndicator" IsRunning="False" Color="#98000b" VerticalOptions="Center"
-                               HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"
-                               AbsoluteLayout.LayoutFlags="PositionProportional"
-                               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
-        </AbsoluteLayout>
+                <StackLayout Margin="20,10,20,20" AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds="0,1,1,1">
+                    <ImageButton BorderColor="Accent" BorderWidth="3" BackgroundColor="Transparent" CornerRadius="30" Margin="0,10,0,0" Aspect="AspectFill" x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="400" Source="add_pic.png" >
+                    </ImageButton>
+                    <Picker x:Name="imagePicker" IsVisible="False" SelectedIndexChanged="imagePicker_SelectedIndexChanged"></Picker>
+                    <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
+                        <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="REGISTER" FontSize="Large" FontAttributes="Bold" Clicked="continueButton_Clicked"></Button>
+                    </Frame>
+                </StackLayout>
+                <ActivityIndicator x:Name="activityIndicator" IsRunning="False" Color="#98000b" VerticalOptions="Center"
+                                   HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"
+                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
+            </AbsoluteLayout>
     </ContentPage>
 </CarouselPage>

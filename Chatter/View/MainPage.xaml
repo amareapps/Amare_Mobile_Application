@@ -10,11 +10,11 @@
              android:TabbedPage.OffscreenPageLimit="2"
              android:TabbedPage.IsSwipePagingEnabled="True"
              android:TabbedPage.IsSmoothScrollEnabled="True"
-             x:Class="Chatter.MainPage" BarBackgroundColor="#EEEEEE" UnselectedTabColor="#98000b" SelectedTabColor="Gray" NavigationPage.HasNavigationBar="False">
+             x:Class="Chatter.MainPage" BarBackgroundColor="#EEEEEE" UnselectedTabColor="Gray" SelectedTabColor="#98000b" NavigationPage.HasNavigationBar="False">
 
     <TabbedPage.Children>
         <Local:Profile IconImageSource="profile.png"></Local:Profile>
-        <Local:Discover IconImageSource="discover.png"></Local:Discover>
+        <Local:Discover IconImageSource="amare_a.png"></Local:Discover>
         <Local:InboxMessaging IconImageSource="message.png"></Local:InboxMessaging>
     </TabbedPage.Children>
 </TabbedPage>
