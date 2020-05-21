@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace Chatter.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AnimateMatched : ContentPage
+    public partial class AnimateMatched : PopupPage
     {
         public string ImageOne, ImageTwo;
         public AnimateMatched(string userImage,string likedUserImage)

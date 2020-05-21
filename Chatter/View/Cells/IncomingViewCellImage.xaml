@@ -17,13 +17,13 @@
                 <RowDefinition Height="AUTO"></RowDefinition>
             </Grid.RowDefinitions>
             <Frame Grid.Row="0" Grid.Column="0" HeightRequest="40" WidthRequest="40" IsClippedToBounds="True" CornerRadius="40" Padding="0" Margin="0">
-                <ffimageloading:CachedImage x:Name="userImage" Source="{Binding image}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></ffimageloading:CachedImage>
+                <ffimageloading:CachedImage x:Name="userImage" Source="{Binding image}" DownsampleToViewSize="True" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></ffimageloading:CachedImage>
             </Frame>
             <FlexLayout Grid.RowSpan="2" Grid.Column="1" Direction="Column"
                         AlignItems="Start"
                         JustifyContent="SpaceEvenly" Margin="0" Padding="0">
                 <Frame BackgroundColor="#e3646c" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-                    <ImageButton Source="{Binding message}" Aspect="AspectFill"></ImageButton>
+                    <ffimageloading:CachedImage DownsampleToViewSize="True" Source="{Binding message}" Aspect="AspectFill"></ffimageloading:CachedImage>
                 </Frame>
                 <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" Grid.Column="1" Grid.Row="1" FontSize="Micro" HorizontalTextAlignment="Start"></Label>
             </FlexLayout>

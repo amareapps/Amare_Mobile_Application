@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Chatter.View.ReportUserEntry">
+    <ContentPage.Content>
+        <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="20">
+            <StackLayout Spacing="10">
+                <Label Text="As accurately as you can, please tell us what happened with this user. Choose up to three reporting categories if you need to."></Label>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" x:Name="checkHateSpeech" Grid.Row="0"></CheckBox>
+                    <Label Text="Hate Speech" x:Name="lblHateSpeech" Grid.Row="0" Grid.Column="1"></Label>
+                    <CheckBox Grid.Column="0" x:Name="checkVerbal" Grid.Row="1"></CheckBox>
+                    <Label Text="Verbal Abuse" x:Name="lblVerbal" Grid.Row="1" Grid.Column="1"></Label>
+                    <CheckBox Grid.Column="0" x:Name="checkInName" Grid.Row="2"></CheckBox>
+                    <Label Text="Offensive of Inappropriate name" x:Name="lblInName" Grid.Row="2" Grid.Column="1"></Label>
+                    <CheckBox Grid.Column="0" Grid.Row="3" x:Name="checkSomeone"></CheckBox>
+                    <Label Text="This person is trying to be someone" x:Name="lblSomeone" Grid.Row="3" Grid.Column="1"></Label>
+                    
+                </Grid>
+                <Editor Placeholder="Give any additional context on what happened." x:Name="entryReport"></Editor>
+                <Button Text="Report" x:Name="btnReport" Clicked="btnReport_Clicked"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</pages:PopupPage>

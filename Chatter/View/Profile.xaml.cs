@@ -170,5 +170,6 @@ namespace Chatter
         private async void CameraButton_Clicked(object sender, EventArgs e)
         {
         }
+
     }
 }

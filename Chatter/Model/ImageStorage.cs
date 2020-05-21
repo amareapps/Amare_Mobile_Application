@@ -29,6 +29,16 @@ namespace Chatter.Model
             get;
             set;
         }
+        public string about
+        {
+            get;
+            set;
+        }
+        public string school
+        {
+            get;
+            set;
+        }
         public string birthdate{
             get;
             set;

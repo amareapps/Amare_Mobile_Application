@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
              mc:Ignorable="d"
              x:Class="Chatter.Discover"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions" 
@@ -18,29 +19,32 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <AbsoluteLayout>
-                <CarouselView Grid.Row="0" Grid.Column="0" CurrentItemChanged="carouselImage_CurrentItemChanged" x:Name="carouselImage" ItemsSource="{Binding imageSources}">
-                    <CarouselView.GestureRecognizers>
-                        <SwipeGestureRecognizer Direction="Right,Left" x:Name="swipeLeft" Swiped="swipeLeft_Swiped"/>
-                    </CarouselView.GestureRecognizers>
-                    <CarouselView.ItemTemplate>
+                <cards:CardsView x:Name="coverFlowView" Grid.Row="0" Grid.Column="0"  AbsoluteLayout.LayoutFlags="SizeProportional"
+                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" ItemAppearing="coverFlowView_ItemAppearing" IsCyclical="True">
+                    <cards:CardsView.ItemTemplate>
                         <DataTemplate>
-                            <Frame IsClippedToBounds="True" Padding="0" Margin="0,50,0,0" CornerRadius="20" HasShadow="True">
+                            <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="20" HasShadow="True">
                                 <AbsoluteLayout>
-                                    <ActivityIndicator BindingContext="{x:Reference userImage}" IsRunning="{Binding IsLoading}" Color="#98000b" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></ActivityIndicator>
-                                    <ffimageloading:CachedImage x:Name="userImage" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
-                                       AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
-                                    <Label Text="{Binding username}" TextColor="White" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center"                         
-                                       AbsoluteLayout.LayoutFlags="PositionProportional"
-                                       AbsoluteLayout.LayoutBounds="0.1,0.85,-1,-1">
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                        </Label.GestureRecognizers>
-                                    </Label>
+                                    <ActivityIndicator BindingContext="{x:Reference coverFlowView}" IsRunning="{Binding IsLoading}" Color="#98000b" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                                    <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
+                                AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
+                                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional"
+                                    AbsoluteLayout.LayoutBounds="0.1,0.80,-1,-1">
+                                        <Label Text="{Binding username}" TextColor="White" FontSize="35" FontAttributes="Bold">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Label Text="{Binding about}" TextColor="White" FontSize="Medium" HorizontalOptions="Center">
+                                        </Label>
+                                        <Label Text="{Binding school}" TextColor="White" FontSize="Medium" HorizontalOptions="Center">
+                                        </Label>
+                                    </StackLayout>
                                 </AbsoluteLayout>
                             </Frame>
                         </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
+                    </cards:CardsView.ItemTemplate>
+                </cards:CardsView>
                 <Grid Margin="10" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
                                            AbsoluteLayout.LayoutBounds="0.5,1,-1,-1">
                         <Grid.ColumnDefinitions>

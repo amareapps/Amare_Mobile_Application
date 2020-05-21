@@ -25,6 +25,7 @@ using Chatter.View;
 using Rg.Plugins.Popup.Services;
 using Chatter.Classes;
 using System.Globalization;
+using PanCardView;
 
 namespace Chatter
 {
@@ -123,7 +124,9 @@ namespace Chatter
                             imageSources.Add(imageStorage);
                         }
                     }
-                    carouselImage.ItemsSource = imageSources;
+                    //coverFlowView.SetBinding(CoverFlowView.ItemsSourceProperty,nameof(imageSources.));
+                    coverFlowView.ItemsSource = imageSources;
+                    //BindableLayout.SetItemsSource(userDisplay, imageSources);
                 }
             }
             catch(Exception ex)
@@ -134,6 +137,13 @@ namespace Chatter
         }
 
         private async void heartButton_Clicked(object sender, EventArgs e)
+        {
+            var sample = coverFlowView.SelectedItem as ImageStorage;
+            currentItem = sample;
+            currentUserIdSelected = sample.id;
+            await likeUser();
+        }
+        private async Task likeUser()
         {
             try
             {
@@ -149,7 +159,7 @@ namespace Chatter
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateVisible", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await Navigation.PushModalAsync(new AnimateMatched(UserProfilePicture,currentItem.image));
+                    await PopupNavigation.Instance.PushAsync(new AnimateMatched(UserProfilePicture, currentItem.image));
                     //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
                     imageSources.Remove(currentItem);
                 }
@@ -169,15 +179,8 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Connection",ex.ToString(), "Okay");
+                await DisplayAlert("Connection", ex.ToString(), "Okay");
             }
-        }
-        private void carouselImage_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
-        {
-            if (e.CurrentItem == null)
-                return;
-            currentItem = e.CurrentItem as ImageStorage;
-            currentUserIdSelected = currentItem.id;
         }
         private async Task checkIfLiked()
         {
@@ -224,20 +227,48 @@ namespace Chatter
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            var sample = coverFlowView.SelectedItem as ImageStorage;
+            currentItem = sample;
+            currentUserIdSelected = sample.id;
             await Navigation.PushModalAsync(new ViewProfile(currentUserIdSelected));
             //await PopupNavigation.Instance.PushAsync();
         }
 
         private async void dislikeButton_Clicked(object sender, EventArgs e)
         {
+            await dislikeUser();
+        }
+        private async Task dislikeUser()
+        {
             string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
             await api.saveToDislikedUser(user_id, currentUserIdSelected);
             imageSources.Remove(currentItem);
         }
 
-        private void swipeRight_Swiped(object sender, SwipedEventArgs e)
+        private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
         {
-            DisplayAlert("Swiped","Direction: Right","Okay");
+            if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Left)
+            {
+                await DisplayAlert("Lapit na","Naysir","Okay");
+            }
+            if (args.Item == null)
+                return;
+            currentItem = args.Item as ImageStorage;
+            currentUserIdSelected = currentItem.id;
+            if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Left)
+            {
+                await dislikeUser();
+            }
+            else if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Right)
+            {
+                await likeUser();
+            }
+        }
+
+        private async void coverFlowView_ItemAppearing(CardsView view, PanCardView.EventArgs.ItemAppearingEventArgs args)
+        {
+            if (args.Item == null)
+                await DisplayAlert("Nyare","Okay","Okay");
         }
 
         private void swipeLeft_Swiped(object sender, SwipedEventArgs e)

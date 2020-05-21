@@ -18,7 +18,7 @@
                     <RowDefinition Height="AUTO"></RowDefinition>
                 </Grid.RowDefinitions>
             <Frame Grid.Row="0" Grid.Column="0" HeightRequest="40" WidthRequest="40" IsClippedToBounds="True" CornerRadius="40" Padding="0" Margin="0">
-                <ffimageloading:CachedImage x:Name="userImage" Source="{Binding image}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></ffimageloading:CachedImage>
+                <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Source="{Binding image}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></ffimageloading:CachedImage>
             </Frame>
             <FlexLayout Grid.RowSpan="2" Grid.Column="1" Direction="Column"
                         AlignItems="Start"

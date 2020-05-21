@@ -23,6 +23,8 @@ using System.Threading;
 using Android.Media;
 using Plugin.Media.Abstractions;
 using Java.Sql;
+using Rg.Plugins.Popup.Services;
+using Chatter.View;
 
 namespace Chatter
 {
@@ -211,12 +213,11 @@ namespace Chatter
         }
         private async void Report_Clicked(object sender, EventArgs e)
         {
-            var reportUser = await DisplayAlert("Unmatch user", "Are you sure you want to report" + Username + "?", "Yes", "No");
-            if (reportUser)
-            {
-
-                //Report User
-            }
+            //var reportUser = await DisplayAlert("Unmatch user", "Are you sure you want to report " + Username + "?", "Yes", "No");
+            //if (reportUser)
+            //{
+                await PopupNavigation.Instance.PushAsync(new ReportUserEntry());
+            //}
         }
 
         private async void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
