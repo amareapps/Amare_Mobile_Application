@@ -12,14 +12,17 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="200"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid HeightRequest="60" Margin="0,0,0,10" Grid.Row="0">
-                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <ImageButton BackgroundColor="Transparent"  VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="30" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
+                <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
                        Clicked="EditButton_Clicked"/>
                 <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
+                <ImageButton Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
             <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
                 <Picker.ItemsSource>
@@ -29,26 +32,25 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <!-- <Label Padding="0,20,0,0"  Grid.Row="0" x:Name="nameLabel" FontAttributes="Bold" Text="Chou Tzu-yu" FontSize="Large"  HorizontalOptions="Center"/> -->
-            <Frame CornerRadius="20" BackgroundColor="Transparent" HasShadow="True"
-                       HeightRequest="250"
-                       WidthRequest="250"
+            <AbsoluteLayout Grid.Row="1" IsClippedToBounds="True">
+                <Frame HasShadow="True"
                        HorizontalOptions="Center"
-                       Grid.Row="1"
-                       IsClippedToBounds="True">
-                <AbsoluteLayout>
-                    <ImageButton BackgroundColor="Transparent" Margin="5"
-                       Padding="5"
-                       AbsoluteLayout.LayoutBounds="0,0,1,1"
-                       AbsoluteLayout.LayoutFlags="All" x:Name="ProfileImage" Source="tzuyu.jpg" Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
-                    <ImageButton AbsoluteLayout.LayoutBounds="1, 1, 35, 35"
-                            AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       IsClippedToBounds="True" Padding="0" CornerRadius="100" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <ImageButton
+                       x:Name="ProfileImage"  HeightRequest="200"
+                       WidthRequest="200" Source="tzuyu.jpg" 
+                                 Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
+                </Frame>
+            <ImageButton AbsoluteLayout.LayoutBounds="0.7, 0.95, 35, 35"
+                            AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                  HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
-                </AbsoluteLayout>
-            </Frame>
-            <ActivityIndicator IsRunning="False"  Grid.Row="2"  HeightRequest="80" WidthRequest="80"
+            </AbsoluteLayout>
+            <Label Padding="0,5,0,0" Grid.Row="2" x:Name="nameLabel" FontAttributes="Bold" Text="Chou Tzu-yu" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Padding="0,0,0,0" Grid.Row="3" x:Name="schoolLabel" Text="Itaewon University" FontSize="Subtitle"  HorizontalOptions="Center" VerticalOptions="Center"/>
+            <ActivityIndicator IsRunning="False"  Grid.Row="4"  HeightRequest="40" WidthRequest="40"
                          IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
-            <StackLayout Grid.Row="3" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
+            <StackLayout Grid.Row="5" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
                 <cards:CarouselView x:Name="autoSlider">
                     <cards:CarouselView.ItemsSource>
                         <x:Array Type="{x:Type View}">
@@ -56,17 +58,17 @@
                                 <Image Source="FINAL_AMERA.png" Aspect="AspectFill" WidthRequest="400"/>
                             </StackLayout>
                             <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <Label Text="Swipe around the world" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"></Label>
+                                <Label Text="Swipe around the world" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
                                 <Label Text="Passport to anywhere with Amare!" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
                             </StackLayout>
                             <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <Label Text="Control Your Profile" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"></Label>
+                                <Label Text="Control Your Profile" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
                                 <Label Text="Limit what others see with Amare" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
                             </StackLayout>
                         </x:Array>
                     </cards:CarouselView.ItemsSource>
                 </cards:CarouselView>
-                <Button HorizontalOptions="Center" VerticalOptions="End" FontSize="Medium" CornerRadius="30" Text="Share Amare" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
+                <Button HorizontalOptions="Center" VerticalOptions="End" WidthRequest="130" FontSize="Small" FontAttributes="Bold" CornerRadius="25" Text="Share Amare" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

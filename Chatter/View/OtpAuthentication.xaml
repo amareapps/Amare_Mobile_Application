@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter"
              mc:Ignorable="d"
              x:Class="Chatter.View.OtpAuthentication" BackgroundColor="#FFFCF8" Title="Mobile Verification">
     <ContentPage.Content>
         <StackLayout Spacing="50" Margin="20,80,20,20">
             <Label Text="Enter the code received below:" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
-            <Entry x:Name="codeEntry" HorizontalTextAlignment="Center" TextChanged="codeEntry_TextChanged" FontSize="Title"/>
+            <local:RoundedEntry x:Name="codeEntry" HorizontalTextAlignment="Center" TextChanged="codeEntry_TextChanged" FontSize="Title"/>
             <Button BackgroundColor="Gray" 
                     IsEnabled="False" 
                     CornerRadius="30" 

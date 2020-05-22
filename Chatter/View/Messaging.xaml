@@ -14,7 +14,7 @@
         <local1:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
     </Page.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="chatcamera.png"  Order="Primary"></ToolbarItem>
+        <ToolbarItem IconImageSource="call.png"  Order="Default"></ToolbarItem>
         <ToolbarItem Name="Unmatch" Order="Secondary" Clicked="Menu1_Clicked" Priority="0" />
         <ToolbarItem Name="Report" Order="Secondary" Clicked="Report_Clicked" Priority="1" />
     </ContentPage.ToolbarItems>

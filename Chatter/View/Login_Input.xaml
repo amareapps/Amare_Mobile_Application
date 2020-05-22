@@ -7,7 +7,7 @@
                   xmlns:gradient="clr-namespace:Chatter.Classes" 
                   xmlns:local="clr-namespace:Chatter"
                   mc:Ignorable="d"
-                  x:Class="Chatter.Login_Input" >
+                  x:Class="Chatter.Login_Input">
     <AbsoluteLayout HorizontalOptions="Center" VerticalOptions="Center">
         <StackLayout AbsoluteLayout.LayoutFlags="All"
               AbsoluteLayout.LayoutBounds="0,1,1,1" Margin="20,0,20,0" Padding="30,30,30,30" Spacing="24" BackgroundColor="#fffcf8" HorizontalOptions="Center" VerticalOptions="Center" Opacity="3">
@@ -22,10 +22,10 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="220"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <CheckBox IsChecked="False" CheckedChanged="CheckBox_CheckedChanged" HorizontalOptions="Start" VerticalOptions="Center"  Grid.Column="0" Grid.Row="0"></CheckBox>
-                    <Label Text="Show Password"  Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                    <Label Text="Show Password"  Grid.Column="1"  Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                 </Grid>
             </StackLayout>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">

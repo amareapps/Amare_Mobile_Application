@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>HUAWEI STK-L22</SelectedDevice>
     <DefaultDevice>pixel_2_nougat_7_0_-_api_24</DefaultDevice>
-    <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.Material.Light</AndroidDesignerPreferredTheme>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>
