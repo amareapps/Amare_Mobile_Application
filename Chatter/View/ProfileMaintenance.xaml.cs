@@ -42,7 +42,7 @@ namespace Chatter
             number = _number;
 
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("98000b");
-            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.FromHex("fffcf8");
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.FromHex("EEEEEE");
             BindingContext = new UserModelStorage();
 
             int year = DateTime.Now.Year;
@@ -153,21 +153,29 @@ namespace Chatter
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#EEEEEE");
+                btn.BackgroundColor = Color.FromHex("#b8b8b8");
+                btn.BorderColor = Color.Transparent;
+                btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#98000b");
+            btne.BackgroundColor = Color.FromHex("#b8b8b8");
+            btne.BorderWidth = 2;
+            btne.BorderColor = Color.FromHex("#98000b");
             gender = btne.Text;
         }
         private void Button_Interest(object sender, EventArgs e)
         {
             var looper = gridInterest.Children.Where(x => x is Button);
-            foreach(Button btn in looper)
+            foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#EEEEEE");
+                btn.BackgroundColor = Color.FromHex("#b8b8b8");
+                btn.BorderColor = Color.Transparent;
+                btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#98000b");
+            btne.BackgroundColor = Color.FromHex("#b8b8b8");
+            btne.BorderWidth = 2;
+            btne.BorderColor = Color.FromHex("#98000b");
             interestIn = btne.Text;
         }
         private void nextContent(object sender, EventArgs e)
