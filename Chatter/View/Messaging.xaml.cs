@@ -25,11 +25,16 @@ using Plugin.Media.Abstractions;
 using Java.Sql;
 using Rg.Plugins.Popup.Services;
 using Chatter.View;
+using MultiGestureViewPlugin;
+using Chatter.View.Cells;
+using Xamarin.Essentials;
+using Android.Widget;
+using Plugin.Toast;
 
 namespace Chatter
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Messaging : ContentPage
+    public partial class Messaging : ContentPage,IRefreshInbox
     {
         ObservableCollection<ChatModel> chatModels = new ObservableCollection<ChatModel>();
         private string Session_Id = "", Receiver_Id = "",Username = "",Image_Source="",Emoji = "";
@@ -54,6 +59,20 @@ namespace Chatter
             NavigationPage.SetHasNavigationBar(this, true);
             NavigationPage.SetHasBackButton(this,true);
             lblEmoji.Text = emoji;
+            MessagingCenter.Subscribe<OutgoingViewCell, ChatModel>(this, "Hi", async (sender, arg) =>
+            {
+               var deletionSuccess = await api.deleteMessage(arg.id);
+                if (deletionSuccess)
+                {
+                    chatModels.Remove(arg);
+                    ChatList.ItemsSource = chatModels.OrderByDescending(entry => entry.datetime);
+                }
+            });
+            MessagingCenter.Subscribe<OutgoingViewCell, string>(this, "Hi", async (sender, arg) =>
+            {
+                await Clipboard.SetTextAsync(arg);
+                CrossToastPopUp.Current.ShowToastMessage("Copied to clipboard");
+            });
             //userImage.Source = Image_Source;
         }
 
@@ -61,6 +80,7 @@ namespace Chatter
         {
             await wsClient.ConnectAsync(new Uri("ws://"+ApiConnection.Url+":8088"), CancellationToken.None);
         }
+
         protected async override void OnAppearing()
         {
             await loadData();
@@ -192,10 +212,10 @@ namespace Chatter
 
         private async void ChatList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            await DisplayAlert("Ito yun","sana","Okay");
+            //await DisplayAlert("Ito yun","sana","Okay");
         }
 
-        private async void LongPressEffect_LongPressed(object sender, EventArgs e)
+        public async void LongPressEffect_LongPressed(object sender, EventArgs e)
         {
             await DisplayAlert("Test","Long pressed!","Okay");
         }
@@ -219,6 +239,12 @@ namespace Chatter
                 await PopupNavigation.Instance.PushAsync(new ReportUserEntry());
             //}
         }
+
+        private async void MultiGestureView_LongPressed(object sender, EventArgs e)
+        {
+            await DisplayAlert("Test", "Long pressed!", "Okay");
+        }
+
 
         private async void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -285,6 +311,11 @@ namespace Chatter
         private void backButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+
+        public void refreshInbox()
+        {
+            DisplayAlert("sana","tlga","okay");
         }
     }
 }

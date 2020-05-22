@@ -16,6 +16,8 @@ namespace Chatter
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Settings : ContentPage
     {
+        SqliteManager sqliteManager = new SqliteManager();
+        ApiConnector api = new ApiConnector();
         private string locationString;
         public Settings()
         {
@@ -80,6 +82,12 @@ namespace Chatter
                 conn.CreateTable<SearchRefenceModel>();
                 conn.InsertOrReplace(searchReference);
             }
+
+            //Update user interest
+            var userModel = sqliteManager.getUserModel();
+            userModel.interest = showmePicker.SelectedItem.ToString();
+            sqliteManager.updateUserModel(userModel);
+            await api.updateUser(sqliteManager.getUserModel());
             await Navigation.PopModalAsync();
         }
         private void loadFromDatabase()
@@ -102,6 +110,7 @@ namespace Chatter
                 foreach (UserModel model in table2)
                 {
                     locationString = model.location;
+                    showmePicker.SelectedItem = model.interest;
                 }
             }
         }
@@ -139,6 +148,11 @@ namespace Chatter
                 var table5 = conn.Table<GalleryModel>().Delete(x => x.user_id != "");
             }
             DependencyService.Get<IClearCookies>().Clear();
+        }
+
+        private void showmePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

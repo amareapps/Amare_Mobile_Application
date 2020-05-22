@@ -4,7 +4,7 @@ using Chatter.Model;
 using Chatter.View.Cells;
 using Xamarin.Forms;
 
-namespace ChatUIXForms.Helpers
+namespace Chatter.Classes
 {
     class ChatTemplateSelector : DataTemplateSelector
     {

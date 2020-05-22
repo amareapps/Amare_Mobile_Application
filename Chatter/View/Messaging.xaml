@@ -3,15 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:local="clr-namespace:Chatter.Classes" 
+             xmlns:local="clr-namespace:Chatter.Classes"
              xmlns:local2="clr-namespace:Chatter"
-             xmlns:local1="clr-namespace:ChatUIXForms.Helpers" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
              mc:Ignorable="d"
              x:Class="Chatter.Messaging" Title="Message" IconImageSource="message.png" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="true" NavigationPage.HasBackButton="True">
     <Page.Resources>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>
-        <local1:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
+        <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
     </Page.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="call.png"  Order="Default"></ToolbarItem>
@@ -19,14 +18,20 @@
         <ToolbarItem Name="Report" Order="Secondary" Clicked="Report_Clicked" Priority="1" />
     </ContentPage.ToolbarItems>
     <StackLayout Margin="0,0,0,10">
-        <ListView Grid.Row="1" Grid.ColumnSpan="5"  x:Name="ChatList"  ItemSelected="ChatList_ItemSelected" ItemTapped="ChatList_ItemTapped"
-                 ItemTemplate="{StaticResource MessageTemplateSelector}" FlowDirection="RightToLeft"
-                 Rotation="180"
-                 Margin="0" 
-                 HasUnevenRows="True" 
-                 VerticalOptions="FillAndExpand" 
-                 SeparatorColor="Transparent" CachingStrategy="RecycleElement">
+        <multigestureviewplugin:MultiGestureView LongPressed="LongPressEffect_LongPressed">
+        <ListView x:Name="ChatList"  ItemSelected="ChatList_ItemSelected" ItemTapped="ChatList_ItemTapped" FlowDirection="RightToLeft"
+            Rotation="180"
+            Margin="0" 
+            HasUnevenRows="True" 
+            VerticalOptions="FillAndExpand" 
+            SeparatorColor="Transparent" CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <local:ChatTemplateSelector></local:ChatTemplateSelector>
+            </ListView.ItemTemplate>
         </ListView>
+        </multigestureviewplugin:MultiGestureView>
+
+
         <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
