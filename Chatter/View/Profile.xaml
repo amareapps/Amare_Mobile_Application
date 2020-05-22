@@ -66,7 +66,7 @@
                         </x:Array>
                     </cards:CarouselView.ItemsSource>
                 </cards:CarouselView>
-                <Button HorizontalOptions="Center" VerticalOptions="End" FontSize="Medium" CornerRadius="30" Text="Share Amare" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
+                <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Medium" CornerRadius="30" Text="Share Amare" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

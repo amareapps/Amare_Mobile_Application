@@ -7,8 +7,11 @@
              mc:Ignorable="d"
              x:Class="Chatter.Discover"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"  BackgroundColor="#EEEEEE">
-
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:local="clr-namespace:Chatter.Classes" BackgroundColor="#EEEEEE">
+    <Page.Resources>
+        <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
+        <local:StringToBoolen x:Key="stringtoBool"></local:StringToBoolen>
+    </Page.Resources>
     <ContentPage.Content>
         <Grid Padding="5,15,5,5">
             <Grid.RowDefinitions>
@@ -20,7 +23,7 @@
             </Grid.ColumnDefinitions>
             <AbsoluteLayout>
                 <cards:CardsView x:Name="coverFlowView" Grid.Row="0" Grid.Column="0"  AbsoluteLayout.LayoutFlags="SizeProportional"
-                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" ItemAppearing="coverFlowView_ItemAppearing" IsCyclical="True">
+                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="True">
                     <cards:CardsView.ItemTemplate>
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="20" HasShadow="True">
@@ -29,16 +32,22 @@
                                     <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
                                 AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
                                     <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional"
-                                    AbsoluteLayout.LayoutBounds="0.1,0.80,-1,-1">
+                                    AbsoluteLayout.LayoutBounds="0.1,0.80,-1,-1" BackgroundColor="#40000000" Padding="10">
                                         <Label Text="{Binding username}" TextColor="White" FontSize="35" FontAttributes="Bold">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                             </Label.GestureRecognizers>
                                         </Label>
-                                        <Label Text="{Binding about}" TextColor="White" FontSize="Medium" HorizontalOptions="Center">
+                                        <Label Padding="10,0,0,0" Text="{Binding about}" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}" TextColor="White" FontSize="Medium">
                                         </Label>
-                                        <Label Text="{Binding school}" TextColor="White" FontSize="Medium" HorizontalOptions="Center">
+                                        <Label Padding="10,0,0,0" Text="{Binding school}" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}" TextColor="White" FontSize="Medium">
                                         </Label>
+                                        <Label Padding="10,0,0,0" Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" TextColor="White" FontSize="30" FontAttributes="Bold">
+                                        </Label>
+                                        <FlexLayout Padding="20,20,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start">
+                                            <ffimageloading:CachedImage VerticalOptions="CenterAndExpand"  Source="locationIcon.png" HeightRequest="25" WidthRequest="25" Margin="0,0,10,0"></ffimageloading:CachedImage>
+                                            <Label Text="{Binding distance, StringFormat='{0} Miles'}" TextColor="White" FontSize="30" FontAttributes="Bold"/>
+                                        </FlexLayout>
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </Frame>

@@ -476,17 +476,31 @@ namespace Chatter.Classes
         {
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(userModel.id), "id");
-            content.Add(new StringContent(userModel.about), "about");
-            content.Add(new StringContent(userModel.job_title), "job_title");
-            content.Add(new StringContent(userModel.company), "company");
-            content.Add(new StringContent(userModel.school), "school");
-            content.Add(new StringContent(userModel.city), "city");
-            content.Add(new StringContent(userModel.show_age), "show_age");
-            content.Add(new StringContent(userModel.show_distance), "show_distance");
-            content.Add(new StringContent(userModel.location), "location");
+            content.Add(new StringContent(userModel.id == null ? "" : userModel.id ), "id");
+            content.Add(new StringContent(userModel.about == null ? "" : userModel.about), "about");
+            content.Add(new StringContent(userModel.job_title == null ? "" : userModel.job_title), "job_title");
+            content.Add(new StringContent(userModel.company == null ? "" : userModel.company), "company");
+            content.Add(new StringContent(userModel.school == null ? "" : userModel.school), "school");
+            content.Add(new StringContent(userModel.city == null ? "" : userModel.city), "city");
+            content.Add(new StringContent(userModel.show_age == null ? "" : userModel.show_age), "show_age");
+            content.Add(new StringContent(userModel.show_distance == null ? "" : userModel.show_distance), "show_distance");
+            content.Add(new StringContent(userModel.location == null ? "" : userModel.location), "location");
+            content.Add(new StringContent(userModel.interest == null ? "" : userModel.interest), "interest");
             var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUser", content);
             request.EnsureSuccessStatusCode();
+        }
+        public async Task<bool> deleteMessage(string id){
+            try
+            {
+                var request = await client.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=deleteMessage&id=" + id);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

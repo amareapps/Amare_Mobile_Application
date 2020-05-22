@@ -38,7 +38,7 @@ namespace Chatter
         ApiConnector api = new ApiConnector();
         bool isLiked = false;
         private int liked_Id = 0;
-        public string currentLocation = "", UserProfilePicture = "";
+        public string currentLocation = "", UserProfilePicture = "",userInterest="";
         public string distanceFilter = "",ageFilter = "";
         bool hasSearchReference = true;
         public Discover()
@@ -79,6 +79,7 @@ namespace Chatter
                     {
                         currentLocation = iniModel.location;
                         UserProfilePicture = iniModel.image;
+                        userInterest = iniModel.interest;
                     }
                 }
                 await loadData();
@@ -120,6 +121,12 @@ namespace Chatter
                                     continue;
                                 }
                             }
+                            if (imageStorage.gender != "Everyone")
+                            {
+                                if (imageStorage.gender != userInterest)
+                                    continue;
+                            }
+                            imageStorage.distance = getDistance(imageStorage);
                             //await DisplayAlert("nagcontinue ba?", imageStorage.birthdate, "Okay");
                             imageSources.Add(imageStorage);
                         }
@@ -224,6 +231,15 @@ namespace Chatter
 
             return false;
         }
+        private string getDistance(ImageStorage model)
+        {
+            string[] currentLocArr = currentLocation.Split(',');
+            string[] otherUserLocArr = model.location.Split(',');
+            Location myLocation = new Location(Convert.ToDouble(currentLocArr[0]), Convert.ToDouble(currentLocArr[1]));
+            Location otherLocation = new Location(Convert.ToDouble(otherUserLocArr[0]), Convert.ToDouble(otherUserLocArr[1]));
+            double kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Miles);
+            return Math.Round(kmDistance, 2).ToString();
+        }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
@@ -263,17 +279,6 @@ namespace Chatter
             {
                 await likeUser();
             }
-        }
-
-        private async void coverFlowView_ItemAppearing(CardsView view, PanCardView.EventArgs.ItemAppearingEventArgs args)
-        {
-            if (args.Item == null)
-                await DisplayAlert("Nyare","Okay","Okay");
-        }
-
-        private void swipeLeft_Swiped(object sender, SwipedEventArgs e)
-        {
-            DisplayAlert("Swiped", "Direction: Left", "Okay");
         }
 
         private async void reloadButton_Clicked(object sender, EventArgs e)

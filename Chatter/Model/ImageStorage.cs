@@ -43,5 +43,16 @@ namespace Chatter.Model
             get;
             set;
         }
+        public string gender
+        {
+            get;
+            set;
+        }
+        public string distance 
+        { 
+            get; 
+            set; 
+        }
+
     }
 }

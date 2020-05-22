@@ -30,6 +30,23 @@
                             </Picker.ItemsSource>
                         </Picker>
                     </Grid>
+                    <Label Text="Show me" FontSize="Large"></Label>
+                    <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="AUTO"></RowDefinition>
+                            <RowDefinition Height="AUTO"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Text="Show me" Grid.Column="0" Grid.Row="0" FontSize="Medium"></Label>
+                        <Picker x:Name="showmePicker" Grid.Column="0" Grid.Row="1" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Men</x:String>
+                                    <x:String>Women</x:String>
+                                    <x:String>Everyone</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Grid>
                     <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
                         <Grid HorizontalOptions="CenterAndExpand">
                             <Label Grid.Column="0" Text="Maximum Distance" FontSize="Medium" Grid.ColumnSpan="2"></Label>

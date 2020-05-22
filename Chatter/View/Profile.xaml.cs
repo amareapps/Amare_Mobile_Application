@@ -17,6 +17,8 @@ using Chatter.Classes;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using Android.Content.Res;
+using Plugin.Share;
+using Plugin.Share.Abstractions;
 
 namespace Chatter
 {
@@ -169,7 +171,19 @@ namespace Chatter
 
         private async void CameraButton_Clicked(object sender, EventArgs e)
         {
+
         }
 
+        private void btnShareAmare_Clicked(object sender, EventArgs e)
+        {
+            if (!CrossShare.IsSupported)
+                return;
+            CrossShare.Current.Share(new ShareMessage
+            {
+                Title = "Amare Dating App",
+                Text = "Checkout the new Amare App where you can find your 'The One'",
+                Url = "https://www.facebook.com/amareapps/"
+            });
+        }
     }
 }

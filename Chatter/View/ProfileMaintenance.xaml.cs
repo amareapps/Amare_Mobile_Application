@@ -19,6 +19,7 @@ using Stream = System.IO.Stream;
 using Firebase.Storage;
 using Xamarin.Essentials;
 using Chatter.Classes;
+using Chatter.View;
 
 namespace Chatter
 {
@@ -93,7 +94,8 @@ namespace Chatter
             //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
             if (string.IsNullOrEmpty(number))
             {
-                await Navigation.PopToRootAsync();
+                await Navigation.PushAsync(new WelcomePage());
+                //await Navigation.PopToRootAsync();
             }
             else
             {
@@ -127,7 +129,6 @@ namespace Chatter
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
-                var exec = await DisplayAlert("Congratulations!", "You have successfully registered!", null, "Okay");
             }
             catch (Exception ex)
             {
