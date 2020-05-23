@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>Xiaomi Redmi Note 8 Pro</SelectedDevice>
     <DefaultDevice>pixel_2_nougat_7_0_-_api_24</DefaultDevice>
-    <AndroidDesignerPreferredTheme>Theme.AppCompat.Light.NoActionBar</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.Material.Light</AndroidDesignerPreferredTheme>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>
