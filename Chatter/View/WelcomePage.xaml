@@ -4,14 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False">
+             x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False" BackgroundColor="#EEEEEE">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Spacing="40">
-            <Label Margin="20" HorizontalOptions="Center" Text="WELCOME TO AMARE" HorizontalTextAlignment="Center" FontSize="40" TextColor="Black" FontAttributes="Bold"/>
-            <Image Source="Amare_logo.png" HorizontalOptions="Center"/>
+            <Label Margin="20" HorizontalOptions="Center" Text="WELCOME TO AMARE!" HorizontalTextAlignment="Center" FontSize="40" TextColor="Black" FontAttributes="Bold"/>
+            <Image Source="Amare_logo.png" HorizontalOptions="Center" HeightRequest="100"/>
             <Label Margin="20,0,20,0" TextColor="Black" HorizontalTextAlignment="Center" Text="Thank you for registering to Amare and welcome to your 1st step in exploring the world of love" FontSize="Medium"/>
-            <Label Margin="50,0,50,0" HorizontalTextAlignment="Center" Text="Hope for love, pray for love, wish for love, dream for love…but don't put your life on hold waiting for love."></Label>
-            <Button x:Name="btnGetStarted" Text="Get Started" Padding="20" BorderColor="Red" BorderWidth="2" BackgroundColor="White" HorizontalOptions="Center" Clicked="btnGetStarted_Clicked"></Button>
+            <Label Margin="50,0,50,0" HorizontalTextAlignment="Center" Text="Hope for love, pray for love, wish for love, dream for love… but don't put your life on hold waiting for love."></Label>
+            <Button x:Name="btnGetStarted" FontAttributes="Bold" CornerRadius="30" TextColor="#EEEEEE" Text="Get Started" Padding="20" BackgroundColor="#98000b" HorizontalOptions="Center" Clicked="btnGetStarted_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
