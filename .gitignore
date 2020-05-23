@@ -11,3 +11,7 @@ Chatter.iOS/obj/
 Chatter/obj/
 Chatter/bin/
 *.v2
+Chatter.Android/bin/Debug/Chatter.Android.pdb
+Chatter.Android/bin/Debug/Chatter.dll
+Chatter.Android/bin/Debug/Chatter.pdb
+Chatter.Android/bin/Debug/Chatter.Android.dll
