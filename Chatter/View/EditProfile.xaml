@@ -2,18 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:Chatter"
              mc:Ignorable="d"
              x:Class="Chatter.View.EditProfile" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="50" Margin="0,0,0,10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Grid HeightRequest="40" Margin="0" Padding="0,10,0,5">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label VerticalOptions="Center" FontSize="Large" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Your Profile"/>
             </Grid>
             <ScrollView>
-                <StackLayout Spacing="10">
+                <StackLayout Spacing="10" Margin="10,0,10,10">
                     <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="ImagePicker_SelectedIndexChanged" Title="Select Image">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
@@ -81,7 +82,7 @@
                     <Label Text="Control Your Profile" Margin="20,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                     <StackLayout Padding="20,10,20,0" Margin="0,0,0,10">
                         <Grid>
-                            <Label Text="Don't show my age" Grid.Column="0" FontSize="Medium" Grid.Row="0"></Label>
+                            <Label Text="Don't show my age" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium" Grid.Row="0"></Label>
                             <Switch Grid.Column="1" Grid.Row="0" IsToggled="{Binding show_age}" x:Name="ageSwitch" ThumbColor="#98000b" ></Switch>
                             <Label Text="Don't show my distance" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium" Grid.Row="1"></Label>
                             <Switch Grid.Column="1" Grid.Row="1" IsToggled="{Binding show_distance}" x:Name="distanceSwitch" ThumbColor="#98000b"></Switch>

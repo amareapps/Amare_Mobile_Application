@@ -7,13 +7,13 @@
              x:Class="Chatter.Settings" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="40" Margin="0,0,0,10">
+            <Grid HeightRequest="35" Margin="0" Padding="0,10,0,5">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label VerticalOptions="Center" HorizontalOptions="Start" FontSize="22" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
             </Grid>
-            <ScrollView Margin="25,0,25,10">
-                <StackLayout Spacing="10">
+            <ScrollView Padding="0,0,0,10">
+                <StackLayout Spacing="10" Margin="25,0,25,10">
                     <Label Text="Discovery Settings" FontSize="Large" FontAttributes="Bold"></Label>
                     <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
                         <Grid.RowDefinitions>
@@ -30,14 +30,13 @@
                             </Picker.ItemsSource>
                         </Picker>
                     </Grid>
-                    <Label Text="Show me" FontSize="Large"></Label>
-                    <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
+                    <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10,5,10,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="AUTO"></RowDefinition>
                             <RowDefinition Height="AUTO"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label Text="Show me" Grid.Column="0" Grid.Row="0" FontSize="Medium"></Label>
-                        <Picker x:Name="showmePicker" Grid.Column="0" Grid.Row="1" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
+                        <Picker x:Name="showmePicker" Grid.Column="0" Grid.Row="1" Title="" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Men</x:String>
@@ -64,9 +63,16 @@
                     <Button x:Name="saveButton" Text="Save and Apply" Margin="0,0,0,10" CornerRadius="30" BackgroundColor="#e3e1de" Clicked="saveButton_Clicked"></Button>
                     <Label Text="Contact Us" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Text="Help and Support" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
+                    <StackLayout Padding="0,30,0,0" >
+                        <Button Text="DELETE MY ACCOUNT" TextColor="#98000b" BackgroundColor="#EEEEEE" BorderColor="Accent" FontAttributes="Bold" BorderWidth="2" CornerRadius="30" Clicked="logoutButton_Clicked"></Button>
+                        <Button Text="LOGOUT" TextColor="#EEEEEE" BackgroundColor="#98000b" CornerRadius="30" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
+                    </StackLayout>
+                    <Grid BackgroundColor="Transparent" Padding="0,50,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                        <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="200"></Image>
+                        <Label Grid.Row="1" Text="Version 1" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
+                    </Grid>
                 </StackLayout>
             </ScrollView>
-            <Button Margin="20,0,20,10" Text="LOGOUT" TextColor="#EEEEEE" BackgroundColor="#98000b" CornerRadius="30" x:Name="logoutButton" VerticalOptions="EndAndExpand" Clicked="logoutButton_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
