@@ -24,7 +24,7 @@
                 <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
                 <ImageButton Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
-            <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
+                <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Take Photo</x:String>
@@ -42,7 +42,7 @@
                        WidthRequest="200" Source="tzuyu.jpg" 
                                  Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
                 </Frame>
-            <ImageButton AbsoluteLayout.LayoutBounds="0.7, 0.95, 35, 35"
+                <ImageButton AbsoluteLayout.LayoutBounds="0.7, 0.95, 35, 35"
                             AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                  HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
             </AbsoluteLayout>
@@ -50,6 +50,7 @@
             <Label Padding="0,0,0,0" Grid.Row="3" x:Name="schoolLabel" Text="Itaewon University" FontSize="Subtitle"  HorizontalOptions="Center" VerticalOptions="Center"/>
             <ActivityIndicator IsRunning="False"  Grid.Row="4"  HeightRequest="40" WidthRequest="40"
                          IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+
             <StackLayout Grid.Row="5" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
                 <cards:CarouselView x:Name="autoSlider">
                     <cards:CarouselView.ItemsSource>
