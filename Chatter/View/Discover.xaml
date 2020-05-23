@@ -17,11 +17,16 @@
         <Grid Padding="5,15,5,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="AUTO"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Grid HeightRequest="60" Margin="0,0,0,10" Grid.Row="0" Grid.Column="0">
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" HorizontalOptions="Center" VerticalOptions="Start" />
+                <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
+            </Grid>
             <AbsoluteLayout>
                 <cards:CardsView x:Name="coverFlowView" Grid.Row="0" Grid.Column="0"  AbsoluteLayout.LayoutFlags="SizeProportional"
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="True">

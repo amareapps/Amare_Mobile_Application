@@ -306,5 +306,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\RoundCorner.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\amare_a.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
