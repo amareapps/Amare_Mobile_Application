@@ -36,15 +36,15 @@ namespace Chatter.View
         }
         protected async override void OnDisappearing()
         {
+            updateDb();
             await sendToApi();
-            await updateDb();
         }
         private void backButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync(false);
         }
 
-        private async Task updateDb()
+        private void updateDb()
         {
             //Update Sqlite
             string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
@@ -91,9 +91,9 @@ namespace Chatter.View
                 if (!string.IsNullOrWhiteSpace(jobEntry.Text))
                     content.Add(new StringContent(userModel.job_title), "job_title");
                 if (ageSwitch.IsToggled)
-                    isAgeshow = "0";
-                else
                     isAgeshow = "1";
+                else
+                    isAgeshow = "0";
 
                 content.Add(new StringContent(isAgeshow), "show_age");
 
@@ -103,7 +103,8 @@ namespace Chatter.View
                     isDistanceShow = "0";
 
                 content.Add(new StringContent(isDistanceShow), "show_distance");
-
+                content.Add(new StringContent(userModel.location), "location");
+                content.Add(new StringContent(userModel.interest), "interest");
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUser", content);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();

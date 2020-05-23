@@ -116,6 +116,8 @@ namespace Chatter
                 if ((resultModel.sender_id == userLoggedIn && resultModel.receiver_id == Receiver_Id) ||
                     (resultModel.sender_id == Receiver_Id && resultModel.receiver_id == userLoggedIn))
                 {
+                    if(resultModel.receiver_id == userLoggedIn)
+                        await api.setMessageasRead(Session_Id,userLoggedIn);
                     //await DisplayAlert("Anayre", userLoggedIn + resultModel.sender_id + resultModel.receiver_id, "Okay");
                     resultModel.image = Image_Source;
                     chatModels.Add(resultModel);
@@ -137,6 +139,7 @@ namespace Chatter
         private async Task loadData()
         {
             await dataList();
+            await api.setMessageasRead(Session_Id, Receiver_Id);
         }
         private async Task dataList()
         {

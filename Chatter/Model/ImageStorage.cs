@@ -53,6 +53,14 @@ namespace Chatter.Model
             get; 
             set; 
         }
+        public string show_age { 
+            get; 
+            set; 
+        }
+        public string show_distance { 
+            get; 
+            set; 
+        }
 
     }
 }

@@ -121,7 +121,7 @@ namespace Chatter
                                     continue;
                                 }
                             }
-                            if (imageStorage.gender != "Everyone")
+                            if (userInterest != "Everyone")
                             {
                                 if (imageStorage.gender != userInterest)
                                     continue;
@@ -179,14 +179,13 @@ namespace Chatter
                 else
                 {
 
-                    await DisplayAlert("Connection", Application.Current.Properties["Id"].ToString().Replace("\"", ""), "Okay");
                     content.Add(new StringContent(Application.Current.Properties["Id"].ToString().Replace("\"", "")), "user_id");
                     content.Add(new StringContent(currentUserIdSelected), "user_id_liked");
                     content.Add(new StringContent("0"), "visible");
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_liked", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    var exec = await DisplayAlert("Discover", "You liked " + currentItem.username, null, "OK");
+                    //var exec = await DisplayAlert("Discover", "You liked " + currentItem.username, null, "OK");
                     imageSources.Remove(currentItem);
                 }
             }
@@ -207,7 +206,7 @@ namespace Chatter
                 var response = await request.Content.ReadAsStringAsync();
                 if (response.Contains("Undefined"))
                 {
-                    isLiked = false;
+                    isLiked = false; 
                 }
                 else
                 {
@@ -269,10 +268,6 @@ namespace Chatter
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
         {
-            if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Left)
-            {
-                await DisplayAlert("Lapit na","Naysir","Okay");
-            }
             if (args.Item == null)
                 return;
             currentItem = args.Item as ImageStorage;
