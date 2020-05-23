@@ -502,5 +502,21 @@ namespace Chatter.Classes
                 return false;
             }
         }
+        public async Task setMessageasRead(string session_id,string user_id)
+        {
+            try
+            {
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                content.Add(new StringContent(user_id), "user_id");
+                content.Add(new StringContent(session_id), "session_id");
+                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=setmessageasread", content);
+                request.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

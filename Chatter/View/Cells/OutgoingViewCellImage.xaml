@@ -8,7 +8,7 @@
                 AlignItems="End"
                 JustifyContent="SpaceEvenly" Margin="0,0,60,0" Padding="10">
         <Frame BackgroundColor="#e3646c" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-            <ffimageloading:CachedImage DownsampleToViewSize="True" Source="{Binding message}" Aspect="AspectFill"></ffimageloading:CachedImage>
+            <ffimageloading:CachedImage x:Name="imageSent" DownsampleUseDipUnits="True" Source="{Binding message}" Aspect="AspectFill"></ffimageloading:CachedImage>
         </Frame>
         <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
     </FlexLayout>

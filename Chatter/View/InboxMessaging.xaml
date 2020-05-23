@@ -8,6 +8,7 @@
              mc:Ignorable="d"  
              x:Class="Chatter.InboxMessaging" BackgroundColor="#EEEEEE">
     <Page.Resources>
+        <local:StringToFontAttribute x:Key="stringtoFontAtr"></local:StringToFontAttribute>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>
     </Page.Resources>
     <ContentPage.Content>
@@ -47,7 +48,7 @@
                                                    Source="{Binding image}"/>
                                             </Frame>
                                         </Frame>
-                                        <Label Text="{Binding username}" HorizontalOptions="Center" FontSize="Micro" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding username}"  HorizontalOptions="Center" FontSize="Micro" FontAttributes="Bold"></Label>
                                     </StackLayout>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
@@ -75,8 +76,8 @@
                                            HasShadow="True">
                                             <ffimageloading:CachedImage DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
                                         </Frame>
-                                        <Label Margin="10,0,5,0" FontSize="Medium" FontAttributes="Bold" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
-                                        <Label Margin="15,0,10,0" FontSize="Small" MaxLines="30" Text="{Binding message}" Grid.Column="1" Grid.Row="1"/>
+                                        <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" FontAttributes="{Binding has_unread,Converter={StaticResource stringtoFontAtr}}" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
+                                        <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message}" Grid.Column="1" Grid.Row="1"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

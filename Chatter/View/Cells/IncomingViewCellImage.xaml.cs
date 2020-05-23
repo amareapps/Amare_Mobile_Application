@@ -15,6 +15,15 @@ namespace Chatter.View.Cells
         public IncomingViewCellImage()
         {
             InitializeComponent();
+            imageSent.SizeChanged += ImageSent_SizeChanged;
+        }
+
+        private void ImageSent_SizeChanged(object sender, EventArgs e)
+        {
+            if (imageSent.Height > 350)
+                imageSent.HeightRequest = 350;
+            if (imageSent.Width > 300)
+                imageSent.WidthRequest = 300;
         }
     }
 }

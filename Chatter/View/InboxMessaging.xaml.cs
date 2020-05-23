@@ -21,6 +21,7 @@ using Chatter.Classes;
 using Chatter;
 using System.Net.WebSockets;
 using System.Threading;
+using Android.OS;
 
 namespace Chatter
 {
@@ -141,11 +142,22 @@ namespace Chatter
                     //using (var stream = new MemoryStream())
                     //{
                     //    resizedImage.Compress(Bitmap.CompressFormat.Png, 0, stream);
-                     //   var bytes = stream.ToArray();
+                    //   var bytes = stream.ToArray();
                     //    var str = Convert.ToBase64String(bytes);
-                   //     messageContent.image = str;
+                    //     messageContent.image = str;
                     //}
                     //if (!inboxModels.Any(x => x.session_id == messageContent.session_id))
+                    if (messageContent.last_sender != Application.Current.Properties["Id"].ToString().Replace("\"", ""))
+                    {
+                        if (messageContent.has_unread == "1")
+                        {
+                            messageContent.has_unread = "1";
+                        }
+                    }
+                    else
+                    {
+                        messageContent.has_unread = "0";
+                    }
                         saveToLocalDb(messageContent);
                    //     inboxModels.Add(messageContent);
                    // }
