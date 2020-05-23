@@ -16,19 +16,19 @@
         <Grid Padding="5,15,5,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="AUTO"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Grid HeightRequest="60" Margin="0,0,0,10" Grid.Row="0" Grid.Column="0">
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" HorizontalOptions="Center" VerticalOptions="Start" />
+                <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
+            </Grid>
             <AbsoluteLayout>
-<<<<<<< HEAD
-                <cards:CardsView x:Name="coverFlowView" Grid.Row="0" Grid.Column="0" Padding="10,0,10,100" AbsoluteLayout.LayoutFlags="SizeProportional"
-                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" ItemAppearing="coverFlowView_ItemAppearing" IsCyclical="True">
-=======
-                <cards:CardsView x:Name="coverFlowView" Grid.Row="0" Grid.Column="0"  AbsoluteLayout.LayoutFlags="SizeProportional"
+                <cards:CardsView x:Name="coverFlowView" Grid.Row="1" Grid.Column="0"  AbsoluteLayout.LayoutFlags="SizeProportional"
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="True">
->>>>>>> 0b44413a2e61266922d4b7375e2d3ecce79ec8f9
                     <cards:CardsView.ItemTemplate>
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="20" HasShadow="True">
@@ -37,17 +37,6 @@
                                     <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
                                 AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
                                     <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional"
-<<<<<<< HEAD
-                                    AbsoluteLayout.LayoutBounds="0.1,0.90,-1,-1" >
-                                        <Label Text="{Binding username}" BackgroundColor="Black" TextColor="White" FontSize="Title" FontAttributes="Bold">
-                                                <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                </Label.GestureRecognizers>
-                                            </Label>
-                                            <Label Text="{Binding about}" TextColor="White" FontSize="Medium" HorizontalOptions="Center">
-                                            </Label>
-                                        <Label Text="{Binding school}" TextColor="White" FontSize="Medium" HorizontalOptions="Center">
-=======
                                     AbsoluteLayout.LayoutBounds="0.1,0.80,-1,-1" BackgroundColor="#40000000" Padding="10">
                                         <Label Text="{Binding username}" TextColor="White" FontSize="35" FontAttributes="Bold">
                                             <Label.GestureRecognizers>
@@ -57,7 +46,6 @@
                                         <Label Padding="10,0,0,0" Text="{Binding about}" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}" TextColor="White" FontSize="Medium">
                                         </Label>
                                         <Label Padding="10,0,0,0" Text="{Binding school}" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}" TextColor="White" FontSize="Medium">
->>>>>>> 0b44413a2e61266922d4b7375e2d3ecce79ec8f9
                                         </Label>
                                         <Label Padding="10,0,0,0" Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" TextColor="White" FontSize="30" FontAttributes="Bold">
                                         </Label>
@@ -72,7 +60,6 @@
                     </cards:CardsView.ItemTemplate>
                 </cards:CardsView>
                 <Grid Margin="10" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
-<<<<<<< HEAD
                                            AbsoluteLayout.LayoutBounds="0.5,0.8,-1,-1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -82,37 +69,6 @@
                     <ImageButton 
                                  WidthRequest="100"
                                  HeightRequest="100"
-=======
-                                           AbsoluteLayout.LayoutBounds="0.5,1,-1,-1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <ImageButton
-                                 WidthRequest="70"
-                                 HeightRequest="70"
-                                 BackgroundColor="Transparent"  
-                                 Padding="10" 
-                                 Source="close.png" 
-                                 Grid.Column="0" 
-                                 x:Name="dislikeButton" 
-                                 VerticalOptions="Center" 
-                                 HorizontalOptions="Center" Clicked="dislikeButton_Clicked"/>
-                        <ImageButton 
-                                 WidthRequest="70"
-                                 HeightRequest="70"
-                                 Padding="10" 
-                                 Source="reload.png" 
-                                 Grid.Column="1" 
-                                 BackgroundColor="Transparent"
-                                 x:Name="reloadButton" 
-                                 VerticalOptions="Center" 
-                                 HorizontalOptions="Center" Clicked="reloadButton_Clicked"/>
-                        <ImageButton 
-                                 WidthRequest="70"
-                                 HeightRequest="70"
->>>>>>> 0b44413a2e61266922d4b7375e2d3ecce79ec8f9
                                  Padding="10"
                                  Source="heart.png" 
                                  Grid.Column="2" 

@@ -143,6 +143,12 @@ namespace Chatter
             }
         }
 
+        private void EditButton_Clicked(object sender, EventArgs e)
+        {
+            Settings settinger = new Settings();
+            Navigation.PushModalAsync(new NavigationPage(settinger));
+        }
+
         private async void heartButton_Clicked(object sender, EventArgs e)
         {
             var sample = coverFlowView.SelectedItem as ImageStorage;
