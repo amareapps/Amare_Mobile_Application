@@ -7,14 +7,14 @@
              x:Class="Chatter.Settings" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="50" Margin="0,0,0,10">
+            <Grid HeightRequest="40" Margin="0,0,0,10">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label VerticalOptions="Center" FontSize="Large" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
+                <Label VerticalOptions="Center" HorizontalOptions="Start" FontSize="22" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
             </Grid>
-            <ScrollView Margin="20,0,20,10">
+            <ScrollView Margin="25,0,25,10">
                 <StackLayout Spacing="10">
-                    <Label Text="Discovery Settings" FontSize="Large"></Label>
+                    <Label Text="Discovery Settings" FontSize="Large" FontAttributes="Bold"></Label>
                     <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="AUTO"></RowDefinition>
@@ -62,7 +62,7 @@
                         <Slider x:Name="ageslider" Value="{Binding age_range, Mode=TwoWay}" Maximum="60" Minimum="18" MaximumTrackColor="#98000B" MinimumHeightRequest="10" MinimumTrackColor="#98000B" ThumbColor="#98000b" ThumbImageSource="heartthumb.png"></Slider>
                     </StackLayout>
                     <Button x:Name="saveButton" Text="Save and Apply" Margin="0,0,0,10" CornerRadius="30" BackgroundColor="#e3e1de" Clicked="saveButton_Clicked"></Button>
-                    <Label Text="Contact Us" FontSize="Large"></Label>
+                    <Label Text="Contact Us" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Text="Help and Support" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
                 </StackLayout>
             </ScrollView>

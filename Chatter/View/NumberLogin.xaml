@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter"
              mc:Ignorable="d"
              x:Class="Chatter.View.NumberLogin" Title="Log In" BackgroundColor="#fffcf8">
     <ContentPage.Content>
@@ -26,7 +26,7 @@
                     Title="Pick your country code" SelectedIndexChanged="countryCodePicker_SelectedIndexChanged" TextColor="Black" FontSize="Small"/>
                 <Image Source="earth.png" HeightRequest="20" WidthRequest="20" Grid.Row="0" Grid.Column="1"></Image>
                 <Label x:Name="dialCodeLabel" Grid.Row="0" Grid.Column="2"></Label>
-                <Entry MaxLength="11" x:Name="phoneEntry" TextChanged="phoneEntry_TextChanged" Grid.Row="1" Grid.ColumnSpan="3" Keyboard="Numeric" Placeholder="Enter your phone number here..." TextColor="Black" FontSize="Small"></Entry>
+                <local:RoundedEntry MaxLength="11" x:Name="phoneEntry" TextChanged="phoneEntry_TextChanged" Grid.Row="1" Grid.ColumnSpan="3" Keyboard="Numeric" Placeholder="Enter your phone number here..." TextColor="Black" FontSize="Small"></local:RoundedEntry>
             </Grid>
             <Label 
                 Text="Note: When you tap 'Continue', Amare will send you a text message with the corresponding verification code. Message and data rates may apply. Only a verified phone number can be used to login." FontSize="Micro" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="5,0,20,0" />

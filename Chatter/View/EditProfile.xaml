@@ -7,7 +7,7 @@
              x:Class="Chatter.View.EditProfile" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="50" Margin="0,0,0,10">
+            <Grid HeightRequest="50" Margin="0,0,0,10" VerticalOptions="Center" HorizontalOptions="Center">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label VerticalOptions="Center" FontSize="Large" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
@@ -22,7 +22,7 @@
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>
-                    <Grid Margin="5" ColumnSpacing="10" RowSpacing="10" x:Name="imageGrid">
+                    <Grid Margin="5" ColumnSpacing="10" Padding="10,0,10,0" RowSpacing="10" x:Name="imageGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="170"></RowDefinition>
                             <RowDefinition Height="170"></RowDefinition>
@@ -79,7 +79,7 @@
                         <local:RoundedEntry x:Name="schoolEntry" Placeholder="Add school" Text="{Binding school}"></local:RoundedEntry>
                     </StackLayout>
                     <Label Text="Control Your Profile" Margin="20,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                    <StackLayout Padding="20,10,20,10" Margin="0,0,0,20">
+                    <StackLayout Padding="20,10,20,0" Margin="0,0,0,10">
                         <Grid>
                             <Label Text="Don't show my age" Grid.Column="0" FontSize="Medium" Grid.Row="0"></Label>
                             <Switch Grid.Column="1" Grid.Row="0" IsToggled="{Binding show_age}" x:Name="ageSwitch" ThumbColor="#98000b" ></Switch>
@@ -87,7 +87,7 @@
                             <Switch Grid.Column="1" Grid.Row="1" IsToggled="{Binding show_distance}" x:Name="distanceSwitch" ThumbColor="#98000b"></Switch>
                         </Grid>
                     </StackLayout>
-                    <Label TextColor="Black" Text="Show my Instagram Photos" Margin="20,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label Text="Show my Instagram Photos" Margin="20,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                     <StackLayout Padding="20,10,20,10">
                         <Button CornerRadius="30" ImageSource="ig_logo_small.png" TextColor="Accent" FontAttributes="Bold"  BorderColor="Accent" BorderWidth="2" x:Name="instagramButton" Clicked="instagramButton_Clicked" Text="Connect to Instagram" BackgroundColor="Transparent"></Button>
                     </StackLayout>

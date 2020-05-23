@@ -153,12 +153,12 @@ namespace Chatter
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#b8b8b8");
+                btn.BackgroundColor = Color.FromHex("#cfcfcf");
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#b8b8b8");
+            btne.BackgroundColor = Color.FromHex("#cfcfcf");
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("#98000b");
             gender = btne.Text;
@@ -168,12 +168,12 @@ namespace Chatter
             var looper = gridInterest.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#b8b8b8");
+                btn.BackgroundColor = Color.FromHex("#cfcfcf");
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#b8b8b8");
+            btne.BackgroundColor = Color.FromHex("#cfcfcf");
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("#98000b");
             interestIn = btne.Text;

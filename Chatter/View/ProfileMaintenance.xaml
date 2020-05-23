@@ -93,8 +93,8 @@
                 <Label Text="I am a..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid x:Name="iamGrid"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="50,0,50,0">
-                <Button Grid.Row="0" CornerRadius="30" Text="Woman" Clicked="Button_Clicked" BackgroundColor="#b8b8b8" TextColor="#EEEEEE" FontAttributes="Bold"></Button>
-                <Button Grid.Row="1" CornerRadius="30" Text="Man" Clicked="Button_Clicked" BackgroundColor="#b8b8b8" TextColor="#EEEEEE" FontAttributes="Bold"></Button>
+                <Button Grid.Row="0" CornerRadius="30" Text="Woman" Clicked="Button_Clicked" BackgroundColor="#cfcfcf" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button Grid.Row="1" CornerRadius="30" Text="Man" Clicked="Button_Clicked" BackgroundColor="#cfcfcf" TextColor="Black" FontAttributes="Bold"></Button>
             </Grid>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
                 <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="CONTINUE" FontSize="Large" FontAttributes="Bold" Clicked="nextContent"></Button>
@@ -108,9 +108,9 @@
                 <Label Text="Show me" FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid x:Name="gridInterest" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="50,0,50,0">
-                <Button Grid.Row="0" CornerRadius="30" Text="Women" Clicked="Button_Interest" BackgroundColor="#EEEEEE" TextColor="LightSlateGray" BorderWidth="2" BorderColor="#98000b"></Button>
-                <Button Grid.Row="1" CornerRadius="30" Text="Men" Clicked="Button_Interest" BackgroundColor="#EEEEEE" TextColor="LightSlateGray" BorderWidth="2" BorderColor="#98000b"></Button>
-                <Button Grid.Row="2" CornerRadius="30" Text="Everyone" Clicked="Button_Interest" BackgroundColor="#EEEEEE" TextColor="LightSlateGray" BorderWidth="2" BorderColor="#98000b"></Button>
+                <Button Grid.Row="0" CornerRadius="30" Text="Women" Clicked="Button_Interest" BackgroundColor="#cfcfcf" TextColor="Black"></Button>
+                <Button Grid.Row="1" CornerRadius="30" Text="Men" Clicked="Button_Interest" BackgroundColor="#cfcfcf" TextColor="Black"></Button>
+                <Button Grid.Row="2" CornerRadius="30" Text="Everyone" Clicked="Button_Interest" BackgroundColor="#cfcfcf" TextColor="Black"></Button>
             </Grid>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
                 <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="CONTINUE" FontSize="Large" FontAttributes="Bold" Clicked="nextContent"></Button>
@@ -119,9 +119,9 @@
     </ContentPage>
     <ContentPage  x:Name="pictureContent" BackgroundColor="#EEEEEE">
         <AbsoluteLayout>
-                <StackLayout Margin="20,10,20,20" AbsoluteLayout.LayoutFlags="All"
+                <StackLayout Margin="20,0,20,20" AbsoluteLayout.LayoutFlags="All"
                   AbsoluteLayout.LayoutBounds="0,1,1,1">
-                    <ImageButton BorderColor="Accent" BorderWidth="3" BackgroundColor="Transparent" CornerRadius="30" Margin="0,10,0,0" Aspect="AspectFill" x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" HeightRequest="400" Source="add_pic.png" >
+                    <ImageButton BorderColor="Accent" BorderWidth="3" BackgroundColor="Transparent" CornerRadius="30" Margin="0,10,0,0" Aspect="AspectFill" x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="500" Source="add_pic.png" >
                     </ImageButton>
                     <Picker x:Name="imagePicker" IsVisible="False" SelectedIndexChanged="imagePicker_SelectedIndexChanged"></Picker>
                     <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
