@@ -15,6 +15,8 @@ using Firebase.Database;
 using PanCardView.Droid;
 using CarouselView.FormsPlugin.Android;
 using FFImageLoading.Forms.Platform;
+using Android.Support.V4.Content;
+using Android.Support.V4.App;
 
 namespace Chatter.Droid
 {
@@ -43,6 +45,10 @@ namespace Chatter.Droid
             CachedImageRenderer.Init(enableFastRenderer: true);
             CachedImageRenderer.InitImageViewHandler();
             CardsViewRenderer.Preserve();
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.RecordAudio) != Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.RecordAudio }, 1);
+            }
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)

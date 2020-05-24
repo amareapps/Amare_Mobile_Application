@@ -16,7 +16,7 @@
     <ContentPage.Content>
         <Grid Padding="5,15,5,5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="AUTO"></RowDefinition>
             </Grid.RowDefinitions>
@@ -27,8 +27,8 @@
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" HorizontalOptions="Center" VerticalOptions="Start" />
                 <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
             </Grid>
-            <AbsoluteLayout>
-                <cards:CardsView x:Name="coverFlowView" Grid.Row="0" Grid.Column="0"  AbsoluteLayout.LayoutFlags="SizeProportional"
+            <AbsoluteLayout Grid.Row="1" Grid.Column="0">
+                <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="True">
                     <cards:CardsView.ItemTemplate>
                         <DataTemplate>

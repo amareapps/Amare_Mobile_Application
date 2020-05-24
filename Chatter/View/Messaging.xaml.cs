@@ -20,7 +20,6 @@ using Chatter.Classes;
 using Google.Protobuf.WellKnownTypes;
 using Android.OS;
 using System.Threading;
-using Android.Media;
 using Plugin.Media.Abstractions;
 using Java.Sql;
 using Rg.Plugins.Popup.Services;
@@ -30,6 +29,9 @@ using Chatter.View.Cells;
 using Xamarin.Essentials;
 using Android.Widget;
 using Plugin.Toast;
+using Plugin.AudioRecorder;
+using System.Reflection;
+using System.IO;
 
 namespace Chatter
 {
@@ -44,6 +46,11 @@ namespace Chatter
         ClientWebSocket wsClient = new ClientWebSocket();
         FireStorage fireStorage = new FireStorage();
         ApiConnector api = new ApiConnector();
+        AudioRecorderService audioRecorder = new AudioRecorderService
+        {
+            StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
+            TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
+        };
         //System.Timers.Timer timer;
         public Messaging(string receiver_id,string session_id,string username,string imagesource,string emoji)
         {
@@ -73,8 +80,15 @@ namespace Chatter
                 await Clipboard.SetTextAsync(arg);
                 CrossToastPopUp.Current.ShowToastMessage("Copied to clipboard");
             });
-            //userImage.Source = Image_Source;
-        }
+            Task.Run(() =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await connectionManager();
+                });
+            });
+                //userImage.Source = Image_Source;
+            }
 
         async Task ConnectToServerAsync()
         {
@@ -91,6 +105,9 @@ namespace Chatter
             //timer.Elapsed += Timer_Elapsed;
             //timer.Interval = 1000;
             //timer.Start();
+        }
+        private async Task connectionManager()
+        {
             await ConnectToServerAsync();
             while (wsClient.State == WebSocketState.Open)
             {
@@ -269,6 +286,32 @@ namespace Chatter
             await sendMessage(imageLink);
         }
 
+        private async void voiceMessage_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await audioRecorder.StartRecording();
+                var recordTask = await audioRecorder.StartRecording();
+                var audioFile = await recordTask;
+
+                if (audioFile != null) //non-null audioFile indicates audio was successfully recorded
+                {
+                    //await DisplayAlert("Test Audio", audioFile, "Okay");
+                    var sana = await fireStorage.StoreAudio(audioRecorder.GetAudioFileStream(), userLoggedIn + "_" + Receiver_Id + "_" + DateTime.Now.ToString("MM_dd_yyyy_hh_mm_ss_fff"));
+                    await sendMessage(sana);
+                }
+                else
+                {
+                    await DisplayAlert("Recording", "Failed to record audio", "Okay");
+                }
+                await audioRecorder.StopRecording();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Test Audio", "Nyek!", "Okay");
+            }
+
+        }
         private void sendimageButton_Clicked(object sender, EventArgs e)
         {
             imagePicker.Focus();

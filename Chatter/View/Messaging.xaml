@@ -44,17 +44,19 @@
             <Grid Margin="10,10,10,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="40"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <ImageButton Source="chatcamera.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
-                <local2:RoundedEntry x:Name="messageEntry" TextChanged="messageEntry_TextChanged"  Placeholder="Love begins with one 'Hello'..." Grid.Column="1" FontSize="Small"></local2:RoundedEntry>
-                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="2">
+                <ImageButton Source="call.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="voiceMessage"  Clicked="voiceMessage_Clicked" Grid.Column="1"></ImageButton>
+                <local2:RoundedEntry x:Name="messageEntry" TextChanged="messageEntry_TextChanged"  Placeholder="Love begins with one 'Hello'..." Grid.Column="2" FontSize="Small"></local2:RoundedEntry>
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="3">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
-                <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="send.png" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="2"></ImageButton>
+                <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="send.png" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="3"></ImageButton>
             </Grid>
         </Frame>
     </StackLayout>

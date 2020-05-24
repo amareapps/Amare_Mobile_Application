@@ -46,8 +46,8 @@
                             AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                  HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
             </AbsoluteLayout>
-            <Label Padding="0,5,0,0" Grid.Row="2" x:Name="nameLabel" FontAttributes="Bold" Text="Chou Tzu-yu" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Label Padding="0,0,0,0" Grid.Row="3" x:Name="schoolLabel" Text="Itaewon University" FontSize="Subtitle"  HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Padding="0,5,0,0" Grid.Row="2" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Padding="0,0,0,0" Grid.Row="3" x:Name="schoolLabel" Text="{Binding school}" FontSize="Subtitle"  HorizontalOptions="Center" VerticalOptions="Center"/>
             <ActivityIndicator IsRunning="False"  Grid.Row="4"  HeightRequest="40" WidthRequest="40"
                          IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
 

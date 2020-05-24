@@ -19,5 +19,14 @@ namespace Chatter.Classes
             string imgurl = stroageImage;
             return imgurl;
         }
+        public async Task<string> StoreAudio(Stream audioStream, string name)
+        {
+            var stroageAudio = await new FirebaseStorage("chatter-7b8e4.appspot.com")
+                .Child("AudioCollection")
+                .Child(name + ".wav")
+                .PutAsync(audioStream);
+            string imgurl = stroageAudio;
+            return imgurl;
+        }
     }
 }

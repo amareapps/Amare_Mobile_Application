@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Chatter.View.Cells.OutgoingViewCellAudio">
+    <Frame Rotation="180" CornerRadius="20" BackgroundColor="Transparent" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+        <Button Text="Play audio" Clicked="Button_Clicked" HorizontalOptions="Start"></Button>
+    </Frame>
+</ViewCell>

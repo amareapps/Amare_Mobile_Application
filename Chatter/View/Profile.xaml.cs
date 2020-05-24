@@ -28,6 +28,7 @@ namespace Chatter
         Timer timer = new Timer();
         ApiConnector api = new ApiConnector();
         FireStorage fireStorage = new FireStorage();
+        UserModel userModel = new UserModel();
         public Profile()
         {
             InitializeComponent();
@@ -127,6 +128,7 @@ namespace Chatter
                     foreach (UserModel model in table)
                     {
                         //byte[] Base64Stream = Convert.FromBase64String(model.image);
+                        userModel = model;
                         ProfileImage.Source = model.image;
                         //nameLabel.Text = model.username;
                         Application.Current.Properties["Id"] = "\"" + model.id + "\"";
@@ -134,6 +136,7 @@ namespace Chatter
                         Application.Current.Properties["username"] = model.username;
                     }
                 }
+                BindingContext = userModel;
             }
             catch(Exception ex)
             {
