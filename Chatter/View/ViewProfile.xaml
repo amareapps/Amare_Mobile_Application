@@ -10,85 +10,95 @@
         <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
     </Page.Resources>
     <ContentPage.Content>
-        <ScrollView>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="500" />
-                <RowDefinition Height="AUTO" />
-                <RowDefinition Height="AUTO" />
-                </Grid.RowDefinitions>
-            <Frame HasShadow="True" IsClippedToBounds="True" Grid.Row="0" Padding="0">
-                    <AbsoluteLayout>
-                        <CarouselView x:Name="galleryView" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                            <CarouselView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout>
-                                        <Frame HasShadow="True"
-                                               BorderColor="DarkGray"
-                                               Margin="0"
-                                               Padding="0"
-                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                            <ImageButton Source="{Binding image}" 
-                                                         HorizontalOptions="FillAndExpand" 
-                                                         VerticalOptions="FillAndExpand" 
-                                                         Aspect="AspectFill" Clicked="ImageButton_Clicked" />
-                                        </Frame>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CarouselView.ItemTemplate>
-                        </CarouselView>
-                        <IndicatorView x:Name="indicatorView" AbsoluteLayout.LayoutBounds="0.5,1,1,0.05" AbsoluteLayout.LayoutFlags="All"
-                                    IndicatorColor="LightGray" BackgroundColor="Transparent" 
-                                    SelectedIndicatorColor="Accent"
-                                    HorizontalOptions="Center" IndicatorSize="10"/>
-                    </AbsoluteLayout>
-                </Frame>
-            <Frame HasShadow="True" Grid.Row="1">
-                <StackLayout Margin="0" Padding="0">
-                    <Label Text="{Binding username}" TextColor="Black" FontAttributes="Bold" FontSize="Large"></Label>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding gender}" FontSize="Large" VerticalTextAlignment="Center"></Label>
-                            <Label Text="," FontSize="Large"></Label>
-                            <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontSize="Large"></Label>
-                        </StackLayout>
-                        <Label Text="{Binding school}"></Label>
-                        <StackLayout HorizontalOptions="FillAndExpand" Margin="0">
-                            <Label Text="About" FontSize="Medium"></Label>
-                            <Label Margin="10" Text="{Binding about}"></Label>
-                        </StackLayout>
-                    </StackLayout>
-            </Frame>
-            <Frame HasShadow="True" Grid.Row="2" Padding="0" Margin="0">
-                <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium"/>
-            </Frame>
-                <StackLayout Grid.Row="3" x:Name="instaLayout" Padding="10">
-                <Label Text="Instagram Photos" FontSize="Large" TextColor="Black"></Label>
-                <ScrollView Orientation="Horizontal" >
-                    <StackLayout x:Name="instagramAlbum" Orientation="Horizontal" HeightRequest="200">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                    <StackLayout WidthRequest="150" HeightRequest="200" Margin="10">
-                                    <Frame
-                                       HeightRequest="150"
-                                       WidthRequest="200"
-                                       HorizontalOptions="Center"
-                                       Padding="0"
-                                       BorderColor="Red"
-                                       IsClippedToBounds="True">
-                                            <ffimageloading:CachedImage Aspect="AspectFill"
-                                                   Source="{Binding image_url}">
-                                                <ffimageloading:CachedImage.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                </ffimageloading:CachedImage.GestureRecognizers>
-                                            </ffimageloading:CachedImage>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </StackLayout>
-                </ScrollView>
-                </StackLayout>
+        <StackLayout>
+            <Grid HeightRequest="30" Margin="0" Padding="0,10,0,5">
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
             </Grid>
-        </ScrollView>
+            <ScrollView Padding="10,5,10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    </Grid.RowDefinitions>
+                <Frame HasShadow="True" IsClippedToBounds="True" Grid.Row="0" Padding="0" CornerRadius="20">
+                        <AbsoluteLayout>
+                            <CarouselView x:Name="galleryView" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <Frame HasShadow="True"
+                                                   BorderColor="DarkGray"
+                                                   Margin="0"
+                                                   Padding="0"
+                                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <ImageButton Source="{Binding image}" 
+                                                             HorizontalOptions="FillAndExpand" 
+                                                             VerticalOptions="FillAndExpand" 
+                                                             Aspect="AspectFill" Clicked="ImageButton_Clicked" />
+                                            </Frame>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                            <IndicatorView x:Name="indicatorView" AbsoluteLayout.LayoutBounds="0.5,1,1,0.05" AbsoluteLayout.LayoutFlags="All"
+                                        IndicatorColor="LightGray" BackgroundColor="Transparent" 
+                                        SelectedIndicatorColor="Accent"
+                                        HorizontalOptions="Center" IndicatorSize="10"/>
+                        </AbsoluteLayout>
+                    </Frame>
+                <Frame HasShadow="True" Grid.Row="1" CornerRadius="20">
+                    <StackLayout Margin="0" Padding="0">
+                        <Label Text="{Binding username}" TextColor="Black" FontAttributes="Bold" FontSize="Large"></Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding gender}" FontSize="Large" VerticalTextAlignment="Center"></Label>
+                                <Label Text="," FontSize="Large"></Label>
+                                <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontSize="Large"></Label>
+                            </StackLayout>
+                            <Label Text="{Binding school}"></Label>
+                            <StackLayout HorizontalOptions="FillAndExpand" Margin="0">
+                                <Label Margin="10" Text="{Binding about}"></Label>
+                            </StackLayout>
+                        
+                        </StackLayout>
+                </Frame>
+                <Frame HasShadow="True" Grid.Row="2" Padding="0" Margin="0" CornerRadius="30">
+                    <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium" CornerRadius="30"/>
+                </Frame>
+                    <Frame HasShadow="True" Grid.Row="3" Padding="10" Margin="0,0,0,10" CornerRadius="20" x:Name="instaFrame">
+                        <StackLayout x:Name="instaLayout">
+                            <Label Text="Instagram Photos" FontSize="Medium" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+                            <ScrollView Orientation="Horizontal">
+                                <StackLayout x:Name="instagramAlbum" Orientation="Horizontal" HeightRequest="170">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout WidthRequest="150" HeightRequest="200" Margin="10,10,10,0">
+                                                <Frame
+                                                   HeightRequest="150"
+                                                   WidthRequest="200"
+                                                   HorizontalOptions="Center"
+                                                   Padding="0"
+                                                   Margin="0"
+                                                   BorderColor="Red"
+                                                   IsClippedToBounds="True" CornerRadius="20">
+                                                    <ffimageloading:CachedImage Aspect="AspectFill"
+                                                               Source="{Binding image_url}">
+                                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                                    </ffimageloading:CachedImage>
+                                                </Frame>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </ScrollView>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

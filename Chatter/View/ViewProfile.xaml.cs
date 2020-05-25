@@ -47,6 +47,7 @@ namespace Chatter.View
                 //await DisplayAlert("Hayss", igPhotos, "Okay");
                 if (igPhotos == null)
                 {
+                    instaFrame.IsVisible = false;
                     instaLayout.IsVisible = false;
                     return;
                 }
@@ -80,6 +81,11 @@ namespace Chatter.View
                 images.Add(imageUrl.image_url);
             }
             await Navigation.PushModalAsync(new NavigationPage(new ImageViewer(images,"Instagram Photos")));
+        }
+
+        private void backButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
     }
 }

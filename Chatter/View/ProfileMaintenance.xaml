@@ -4,8 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:Chatter"
-             xmlns:sys="clr-namespace:System;assembly=netstandard"
-             mc:Ignorable="d"
+             xmlns:sys="clr-namespace:System;assembly=netstandard" xmlns:local1="clr-namespace:Chatter.Classes"
+               mc:Ignorable="d"
              x:Class="Chatter.ProfileMaintenance" Title="Register with us!">
 
     <ContentPage x:Name="emailContent" BackgroundColor="#EEEEEE">
@@ -61,7 +61,7 @@
                 <Label Text="My &#x0a;birthday is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <DatePicker x:Name="birthdatePicker" FontSize="Title" Margin="5" Format="MM-dd-yyyy"></DatePicker>
+                <local1:CustomDatePicker x:Name="birthdatePicker" Margin="5" Format="MM/dd/yyyy" Placeholder="Select Date of Birth" FontSize="Medium"></local1:CustomDatePicker>
                 <Label Margin="10,0,20,0" FontAttributes="Bold" VerticalOptions="Start" Grid.Row="1" Text="Note: You must be 18 years old and above to register. Your age will be viewed as public." FontSize="Micro"></Label>
             </Grid>
             <Grid HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2">

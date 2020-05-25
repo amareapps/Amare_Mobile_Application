@@ -7,13 +7,13 @@
              xmlns:local2="clr-namespace:Chatter"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
              mc:Ignorable="d"
-             x:Class="Chatter.Messaging" Title="Message" IconImageSource="message.png" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="true" NavigationPage.HasBackButton="True">
+             x:Class="Chatter.Messaging" NavigationPage.HasNavigationBar="true" NavigationPage.HasBackButton="True">
     <Page.Resources>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>
         <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
     </Page.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="call.png"  Order="Default"></ToolbarItem>
+        <ToolbarItem IconImageSource="call.png"  Order="Primary"></ToolbarItem>
         <ToolbarItem Name="Unmatch" Order="Secondary" Clicked="Menu1_Clicked" Priority="0" />
         <ToolbarItem Name="Report" Order="Secondary" Clicked="Report_Clicked" Priority="1" />
     </ContentPage.ToolbarItems>
@@ -40,8 +40,8 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <Frame BackgroundColor="#EEEEEE" IsClippedToBounds="True" CornerRadius="10" HasShadow="True" Margin="0" Padding="0">
-            <Grid Margin="10,10,10,0">
+        <Frame BackgroundColor="#EEEEEE" IsClippedToBounds="True" CornerRadius="10" HasShadow="True" Margin="0" Padding="0" VerticalOptions="End">
+            <Grid Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"></ColumnDefinition>
                     <ColumnDefinition Width="40"></ColumnDefinition>
@@ -50,13 +50,14 @@
                 </Grid.ColumnDefinitions>
                 <ImageButton Source="chatcamera.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
                 <ImageButton Source="mic_icon.png" Released="voiceMessage_Released" Pressed="voiceMessage_Pressed"  BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="voiceMessage"  Clicked="voiceMessage_Clicked" Grid.Column="1"></ImageButton>
+
                 <local2:RoundedEntry x:Name="messageEntry" TextChanged="messageEntry_TextChanged"  Placeholder="Love begins with one 'Hello'..." Grid.Column="2" FontSize="Small"></local2:RoundedEntry>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="3">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
-                <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="send.png" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="3"></ImageButton>
+                <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="send.png" Aspect="AspectFill" HeightRequest="30" WidthRequest="30" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="3"></ImageButton>
             </Grid>
         </Frame>
     </StackLayout>
