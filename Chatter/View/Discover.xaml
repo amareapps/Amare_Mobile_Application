@@ -17,7 +17,7 @@
         <Grid Padding="10,15,10,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="AUTO"></RowDefinition>
-                <RowDefinition Height="550"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="AUTO"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
