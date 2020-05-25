@@ -116,6 +116,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomDatePickerAndroidRenderer.cs" />
+    <Compile Include="CustomFrameAndroidRenderer.cs" />
+    <Compile Include="CustomPickerAndroidRenderer.cs" />
     <Compile Include="CustomPressRenderer.cs" />
     <Compile Include="GradientColorStackRenderer.cs" />
     <Compile Include="IClearCookiesImplementation.cs" />
@@ -273,7 +276,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\locationIcon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\audio.png" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\call.png" />
   </ItemGroup>

@@ -63,6 +63,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomDatePickerIOSRenderer.cs" />
+    <Compile Include="CustomFrameIOSRenderer.cs" />
+    <Compile Include="CustomPickerIOSRenderer.cs" />
     <Compile Include="IClearCookiesImplementation.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

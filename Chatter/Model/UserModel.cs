@@ -35,4 +35,5 @@ namespace Chatter.Model
         { get; set; } = "";
         public string interest { get; set; } = "";
     }   
+
 }
