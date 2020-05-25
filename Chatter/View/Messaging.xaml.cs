@@ -46,11 +46,7 @@ namespace Chatter
         ClientWebSocket wsClient = new ClientWebSocket();
         FireStorage fireStorage = new FireStorage();
         ApiConnector api = new ApiConnector();
-        AudioRecorderService audioRecorder = new AudioRecorderService
-        {
-            StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
-            TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
-        };
+        AudioRecorderService audioRecorder = new AudioRecorderService();
         //System.Timers.Timer timer;
         public Messaging(string receiver_id,string session_id,string username,string imagesource,string emoji)
         {
@@ -288,30 +284,44 @@ namespace Chatter
 
         private async void voiceMessage_Clicked(object sender, EventArgs e)
         {
+
+
+        }
+
+        private async void voiceMessage_Pressed(object sender, EventArgs e)
+        {
             try
             {
                 await audioRecorder.StartRecording();
-                var recordTask = await audioRecorder.StartRecording();
-                var audioFile = await recordTask;
-
-                if (audioFile != null) //non-null audioFile indicates audio was successfully recorded
+                while (voiceMessage.IsPressed)
                 {
-                    //await DisplayAlert("Test Audio", audioFile, "Okay");
-                    var sana = await fireStorage.StoreAudio(audioRecorder.GetAudioFileStream(), userLoggedIn + "_" + Receiver_Id + "_" + DateTime.Now.ToString("MM_dd_yyyy_hh_mm_ss_fff"));
-                    await sendMessage(sana);
+                    await voiceMessage.ScaleTo(1.5);
+                    await voiceMessage.ScaleTo(1);
                 }
-                else
-                {
-                    await DisplayAlert("Recording", "Failed to record audio", "Okay");
-                }
-                await audioRecorder.StopRecording();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Test Audio", "Nyek!", "Okay");
+                await DisplayAlert("Test Audio", ex.ToString(), "Okay");
             }
-
         }
+
+        private async void voiceMessage_Released(object sender, EventArgs e)
+        {
+            try
+            {
+                await audioRecorder.StopRecording();
+
+                await DisplayAlert("Test Audio", audioRecorder.GetAudioFilePath(), "Okay");
+                //await DisplayAlert("Test Audio", audioFile, "Okay");
+                var sana = await fireStorage.StoreAudio(audioRecorder.GetAudioFileStream(), userLoggedIn + "_" + Receiver_Id + "_" + DateTime.Now.ToString("MM_dd_yyyy_hh_mm_ss_fff"));
+                await sendMessage(sana);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Test Audio", ex.ToString(), "Okay");
+            }
+        }
+
         private void sendimageButton_Clicked(object sender, EventArgs e)
         {
             imagePicker.Focus();
