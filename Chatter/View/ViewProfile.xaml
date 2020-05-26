@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                  xmlns:local="clr-namespace:Chatter.Classes" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                  xmlns:local="clr-namespace:Chatter.Classes" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              x:Class="Chatter.View.ViewProfile" BackgroundColor="#EEEEEE">
     <Page.Resources>
         <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
+        <local:StringToBoolen x:Key="stringtoBool"></local:StringToBoolen>
+        <local:NumbertoBooleanConverter x:Key="numbertoBool"></local:NumbertoBooleanConverter>
     </Page.Resources>
     <ContentPage.Content>
         <StackLayout>
@@ -50,20 +53,32 @@
                         </AbsoluteLayout>
                     </Frame>
                 <Frame HasShadow="True" Grid.Row="1" CornerRadius="20">
-                    <StackLayout Margin="0" Padding="0">
-                        <Label Text="{Binding username}" TextColor="Black" FontAttributes="Bold" FontSize="Large"></Label>
+                        <StackLayout Margin="0" Padding="0">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding gender}" FontSize="Large" VerticalTextAlignment="Center"></Label>
-                                <Label Text="," FontSize="Large"></Label>
-                                <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontSize="Large"></Label>
+                                <Label Text="{Binding username}" TextColor="Black" FontSize="Large" FontAttributes="Bold">
+                                </Label>
+                                <Label Text="|" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Medium" VerticalOptions="End"></Label>
                             </StackLayout>
-                            <Label Text="{Binding school}"></Label>
-                            <StackLayout HorizontalOptions="FillAndExpand" Margin="0">
-                                <Label Margin="10" Text="{Binding about}"></Label>
-                            </StackLayout>
-                        
+                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
+                                <ffimageloading:CachedImage Source="locationdarkred.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
+                                <Label Text="{Binding distance, StringFormat='{0} Miles'}" FontSize="Medium" FontAttributes="Bold" />
+                            </FlexLayout>
+                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding gender,Converter={StaticResource stringtoBool}}">
+                                <ffimageloading:CachedImage Source="genderdarkred.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
+                                <Label Text="{Binding gender}" FontSize="Medium" FontAttributes="Bold" />
+                            </FlexLayout>
+                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
+                                <ffimageloading:CachedImage Source="schooldarkred.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0">
+                                </ffimageloading:CachedImage>
+                                <Label Text="{Binding school}"  FontSize="Medium" FontAttributes="Bold"/>
+                            </FlexLayout>
+                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
+                                <ffimageloading:CachedImage Source="aboutdarkred.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
+                                <Label Text="{Binding about}" FontSize="Medium" FontAttributes="Bold"/>
+                            </FlexLayout>
                         </StackLayout>
-                </Frame>
+                    </Frame>
                 <Frame HasShadow="True" Grid.Row="2" Padding="0" Margin="0" CornerRadius="30">
                     <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium" CornerRadius="30"/>
                 </Frame>

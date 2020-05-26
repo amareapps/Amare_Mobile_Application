@@ -60,7 +60,7 @@
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
                 <Label Text="My &#x0a;birthday is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="0,40,0,0">
                 <local1:CustomDatePicker x:Name="birthdatePicker" Margin="5" Format="MM/dd/yyyy" Placeholder="Select Date of Birth" FontSize="Medium"></local1:CustomDatePicker>
                 <Label Margin="10,0,20,0" FontAttributes="Bold" VerticalOptions="Start" Grid.Row="1" Text="Note: You must be 18 years old and above to register. Your age will be viewed as public." FontSize="Micro"></Label>
             </Grid>

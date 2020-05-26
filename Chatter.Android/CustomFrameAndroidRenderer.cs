@@ -25,9 +25,9 @@ namespace Chatter.Droid
     {
         public CustomFrameAndroidRenderer(Context context)
             : base(context)
-            {
+        {
+        }
 
-            }
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
             base.OnElementChanged(e);
