@@ -116,6 +116,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomDatePickerAndroidRenderer.cs" />
+    <Compile Include="CustomFrameAndroidRenderer.cs" />
     <Compile Include="CustomPressRenderer.cs" />
     <Compile Include="GradientColorStackRenderer.cs" />
     <Compile Include="IClearCookiesImplementation.cs" />
@@ -287,6 +289,42 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\amare_a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\school.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\genderdarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\schooldarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\aboutdarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\locationdarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\genderwhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\genderdarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\schooldarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\aboutdarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\locationdarkred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\genderwhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

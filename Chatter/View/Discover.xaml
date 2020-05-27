@@ -33,34 +33,42 @@
                     <cards:CardsView.ItemTemplate>
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="20" HasShadow="True">
-                                <AbsoluteLayout>
+                                <AbsoluteLayout >
                                     <ActivityIndicator BindingContext="{x:Reference coverFlowView}" IsRunning="{Binding IsLoading}" Color="#98000b" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></ActivityIndicator>
                                     <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
-                                AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
-                                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional"
-                                     AbsoluteLayout.LayoutBounds="0.1,1,-1,-1" BackgroundColor="#40000000" Padding="10">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding username}" TextColor="White" FontSize="Medium" FontAttributes="Bold">
-                                                <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                </Label.GestureRecognizers>
-                                            </Label>
-                                            <Label Text="," TextColor="White" FontSize="Medium" FontAttributes="Bold"></Label>
-                                            <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Medium" TextColor="White"></Label>
+                                    AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
+                                    <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1" BackgroundColor="#40000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <StackLayout Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="Start">
+                                            <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding username}" TextColor="White" FontSize="Large" FontAttributes="Bold">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                    <Label Text="|" TextColor="White" FontSize="Large" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Medium" VerticalOptions="End" TextColor="White"></Label>
+                                                </StackLayout>
+                                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
+                                                <ffimageloading:CachedImage Source="about.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
+                                                <Label Text="{Binding about}" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+                                            </FlexLayout>
+                                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
+                                                <ffimageloading:CachedImage Source="school.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0">
+                                                </ffimageloading:CachedImage>
+                                                <Label Text="{Binding school}" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+                                            </FlexLayout>
+                                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
+                                                <ffimageloading:CachedImage Source="locationIcon.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
+                                                <Label Text="{Binding distance, StringFormat='{0} Miles'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />
+                                            </FlexLayout>
                                         </StackLayout>
-                                        <Label Padding="10,0,0,0" Text="{Binding about}" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}" TextColor="White" FontSize="Medium"/>
-                                        <Label Padding="10,0,0,0" Text="{Binding school}" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}" TextColor="White" FontSize="Medium"/>
-                                        <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
-                                            <ffimageloading:CachedImage Source="locationIcon.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
-                                            <Label Text="{Binding distance, StringFormat='{0} Miles'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />
-                                        </FlexLayout>
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </Frame>
                         </DataTemplate>
                     </cards:CardsView.ItemTemplate>
                 </cards:CardsView>
-                <Grid Margin="10" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
+                <!--<Grid Margin="10" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
                     AbsoluteLayout.LayoutBounds="0.9,0.95,-1,-1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -79,7 +87,7 @@
                                  HorizontalOptions="Center" 
                                  Clicked="heartButton_Clicked"
                                  Opacity="0.7"/>
-                    </Grid>
+                    </Grid>-->
             </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>

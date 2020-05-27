@@ -54,7 +54,7 @@
                                          IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
                 </StackLayout>
             </local:CustomFrame>
-            <local:CustomFrame CornerRadius="0,0,0,0" Grid.Row="6" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
+            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="6" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
                     <StackLayout>
                         <cards:CarouselView x:Name="autoSlider">
                             <cards:CarouselView.ItemsSource>
