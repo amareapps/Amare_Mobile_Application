@@ -94,8 +94,11 @@ namespace Chatter
             //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
             if (string.IsNullOrEmpty(number))
             {
-                await Navigation.PushAsync(new WelcomePage());
-                //await Navigation.PopToRootAsync();
+                var userModels = await api.loginUser(emailEntry.Text,passwordEntry.Text);
+                Application.Current.Properties["Id"] = "\"" + userModels.id + "\"";
+                App.Current.MainPage = new NavigationPage(new WelcomePage());
+                //await Navigation.PushAsync(new WelcomePage());
+                await Navigation.PopToRootAsync();
             }
             else
             {
@@ -104,7 +107,8 @@ namespace Chatter
                     await DisplayAlert("Oops!",value.username,"Okay");
                 }
                 Application.Current.Properties["Id"] = "\"" + value.id + "\"";
-                App.Current.MainPage = new NavigationPage(new MainPage());
+                App.Current.MainPage = new NavigationPage(new WelcomePage());
+                //await Navigation.PushAsync(new WelcomePage());
                 await Navigation.PopToRootAsync();
             }
         }

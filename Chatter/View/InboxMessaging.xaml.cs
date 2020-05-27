@@ -22,6 +22,7 @@ using Chatter;
 using System.Net.WebSockets;
 using System.Threading;
 using Android.OS;
+using Xamarin.Essentials;
 
 namespace Chatter
 {
@@ -31,6 +32,7 @@ namespace Chatter
         ObservableCollection<InboxModel> inboxModels = new ObservableCollection<InboxModel>();
         ObservableCollection<RecentMatchesModel> matchesModel = new ObservableCollection<RecentMatchesModel>();
         InboxModel modeler;
+        SqliteManager sqliteManager = new SqliteManager();
         ApiConnector api = new ApiConnector();
         public InboxMessaging()
         {
@@ -158,7 +160,8 @@ namespace Chatter
                     {
                         messageContent.has_unread = "0";
                     }
-                        saveToLocalDb(messageContent);
+                    messageContent.distance = this.getDistance(messageContent);
+                    saveToLocalDb(messageContent);
                    //     inboxModels.Add(messageContent);
                    // }
                 }
@@ -277,6 +280,29 @@ namespace Chatter
                 }
             }
             BindableLayout.SetItemsSource(recentMatchesList, matchesModel);
+        }
+
+        private void unreadFilterButton_Clicked(object sender, EventArgs e)
+        {
+            InboxList.ItemsSource = inboxModels.OrderByDescending(entry => entry.has_unread);
+        }
+        private void receivedFilterButton_Clicked(object sender, EventArgs e)
+        {
+            InboxList.ItemsSource = inboxModels.OrderByDescending(entry => entry.datetime);
+        }
+        private void nearbyFilterButton_Clicked(object sender, EventArgs e)
+        {
+            InboxList.ItemsSource = inboxModels.OrderBy(entry => entry.distance);
+        }
+        private string getDistance(InboxModel model)
+        {
+            var userModel = sqliteManager.getUserModel();
+            string[] currentLocArr = userModel.location.Split(',');
+            string[] otherUserLocArr = model.location.Split(',');
+            Location myLocation = new Location(Convert.ToDouble(currentLocArr[0]), Convert.ToDouble(currentLocArr[1]));
+            Location otherLocation = new Location(Convert.ToDouble(otherUserLocArr[0]), Convert.ToDouble(otherUserLocArr[1]));
+            double kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Miles);
+            return Math.Round(kmDistance, 2).ToString();
         }
     }
 }

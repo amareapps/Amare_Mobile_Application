@@ -25,7 +25,7 @@ namespace Chatter.Classes
         ClientWebSocket wsClient = new ClientWebSocket();
         ChatModel chatModel = new ChatModel();
 
-        public async Task<string> insertToPhoneRegister(string number,string code)
+        public async Task<string> insertToPhoneRegister(string number, string code)
         {
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
@@ -36,7 +36,7 @@ namespace Chatter.Classes
             var response = await request.Content.ReadAsStringAsync();
             return response;
         }
-        public async Task<bool> checkCode(string number,string code)
+        public async Task<bool> checkCode(string number, string code)
         {
             try
             {
@@ -77,10 +77,10 @@ namespace Chatter.Classes
                 var looper = JsonConvert.DeserializeObject<List<UserModel>>(response).ToList();
                 foreach (UserModel modeler in looper)
                 {
-                   // var webClient = new WebClient();
-                   // byte[] imageBytes = webClient.DownloadData(modeler.image);
-                   // string base64Image = Convert.ToBase64String(imageBytes);
-                   // modeler.image = base64Image;
+                    // var webClient = new WebClient();
+                    // byte[] imageBytes = webClient.DownloadData(modeler.image);
+                    // string base64Image = Convert.ToBase64String(imageBytes);
+                    // modeler.image = base64Image;
                     user = modeler;
                 }
                 await saveToSqlite(user);
@@ -237,9 +237,9 @@ namespace Chatter.Classes
                     //using (var stream = new MemoryStream())
                     //{
                     //    resizedImage.Compress(Bitmap.CompressFormat.Png, 0, stream);
-                     //   var bytes = stream.ToArray();
-                     //   var str = Convert.ToBase64String(bytes);
-                     //   matches.image = str;
+                    //   var bytes = stream.ToArray();
+                    //   var str = Convert.ToBase64String(bytes);
+                    //   matches.image = str;
                     //}
 
                     saveRecentToLocalDb(matches);
@@ -273,7 +273,7 @@ namespace Chatter.Classes
                 var request = await client.GetAsync(urlstring);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
-                response = response.Replace(@"\","");
+                response = response.Replace(@"\", "");
                 //response = response.Replace("null","\"\"");
                 if (response.Contains("Undefined"))
                 {
@@ -309,7 +309,7 @@ namespace Chatter.Classes
                 return null;
             }
         }
-        public async Task saveToDislikedUser(string user_id,string usertodislike)
+        public async Task saveToDislikedUser(string user_id, string usertodislike)
         {
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
@@ -319,7 +319,7 @@ namespace Chatter.Classes
             request.EnsureSuccessStatusCode();
             var response = await request.Content.ReadAsStringAsync();
         }
-        public async Task updateProfilePicture(string user_id,string image)
+        public async Task updateProfilePicture(string user_id, string image)
         {
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
@@ -331,26 +331,26 @@ namespace Chatter.Classes
         }
         public async Task syncUserData(string id)
         {
-                try
-                {
-                    string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_single&id=" + id + "";
-                    var request = await client.GetAsync(urlString);
-                    request.EnsureSuccessStatusCode();
-                    var response = await request.Content.ReadAsStringAsync();
-                    //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
-                    if (response.ToString().Contains("Undefined"))
-                    {
-                        return;
-                    }
-                    var modifString = response.Replace(@"\", "");
-                    var looper = JsonConvert.DeserializeObject<UserModel>(modifString);
-                    looper.image = converttoBase64(looper.image);
-                    syncUsertoSqlite(looper);
-                }
-                catch (Exception ex)
+            try
+            {
+                string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_single&id=" + id + "";
+                var request = await client.GetAsync(urlString);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
+                if (response.ToString().Contains("Undefined"))
                 {
                     return;
                 }
+                var modifString = response.Replace(@"\", "");
+                var looper = JsonConvert.DeserializeObject<UserModel>(modifString);
+                looper.image = converttoBase64(looper.image);
+                syncUsertoSqlite(looper);
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
         }
         private void syncUsertoSqlite(UserModel model)
         {
@@ -378,15 +378,15 @@ namespace Chatter.Classes
         }
         public bool ConnectedToServerAsync()
         {
-                while (wsClient.State == WebSocketState.Open)
-                {
-                    return true;
-                }
-                return false;
+            while (wsClient.State == WebSocketState.Open)
+            {
+                return true;
+            }
+            return false;
         }
         public async Task connectToServer()
         {
-            await wsClient.ConnectAsync(new Uri("ws://"+ApiConnection.Url+":8088"), CancellationToken.None);
+            await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.Url + ":8088"), CancellationToken.None);
         }
         public async Task<string> ReadMessage()
         {
@@ -402,7 +402,7 @@ namespace Chatter.Classes
                 //ChatModel messagess = JsonConvert.DeserializeObject<ChatModel>(receivedMessage);
                 //if (messagess.receiver_id != Application.Current.Properties["Id"].ToString() || messagess.sender_id != Application.Current.Properties["Id"].ToString())
                 //    continue;
-               // chatModel = messagess;
+                // chatModel = messagess;
             }
             while (!result.EndOfMessage);
             return receivedMessage;
@@ -414,7 +414,7 @@ namespace Chatter.Classes
             var segmnet = new ArraySegment<byte>(byteMessage);
             await wsClient.SendAsync(segmnet, WebSocketMessageType.Text, true, CancellationToken.None);
         }
-        public async Task getInstagramPhotos(string user_id,string image_url)
+        public async Task getInstagramPhotos(string user_id, string image_url)
         {
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
@@ -431,10 +431,10 @@ namespace Chatter.Classes
             request.EnsureSuccessStatusCode();
             var response = await request.Content.ReadAsStringAsync();
             //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
-           if (response.ToString().Contains("Undefined"))
-           {
-              return null;
-           }
+            if (response.ToString().Contains("Undefined"))
+            {
+                return null;
+            }
             var looper = JsonConvert.DeserializeObject<List<InstagramPhotosModel>>(response).ToList();
             return looper;
         }
@@ -476,7 +476,7 @@ namespace Chatter.Classes
         {
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(userModel.id == null ? "" : userModel.id ), "id");
+            content.Add(new StringContent(userModel.id == null ? "" : userModel.id), "id");
             content.Add(new StringContent(userModel.about == null ? "" : userModel.about), "about");
             content.Add(new StringContent(userModel.job_title == null ? "" : userModel.job_title), "job_title");
             content.Add(new StringContent(userModel.company == null ? "" : userModel.company), "company");
@@ -489,7 +489,7 @@ namespace Chatter.Classes
             var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUser", content);
             request.EnsureSuccessStatusCode();
         }
-        public async Task<bool> deleteMessage(string id){
+        public async Task<bool> deleteMessage(string id) {
             try
             {
                 var request = await client.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=deleteMessage&id=" + id);
@@ -502,7 +502,7 @@ namespace Chatter.Classes
                 return false;
             }
         }
-        public async Task setMessageasRead(string session_id,string user_id)
+        public async Task setMessageasRead(string session_id, string user_id)
         {
             try
             {
@@ -516,6 +516,41 @@ namespace Chatter.Classes
             catch (Exception ex)
             {
 
+            }
+        }
+        public async Task<UserModel> loginUser(string email,string password)
+        {
+            try
+            {
+                string sample = email + "," + password;
+                UserModel user = new UserModel();
+                string urlstring = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_userexists&email='" + sample + "'";
+                var request = await client.GetAsync(urlstring);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                if (response.Contains("Undefined"))
+                {
+                    return null;
+                }
+                var looper = JsonConvert.DeserializeObject<List<UserModel>>(response).ToList();
+                foreach (UserModel modeler in looper)
+                {
+                    // var webClient = new WebClient();
+                    // byte[] imageBytes = webClient.DownloadData(modeler.image);
+                    // string base64Image = Convert.ToBase64String(imageBytes);
+                    // modeler.image = base64Image;
+                    user = modeler;
+                }
+                await saveToSqlite(user);
+                await retrieveSearchReference();
+                await retrieveGallery();
+                await retrievInbox();
+                await loadRecentMatches();
+                return user;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
     }

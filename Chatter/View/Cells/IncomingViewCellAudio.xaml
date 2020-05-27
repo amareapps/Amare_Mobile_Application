@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          mc:Ignorable="d"
+             x:Class="Chatter.View.Cells.IncomingViewCellAudio">
+    <Frame BackgroundColor="Transparent" Rotation="180" FlowDirection="LeftToRight"
+              Padding="10,5,10,0"
+              HasShadow="true"
+              CornerRadius="20">
+
+        <Grid ColumnSpacing="20" Padding="0,0,40,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Grid.Column="0" HeightRequest="40" WidthRequest="40" IsClippedToBounds="True" CornerRadius="40" Padding="0" Margin="0">
+                <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Source="{Binding image}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></ffimageloading:CachedImage>
+            </Frame>
+            <FlexLayout Grid.RowSpan="2" Grid.Column="1" Direction="Column"
+                        AlignItems="Start"
+                        JustifyContent="SpaceEvenly" Margin="0"  Padding="0">
+                <Frame Padding="0" Margin="0" BackgroundColor="Transparent" CornerRadius="10" IsClippedToBounds="True"  Grid.Column="1">
+                    <Button Text="Play audio" Clicked="Button_Clicked"></Button>
+                </Frame>
+                <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" Grid.Column="1" Grid.Row="1" FontSize="Micro" HorizontalTextAlignment="Start"></Label>
+            </FlexLayout>
+        </Grid>
+    </Frame>
+</ViewCell>

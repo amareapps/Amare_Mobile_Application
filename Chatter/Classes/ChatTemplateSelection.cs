@@ -13,6 +13,8 @@ namespace Chatter.Classes
         DataTemplate incomingDataTemplateImage;
         DataTemplate outgoingDataTemplateImage;
         DataTemplate outgoingDataTemplateAudio;
+        DataTemplate incomingDataTempleteAudio;
+
         public ChatTemplateSelector()
         {
             this.incomingDataTemplate = new DataTemplate(typeof(IncomingViewCell));
@@ -20,6 +22,7 @@ namespace Chatter.Classes
             this.incomingDataTemplateImage = new DataTemplate(typeof(IncomingViewCellImage));
             this.outgoingDataTemplateImage = new DataTemplate(typeof(OutgoingViewCellImage));
             this.outgoingDataTemplateAudio = new DataTemplate(typeof(OutgoingViewCellAudio));
+            this.incomingDataTempleteAudio = new DataTemplate(typeof(IncomingViewCellAudio));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
@@ -30,7 +33,7 @@ namespace Chatter.Classes
             if(messageVm.message.Contains("chatter-7b8e4") && messageVm.message.Contains("UserImages"))
                 return (messageVm.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", "")) ? outgoingDataTemplateImage : incomingDataTemplateImage;
             if (messageVm.message.Contains("chatter-7b8e4") && messageVm.message.Contains("AudioCollection"))
-                return (messageVm.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", "")) ? outgoingDataTemplateAudio : outgoingDataTemplateAudio;
+                return (messageVm.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", "")) ? outgoingDataTemplateAudio : incomingDataTempleteAudio;
 
 
             return (messageVm.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"","")) ? outgoingDataTemplate : incomingDataTemplate;

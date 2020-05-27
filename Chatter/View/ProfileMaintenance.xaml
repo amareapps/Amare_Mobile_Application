@@ -93,8 +93,8 @@
                 <Label Text="I am a..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid x:Name="iamGrid"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="50,0,50,0">
-                <Button Grid.Row="0" CornerRadius="30" Text="Woman" Clicked="Button_Clicked" BackgroundColor="#cfcfcf" TextColor="Black" FontAttributes="Bold"></Button>
-                <Button Grid.Row="1" CornerRadius="30" Text="Man" Clicked="Button_Clicked" BackgroundColor="#cfcfcf" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button Grid.Row="0" CornerRadius="30" Text="Women" Clicked="Button_Clicked" BackgroundColor="#cfcfcf" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button Grid.Row="1" CornerRadius="30" Text="Men" Clicked="Button_Clicked" BackgroundColor="#cfcfcf" TextColor="Black" FontAttributes="Bold"></Button>
             </Grid>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
                 <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="CONTINUE" FontSize="Large" FontAttributes="Bold" Clicked="nextContent"></Button>

@@ -56,6 +56,11 @@
                     </ScrollView>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Button x:Name="unreadFilterButton" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" HeightRequest="5" BackgroundColor="LightGray" CornerRadius="30" Margin="0" Padding="0" BorderWidth="10" BorderColor="#EEEEEE"></Button>
+                        <Button x:Name="receivedFilterButton" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro"  BackgroundColor="LightGray" CornerRadius="30" Margin="0" Padding="0" BorderWidth="10" BorderColor="#EEEEEE"></Button>
+                        <Button x:Name="nearbyFilterButton" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro"  BackgroundColor="LightGray" CornerRadius="30" Margin="0" Padding="0" BorderWidth="10" BorderColor="#EEEEEE"></Button>
+                    </StackLayout>
                     <Label Text="Messages" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
                     <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" >
                         <ListView.ItemTemplate>
@@ -65,6 +70,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="70"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="45" 
                                            HeightRequest="90"
@@ -77,6 +83,7 @@
                                             <ffimageloading:CachedImage DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
                                         </Frame>
                                         <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" FontAttributes="{Binding has_unread,Converter={StaticResource stringtoFontAtr}}" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
+                                        <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" Text="{Binding distance}" Grid.Column="2" Grid.Row="0"/>
                                         <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message}" Grid.Column="1" Grid.Row="1"/>
                                     </Grid>
                                 </ViewCell>

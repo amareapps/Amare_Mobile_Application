@@ -17,9 +17,9 @@ namespace Chatter.View
             InitializeComponent();
         }
 
-        private async void btnGetStarted_Clicked(object sender, EventArgs e)
+        private void btnGetStarted_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopToRootAsync();
+            App.Current.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

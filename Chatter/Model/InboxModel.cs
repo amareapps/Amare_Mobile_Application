@@ -20,5 +20,7 @@ namespace Chatter.Model
         public string emoji { get; set; }
         public string has_unread { get; set; }
         public string last_sender { get; set; }
+        public string location { get; set; }
+        public string distance { get; set; } = "";
     }
 }

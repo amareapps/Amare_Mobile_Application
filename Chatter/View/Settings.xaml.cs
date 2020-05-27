@@ -59,7 +59,8 @@ namespace Chatter
             {
                 user_id = Application.Current.Properties["Id"].ToString().Replace("\"", ""),
                 maximum_distance = slider.Value.ToString("0"),
-                age_range = ageslider.Value.ToString("0")
+                age_start = ageslider.LowerValue.ToString("0"),
+                age_end = ageslider.UpperValue.ToString("0")
             };
 
             //Save to Remote Database
@@ -68,7 +69,8 @@ namespace Chatter
             MultipartFormDataContent content = new MultipartFormDataContent();
             content.Add(new StringContent(searchReference.user_id), "user_id");
             content.Add(new StringContent(searchReference.maximum_distance), "maximum_distance");
-            content.Add(new StringContent(searchReference.age_range), "age_range");
+            content.Add(new StringContent(searchReference.age_start), "age_start");
+            content.Add(new StringContent(searchReference.age_end), "age_end");
             var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=update_search_reference", content);
             request.EnsureSuccessStatusCode();
             var response = await request.Content.ReadAsStringAsync();
@@ -103,7 +105,8 @@ namespace Chatter
                 foreach (SearchRefenceModel model in table)
                 {
                     slider.Value = Convert.ToInt32(model.maximum_distance);
-                    ageslider.Value = Convert.ToInt32(model.age_range);
+                    ageslider.LowerValue = Convert.ToInt32(model.age_start);
+                    ageslider.UpperValue = Convert.ToInt32(model.age_end);
                 }
                 conn.CreateTable<UserModel>();
                 var table2 = conn.Table<UserModel>().ToList();

@@ -19,7 +19,12 @@ namespace Chatter.Model
             get;
             set;
         }
-        public string age_range
+        public string age_start
+        {
+            get;
+            set;
+        }
+        public string age_end
         {
             get;
             set;

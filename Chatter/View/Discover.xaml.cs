@@ -39,7 +39,7 @@ namespace Chatter
         bool isLiked = false;
         private int liked_Id = 0;
         public string currentLocation = "", UserProfilePicture = "",userInterest="";
-        public string distanceFilter = "",ageFilter = "";
+        public string distanceFilter = "",age_start = "",age_end;
         bool hasSearchReference = true;
         public Discover()
         {
@@ -70,7 +70,8 @@ namespace Chatter
                     foreach (SearchRefenceModel iniModel in sample)
                     {
                         distanceFilter = iniModel.maximum_distance;
-                        ageFilter = iniModel.age_range;
+                        age_start = iniModel.age_start;
+                        age_end = iniModel.age_end;
                         //       await DisplayAlert("Yes!!", "User ID:" + iniModel.user_id + " Maximum Distance:"+ iniModel.maximum_distance + " Age Range:" + iniModel.age_range, "Okay");
                     }
                     conn.CreateTable<UserModel>();
@@ -231,7 +232,7 @@ namespace Chatter
             // Calculate the age.
             int age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
             //DisplayAlert("tae nmn", ageFilter + "nyare " + age.ToString() + "result: " + (age <= Convert.ToInt32(ageFilter)).ToString(),"okay");
-             if (kmDistance <= Convert.ToDouble(distanceFilter) && age <= Convert.ToInt32(ageFilter))
+             if (kmDistance <= Convert.ToDouble(distanceFilter) && age >= Convert.ToInt32(age_start) && age <= Convert.ToInt32(age_end))
                 return true;
 
             return false;
