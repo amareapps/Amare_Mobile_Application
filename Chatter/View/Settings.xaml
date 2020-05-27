@@ -13,7 +13,7 @@
                 <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Settings"/>
             </Grid>
             <ScrollView Padding="0,0,0,10">
-                <StackLayout Spacing="10" Margin="25,0,25,10">
+                <StackLayout Spacing="20" Margin="25,0,25,10">
                     <Label Text="Discovery Settings" FontSize="Large" FontAttributes="Bold"></Label>
                     <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
                         <Grid.RowDefinitions>
@@ -61,11 +61,20 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Text="Age range" FontSize="Medium"></Label>
                             <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0" Margin="0">
-                                <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=LowerValue, StringFormat='{0:N0} - '}" ></Label>
+                                <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=LowerValue, StringFormat='{0:N0} - '}"></Label>
                                 <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=UpperValue, StringFormat='{0:N0}'}" ></Label>
                             </StackLayout>
                          </Grid>
-                        <forms:RangeSlider x:Name="ageslider" LowerValue="{Binding age_start,Mode=TwoWay}" UpperValue="{Binding age_end,Mode=TwoWay}" ActiveColor="Red" MinimumValue="18" MaximumValue="55" StepValue="0" StepValueContinuously="False" TextSize="15" />
+                        <forms:RangeSlider MaxThumbHidden="False" MinThumbHidden="False" x:Name="ageslider" LowerValue="18" UpperValue="55" ActiveColor="Red" MinimumValue="18" MaximumValue="55" TextSize="15" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Label Grid.Column="0" Text="Show Distances in" FontSize="Medium" Grid.ColumnSpan="2"></Label>
+                        </Grid>
+                        <StackLayout Orientation="Horizontal" x:Name="metricLayout">
+                            <Button x:Name="btnKm" Clicked="Button_Clicked" Text="Km." HorizontalOptions="FillAndExpand"></Button>
+                            <Button x:Name="btnMi" Clicked="Button_Clicked" Text="Mi." HorizontalOptions="FillAndExpand"></Button>
+                        </StackLayout>
                     </StackLayout>
                     <Button x:Name="saveButton" Text="Save and Apply" Margin="0,0,0,10" CornerRadius="30" BackgroundColor="#e3e1de" Clicked="saveButton_Clicked"></Button>
                     <Label Text="Contact Us" FontSize="Large" FontAttributes="Bold"></Label>

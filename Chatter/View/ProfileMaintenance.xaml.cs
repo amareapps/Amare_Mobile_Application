@@ -73,15 +73,25 @@ namespace Chatter
             Application.Current.Properties["Email"] = emailEntry.Text;
             Application.Current.Properties["Gender"] = gender;
             Application.Current.Properties["Birthday"] = birthdatePicker.ToString();
-            var request = new GeolocationRequest(GeolocationAccuracy.High);
-            var location = await Geolocation.GetLocationAsync(request);
-
-            if (location == null)
+            try
             {
-                return;
-            }
-            locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
+                var request = new GeolocationRequest(GeolocationAccuracy.High);
+                var location = await Geolocation.GetLocationAsync(request);
 
+                if (location == null)
+                {
+                    return;
+                }
+                locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
+            }
+            catch (PermissionException ex)
+            {
+                await DisplayAlert("Location Request", ex.ToString(),"Okay");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Location Request", ex.ToString(), "Okay");
+            }
             if (imageString == string.Empty)
             {
                 await DisplayAlert("Image Selection", "Image required.", "Okay");
@@ -98,7 +108,7 @@ namespace Chatter
                 Application.Current.Properties["Id"] = "\"" + userModels.id + "\"";
                 App.Current.MainPage = new NavigationPage(new WelcomePage());
                 //await Navigation.PushAsync(new WelcomePage());
-                await Navigation.PopToRootAsync();
+                //await Navigation.PopToRootAsync();
             }
             else
             {
@@ -109,7 +119,7 @@ namespace Chatter
                 Application.Current.Properties["Id"] = "\"" + value.id + "\"";
                 App.Current.MainPage = new NavigationPage(new WelcomePage());
                 //await Navigation.PushAsync(new WelcomePage());
-                await Navigation.PopToRootAsync();
+                //await Navigation.PopToRootAsync();
             }
         }
         private async Task sampless()

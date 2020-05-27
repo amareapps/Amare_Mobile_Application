@@ -22,5 +22,6 @@ namespace Chatter.Model
         public string last_sender { get; set; }
         public string location { get; set; }
         public string distance { get; set; } = "";
+        public string distance_metric { get; set; }
     }
 }

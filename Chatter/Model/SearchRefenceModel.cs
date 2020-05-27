@@ -7,7 +7,7 @@ using SQLite;
 
 namespace Chatter.Model
 {
-    class SearchRefenceModel
+    public class SearchRefenceModel
     {
         [PrimaryKey]
         public string user_id
@@ -18,16 +18,21 @@ namespace Chatter.Model
         {
             get;
             set;
-        }
+        } = "0";
         public string age_start
         {
             get;
             set;
-        }
+        } = "18";
         public string age_end
         {
             get;
             set;
-        }
+        } = "55";
+        public int distance_metric
+        {
+            get;
+            set;
+        } = 0;
     }
 }

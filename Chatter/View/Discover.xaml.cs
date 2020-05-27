@@ -37,7 +37,7 @@ namespace Chatter
         ImageStorage currentItem;
         ApiConnector api = new ApiConnector();
         bool isLiked = false;
-        private int liked_Id = 0;
+        private int liked_Id = 0,metric;
         public string currentLocation = "", UserProfilePicture = "",userInterest="";
         public string distanceFilter = "",age_start = "",age_end;
         bool hasSearchReference = true;
@@ -72,6 +72,7 @@ namespace Chatter
                         distanceFilter = iniModel.maximum_distance;
                         age_start = iniModel.age_start;
                         age_end = iniModel.age_end;
+                        metric = iniModel.distance_metric;
                         //       await DisplayAlert("Yes!!", "User ID:" + iniModel.user_id + " Maximum Distance:"+ iniModel.maximum_distance + " Age Range:" + iniModel.age_range, "Okay");
                     }
                     conn.CreateTable<UserModel>();
@@ -127,6 +128,7 @@ namespace Chatter
                                 if (imageStorage.gender != userInterest)
                                     continue;
                             }
+                            imageStorage.distance_metric = metric == 0 ? " km" : " miles";
                             imageStorage.distance = getDistance(imageStorage);
                             //await DisplayAlert("nagcontinue ba?", imageStorage.birthdate, "Okay");
                             imageSources.Add(imageStorage);
@@ -241,9 +243,14 @@ namespace Chatter
         {
             string[] currentLocArr = currentLocation.Split(',');
             string[] otherUserLocArr = model.location.Split(',');
+            double kmDistance = 0;
             Location myLocation = new Location(Convert.ToDouble(currentLocArr[0]), Convert.ToDouble(currentLocArr[1]));
             Location otherLocation = new Location(Convert.ToDouble(otherUserLocArr[0]), Convert.ToDouble(otherUserLocArr[1]));
-            double kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Miles);
+            if(metric == 0)
+                kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Kilometers);
+            else
+                kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Miles);
+
             return Math.Round(kmDistance, 2).ToString();
         }
 
@@ -281,6 +288,8 @@ namespace Chatter
             {
                 await likeUser();
             }
+            if (coverFlowView.ItemsCount == 1)
+                await DisplayAlert("Sana","Lalabas to pag isa nlng laman","Nays");
         }
 
         private async void reloadButton_Clicked(object sender, EventArgs e)

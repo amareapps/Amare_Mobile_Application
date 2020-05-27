@@ -34,6 +34,7 @@ namespace Chatter
         InboxModel modeler;
         SqliteManager sqliteManager = new SqliteManager();
         ApiConnector api = new ApiConnector();
+        SearchRefenceModel userSearchReference;
         public InboxMessaging()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace Chatter
         protected async override void OnAppearing()
         {
             matchesModel.Clear();
+            userSearchReference = sqliteManager.GetSearchRefence();
             deleteSqliteData();
             await refreshData();
             ClientWebSocket wsClient = new ClientWebSocket();
@@ -160,6 +162,7 @@ namespace Chatter
                     {
                         messageContent.has_unread = "0";
                     }
+                    messageContent.distance_metric = userSearchReference.distance_metric == 0 ? "km" : "miles";
                     messageContent.distance = this.getDistance(messageContent);
                     saveToLocalDb(messageContent);
                    //     inboxModels.Add(messageContent);
@@ -301,8 +304,18 @@ namespace Chatter
             string[] otherUserLocArr = model.location.Split(',');
             Location myLocation = new Location(Convert.ToDouble(currentLocArr[0]), Convert.ToDouble(currentLocArr[1]));
             Location otherLocation = new Location(Convert.ToDouble(otherUserLocArr[0]), Convert.ToDouble(otherUserLocArr[1]));
-            double kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Miles);
+            double kmDistance;
+            if(userSearchReference.distance_metric == 0)
+                kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Kilometers);
+            else
+                kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Miles);
+
             return Math.Round(kmDistance, 2).ToString();
+        }
+
+        private void SearchBarNoUnderline_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InboxList.ItemsSource = inboxModels.Where(x => x.username.IndexOf(searchEntry.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
         }
     }
 }

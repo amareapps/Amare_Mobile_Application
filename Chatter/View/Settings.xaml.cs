@@ -10,6 +10,7 @@ using System.Linq;
 using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
 using Chatter.View;
+using Android.Media;
 
 namespace Chatter
 {
@@ -19,6 +20,7 @@ namespace Chatter
         SqliteManager sqliteManager = new SqliteManager();
         ApiConnector api = new ApiConnector();
         private string locationString;
+        int metric;
         public Settings()
         {
             InitializeComponent();
@@ -60,7 +62,8 @@ namespace Chatter
                 user_id = Application.Current.Properties["Id"].ToString().Replace("\"", ""),
                 maximum_distance = slider.Value.ToString("0"),
                 age_start = ageslider.LowerValue.ToString("0"),
-                age_end = ageslider.UpperValue.ToString("0")
+                age_end = ageslider.UpperValue.ToString("0"),
+                distance_metric = metric
             };
 
             //Save to Remote Database
@@ -71,6 +74,7 @@ namespace Chatter
             content.Add(new StringContent(searchReference.maximum_distance), "maximum_distance");
             content.Add(new StringContent(searchReference.age_start), "age_start");
             content.Add(new StringContent(searchReference.age_end), "age_end");
+            content.Add(new StringContent(searchReference.distance_metric.ToString()), "distance_metric");
             var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=update_search_reference", content);
             request.EnsureSuccessStatusCode();
             var response = await request.Content.ReadAsStringAsync();
@@ -105,8 +109,23 @@ namespace Chatter
                 foreach (SearchRefenceModel model in table)
                 {
                     slider.Value = Convert.ToInt32(model.maximum_distance);
-                    ageslider.LowerValue = Convert.ToInt32(model.age_start);
-                    ageslider.UpperValue = Convert.ToInt32(model.age_end);
+                    ageslider.LowerValue = float.Parse(model.age_start);
+                    ageslider.UpperValue = float.Parse(model.age_end);
+                    if (model.distance_metric == 0)
+                    {
+                        btnKm.BackgroundColor = Color.DarkRed;
+                        btnKm.TextColor = Color.White;
+                        btnKm.BorderWidth = 2;
+                        btnKm.BorderColor = Color.FromHex("#98000b");
+                    }
+                    else
+                    {
+                        btnMi.BackgroundColor = Color.DarkRed;
+                        btnMi.TextColor = Color.White;
+                        btnMi.BorderWidth = 2;
+                        btnMi.BorderColor = Color.FromHex("#98000b");
+                    }
+
                 }
                 conn.CreateTable<UserModel>();
                 var table2 = conn.Table<UserModel>().ToList();
@@ -156,6 +175,27 @@ namespace Chatter
         private void showmePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var looper = metricLayout.Children.Where(x => x is Button);
+            foreach (Button btn in looper)
+            {
+                btn.BackgroundColor = Color.White;
+                btn.TextColor = Color.Black;
+                btn.BorderColor = Color.Transparent;
+                btn.BorderWidth = 0;
+            }
+            Button btne = (Button)sender;
+            btne.BackgroundColor = Color.DarkRed;
+            btne.TextColor = Color.White;
+            btne.BorderWidth = 2;
+            btne.BorderColor = Color.FromHex("#98000b");
+            if (btne.Text == "Km.")
+                metric = 0;
+            else
+                metric = 1;
         }
     }
 }

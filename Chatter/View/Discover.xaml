@@ -59,7 +59,8 @@
                                             </FlexLayout>
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
                                                 <ffimageloading:CachedImage Source="locationIcon.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
-                                                <Label Text="{Binding distance, StringFormat='{0} Miles'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />
+                                                <Label Text="{Binding distance, StringFormat='{0}'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />
+                                                <Label Text="{Binding distance_metric,StringFormat='{0} away'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />
                                             </FlexLayout>
                                         </StackLayout>
                                     </StackLayout>

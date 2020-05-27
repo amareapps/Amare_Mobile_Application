@@ -61,6 +61,11 @@ namespace Chatter.Model
             get; 
             set; 
         }
+        public string distance_metric
+        {
+            get;
+            set;
+        }
 
     }
 }
