@@ -68,7 +68,7 @@
                     <Button Margin="20" CornerRadius="30" TextColor="#EEEEEE" FontAttributes="Bold" FontSize="Medium" Text="Add media" BackgroundColor="#98000b" Clicked="ImageButton_Clicked"></Button>
                     <Label x:Name="lblAbout" Margin="20,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                     <StackLayout Padding="20,10,20,10">
-                        <local:RoundedEntry x:Name="aboutEntry" Placeholder="About you" Text="{Binding about}"></local:RoundedEntry>
+                        <local1:CustomEditor x:Name="aboutEntry" Placeholder="Tell other users more about you" Text="{Binding about}" HeightRequest="100"></local1:CustomEditor>
                     </StackLayout>
                     <Label Text="Job title" Margin="20,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                     <StackLayout Padding="20,10,20,10">

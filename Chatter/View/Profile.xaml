@@ -55,27 +55,27 @@
                 </StackLayout>
             </local:CustomFrame>
             <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="6" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
-                    <StackLayout>
-                        <cards:CarouselView x:Name="autoSlider">
-                            <cards:CarouselView.ItemsSource>
-                                <x:Array Type="{x:Type View}">
-                                    <StackLayout Padding="40,5,40,5" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Image Source="FINAL_AMERA.png" Aspect="AspectFill" WidthRequest="400"/>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Label Text="Swipe around the world" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
-                                        <Label Text="Passport to anywhere with Amare!" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Label Text="Control Your Profile" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
-                                        <Label Text="Limit what others see with Amare" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                                    </StackLayout>
-                                </x:Array>
-                            </cards:CarouselView.ItemsSource>
-                        </cards:CarouselView>
-                        <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="30" Text="Share Amare" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
-                    </StackLayout>
-                </local:CustomFrame>
+                <StackLayout >
+                    <cards:CarouselView x:Name="autoSlider">
+                        <cards:CarouselView.ItemsSource>
+                            <x:Array Type="{x:Type View}">
+                                <StackLayout Padding="40,20,40,5" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image Source="FINAL_AMERA.png" Aspect="AspectFit" HeightRequest="55" WidthRequest="300"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Text="Swipe around the world" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
+                                    <Label Text="Passport to anywhere with Amare!" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label Text="Control Your Profile" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
+                                    <Label Text="Limit what others see with Amare" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                                </StackLayout>
+                            </x:Array>
+                        </cards:CarouselView.ItemsSource>
+                    </cards:CarouselView>
+                    <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share Amare" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
+                </StackLayout>
+            </local:CustomFrame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
