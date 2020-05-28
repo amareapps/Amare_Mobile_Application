@@ -40,6 +40,19 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+        <StackLayout IsVisible="False" x:Name="replyStack" Padding="10" BackgroundColor="WhiteSmoke">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="AUTO"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Padding="10,0,0,0" Spacing="0">
+                    <Label Text="Replying to"></Label>
+                    <Label x:Name="lblMessagetoReply" Padding="10,0,0,0"></Label>
+                </StackLayout>
+                <Button Text="x" WidthRequest="35" x:Name="btnHidereply" Clicked="btnHidereply_Clicked" FontSize="Micro" Padding="0" Margin="0" CornerRadius="10" Grid.Column="1"></Button>
+            </Grid>
+        </StackLayout>
         <Frame BackgroundColor="#EEEEEE" IsClippedToBounds="True" CornerRadius="10" HasShadow="True" Margin="0" Padding="0" VerticalOptions="End">
             <Grid Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>

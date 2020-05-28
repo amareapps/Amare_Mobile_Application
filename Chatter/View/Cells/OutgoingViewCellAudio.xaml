@@ -2,10 +2,30 @@
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
+          mc:Ignorable="d"
              x:Class="Chatter.View.Cells.OutgoingViewCellAudio">
-    <Frame Rotation="180"  HorizontalOptions="End" CornerRadius="20" BackgroundColor="Transparent" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-        <Button Text="Play audio" Clicked="Button_Clicked" HorizontalOptions="Start"></Button>
-    </Frame>
+    <multigestureviewplugin:MultiGestureView 
+            VibrateOnLongPress="True" 
+            LongPressVibrationDuration="300" 
+            VibrateOnTap="True" 
+            TapVibrationDuration="150" 
+            LongPressed="MultiGestureView_LongPressed">
+        <multigestureviewplugin:MultiGestureView.Content>
+            <FlexLayout>
+                <Frame Rotation="180"  HorizontalOptions="End" CornerRadius="20" BackgroundColor="Transparent" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                    <Button Text="Play audio" Clicked="Button_Clicked" HorizontalOptions="Start"></Button>
+                </Frame>
+                <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Reply</x:String>
+                            <x:String>Delete</x:String>
+                            <x:String>Copy</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </FlexLayout>
+        </multigestureviewplugin:MultiGestureView.Content>
+    </multigestureviewplugin:MultiGestureView>
 </ViewCell>

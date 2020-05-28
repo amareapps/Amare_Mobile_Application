@@ -19,7 +19,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="AUTO"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
+                </Grid.RowDefinitions>  
                 <Frame BackgroundColor="Transparent" BorderColor="Accent" CornerRadius="10" Padding="0,5,0,5" Margin="0" HorizontalOptions="Center" VerticalOptions="Center">
                     <local:SearchBarNoUnderline x:Name="searchEntry" Placeholder="Search for your matches..." CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" TextChanged="SearchBarNoUnderline_TextChanged" VerticalOptions="CenterAndExpand"></local:SearchBarNoUnderline>
                 </Frame>

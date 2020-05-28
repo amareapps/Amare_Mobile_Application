@@ -2,10 +2,10 @@
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin" xmlns:local="clr-namespace:Chatter.Classes"
           mc:Ignorable="d"
-             x:Class="Chatter.View.Cells.IncomingViewCellAudio">
-    <multigestureviewplugin:MultiGestureView 
+             x:Class="Chatter.View.Cells.IncomingViewCellReply">
+        <multigestureviewplugin:MultiGestureView 
             VibrateOnLongPress="True" 
             LongPressVibrationDuration="300" 
             VibrateOnTap="True" 
@@ -32,10 +32,19 @@
                     <FlexLayout Grid.RowSpan="2" Grid.Column="1" Direction="Column"
                         AlignItems="Start"
                         JustifyContent="SpaceEvenly" Margin="0"  Padding="0">
-                        <Frame Padding="0" Margin="0" BackgroundColor="Transparent" CornerRadius="10" IsClippedToBounds="True"  Grid.Column="1">
-                            <Button Text="Play audio" Clicked="Button_Clicked"></Button>
+                        <FlexLayout.Resources>
+                            <local:MessageContentConverter x:Key="messageConverter"></local:MessageContentConverter>
+                        </FlexLayout.Resources>
+                        <Label Text="{Binding sender_username,StringFormat='{0} replied to'}"></Label>
+                        <Frame BackgroundColor="LightGray" CornerRadius="10" Opacity="0.5" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                            <Label  Text="{Binding reply_to_message,Converter={StaticResource messageConverter}}"
+                                  TextColor="Black" Padding="10" HorizontalTextAlignment="Start" />
                         </Frame>
-                        <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" Grid.Column="1" Grid.Row="1" FontSize="Micro" HorizontalTextAlignment="Start"></Label>
+                        <Frame BackgroundColor="#c4c2c2" TranslationY="-10" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                            <Label  Text="{Binding message}"
+                                  TextColor="Black" Padding="10" HorizontalTextAlignment="Start" />
+                        </Frame>
+                        <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
                         <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">

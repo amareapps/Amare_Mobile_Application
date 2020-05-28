@@ -10,6 +10,7 @@ namespace Chatter.View.Cells
     public partial class OutgoingViewCell : ViewCell
     {
         public ChatModel VM => ((ChatModel)BindingContext);
+        MessageCenterManager notifier = new MessageCenterManager();
         public OutgoingViewCell()
         {
             InitializeComponent();
@@ -29,10 +30,7 @@ namespace Chatter.View.Cells
 
         private void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(imagePicker.SelectedIndex == 1)
-                MessagingCenter.Send<OutgoingViewCell, ChatModel>(this, "Hi", VM);
-            else if(imagePicker.SelectedIndex == 2)
-                MessagingCenter.Send<OutgoingViewCell, string >(this, "Hi", VM.message);
+            notifier.sendAction(VM, imagePicker.SelectedIndex);
         }
     }
 }

@@ -36,6 +36,9 @@ namespace Chatter.Model
                 onPropertyChanged("isVisible");
             }
         }
+        public string reply_to_id { get; set; }
+        public string reply_to_message { get; set; }
+
         public Command OpenMessageOptionCommand { get; }
         public event PropertyChangedEventHandler PropertyChanged;
         async Task OpenMessageOption()

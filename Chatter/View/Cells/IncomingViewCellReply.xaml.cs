@@ -12,32 +12,21 @@ using Xamarin.Forms.Xaml;
 namespace Chatter.View.Cells
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class IncomingViewCellImage : ViewCell
+    public partial class IncomingViewCellReply : ViewCell
     {
-        public ChatModel VM => ((ChatModel)BindingContext);
         MessageCenterManager notifier = new MessageCenterManager();
-        public IncomingViewCellImage()
+        public ChatModel VM => ((ChatModel)BindingContext);
+        public IncomingViewCellReply()
         {
             InitializeComponent();
-            imageSent.SizeChanged += ImageSent_SizeChanged;
         }
-
-        private void ImageSent_SizeChanged(object sender, EventArgs e)
-        {
-            if (imageSent.Height > 350)
-                imageSent.HeightRequest = 350;
-            if (imageSent.Width > 300)
-                imageSent.WidthRequest = 300;
-        }
-
-        private void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            notifier.sendAction(VM, imagePicker.SelectedIndex);
-        }
-
         private void MultiGestureView_LongPressed(object sender, EventArgs e)
         {
             imagePicker.Focus();
+        }
+        private void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM, imagePicker.SelectedIndex);
         }
     }
 }
