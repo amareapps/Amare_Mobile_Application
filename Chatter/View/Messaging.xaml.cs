@@ -62,7 +62,7 @@ namespace Chatter
             NavigationPage.SetHasNavigationBar(this, true);
             NavigationPage.SetHasBackButton(this,true);
             lblEmoji.Text = emoji;
-            MessagingCenter.Subscribe<OutgoingViewCell, ChatModel>(this, "Hi", async (sender, arg) =>
+            MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "1", async (sender, arg) =>
             {
                var deletionSuccess = await api.deleteMessage(arg.id);
                 if (deletionSuccess)
@@ -71,10 +71,14 @@ namespace Chatter
                     ChatList.ItemsSource = chatModels.OrderByDescending(entry => entry.datetime);
                 }
             });
-            MessagingCenter.Subscribe<OutgoingViewCell, string>(this, "Hi", async (sender, arg) =>
+            MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "2", async (sender, arg) =>
             {
-                await Clipboard.SetTextAsync(arg);
+                await Clipboard.SetTextAsync(arg.message);
                 CrossToastPopUp.Current.ShowToastMessage("Copied to clipboard");
+            });
+            MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "0", async (sender, arg) =>
+            {
+                replyStack.IsVisible = true;
             });
             Task.Run(() =>
             {

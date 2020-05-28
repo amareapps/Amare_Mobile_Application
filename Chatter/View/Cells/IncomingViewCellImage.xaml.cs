@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Chatter.Classes;
+using Chatter.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,8 @@ namespace Chatter.View.Cells
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IncomingViewCellImage : ViewCell
     {
+        public ChatModel VM => ((ChatModel)BindingContext);
+        MessageCenterManager notifier = new MessageCenterManager();
         public IncomingViewCellImage()
         {
             InitializeComponent();
@@ -24,6 +28,16 @@ namespace Chatter.View.Cells
                 imageSent.HeightRequest = 350;
             if (imageSent.Width > 300)
                 imageSent.WidthRequest = 300;
+        }
+
+        private void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM, imagePicker.SelectedIndex);
+        }
+
+        private void MultiGestureView_LongPressed(object sender, EventArgs e)
+        {
+            imagePicker.Focus();
         }
     }
 }

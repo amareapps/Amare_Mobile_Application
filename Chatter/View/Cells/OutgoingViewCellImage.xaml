@@ -1,15 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
           x:Class="Chatter.View.Cells.OutgoingViewCellImage">
-    <FlexLayout FlowDirection="LeftToRight" 
+    <multigestureviewplugin:MultiGestureView 
+            VibrateOnLongPress="True" 
+            LongPressVibrationDuration="300" 
+            VibrateOnTap="True" 
+            TapVibrationDuration="150" 
+            LongPressed="MultiGestureView_LongPressed">
+        <multigestureviewplugin:MultiGestureView.Content>
+            <FlexLayout FlowDirection="LeftToRight" 
                 Rotation="180" 
                 Direction="Column"
                 AlignItems="End"
                 JustifyContent="SpaceEvenly" Margin="0,0,60,0" Padding="10">
-        <Frame BackgroundColor="#e3646c" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-            <ffimageloading:CachedImage x:Name="imageSent" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding message}" Aspect="AspectFill"></ffimageloading:CachedImage>
-        </Frame>
-        <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
-    </FlexLayout>
+                <Frame BackgroundColor="#e3646c" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                    <ffimageloading:CachedImage x:Name="imageSent" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding message}" Aspect="AspectFill"></ffimageloading:CachedImage>
+                </Frame>
+                <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
+                <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Reply</x:String>
+                            <x:String>Delete</x:String>
+                            <x:String>Copy</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </FlexLayout>
+        </multigestureviewplugin:MultiGestureView.Content>
+    </multigestureviewplugin:MultiGestureView>
 </ViewCell>
