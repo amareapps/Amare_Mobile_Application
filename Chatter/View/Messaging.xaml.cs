@@ -39,7 +39,7 @@ namespace Chatter
     public partial class Messaging : ContentPage,IRefreshInbox
     {
         ObservableCollection<ChatModel> chatModels = new ObservableCollection<ChatModel>();
-        private string Session_Id = "", Receiver_Id = "",Username = "",Image_Source="",Emoji = "";
+        private string Session_Id = "", Receiver_Id = "",Username = "",Image_Source="",Emoji = "",reply_id="" , reply_message="";
         ImageOption imageOpt = new ImageOption();
         Base64toImageConverter converters = new Base64toImageConverter();
         string userLoggedIn = Application.Current.Properties["Id"].ToString().Replace("\"", "");
@@ -78,6 +78,9 @@ namespace Chatter
             });
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "0", async (sender, arg) =>
             {
+                reply_id = arg.id;
+                reply_message = arg.message;
+                lblMessagetoReply.Text = reply_message;
                 replyStack.IsVisible = true;
             });
             Task.Run(() =>
@@ -335,12 +338,17 @@ namespace Chatter
                 await DisplayAlert("Test Audio", ex.ToString(), "Okay");
             }
         }
+        private void btnHidereply_Clicked(object sender, EventArgs e)
+        {
+            replyStack.IsVisible = false;
+            reply_id = string.Empty;
+            reply_message = string.Empty;
+        }
 
         private void sendimageButton_Clicked(object sender, EventArgs e)
         {
             imagePicker.Focus();
         }
-
         private async Task sendMessage(string message)
         {
             ChatModel modeler = new ChatModel {
@@ -350,7 +358,9 @@ namespace Chatter
                 session_id = Session_Id,
                 receiver_id = Receiver_Id,
                 message = message,
-                datetime = DateTime.Now.ToString()
+                datetime = DateTime.Now.ToString(),
+                reply_to_id = reply_id,
+                reply_to_message = reply_message
             };
             string val = JsonConvert.SerializeObject(modeler);
             //await DisplayAlert("Test", val, "Okay");
@@ -359,6 +369,9 @@ namespace Chatter
             await wsClient.SendAsync(segmnet, WebSocketMessageType.Text, true, CancellationToken.None);
             messageEntry.Text = string.Empty;
             messageEntry.Unfocus();
+            reply_id = string.Empty;
+            reply_message = string.Empty;
+            replyStack.IsVisible = false;
             /*
             var client = new HttpClient();
             var form = new MultipartFormDataContent();

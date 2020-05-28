@@ -12,8 +12,11 @@ namespace Chatter.Classes
         DataTemplate outgoingDataTemplate;
         DataTemplate incomingDataTemplateImage;
         DataTemplate outgoingDataTemplateImage;
+
+        DataTemplate outgoingDataTemplateReply;
         DataTemplate outgoingDataTemplateAudio;
         DataTemplate incomingDataTempleteAudio;
+        DataTemplate incomingDataTempleteReply;
 
         public ChatTemplateSelector()
         {
@@ -22,7 +25,9 @@ namespace Chatter.Classes
             this.incomingDataTemplateImage = new DataTemplate(typeof(IncomingViewCellImage));
             this.outgoingDataTemplateImage = new DataTemplate(typeof(OutgoingViewCellImage));
             this.outgoingDataTemplateAudio = new DataTemplate(typeof(OutgoingViewCellAudio));
+            this.outgoingDataTemplateReply = new DataTemplate(typeof(OutgoingViewCellReply));
             this.incomingDataTempleteAudio = new DataTemplate(typeof(IncomingViewCellAudio));
+            this.incomingDataTempleteReply = new DataTemplate(typeof(IncomingViewCellReply));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
@@ -30,7 +35,9 @@ namespace Chatter.Classes
             var messageVm = item as ChatModel;
             if (messageVm == null)
                 return null;
-            if(messageVm.message.Contains("chatter-7b8e4") && messageVm.message.Contains("UserImages"))
+            if(!string.IsNullOrEmpty(messageVm.reply_to_id))
+                return (messageVm.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", "")) ? outgoingDataTemplateReply : incomingDataTempleteReply;
+            if (messageVm.message.Contains("chatter-7b8e4") && messageVm.message.Contains("UserImages"))
                 return (messageVm.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", "")) ? outgoingDataTemplateImage : incomingDataTemplateImage;
             if (messageVm.message.Contains("chatter-7b8e4") && messageVm.message.Contains("AudioCollection"))
                 return (messageVm.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", "")) ? outgoingDataTemplateAudio : incomingDataTempleteAudio;
