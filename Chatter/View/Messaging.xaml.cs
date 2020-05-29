@@ -149,7 +149,7 @@ namespace Chatter
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Device.BeginInvokeOnMainThread(async () => await loadData());
+           // Device.BeginInvokeOnMainThread(async () => await loadData());
             throw new NotImplementedException();
         }
         protected override void OnDisappearing()
