@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes" xmlns:forms="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:Chatter.Classes" 
+             xmlns:forms="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
              mc:Ignorable="d" 
              x:Class="Chatter.Settings" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -54,6 +56,15 @@
                         <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100" MaximumTrackColor="Blue" MinimumHeightRequest="10" MinimumTrackColor="Blue" ThumbColor="Blue"></Slider>
                     </StackLayout>
                     <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Label Grid.Column="0" Text="Show Distances in" FontSize="Medium" Grid.ColumnSpan="2"></Label>
+                        </Grid>
+                        <StackLayout Orientation="Horizontal" x:Name="metricLayout">
+                            <Button x:Name="btnKm" Clicked="Button_Clicked" Text="Km." HorizontalOptions="FillAndExpand" CornerRadius="20" BackgroundColor="#e3e1de" ></Button>
+                            <Button x:Name="btnMi" Clicked="Button_Clicked" Text="Mi." HorizontalOptions="FillAndExpand" CornerRadius="20" BackgroundColor="#e3e1de"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -65,28 +76,20 @@
                                 <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=UpperValue, StringFormat='{0:N0}'}" ></Label>
                             </StackLayout>
                          </Grid>
-                        <forms:RangeSlider MaxThumbHidden="False" MinThumbHidden="False" x:Name="ageslider" LowerValue="18" UpperValue="55" ActiveColor="Red" MinimumValue="18" MaximumValue="55" TextSize="15" />
+                        <forms:RangeSlider MaxThumbHidden="False" MinThumbHidden="False" BarHeight="5"  x:Name="ageslider" LowerValue="18"  UpperValue="55" MinimumValue="18" MaximumValue="55" TextSize="15" />
                     </StackLayout>
-                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
-                        <Grid HorizontalOptions="CenterAndExpand">
-                            <Label Grid.Column="0" Text="Show Distances in" FontSize="Medium" Grid.ColumnSpan="2"></Label>
-                        </Grid>
-                        <StackLayout Orientation="Horizontal" x:Name="metricLayout">
-                            <Button x:Name="btnKm" Clicked="Button_Clicked" Text="Km." HorizontalOptions="FillAndExpand"></Button>
-                            <Button x:Name="btnMi" Clicked="Button_Clicked" Text="Mi." HorizontalOptions="FillAndExpand"></Button>
-                        </StackLayout>
-                    </StackLayout>
+                    
                     <Button x:Name="saveButton" Text="Save and Apply" Margin="0,0,0,10" CornerRadius="30" BackgroundColor="#e3e1de" Clicked="saveButton_Clicked"></Button>
                     <Label Text="Contact Us" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Text="Help and Support" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
-                    <StackLayout Padding="0,30,0,0" >
-                        <Button Text="DELETE MY ACCOUNT" TextColor="#98000b" BackgroundColor="#EEEEEE" BorderColor="Accent" FontAttributes="Bold" BorderWidth="2" CornerRadius="30" Clicked="logoutButton_Clicked"></Button>
-                        <Button Text="LOGOUT" TextColor="#EEEEEE" BackgroundColor="#98000b" CornerRadius="30" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
-                    </StackLayout>
+                    <Button Text="LOGOUT" TextColor="#98000b" BackgroundColor="#EEEEEE" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
                     <Grid BackgroundColor="Transparent" Padding="0,50,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                         <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="150"></Image>
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
+                    <StackLayout Padding="0,30,0,0" >
+                        <Button Text="DELETE MY ACCOUNT" TextColor="#EEEEEE" BackgroundColor="#98000b" FontAttributes="Bold" CornerRadius="30" Clicked="logoutButton_Clicked"></Button>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

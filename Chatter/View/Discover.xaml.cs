@@ -188,7 +188,7 @@ namespace Chatter
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_liked", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    //var exec = await DisplayAlert("Discover", "You liked " + currentItem.username, null, "OK");
+                    var exec = await DisplayAlert("Discover", "You liked " + currentItem.username, null, "OK");
                     imageSources.Remove(currentItem);
                 }
             }

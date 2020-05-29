@@ -38,6 +38,7 @@
                                     <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
                                     AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
                                     <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1" BackgroundColor="#40000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Image Source="heart.png" x:Name="userliked" IsVisible="False" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></Image>
                                         <StackLayout Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="Start">
                                             <StackLayout Orientation="Horizontal">
                                                     <Label Text="{Binding username}" TextColor="White" FontSize="Large" FontAttributes="Bold">
@@ -48,10 +49,11 @@
                                                     <Label Text="|" TextColor="White" FontSize="Large" FontAttributes="Bold"></Label>
                                                     <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Medium" VerticalOptions="End" TextColor="White"></Label>
                                                 </StackLayout>
+                                            <!--
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
                                                 <ffimageloading:CachedImage Source="about.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
                                                 <Label Text="{Binding about}" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
-                                            </FlexLayout>
+                                            </FlexLayout> -->
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
                                                 <ffimageloading:CachedImage Source="school.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0">
                                                 </ffimageloading:CachedImage>
