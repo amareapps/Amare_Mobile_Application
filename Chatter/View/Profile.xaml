@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:control="http://xamarin.com/schemas/2014/forms" 
-             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:local="clr-namespace:Chatter.Classes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+             xmlns:control="http://xamarin.com/schemas/2014/forms" 
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" 
+             xmlns:local="clr-namespace:Chatter.Classes" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              x:Class="Chatter.Profile" BackgroundColor="#EEEEEE">
     <ContentPage.Content>
@@ -12,15 +16,12 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="200"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid HeightRequest="50" Margin="0,0,0,0" Grid.Row="0">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
                 <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
-                           Clicked="EditButton_Clicked"/>
+                               Clicked="EditButton_Clicked"/>
                 <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
                 <ImageButton Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
@@ -34,27 +35,28 @@
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>
-                    <AbsoluteLayout Grid.Row="2" IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <AbsoluteLayout IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
                         <Frame HasShadow="True"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"
-                                       IsClippedToBounds="True" Padding="0" CornerRadius="100" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           IsClippedToBounds="True" Padding="0" CornerRadius="100" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
                             <ImageButton
-                                       x:Name="ProfileImage"  HeightRequest="200"
-                                       WidthRequest="200" Source="tzuyu.jpg" 
-                                                 Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
+                                           x:Name="ProfileImage"  HeightRequest="200"
+                                           WidthRequest="200" Source="tzuyu.jpg" 
+                                                     Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
                         </Frame>
                         <ImageButton AbsoluteLayout.LayoutBounds="0.7, 0.95, 35, 35"
-                                            AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
-                                                 HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
+                                                AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
+                                                     HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
                     </AbsoluteLayout>
-                    <Label Padding="0,5,0,0" Grid.Row="3" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Label Padding="0,0,0,0" Grid.Row="4" x:Name="schoolLabel" Text="{Binding school}" FontSize="Subtitle"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <ActivityIndicator IsRunning="False"  Grid.Row="5"  HeightRequest="40" WidthRequest="40"
-                                         IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+                    <Label Padding="0,5,0,0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Padding="0,0,0,0" x:Name="schoolLabel" Text="{Binding school}" FontSize="Subtitle" WidthRequest="200" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>
+
                 </StackLayout>
             </local:CustomFrame>
-            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="6" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
+            <ActivityIndicator IsRunning="True"  Grid.Row="2"  HeightRequest="80" WidthRequest="80"
+                                             IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
                 <StackLayout >
                     <cards:CarouselView x:Name="autoSlider">
                         <cards:CarouselView.ItemsSource>

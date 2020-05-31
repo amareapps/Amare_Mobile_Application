@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+               xmlns:local="clr-namespace:Chatter"
+                  mc:Ignorable="d"
+                  x:Class="Chatter.ActivityIndicator">
+        <!-- Overlay -->
+    <ContentView x:Name="overlay"  
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+                        AbsoluteLayout.LayoutFlags="All"  
+                        IsVisible="True"  
+                        Padding="0" BackgroundColor="#C0808080">
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+            <StackLayout Spacing="0" >
+                <ffimageloading:CachedImage Source="amareactivityindicator.gif"   
+                        HeightRequest="40"  
+                        WidthRequest="40"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</pages:PopupPage>

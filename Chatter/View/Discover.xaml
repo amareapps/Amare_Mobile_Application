@@ -7,7 +7,8 @@
              mc:Ignorable="d"
              x:Class="Chatter.Discover"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:local="clr-namespace:Chatter.Classes" BackgroundColor="#EEEEEE">
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:local="clr-namespace:Chatter.Classes" BackgroundColor="#EEEEEE">
     <Page.Resources>
         <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
         <local:StringToBoolen x:Key="stringtoBool"></local:StringToBoolen>
@@ -34,30 +35,54 @@
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="20" HasShadow="True">
                                 <AbsoluteLayout >
-                                    <ActivityIndicator BindingContext="{x:Reference coverFlowView}" IsRunning="{Binding IsLoading}" Color="#98000b" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                                    <!-- Overlay -->
+                                    <ContentView x:Name="overlay"  
+                                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+                                     AbsoluteLayout.LayoutFlags="All"  
+                                     IsVisible="{Binding IsLoading}"  
+                                     Padding="0" BindingContext="{x:Reference coverFlowView}">
+
+                                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+                                            <StackLayout Spacing="0" >
+                                                <ffimageloading:CachedImage Source="amareactivityindicator.gif"   
+                                                HeightRequest="100"  
+                                                WidthRequest="100"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                    </ContentView>
                                     <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
                                     AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
                                     <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1" BackgroundColor="#40000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <Image Source="heart.png" x:Name="userliked" IsVisible="False" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></Image>
                                         <StackLayout Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="Start">
                                             <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding username}" TextColor="White" FontSize="Large" FontAttributes="Bold">
-                                                        <Label.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                        </Label.GestureRecognizers>
-                                                    </Label>
-                                                    <Label Text="|" TextColor="White" FontSize="Large" FontAttributes="Bold"></Label>
-                                                    <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Medium" VerticalOptions="End" TextColor="White"></Label>
-                                                </StackLayout>
+                                                <Label Text="{Binding username}" TextColor="White" FontSize="Large" FontAttributes="Bold">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                                <Label Text="|" TextColor="White" FontSize="Large" FontAttributes="Bold"></Label>
+                                                <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Medium" VerticalOptions="End" TextColor="White"></Label>
+                                            </StackLayout>
                                             <!--
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
                                                 <ffimageloading:CachedImage Source="about.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
                                                 <Label Text="{Binding about}" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
                                             </FlexLayout> -->
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
-                                                <ffimageloading:CachedImage Source="school.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0">
+                                                <Grid BackgroundColor="Transparent">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="school.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0">
                                                 </ffimageloading:CachedImage>
-                                                <Label Text="{Binding school}" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+                                                    <Label Text="{Binding school}" Grid.Row="0" Grid.Column="1" TextColor="White" FontSize="Medium"  FontAttributes="Bold"/>
+                                                </Grid>
                                             </FlexLayout>
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
                                                 <ffimageloading:CachedImage Source="locationIcon.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>

@@ -146,7 +146,6 @@ namespace Chatter
 
         private async void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadingIndicator.IsRunning = true;
             loadingIndicator.IsVisible = true;
             Picker picker = sender as Picker;
             string userId = Application.Current.Properties["Id"].ToString().Replace("\"", "");
@@ -168,14 +167,9 @@ namespace Chatter
             retrieveUserProp();
             imagePicker.IsVisible = false;
             imagePicker.SelectedIndex = -1;
-            loadingIndicator.IsRunning = false;
             loadingIndicator.IsVisible = false;
         }
 
-        private async void CameraButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnShareAmare_Clicked(object sender, EventArgs e)
         {
@@ -184,7 +178,7 @@ namespace Chatter
             CrossShare.Current.Share(new ShareMessage
             {
                 Title = "Amare Dating App",
-                Text = "Checkout the new Amare App where you can find your 'The One'",
+                Text = "Checkout the new Amare App where you can experience love being limitless!",
                 Url = "https://www.facebook.com/amareapps/"
             });
         }

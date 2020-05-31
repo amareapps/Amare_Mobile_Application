@@ -13,7 +13,7 @@
         <local:NumbertoBooleanConverter x:Key="numbertoBool"></local:NumbertoBooleanConverter>
     </Page.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="0,0,0,10">
             <Grid HeightRequest="30" Margin="0" Padding="0,10,0,5">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
@@ -52,7 +52,7 @@
                                         HorizontalOptions="Center" IndicatorSize="10"/>
                         </AbsoluteLayout>
                     </Frame>
-                <Frame HasShadow="True" Grid.Row="1" CornerRadius="20">
+                    <Frame HasShadow="True" Grid.Row="1" CornerRadius="20">
                         <StackLayout Margin="0" Padding="0">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding username}" TextColor="Black" FontSize="Large" FontAttributes="Bold">
@@ -71,31 +71,47 @@
                                     <Label Text="{Binding gender}" FontSize="Small" FontAttributes="Bold" />
                                 </FlexLayout>
                                 <FlexLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
-                                    <ffimageloading:CachedImage Source="schooldarkred.png" HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
-                                    </ffimageloading:CachedImage>
-                                    <Label Text="{Binding school}"  FontSize="Small" FontAttributes="Bold"/>
+                                    <Grid BackgroundColor="Transparent" Padding="0" Margin="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="25"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <ffimageloading:CachedImage Source="schooldarkred.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"  HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
+                                        </ffimageloading:CachedImage>
+                                        <Label Text="{Binding school}" Grid.Row="0" Grid.Column="1"  FontSize="Small" HorizontalOptions="Start" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200"/>
+                                    </Grid>
                                 </FlexLayout>
                             </Grid>
-                            <StackLayout Padding="20,5,0,0" Orientation="Horizontal">
-                                <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding job_title,Converter={StaticResource stringtoBool}}">
-                                    <ffimageloading:CachedImage Source="jobdarkred.png" HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
+                            <StackLayout Padding="20,5,0,10" Orientation="Horizontal">
+                                <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" >
+                                    <ffimageloading:CachedImage Source="jobdarkred.png" HeightRequest="15" WidthRequest="15" Margin="0,0,10,0" IsVisible="{Binding job_title,Converter={StaticResource stringtoBool}}">
                                     </ffimageloading:CachedImage>
-                                    <Label Text="{Binding job_title}" FontSize="Small" FontAttributes="Bold"/>
-                                </FlexLayout>
-                                <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding company,Converter={StaticResource stringtoBool}}">
-                                    <Label Text="at "  FontSize="Small" FontAttributes="Bold"/>
-                                    <Label Text="{Binding company}"  FontSize="Small" FontAttributes="Bold"/>
+                                    <Label Text="{Binding job_title}" FontSize="Small" FontAttributes="Bold" IsVisible="{Binding job_title,Converter={StaticResource stringtoBool}}"/>
+                                    <Label Text=" at "  FontSize="Small" FontAttributes="Bold" IsVisible="{Binding company,Converter={StaticResource stringtoBool}}"/>
+                                    <Label Text="{Binding company}" FontSize="Small" FontAttributes="Bold" IsVisible="{Binding company,Converter={StaticResource stringtoBool}}"/>
                                 </FlexLayout>
                             </StackLayout>
-                            <FlexLayout Padding="10,20,0,0"  Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
-                                <Label Text="{Binding about}" FontSize="Medium" FontAttributes="Bold" WidthRequest="280"/>
+                            <BoxView HeightRequest="2" BackgroundColor="#C098000b" Margin="0" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}"></BoxView>
+                            <FlexLayout Padding="10,10,0,0"  Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
+                                <Grid BackgroundColor="Transparent">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <ffimageloading:CachedImage Source="aboutdarkred.png" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"  HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
+                                </ffimageloading:CachedImage>
+                                    <Label Text="{Binding about}" Grid.Row="0" Grid.Column="1" VerticalOptions="Start" FontSize="Small" FontAttributes="Bold" WidthRequest="280"/>
+                                </Grid>
                             </FlexLayout>
                         </StackLayout>
                     </Frame>
-                <Frame HasShadow="True" Grid.Row="2" Padding="0" Margin="0" CornerRadius="30">
-                    <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium" CornerRadius="30"/>
-                </Frame>
-                    <Frame HasShadow="True" Grid.Row="3" Padding="10" Margin="0,0,0,10" CornerRadius="20" x:Name="instaFrame">
+                    <Frame HasShadow="True" Grid.Row="2" Padding="10" Margin="0,0,0,0" CornerRadius="20" x:Name="instaFrame">
                         <StackLayout x:Name="instaLayout">
                             <Label Text="Instagram Photos" FontSize="Medium" FontAttributes="Bold" Padding="10,0,0,0"></Label>
                             <ScrollView Orientation="Horizontal">
@@ -123,6 +139,9 @@
                                 </StackLayout>
                             </ScrollView>
                         </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="True" Grid.Row="3" Padding="0" Margin="0" CornerRadius="30">
+                        <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium" CornerRadius="30"/>
                     </Frame>
                 </Grid>
             </ScrollView>
