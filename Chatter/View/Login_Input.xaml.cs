@@ -21,6 +21,7 @@ using System.IO;
 using Android.Util;
 using System.Net;
 using Android.Graphics;
+using Chatter.View;
 
 namespace Chatter
 {
@@ -37,12 +38,12 @@ namespace Chatter
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            activityIndicator.IsRunning = true;
+            overlay.IsVisible = true;
             string sample = emailEntry.Text + "," + passEntry.Text;
             if (emailEntry.Text == string.Empty || passEntry.Text == string.Empty)
             {
                 await DisplayAlert("Login Failed", "Please enter your registered email address and password.", "Okay");
-                activityIndicator.IsRunning = false;
+                overlay.IsVisible = false;
                 return;
             }
             try
@@ -58,7 +59,7 @@ namespace Chatter
                     if (response.ToString().Contains("Undefined")) 
                     {
                         await DisplayAlert("Login Failed", "Please enter the correct registered email address and/or password.", "Okay");
-                        activityIndicator.IsRunning = false;
+                        overlay.IsVisible = false;
                         return;
                     }
                     response = response.Replace(@"\", "");
@@ -81,13 +82,13 @@ namespace Chatter
                 await loadRecentMatches();
                 App.Current.MainPage = new NavigationPage(new MainPage());
                 //await Navigation.PushModalAsync(new MainPage());
-                activityIndicator.IsRunning = false;
+                overlay.IsVisible = false;
                 await PopupNavigation.Instance.PopAsync(true);
 
             }
             catch (Exception ex)
             {
-                activityIndicator.IsRunning = false;
+                overlay.IsVisible= false;
                 await DisplayAlert("Error",ex.ToString(),"Okay");
             }
         }
@@ -267,17 +268,6 @@ namespace Chatter
             }
         }
 
-        private void activityIndicator_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (activityIndicator.IsRunning)
-            {
-                loginButton.IsEnabled = false;
-            }
-            else
-            {
-                loginButton.IsEnabled = true;
-            }
-        }
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             passEntry.IsPassword = passEntry.IsPassword ? false : true;

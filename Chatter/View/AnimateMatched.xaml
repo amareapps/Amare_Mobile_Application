@@ -6,7 +6,7 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              mc:Ignorable="d"
              x:Class="Chatter.View.AnimateMatched">
-    <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="20" CornerRadius="30">
+    <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="20" Padding="0,10,0,10" CornerRadius="30">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -16,13 +16,15 @@
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO"/>
                 <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
             </Grid.RowDefinitions>
-            <Label Text="It's A Match!" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="cursive" HorizontalTextAlignment="Center" FontSize="50"
+            <Label Text="You've found a match!" Grid.Row="0" Grid.ColumnSpan="2"  FontFamily="cursive" HorizontalTextAlignment="Center" FontSize="30"
                     HorizontalOptions="CenterAndExpand" />
-            <ffimageloading:CachedImage BackgroundColor="Transparent" HeightRequest="1" x:Name="heartImage" Source="heartmatch.png" WidthRequest="1" IsVisible="False" Opacity="0" Grid.ColumnSpan="2" Grid.Row="1"></ffimageloading:CachedImage>
-            <ffimageloading:CachedImage BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill" HeightRequest="200" WidthRequest="200" x:Name="yourImage" Grid.Row="1" Grid.Column="0"></ffimageloading:CachedImage>
-            <ffimageloading:CachedImage BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill"  HeightRequest="200" WidthRequest="200" x:Name="othersImage" Grid.Row="1" Grid.Column="1"></ffimageloading:CachedImage>
-            <Frame BackgroundColor="Transparent" Padding="0,30,0,0" HorizontalOptions="Center" Grid.Row="2" Grid.ColumnSpan="2">
+            <BoxView Margin="0,5,0,5" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="2" BackgroundColor="Accent"></BoxView>
+            <ffimageloading:CachedImage BackgroundColor="Transparent" HeightRequest="1" x:Name="heartImage" Source="heartmatch.png" WidthRequest="1" IsVisible="False" Opacity="0" Grid.ColumnSpan="2" Grid.Row="2"></ffimageloading:CachedImage>
+            <ffimageloading:CachedImage BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill" HeightRequest="200" WidthRequest="200" x:Name="yourImage" Grid.Row="2" Grid.Column="0"></ffimageloading:CachedImage>
+            <ffimageloading:CachedImage BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill"  HeightRequest="200" WidthRequest="200" x:Name="othersImage" Grid.Row="2" Grid.Column="1"></ffimageloading:CachedImage>
+            <Frame BackgroundColor="Transparent" Padding="0,30,0,0" HorizontalOptions="Center" Grid.Row="3" Grid.ColumnSpan="2">
             <Button Text="Keep Going" CornerRadius="30" BackgroundColor="#98000b" Clicked="Button_Clicked_1" WidthRequest="200" BorderColor="White" BorderWidth="2" TextColor="#EEEEEE" FontAttributes="Bold" ></Button>
             </Frame>
             </Grid>
