@@ -66,5 +66,10 @@ namespace Chatter
         {
             await Navigation.PushModalAsync(new SocialMediaLogin(SocialMediaPlatform.Instagram));
         }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new ConnectionConfiguration());
+        }
     }
 }

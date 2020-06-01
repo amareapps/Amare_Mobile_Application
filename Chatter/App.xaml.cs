@@ -16,10 +16,25 @@ namespace Chatter
     public partial class App : Application
     {
         ApiConnector api = new ApiConnector();
+        IpAddress ipAddress = new IpAddress();
+        SqliteManager sqlites = new SqliteManager();
         public App()
         {
             InitializeComponent();
-
+            try
+            {
+                string ip = sqlites.GetIpAddress().Url;
+                ApiConnection.Url = ip;
+            }
+            catch (Exception ex)
+            {
+                ipAddress.Url = ApiConnection.Url;
+                sqlites.setIpAddress(ipAddress);
+                string ip = sqlites.GetIpAddress().Url;
+                ApiConnection.Url = ip;
+            }
+            MainPage = new NavigationPage(new SplashScreen());
+            /**
             if (hasLoggedIn())
             {
                 MainPage = new NavigationPage(new MainPage());
@@ -28,6 +43,7 @@ namespace Chatter
             {
                 MainPage = new NavigationPage(new Login());
             }
+            */
         }
 
         protected override void OnStart()

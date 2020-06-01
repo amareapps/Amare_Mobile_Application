@@ -52,6 +52,35 @@ namespace Chatter.Classes
             }
             return null;
         }
+        public void setIpAddress(IpAddress obj)
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                ApiConnection.Url = obj.Url;
+                conn.CreateTable<IpAddress>();
+                var table5 = conn.Table<IpAddress>().Delete(x => x.Url != "");
+                conn.InsertOrReplace(obj);
+            }
+        }
+        public IpAddress GetIpAddress()
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<IpAddress>();
+                var table = conn.Table<IpAddress>().ToList();
+                foreach (IpAddress ipAddress in table)
+                {
+                    return ipAddress;
+                }
+            }
+            return null;
+        }
     }
 
 }
