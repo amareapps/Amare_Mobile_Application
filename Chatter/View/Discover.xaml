@@ -28,7 +28,15 @@
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" HorizontalOptions="Center" VerticalOptions="Start" />
                 <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
             </Grid>
-            <AbsoluteLayout Grid.Row="1" Grid.Column="0">
+            <AbsoluteLayout x:Name="samplesss" Grid.Row="1" Grid.Column="0">
+                <StackLayout AbsoluteLayout.LayoutFlags="SizeProportional" 
+                                           AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops! It looks like you've reached you maximum swipe for the day" HorizontalOptions="CenterAndExpand"></Label>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Get Amare Coins now to get additional swipe" HorizontalOptions="CenterAndExpand"></Label>
+                    </StackLayout>
+                </StackLayout>
                 <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="True">
                     <cards:CardsView.ItemTemplate>

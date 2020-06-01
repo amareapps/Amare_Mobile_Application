@@ -110,9 +110,10 @@ namespace Chatter
             imagePicker.Focus();
         }
 
-        private void UpdateProfileButton_Clicked(object sender, EventArgs e)
+        private async void UpdateProfileButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new NavigationPage(new EditProfile()));
+
+            await Navigation.PushModalAsync(new NavigationPage(new EditProfile()));
         }
         private void retrieveUserProp()
         {
@@ -134,6 +135,7 @@ namespace Chatter
                         Application.Current.Properties["Id"] = "\"" + model.id + "\"";
                         //DisplayAlert("Get", Application.Current.Properties["Id"].ToString(), "Okay");
                         Application.Current.Properties["username"] = model.username;
+                        break;
                     }
                 }
                 BindingContext = userModel;
@@ -181,6 +183,13 @@ namespace Chatter
                 Text = "Checkout the new Amare App where you can experience love being limitless!",
                 Url = "https://www.facebook.com/amareapps/"
             });
+        }
+
+        private async void vipButton_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Clicked!","test","Okay");
+            PaymentIntegration integs = new PaymentIntegration();
+            await integs.Sample();
         }
     }
 }

@@ -85,6 +85,11 @@ namespace Chatter
                     }
                 }
                 await loadData();
+                if (coverFlowView.ItemsCount == 1)
+                {
+                    maxReachFrame.IsVisible = true;
+                    samplesss.RaiseChild(maxReachFrame);
+                }
             }
             catch(Exception e)
             {
@@ -229,7 +234,13 @@ namespace Chatter
 
             //Convert Birthday to age
             string format = "dd/MM/yyyy HH:mm:ss";
-            var birthdate = DateTime.ParseExact(model.birthdate,format, CultureInfo.InvariantCulture);
+            //var birthdate = DateTime.ParseExact(model.birthdate,format, CultureInfo.InvariantCulture);
+
+            string[] test = model.birthdate.Split('/');
+            string complete = test[1] + "/" + test[0] + "/" + test[2];
+            var birthdate = System.Convert.ToDateTime(complete);
+            // Calculate the age.
+            //var age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
 
             // Calculate the age.
             int age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
@@ -289,7 +300,7 @@ namespace Chatter
                 await likeUser();
             }
             if (coverFlowView.ItemsCount == 1)
-                await DisplayAlert("Sana","Lalabas to pag isa nlng laman","Nays");
+                maxReachFrame.IsVisible = true;
         }
 
         private async void reloadButton_Clicked(object sender, EventArgs e)

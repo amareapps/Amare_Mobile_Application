@@ -159,7 +159,7 @@ namespace Chatter
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
                 conn.CreateTable<UserModel>();
-                var table = conn.Table<UserModel>().Delete(x => x.id == _id);
+                var table = conn.Table<UserModel>().Delete(x => x.id != "");
                 conn.CreateTable<InboxModel>();
                 var table1 = conn.Table<InboxModel>().Delete(x => x.user_id != "");
                 conn.CreateTable<RecentMatchesModel>();

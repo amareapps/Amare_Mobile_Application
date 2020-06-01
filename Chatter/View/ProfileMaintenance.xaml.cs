@@ -60,21 +60,22 @@ namespace Chatter
 
         private async void continueButton_Clicked(object sender, EventArgs e)
         {
-            if (userNameEntry.Text == string.Empty || passwordEntry.Text == string.Empty || 
-                emailEntry.Text == string.Empty || gender == string.Empty || imageString == string.Empty || interestIn == string.Empty 
-                || universityEntry.Text == string.Empty)
-            {
-                await DisplayAlert("Oops!", "Incomplete credentials! Please fill the required fields.", "Okay");
-                return;
-            }
-            activityIndicator.IsRunning = true;
-            Application.Current.Properties["Name"] = userNameEntry.Text;
-            Application.Current.Properties["Password"] = passwordEntry.Text;
-            Application.Current.Properties["Email"] = emailEntry.Text;
-            Application.Current.Properties["Gender"] = gender;
-            Application.Current.Properties["Birthday"] = birthdatePicker.ToString();
             try
             {
+                if (userNameEntry.Text == string.Empty || passwordEntry.Text == string.Empty ||
+                    emailEntry.Text == string.Empty || gender == string.Empty || imageString == string.Empty || interestIn == string.Empty
+                    || universityEntry.Text == string.Empty)
+                {
+                    await DisplayAlert("Oops!", "Incomplete credentials! Please fill the required fields.", "Okay");
+                    return;
+                }
+                activityIndicator.IsRunning = true;
+                Application.Current.Properties["Name"] = userNameEntry.Text;
+                Application.Current.Properties["Password"] = passwordEntry.Text;
+                Application.Current.Properties["Email"] = emailEntry.Text;
+                Application.Current.Properties["Gender"] = gender;
+                Application.Current.Properties["Birthday"] = birthdatePicker.ToString();
+                //await DisplayAlert("test",birthdatePicker.Date.ToString("MM/dd/yyyy"),"Okay");
                 var request = new GeolocationRequest(GeolocationAccuracy.High);
                 var location = await Geolocation.GetLocationAsync(request);
 
@@ -83,43 +84,42 @@ namespace Chatter
                     return;
                 }
                 locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
-            }
-            catch (PermissionException ex)
-            {
-                await DisplayAlert("Location Request", ex.ToString(),"Okay");
+                if (imageString == string.Empty)
+                {
+                    await DisplayAlert("Image Selection", "Image required.", "Okay");
+                    return;
+                }
+                await uploadtoServer();
+                await sampless();
+                //await Navigation.PushAsync(new ImageSelection());
+                //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
+                if (string.IsNullOrEmpty(number))
+                {
+                    var userModels = await api.loginUser(emailEntry.Text, passwordEntry.Text);
+                    await DisplayAlert("ano value nito", userModels.id, "test");
+                    Application.Current.Properties["Id"] = "\"" + userModels.id + "\"";
+                    activityIndicator.IsRunning = false;
+                    App.Current.MainPage = new NavigationPage(new WelcomePage());
+                    //await Navigation.PushAsync(new WelcomePage());
+                    //await Navigation.PopToRootAsync();
+                }
+                else
+                {
+                    var value = await api.getUserModel(number);
+                    if (value == null)
+                    {
+                        await DisplayAlert("Oops!", value.username, "Okay");
+                    }
+                    Application.Current.Properties["Id"] = "\"" + value.id + "\"";
+                    activityIndicator.IsRunning = false;
+                    App.Current.MainPage = new NavigationPage(new WelcomePage());
+                    //await Navigation.PushAsync(new WelcomePage());
+                    //await Navigation.PopToRootAsync();
+                }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Location Request", ex.ToString(), "Okay");
-            }
-            if (imageString == string.Empty)
-            {
-                await DisplayAlert("Image Selection", "Image required.", "Okay");
-                return;
-            }
-            await uploadtoServer();
-            await sampless();
-            activityIndicator.IsRunning = false;
-            //await Navigation.PushAsync(new ImageSelection());
-            //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
-            if (string.IsNullOrEmpty(number))
-            {
-                var userModels = await api.loginUser(emailEntry.Text,passwordEntry.Text);
-                Application.Current.Properties["Id"] = "\"" + userModels.id + "\"";
-                App.Current.MainPage = new NavigationPage(new WelcomePage());
-                //await Navigation.PushAsync(new WelcomePage());
-                //await Navigation.PopToRootAsync();
-            }
-            else
-            {
-                var value = await api.getUserModel(number);
-                if (value == null) {
-                    await DisplayAlert("Oops!",value.username,"Okay");
-                }
-                Application.Current.Properties["Id"] = "\"" + value.id + "\"";
-                App.Current.MainPage = new NavigationPage(new WelcomePage());
-                //await Navigation.PushAsync(new WelcomePage());
-                //await Navigation.PopToRootAsync();
+                await DisplayAlert("Registration","Unable to continue " + ex.ToString(),"Okay");
             }
         }
         private async Task sampless()
@@ -136,7 +136,7 @@ namespace Chatter
                 content.Add(new StringContent(locationString), "location");
                 content.Add(new StringContent(imageString), "image");
                 content.Add(new StringContent(number), "phone_number");
-                content.Add(new StringContent(birthdatePicker.Date.ToString()), "birthdate");
+                content.Add(new StringContent(birthdatePicker.Date.ToString("MM/dd/yyyy")), "birthdate");
                 content.Add(new StringContent(interestIn), "interest");
                 content.Add(new StringContent(universityEntry.Text), "school");
 
