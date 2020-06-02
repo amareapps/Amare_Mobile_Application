@@ -116,8 +116,7 @@ namespace Chatter
         }
         public async Task getInstagramProfileAsync(string accessToken)
         {
-            activityIndicator.IsRunning = true;
-            activityIndicator.IsVisible = true;
+            overlay.IsVisible = true;
             try
             {
                 var client = new HttpClient();
@@ -241,8 +240,7 @@ namespace Chatter
                 conn.CreateTable<UserModel>();
                 conn.Insert(userModel);
             }
-            activityIndicator.IsRunning = false;
-            activityIndicator.IsVisible = false;
+            overlay.IsVisible = false;
             await loadMainPage();
         }
         private async Task loadMainPage()

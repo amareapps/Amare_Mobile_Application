@@ -22,10 +22,10 @@
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
                 <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
                                Clicked="EditButton_Clicked"/>
-                <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
+                <Image Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
                 <ImageButton x:Name="vipButton" Clicked="vipButton_Clicked" Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
-            <local:CustomFrame Padding="0,40,0,10" Grid.Row="1" CornerRadius="0,0,150,150" HasShadow="True" BackgroundColor="#EEEEEE" HeightRequest="300">
+            <local:CustomFrame Padding="0,40,0,10" Grid.Row="1" CornerRadius="0,0,150,150" HasShadow="True" BackgroundColor="#EEEEEE" HeightRequest="280">
                 <StackLayout IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" >
                     <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
                         <Picker.ItemsSource>
@@ -50,23 +50,20 @@
                                                      HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
                     </AbsoluteLayout>
                     <Label Padding="0,5,0,0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Label Padding="0,0,0,0" x:Name="schoolLabel" Text="{Binding school}" FontSize="Subtitle" WidthRequest="200" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <!--<Label Padding="0,0,0,0" x:Name="schoolLabel" Text="{Binding school}" FontSize="Subtitle" WidthRequest="200" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>-->
 
                 </StackLayout>
             </local:CustomFrame>
             <ActivityIndicator IsRunning="True"  Grid.Row="2"  HeightRequest="80" WidthRequest="80"
                                              IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
-            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,20" VerticalOptions="End" HorizontalOptions="Center">
+            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,5" VerticalOptions="End" HorizontalOptions="Center">
                 <StackLayout >
                     <cards:CarouselView x:Name="autoSlider">
                         <cards:CarouselView.ItemsSource>
                             <x:Array Type="{x:Type View}">
-                                <StackLayout Padding="40,20,40,5" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Image Source="FINAL_AMERA.png" Aspect="AspectFit" HeightRequest="55" WidthRequest="300"/>
-                                </StackLayout>
-                                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label Text="Swipe around the world" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
-                                    <Label Text="Passport to anywhere with Amare!" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                                <StackLayout Padding="70,20,70,5" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <Label Text="Match around the world" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
+                                    <Label Text="Navigate to anywhere with Amare!" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                     <Label Text="Control Your Profile" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
@@ -75,7 +72,9 @@
                             </x:Array>
                         </cards:CarouselView.ItemsSource>
                     </cards:CarouselView>
-                    <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share Amare" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
+                    <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share the love" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10,0,0">
+                    </StackLayout>
                 </StackLayout>
             </local:CustomFrame>
         </Grid>

@@ -96,9 +96,8 @@ namespace Chatter
             Device.BeginInvokeOnMainThread(() =>
             {
                 SyncFromDb();
-                activityIndicator.IsVisible = false;
-                activityIndicator.IsRunning = false;
-                activityIndicator.IsEnabled = false;
+                overlay.IsVisible = false;
+                overlay.IsEnabled = false;
             });
         }
         private async Task refreshData()
@@ -106,9 +105,8 @@ namespace Chatter
             await loadData();
             await loadRecentMatches();
             SyncFromDb();
-            activityIndicator.IsVisible = false;
-            activityIndicator.IsRunning = false;
-            activityIndicator.IsEnabled = false;
+            overlay.IsVisible = false;
+            overlay.IsEnabled = false;
         }
         protected override void OnDisappearing()
         {

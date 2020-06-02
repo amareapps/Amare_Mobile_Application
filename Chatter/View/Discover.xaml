@@ -24,10 +24,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid HeightRequest="30" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Padding="0" >
-                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" HorizontalOptions="Center" VerticalOptions="Start" />
-                <Image Source="ameratitlelogo.png" Aspect="AspectFill" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
-            </Grid>
             <AbsoluteLayout x:Name="samplesss" Grid.Row="1" Grid.Column="0">
                 <StackLayout AbsoluteLayout.LayoutFlags="SizeProportional" 
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">

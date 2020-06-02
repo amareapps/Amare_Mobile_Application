@@ -69,7 +69,7 @@ namespace Chatter
                     await DisplayAlert("Oops!", "Incomplete credentials! Please fill the required fields.", "Okay");
                     return;
                 }
-                activityIndicator.IsRunning = true;
+                overlay.IsVisible = true;
                 Application.Current.Properties["Name"] = userNameEntry.Text;
                 Application.Current.Properties["Password"] = passwordEntry.Text;
                 Application.Current.Properties["Email"] = emailEntry.Text;
@@ -98,7 +98,7 @@ namespace Chatter
                     var userModels = await api.loginUser(emailEntry.Text, passwordEntry.Text);
                     await DisplayAlert("ano value nito", userModels.id, "test");
                     Application.Current.Properties["Id"] = "\"" + userModels.id + "\"";
-                    activityIndicator.IsRunning = false;
+                    overlay.IsVisible = false;
                     App.Current.MainPage = new NavigationPage(new WelcomePage());
                     //await Navigation.PushAsync(new WelcomePage());
                     //await Navigation.PopToRootAsync();
@@ -111,7 +111,7 @@ namespace Chatter
                         await DisplayAlert("Oops!", value.username, "Okay");
                     }
                     Application.Current.Properties["Id"] = "\"" + value.id + "\"";
-                    activityIndicator.IsRunning = false;
+                    overlay.IsVisible = false;
                     App.Current.MainPage = new NavigationPage(new WelcomePage());
                     //await Navigation.PushAsync(new WelcomePage());
                     //await Navigation.PopToRootAsync();

@@ -11,6 +11,8 @@ using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
 using Chatter.View;
 using Android.Media;
+using Plugin.Share;
+using Plugin.Share.Abstractions;
 
 namespace Chatter
 {
@@ -25,6 +27,7 @@ namespace Chatter
         {
             InitializeComponent();
             loadFromDatabase();
+
         }
 
         private void backButton_Clicked(object sender, EventArgs e)
@@ -32,7 +35,7 @@ namespace Chatter
             Navigation.PopModalAsync();
         }
 
-        private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
+            private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (locationPicker.SelectedIndex == 0)
             {
@@ -196,6 +199,17 @@ namespace Chatter
                 metric = 0;
             else
                 metric = 1;
+        }
+        private void btnShareAmare_Clicked(object sender, EventArgs e)
+        {
+            if (!CrossShare.IsSupported)
+                return;
+            CrossShare.Current.Share(new ShareMessage
+            {
+                Title = "Amare Dating App",
+                Text = "Checkout the new Amare App where you can experience love being limitless!",
+                Url = "https://www.facebook.com/amareapps/"
+            });
         }
     }
 }

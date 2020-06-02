@@ -4,7 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:Chatter"
-             xmlns:sys="clr-namespace:System;assembly=netstandard" xmlns:local1="clr-namespace:Chatter.Classes"
+             xmlns:sys="clr-namespace:System;assembly=netstandard" 
+               xmlns:local1="clr-namespace:Chatter.Classes" 
+               xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                mc:Ignorable="d"
              x:Class="Chatter.ProfileMaintenance" Title="Register with us!">
 
@@ -129,10 +131,22 @@
                         <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="REGISTER" FontSize="Large" FontAttributes="Bold" Clicked="continueButton_Clicked"></Button>
                 </Frame>
                 </StackLayout>
-                <ActivityIndicator x:Name="activityIndicator" IsRunning="False" Color="#98000b" VerticalOptions="Center"
-                                   HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"
-                                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
+            <!-- Overlay -->
+            <ContentView x:Name="overlay"  
+                         IsVisible="False"  
+                         BackgroundColor="#C0808080"  
+                         Padding="0" AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
+
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+                    <StackLayout Spacing="0" >
+                        <ffimageloading:CachedImage Source="welcomelogo.gif"  
+                                        HeightRequest="100"  
+                                        WidthRequest="100"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </ContentView>
         </AbsoluteLayout>
     </ContentPage>
 </CarouselPage>

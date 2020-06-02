@@ -94,7 +94,7 @@ namespace Chatter
                 return;
             }
             locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
-            loadingActivity.IsRunning = true;
+            overlay.IsVisible = true;
             if (ProfileImage.Source.ToString() == "no_image.jpg")
           {
                await DisplayAlert("Image Selection", "Picture is required", "Okay");
@@ -102,7 +102,7 @@ namespace Chatter
            }
             await uploadtoServer();
             await sampless();
-            loadingActivity.IsRunning = false;
+            overlay.IsVisible = false;
         }
         private async Task sampless()
         {
