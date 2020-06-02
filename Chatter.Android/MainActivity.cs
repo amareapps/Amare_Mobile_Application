@@ -17,6 +17,8 @@ using CarouselView.FormsPlugin.Android;
 using FFImageLoading.Forms.Platform;
 using Android.Support.V4.Content;
 using Android.Support.V4.App;
+using Android.Content;
+using Plugin.InAppBilling;
 
 namespace Chatter.Droid
 {
@@ -56,6 +58,11 @@ namespace Chatter.Droid
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            InAppBillingImplementation.HandleActivityResult(requestCode, resultCode, data);
         }
 
         public void OnCancelled(DatabaseError error)

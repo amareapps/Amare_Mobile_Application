@@ -96,7 +96,7 @@
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
                     <StackLayout Padding="0,30,0,0" >
-                        <Button Text="DELETE MY ACCOUNT" TextColor="#EEEEEE" BackgroundColor="#98000b" FontAttributes="Bold" CornerRadius="30" Clicked="logoutButton_Clicked"></Button>
+                        <Button Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="#EEEEEE" BackgroundColor="#98000b" FontAttributes="Bold" CornerRadius="30"></Button>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

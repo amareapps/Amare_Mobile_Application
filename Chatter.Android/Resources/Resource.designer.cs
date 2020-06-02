@@ -24472,7 +24472,11 @@ namespace Chatter.Droid
 			public const int edit = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
+<<<<<<< HEAD
 			public const int email = 2131165323;
+=======
+			public const int error = 2131165323;
+>>>>>>> 1fa7f4912b12f64996f4db165796b7441a00ad0f
 			
 			// aapt resource value: 0x7F07008C
 			public const int fb_logo = 2131165324;

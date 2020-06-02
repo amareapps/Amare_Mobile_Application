@@ -11,8 +11,12 @@ using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
 using Chatter.View;
 using Android.Media;
+<<<<<<< HEAD
 using Plugin.Share;
 using Plugin.Share.Abstractions;
+=======
+using Rg.Plugins.Popup.Services;
+>>>>>>> 1fa7f4912b12f64996f4db165796b7441a00ad0f
 
 namespace Chatter
 {
@@ -200,6 +204,7 @@ namespace Chatter
             else
                 metric = 1;
         }
+<<<<<<< HEAD
         private void btnShareAmare_Clicked(object sender, EventArgs e)
         {
             if (!CrossShare.IsSupported)
@@ -210,6 +215,12 @@ namespace Chatter
                 Text = "Checkout the new Amare App where you can experience love being limitless!",
                 Url = "https://www.facebook.com/amareapps/"
             });
+=======
+
+        private async void deleteAccountButton_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new DeleteAccount());
+>>>>>>> 1fa7f4912b12f64996f4db165796b7441a00ad0f
         }
     }
 }
