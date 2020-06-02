@@ -11,6 +11,7 @@ using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
 using Chatter.View;
 using Android.Media;
+using Rg.Plugins.Popup.Services;
 
 namespace Chatter
 {
@@ -196,6 +197,11 @@ namespace Chatter
                 metric = 0;
             else
                 metric = 1;
+        }
+
+        private async void deleteAccountButton_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new DeleteAccount());
         }
     }
 }

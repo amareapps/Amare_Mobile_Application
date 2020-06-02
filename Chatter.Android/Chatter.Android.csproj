@@ -97,6 +97,9 @@
     <PackageReference Include="Xamarin.Agora.Full.Android">
       <Version>3.0.0.2</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Android.Google.BillingClient">
+      <Version>2.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Auth">
       <Version>1.7.0</Version>
     </PackageReference>
@@ -351,6 +354,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\reward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
