@@ -182,18 +182,18 @@ namespace Chatter.Classes
                 //await DisplayAlert("testlang","hahaha","okay");
                 foreach (InboxModel messageContent in looper)
                 {
-                    var webClient = new WebClient();
-                    byte[] imageBytes = webClient.DownloadData(messageContent.image);
+                    //var webClient = new WebClient();
+                    //byte[] imageBytes = webClient.DownloadData(messageContent.image);
 
-                    Bitmap bitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
-                    Bitmap resizedImage = Bitmap.CreateScaledBitmap(bitmap, 50, 50, false);
-                    using (var stream = new MemoryStream())
-                    {
-                        resizedImage.Compress(Bitmap.CompressFormat.Png, 0, stream);
-                        var bytes = stream.ToArray();
-                        var str = Convert.ToBase64String(bytes);
-                        messageContent.image = str;
-                    }
+                   // Bitmap bitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                   // Bitmap resizedImage = Bitmap.CreateScaledBitmap(bitmap, 50, 50, false);
+                    //using (var stream = new MemoryStream())
+                   // {
+                   //     resizedImage.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                   ////     var bytes = stream.ToArray();
+                   //     var str = Convert.ToBase64String(bytes);
+                    //    messageContent.image = str;
+                   // }
                     await saveInbox(messageContent);
                     //     inboxModels.Add(messageContent);
                     // }
@@ -344,7 +344,7 @@ namespace Chatter.Classes
                 }
                 var modifString = response.Replace(@"\", "");
                 var looper = JsonConvert.DeserializeObject<UserModel>(modifString);
-                looper.image = converttoBase64(looper.image);
+                //looper.image = converttoBase64(looper.image);
                 syncUsertoSqlite(looper);
             }
             catch (Exception ex)
@@ -551,6 +551,20 @@ namespace Chatter.Classes
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+        public async Task<bool> deleteUser(string id)
+        {
+            try
+            {
+                var request = await client.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=deleteUser&id=" + id.Replace("\"",""));
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

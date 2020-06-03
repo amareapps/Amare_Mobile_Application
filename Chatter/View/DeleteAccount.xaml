@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Chatter.View.DeleteAccount">
-    <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0">
+    <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0,0,0,20">
         <StackLayout Spacing="5">
             <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="DarkRed">
                 <Grid.ColumnDefinitions>
@@ -16,16 +16,18 @@
                 <Label Grid.Column="1" Text="Delete this account?" FontSize="Large" HorizontalOptions="Start" TextColor="White" FontAttributes="Bold"
                     VerticalOptions="CenterAndExpand"/>
             </Grid>
-            <Label Text="Warning! This cannot be undone." FontSize="Medium" HorizontalOptions="Center"></Label>
-            <Label HorizontalTextAlignment="Center" Text="Are you sure you want to delete your account? If you delete your account, you will permanently lose your profile, messages, and photos" Padding="20" FontSize="Medium" HorizontalOptions="Center"></Label>
-            <Editor Placeholder="Please let us know why you're leaving" HeightRequest="100"></Editor>
+            <Label  TextColor="Black" Text="Warning! This cannot be undone." FontSize="Medium" HorizontalOptions="Center"></Label>
+            <Label  TextColor="Black" HorizontalTextAlignment="Center" Text="Are you sure you want to delete your account? If you delete your account, you will permanently lose your profile, messages, and photos" Padding="20" FontSize="Medium" HorizontalOptions="Center"></Label>
+            <Frame BorderColor="Black" CornerRadius="20" Margin="20">
+                <Editor Placeholder="Please let us know why you're leaving" HeightRequest="100"></Editor>
+            </Frame>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Button Text="Cancel" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
-                <Button x:Name="deleteButton" Clicked="deleteButton_Clicked" Text="Delete Account" Grid.Column="1" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="cancelButton" Clicked="cancelButton_Clicked" Text="Cancel" TextColor="DarkRed" CornerRadius="10" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
+                <Button x:Name="deleteButton" TextColor="DarkRed" CornerRadius="10" Clicked="deleteButton_Clicked" Text="Delete Account" Grid.Column="1" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
             </Grid>
         </StackLayout>
     </Frame>
