@@ -360,12 +360,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Amare_logo_toolbar.png" />
     <AndroidResource Include="Resources\drawable\error.png" />
-<<<<<<< HEAD
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\warning.png" />
-=======
->>>>>>> 8105a87daa0f7b89e276213deb05936f39e45f14
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -1,5 +1,6 @@
 <<<<<<< HEAD
-﻿using Rg.Plugins.Popup.Services;
+using Chatter.Classes;
+using Rg.Plugins.Popup.Services;
 =======
 ﻿using Chatter.Classes;
 using Rg.Plugins.Popup.Services;
@@ -25,15 +26,11 @@ namespace Chatter.View
             InitializeComponent();
         }
 
-<<<<<<< HEAD
-        private async void cancelButton_Clicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PopAsync();
-        }
         public void ShowPass_Tapped(object sender, EventArgs args)
         {
             passwordEntry.IsPassword = passwordEntry.IsPassword ? false : true;
-=======
+        }
+
         private async void deleteButton_Clicked(object sender, EventArgs e)
         {
             if (!sqliteManager.isCorrectPassword(passwordEntry.Text))
@@ -41,7 +38,7 @@ namespace Chatter.View
                 await DisplayAlert("Error!", "Incorrect credentials, Please try again", "Okay");
                 return;
             }
-            if(!await api.deleteUser(Application.Current.Properties["Id"].ToString()))
+            if (!await api.deleteUser(Application.Current.Properties["Id"].ToString()))
             {
                 await DisplayAlert("Error!", "Unable to delete User", "Okay");
                 return;
@@ -54,7 +51,7 @@ namespace Chatter.View
         private async void cancelButton_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAllAsync();
->>>>>>> 8105a87daa0f7b89e276213deb05936f39e45f14
         }
+
     }
 }
