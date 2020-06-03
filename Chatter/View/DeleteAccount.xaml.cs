@@ -18,6 +18,26 @@ namespace Chatter.View
             InitializeComponent();
         }
 
+        private void reasondelete_TextChanged(object sender, TextChangedEventArgs e)
+        {
+                if (string.IsNullOrEmpty(reasondelete.Text.ToString()))
+                {
+                    deleteButton.IsEnabled = false;
+                deleteButton.BackgroundColor = Color.Default;
+                }
+                else
+                {
+                    deleteButton.IsEnabled = true;
+                    deleteButton.BackgroundColor = Color.Default;
+                    deleteButton.TextColor = Color.Default;
+                }
+        }
+
+        private async void cancelButton_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+        }
+
         private async void deleteButton_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new EnterPassword());

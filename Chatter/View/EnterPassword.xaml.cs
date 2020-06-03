@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,15 @@ namespace Chatter.View
         public EnterPassword()
         {
             InitializeComponent();
+        }
+
+        private async void cancelButton_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+        }
+        public void ShowPass_Tapped(object sender, EventArgs args)
+        {
+            passwordEntry.IsPassword = passwordEntry.IsPassword ? false : true;
         }
     }
 }

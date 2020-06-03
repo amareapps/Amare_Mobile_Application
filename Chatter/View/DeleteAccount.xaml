@@ -2,31 +2,34 @@
 <pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes"
+                  mc:Ignorable="d"
              x:Class="Chatter.View.DeleteAccount">
-    <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0">
+    <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
         <StackLayout Spacing="5">
-            <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="DarkRed">
+            <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="DarkRed" Padding="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="AUTO"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image Source="error.png" Grid.Column="0" HeightRequest="50" Aspect="AspectFit" WidthRequest="50"></Image>
-                <Label Grid.Column="1" Text="Delete this account?" FontSize="Large" HorizontalOptions="Start" TextColor="White" FontAttributes="Bold"
+                <Image Margin="5,0,0,0" Source="warning.png" Grid.Column="0" HeightRequest="25" Aspect="AspectFit" WidthRequest="25"></Image>
+                <Label Grid.Column="1" Text="Delete account" FontSize="Large" HorizontalOptions="Start" TextColor="White" FontAttributes="Bold"
                     VerticalOptions="CenterAndExpand"/>
             </Grid>
-            <Label Text="Warning! This cannot be undone." FontSize="Medium" HorizontalOptions="Center"></Label>
-            <Label HorizontalTextAlignment="Center" Text="Are you sure you want to delete your account? If you delete your account, you will permanently lose your profile, messages, and photos" Padding="20" FontSize="Medium" HorizontalOptions="Center"></Label>
-            <Editor Placeholder="Please let us know why you're leaving" HeightRequest="100"></Editor>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Button Text="Cancel" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
-                <Button x:Name="deleteButton" Clicked="deleteButton_Clicked" Text="Delete Account" Grid.Column="1" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
-            </Grid>
+            <StackLayout >
+                <Label FontAttributes="Bold" Padding="15,15,15,5" Text="Warning! &#x0a;This cannot be undone." FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+                <Label HorizontalTextAlignment="Center" Padding="15,5,15,10" Text="Are you sure you want to delete your account? If you delete your account, you will permanently lose your profile, messages, and photos." FontSize="Small" HorizontalOptions="Center"></Label>
+                <Label HorizontalTextAlignment="Center" x:Name="reasonrequired" Padding="15,5,15,0" Text="*Please enter your reason" FontSize="Micro" TextColor="Accent" HorizontalOptions="Start" IsVisible="False"></Label>
+                <local:CustomEditor x:Name="reasondelete" TextChanged="reasondelete_TextChanged" Margin="15,0,15,0" Placeholder="Please let us know why you're leaving Amare..." HeightRequest="100" FontSize="Small"></local:CustomEditor>
+                <Grid Margin="0,10,0,5" Padding="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Cancel" Clicked="cancelButton_Clicked"  Grid.Column="0" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="30" FontAttributes="Bold" HorizontalOptions="FillAndExpand" ></Button>
+                    <Button x:Name="deleteButton" IsEnabled="False" Clicked="deleteButton_Clicked" BackgroundColor="Default" Text="Delete Account" CornerRadius="30"  Grid.Column="1" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </Frame>
 </pages:PopupPage>
