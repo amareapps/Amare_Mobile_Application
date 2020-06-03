@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 ﻿using Rg.Plugins.Popup.Services;
+=======
+﻿using Chatter.Classes;
+using Rg.Plugins.Popup.Services;
+>>>>>>> 8105a87daa0f7b89e276213deb05936f39e45f14
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +18,14 @@ namespace Chatter.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EnterPassword
     {
+        SqliteManager sqliteManager = new SqliteManager();
+        ApiConnector api = new ApiConnector();
         public EnterPassword()
         {
             InitializeComponent();
         }
 
+<<<<<<< HEAD
         private async void cancelButton_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
@@ -25,6 +33,28 @@ namespace Chatter.View
         public void ShowPass_Tapped(object sender, EventArgs args)
         {
             passwordEntry.IsPassword = passwordEntry.IsPassword ? false : true;
+=======
+        private async void deleteButton_Clicked(object sender, EventArgs e)
+        {
+            if (!sqliteManager.isCorrectPassword(passwordEntry.Text))
+            {
+                await DisplayAlert("Error!", "Incorrect credentials, Please try again", "Okay");
+                return;
+            }
+            if(!await api.deleteUser(Application.Current.Properties["Id"].ToString()))
+            {
+                await DisplayAlert("Error!", "Unable to delete User", "Okay");
+                return;
+            }
+            sqliteManager.logoutUser();
+            await PopupNavigation.Instance.PopAllAsync();
+            App.Current.MainPage = new NavigationPage(new Login());
+        }
+
+        private async void cancelButton_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAllAsync();
+>>>>>>> 8105a87daa0f7b89e276213deb05936f39e45f14
         }
     }
 }

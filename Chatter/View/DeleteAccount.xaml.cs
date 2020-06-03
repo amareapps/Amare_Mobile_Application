@@ -42,5 +42,10 @@ namespace Chatter.View
         {
             await PopupNavigation.Instance.PushAsync(new EnterPassword());
         }
+
+        private async void cancelButton_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAllAsync();
+        }
     }
 }

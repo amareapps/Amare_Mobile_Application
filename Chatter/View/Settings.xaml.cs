@@ -155,26 +155,8 @@ namespace Chatter
         }
         private void deleteFromSqlite()
         {
-            string _id =Application.Current.Properties["Id"].ToString().Replace("\"","");
-            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
-            System.IO.Directory.CreateDirectory(applicationFolderPath);
-            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
-            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
-            {
-                conn.CreateTable<UserModel>();
-                var table = conn.Table<UserModel>().Delete(x => x.id != "");
-                conn.CreateTable<InboxModel>();
-                var table1 = conn.Table<InboxModel>().Delete(x => x.user_id != "");
-                conn.CreateTable<RecentMatchesModel>();
-                var table3 = conn.Table<RecentMatchesModel>().Delete(x => x.user_id != "");
-                conn.CreateTable<SearchRefenceModel>();
-                var table4 = conn.Table<SearchRefenceModel>().Delete(x => x.user_id != "");
-                conn.CreateTable<GalleryModel>();
-                var table5 = conn.Table<GalleryModel>().Delete(x => x.user_id != "");
-            }
-            DependencyService.Get<IClearCookies>().Clear();
+            sqliteManager.logoutUser();
         }
-
         private void showmePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
 
