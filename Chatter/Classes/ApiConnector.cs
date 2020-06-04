@@ -386,7 +386,7 @@ namespace Chatter.Classes
         }
         public async Task connectToServer()
         {
-            await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.Url + ":8088"), CancellationToken.None);
+            await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.SocketUrl + ":8088"), CancellationToken.None);
         }
         public async Task<string> ReadMessage()
         {

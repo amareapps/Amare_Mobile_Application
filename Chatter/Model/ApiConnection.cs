@@ -6,7 +6,7 @@ namespace Chatter.Model
 {
     public class ApiConnection
     {
-        public static string ipaddress = "192.168.1.7";
+        public static string ipaddress = "http://amareapp.000webhostapp.com/";
         public static string Url
         {
             get
@@ -16,6 +16,13 @@ namespace Chatter.Model
             set
             {
                 ipaddress = value;
+            }
+        }
+        public static string SocketUrl
+        {
+            get
+            {
+                return "192.168.1.10";
             }
         }
     }

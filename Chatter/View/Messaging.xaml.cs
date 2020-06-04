@@ -95,7 +95,7 @@ namespace Chatter
 
         async Task ConnectToServerAsync()
         {
-            await wsClient.ConnectAsync(new Uri("ws://"+ApiConnection.Url+":8088"), CancellationToken.None);
+            await wsClient.ConnectAsync(new Uri("ws://"+ApiConnection.SocketUrl+":8088"), CancellationToken.None);
         }
 
         protected async override void OnAppearing()
