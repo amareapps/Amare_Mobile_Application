@@ -36,6 +36,7 @@ namespace Chatter.View
         private async void deleteButton_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new EnterPassword());
+            //await PopupNavigation.Instance.PopAsync(DeleteAccount);
         }
 
         private async void CancelButton_Clicked(object sender, EventArgs e)

@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes"
                   mc:Ignorable="d"
-             x:Class="Chatter.View.DeleteAccount">
+             x:Class="Chatter.View.DeleteAccount" IsVisible="True">
     <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
         <StackLayout Spacing="5">
                 <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="DarkRed" Padding="5">

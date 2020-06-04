@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-using Chatter.Classes;
-using Rg.Plugins.Popup.Services;
-=======
+
 ﻿using Chatter.Classes;
 using Rg.Plugins.Popup.Services;
->>>>>>> 8105a87daa0f7b89e276213deb05936f39e45f14
 using System;
 using System.Collections.Generic;
 using System.Linq;

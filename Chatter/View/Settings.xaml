@@ -82,13 +82,13 @@
                     <Button x:Name="saveButton" Text="Save and Apply" Margin="0,0,0,10" CornerRadius="30" BackgroundColor="#e3e1de" Clicked="saveButton_Clicked"></Button>
                    
                     <Label Text="Contact Us" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Text="Help and Support" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
+                    <Button Text="Help and Support" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
                     <Button x:Name="btnShareAmare"  Clicked="btnShareAmare_Clicked" Text="Share Amare" CornerRadius="30" TextColor="#e3e1d3" BackgroundColor="Accent" FontAttributes="Bold"></Button>
                     
                     <Label Text="Legal" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Text="Privacy Policy" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
-                    <Button Text="Terms of Service" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
-                    <Button Text="Licenses" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
+                    <Button Text="Privacy Policy" Clicked="PrivacyPolicy_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
+                    <Button Text="Terms of Service" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
+                    <Button Text="Licenses" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
                     
                     <Button Text="LOGOUT" Margin="0,30,0,10" TextColor="#98000b" BackgroundColor="#EEEEEE" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
                     <Grid BackgroundColor="Transparent" Padding="0,20,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">

@@ -19,6 +19,7 @@ using Android.Support.V4.Content;
 using Android.Support.V4.App;
 using Android.Content;
 using Plugin.InAppBilling;
+using Android.Webkit;
 
 namespace Chatter.Droid
 {

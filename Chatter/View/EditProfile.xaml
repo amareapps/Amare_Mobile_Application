@@ -14,7 +14,7 @@
             <Grid HeightRequest="40" Margin="0" Padding="0,10,0,5">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Your Profile"/>
+                <Label FontAttributes="Bold" TextColor="Accent" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Your Profile"/>
             </Grid>
             <ScrollView>
                 <StackLayout Spacing="10" Margin="10,0,10,10">

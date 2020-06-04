@@ -22,7 +22,7 @@
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
                 <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
                                Clicked="EditButton_Clicked"/>
-                <Image Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
+                <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
                 <ImageButton x:Name="vipButton" Clicked="vipButton_Clicked" Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
             <local:CustomFrame Padding="0,40,0,10" Grid.Row="1" CornerRadius="0,0,150,150" HasShadow="True" BackgroundColor="#EEEEEE" HeightRequest="280">

@@ -113,7 +113,7 @@ namespace Chatter
         private async void UpdateProfileButton_Clicked(object sender, EventArgs e)
         {
 
-            await Navigation.PushModalAsync(new NavigationPage(new EditProfile()));
+            await Navigation.PushModalAsync(new NavigationPage(new Chatter.View.EditProfile()));
         }
         private void retrieveUserProp()
         {
@@ -187,9 +187,13 @@ namespace Chatter
 
         private async void vipButton_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushModalAsync(new NavigationPage(new Chatter.View.VipPremium()));
+
             await DisplayAlert("Clicked!","test","Okay");
             PaymentIntegration integs = new PaymentIntegration();
             await integs.Sample();
+
+           
         }
     }
 }

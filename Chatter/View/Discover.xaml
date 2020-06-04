@@ -28,9 +28,12 @@
                 <StackLayout AbsoluteLayout.LayoutFlags="SizeProportional" 
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">
                     <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label FontSize="60" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
+                        </Label>
                         <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
-                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops! It looks like you've reached you maximum swipe for the day" HorizontalOptions="CenterAndExpand"></Label>
-                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Get Amare Coins now to get additional swipe" HorizontalOptions="CenterAndExpand"></Label>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="It looks like you've reached you maximum swipe for the day!" HorizontalOptions="CenterAndExpand"></Label>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Get Amare Coins now to get additional swipe!" HorizontalOptions="CenterAndExpand"></Label>
+                        <Button Text="GET AMARE COINS" BackgroundColor="Accent" CornerRadius="30" TextColor="#EEEEEE" Padding="20" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"></Button>
                     </StackLayout>
                 </StackLayout>
                 <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
@@ -48,7 +51,7 @@
 
                                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
                                             <StackLayout Spacing="0" >
-                                                <ffimageloading:CachedImage Source="amareactivityindicator.gif"   
+                                                <ffimageloading:CachedImage Source="welcomelogo.gif"   
                                                 HeightRequest="100"  
                                                 WidthRequest="100"/>
                                             </StackLayout>
@@ -74,7 +77,7 @@
                                                 <ffimageloading:CachedImage Source="about.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
                                                 <Label Text="{Binding about}" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
                                             </FlexLayout> -->
-                                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
+                                            <!-- <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
                                                 <Grid BackgroundColor="Transparent">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="*"></RowDefinition>
@@ -87,7 +90,7 @@
                                                 </ffimageloading:CachedImage>
                                                     <Label Text="{Binding school}" Grid.Row="0" Grid.Column="1" TextColor="White" FontSize="Medium"  FontAttributes="Bold"/>
                                                 </Grid>
-                                            </FlexLayout>
+                                            </FlexLayout>-->
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
                                                 <ffimageloading:CachedImage Source="locationIcon.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
                                                 <Label Text="{Binding distance, StringFormat='{0}'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />

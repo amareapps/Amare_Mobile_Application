@@ -3,12 +3,8 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
 	<application android:label="Amare" android:theme="@android:style/Theme.Material.Light">
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBENa2YmOdGXMI0mDTXVqQeFtcDRf9Z63k" />
-		<provider android:name="android.support.v4.content.FileProvider" 
-				android:authorities="com.companyname.chatter.fileprovider" 
-				android:exported="false" 
-				android:grantUriPermissions="true">
-			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" 
-				android:resource="@xml/file_paths"></meta-data>
+		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.chatter.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

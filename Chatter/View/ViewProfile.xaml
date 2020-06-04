@@ -25,6 +25,7 @@
                     <RowDefinition Height="500" />
                     <RowDefinition Height="AUTO" />
                     <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
                     </Grid.RowDefinitions>
                 <Frame HasShadow="True" IsClippedToBounds="True" Grid.Row="0" Padding="0" CornerRadius="20">
                         <AbsoluteLayout>
@@ -94,24 +95,32 @@
                                     <Label Text="{Binding company}" FontSize="Small" FontAttributes="Bold" IsVisible="{Binding company,Converter={StaticResource stringtoBool}}"/>
                                 </FlexLayout>
                             </StackLayout>
-                            <BoxView HeightRequest="2" BackgroundColor="#C098000b" Margin="0" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}"></BoxView>
+                        </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="True" Grid.Row="2" CornerRadius="20" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="About" FontSize="Medium" TextColor="Black" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding username}" TextColor="Black" FontSize="Medium" FontAttributes="Bold">
+                                </Label>
+                            </StackLayout>
                             <FlexLayout Padding="10,10,0,0"  Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">
-                                <Grid BackgroundColor="Transparent">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <ffimageloading:CachedImage Source="aboutdarkred.png" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"  HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
-                                </ffimageloading:CachedImage>
-                                    <Label Text="{Binding about}" Grid.Row="0" Grid.Column="1" VerticalOptions="Start" FontSize="Small" FontAttributes="Bold" WidthRequest="280"/>
-                                </Grid>
+                                <Grid BackgroundColor="Transparent" Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <ffimageloading:CachedImage Source="aboutdarkred.png" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"  HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
+                                        </ffimageloading:CachedImage>
+                                        <Label Text="{Binding about}" Grid.Row="0" Grid.Column="1" VerticalOptions="Start" FontSize="Small" FontAttributes="Bold" WidthRequest="280"/>
+                                    </Grid>
                             </FlexLayout>
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Grid.Row="2" Padding="10" Margin="0,0,0,0" CornerRadius="20" x:Name="instaFrame">
+                    <Frame HasShadow="True" Grid.Row="3" Padding="10" Margin="0,0,0,0" CornerRadius="20" x:Name="instaFrame">
                         <StackLayout x:Name="instaLayout">
                             <Label Text="Instagram Photos" FontSize="Medium" FontAttributes="Bold" Padding="10,0,0,0"></Label>
                             <ScrollView Orientation="Horizontal">
@@ -140,7 +149,7 @@
                             </ScrollView>
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Grid.Row="3" Padding="0" Margin="0" CornerRadius="30">
+                    <Frame HasShadow="True" Grid.Row="4" Padding="0" Margin="0" CornerRadius="30">
                         <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium" CornerRadius="30"/>
                     </Frame>
                 </Grid>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Chatter.View.VipPremium" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#EEEEEE">
+            <!--<Grid HeightRequest="90" Margin="0" Padding="0,0,0,5">
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" TextColor="Accent" Text="VIP Premium Packages"/>
+            </Grid>-->
+            <Image Margin="0,20,0,0" Source="vip.png" Aspect="AspectFill" HeightRequest="120"></Image>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300*"></RowDefinition>
+                    <RowDefinition Height="300*"></RowDefinition>
+                    <RowDefinition Height="300*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout Padding="10" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.ColumnSpan="3">
+                    <Frame  CornerRadius="20" Grid.Row="0" Grid.Column="0"  VerticalOptions="FillAndExpand" WidthRequest="400">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="vipPremium1"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200*"></ColumnDefinition>
+                                    <ColumnDefinition Width="200*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Premium Package 1" Grid.Row="0" Grid.Column="0" FontSize="Body" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="$10" FontSize="Large" Grid.Row="0" Grid.Column="1"  FontAttributes="Bold"  HorizontalOptions="End" VerticalOptions="Start"></Label>
+                            </Grid>
+                            <StackLayout Padding="10">
+                                <Label Text="Premium Package 1 Offer 1" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 2" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 3" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="20" Grid.Row="0" Grid.Column="0"  VerticalOptions="FillAndExpand" WidthRequest="400">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="vipPremium2"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200*"></ColumnDefinition>
+                                    <ColumnDefinition Width="200*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Premium Package 2" Grid.Row="0" Grid.Column="0" FontSize="Body" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="$20" FontSize="Large" Grid.Row="0" Grid.Column="1"  FontAttributes="Bold"  HorizontalOptions="End" VerticalOptions="Start"></Label>
+                            </Grid>
+                            <StackLayout Padding="10">
+                                <Label Text="Premium Package 1 Offer 1" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 2" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 3" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 4" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="20" Grid.Row="0" Grid.Column="0"  VerticalOptions="FillAndExpand" WidthRequest="400">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="vipPremium3"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200*"></ColumnDefinition>
+                                    <ColumnDefinition Width="200*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Premium Package 3" Grid.Row="0" Grid.Column="0" FontSize="Body" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="$30" FontSize="Large" Grid.Row="0" Grid.Column="1"  FontAttributes="Bold"  HorizontalOptions="End" VerticalOptions="Start"></Label>
+                            </Grid>
+                            <StackLayout Padding="10">
+                                <Label Text="Premium Package 1 Offer 1" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 2" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 3" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 4" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                                <Label Text="Premium Package 1 Offer 5" FontSize="Caption" FontAttributes="Bold"  HorizontalOptions="Start"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

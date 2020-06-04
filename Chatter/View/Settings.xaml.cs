@@ -53,7 +53,7 @@ namespace Chatter
             }
             else
             {
-                await Navigation.PushAsync(new MapViewer(locationString));
+                await Navigation.PushAsync(new Chatter.View.MapViewer(locationString));
             }
         }
 
@@ -196,7 +196,27 @@ namespace Chatter
 
         private async void deleteAccountButton_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new DeleteAccount());
+            await PopupNavigation.Instance.PushAsync(new Chatter.View.DeleteAccount());
+        }
+
+        private async void PrivacyPolicy_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new Chatter.View.PrivacyPolicy()));
+        }
+
+        private async void TermsOfService_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new Chatter.View.TermsAndConditions()));
+        }
+
+        private async void Licenses_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new Chatter.View.Licenses()));
+        }
+
+        private async void HelpAndSupport_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new Chatter.View.HelpAndSupport()));
         }
     }
 }
