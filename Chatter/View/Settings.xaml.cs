@@ -94,7 +94,7 @@ namespace Chatter
 
             //Update user interest
             var userModel = sqliteManager.getUserModel();
-            userModel.interest = showmePicker.SelectedItem.ToString();
+            userModel.interest = showmePicker.SelectedIndex.ToString();
             sqliteManager.updateUserModel(userModel);
             await api.updateUser(sqliteManager.getUserModel());
             await Navigation.PopModalAsync();
@@ -135,7 +135,8 @@ namespace Chatter
                 foreach (UserModel model in table2)
                 {
                     locationString = model.location;
-                    showmePicker.SelectedItem = model.interest;
+                    userName.Text = model.username;
+                    showmePicker.SelectedIndex = Convert.ToInt32(model.interest);
                 }
             }
         }
@@ -217,6 +218,11 @@ namespace Chatter
         private async void HelpAndSupport_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new Chatter.View.HelpAndSupport()));
+        }
+
+        private void tapChangename_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ModifyAccount("Change name","Name", userName.Text));
         }
     }
 }

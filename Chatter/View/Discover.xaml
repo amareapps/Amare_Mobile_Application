@@ -15,7 +15,7 @@
         <local:NumbertoBooleanConverter x:Key="numbertoBool"></local:NumbertoBooleanConverter>
     </Page.Resources>
     <ContentPage.Content>
-        <Grid Padding="10,15,10,5">
+        <Grid Padding="10,0,10,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="AUTO"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -24,9 +24,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Grid HeightRequest="50" Margin="0,0,0,0" Padding="0" Grid.Row="0">
+                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
+                <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
+             </Grid>
             <AbsoluteLayout x:Name="samplesss" Grid.Row="1" Grid.Column="0">
                 <StackLayout AbsoluteLayout.LayoutFlags="SizeProportional" 
-                                           AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">
+                                               AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">
                     <StackLayout VerticalOptions="CenterAndExpand">
                         <Label FontSize="60" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
                         </Label>

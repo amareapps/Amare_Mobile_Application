@@ -10,6 +10,11 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              x:Class="Chatter.Profile" BackgroundColor="#EEEEEE">
+    <Page.Resources>
+        <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
+        <local:StringToBoolen x:Key="stringtoBool"></local:StringToBoolen>
+        <local:NumbertoBooleanConverter x:Key="numbertoBool"></local:NumbertoBooleanConverter>
+    </Page.Resources>
     <ContentPage.Content>
         <Grid Margin="0,0,0,0" Padding="0" BackgroundColor="#EEEEEE" >
             <Grid.RowDefinitions>
@@ -49,9 +54,11 @@
                                                 AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                                      HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
                     </AbsoluteLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Padding="0,5,0,0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <!--<Label Padding="0,0,0,0" x:Name="schoolLabel" Text="{Binding school}" FontSize="Subtitle" WidthRequest="200" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>-->
-
+                        <Label Padding="0" Text=", " FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="End"/>
+                        <Label Padding="0" x:Name="age" Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="End"/>
+                    </StackLayout>
                 </StackLayout>
             </local:CustomFrame>
             <ActivityIndicator IsRunning="True"  Grid.Row="2"  HeightRequest="80" WidthRequest="80"

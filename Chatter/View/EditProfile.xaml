@@ -82,6 +82,15 @@
                     <StackLayout Padding="20,10,20,10">
                         <local:RoundedEntry x:Name="schoolEntry" Placeholder="Add school" Text="{Binding school}"></local:RoundedEntry>
                     </StackLayout>
+                    <StackLayout Padding="20,10,20,10">
+                        <local:RoundedEntry x:Name="heightEntry" Placeholder="Your height" Text="{Binding height}"></local:RoundedEntry>
+                    </StackLayout>
+                    <StackLayout Padding="20,10,20,10">
+                        <local:RoundedEntry x:Name="weightEntry" Placeholder="Your weight" Text="{Binding weight}"></local:RoundedEntry>
+                    </StackLayout>
+                    <StackLayout Padding="20,10,20,10">
+                        <local1:CustomEditor HeightRequest="80" x:Name="hobbyEntry" Placeholder="Your Hobbies" Text="{Binding hobby}"></local1:CustomEditor>
+                    </StackLayout>
                     <Label Text="Control Your Profile" Margin="20,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                     <StackLayout Padding="20,10,20,0" Margin="0,0,0,10">
                         <Grid>

@@ -1,13 +1,14 @@
 ﻿using Android.Database;
 using Chatter.Classes;
 using Chatter.Model;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +18,10 @@ namespace Chatter.View
     public partial class ViewProfile 
     {
         UserModel userModel = new UserModel();
+        UserModel otherUser = new UserModel();
+
+        SearchRefenceModel searchRefence = new SearchRefenceModel();
+        SqliteManager sqliteManager = new SqliteManager();
         ApiConnector api = new ApiConnector();
         ObservableCollection<GalleryModel> galleryModel = new ObservableCollection<GalleryModel>();
         ObservableCollection<InstagramPhotosModel> instagramPhotos = new ObservableCollection<InstagramPhotosModel>();
@@ -24,6 +29,8 @@ namespace Chatter.View
         public ViewProfile(string id)
         {
             InitializeComponent();
+            searchRefence = sqliteManager.GetSearchRefence();
+            
             userId = id;
         }
         protected async override void OnAppearing()
@@ -35,10 +42,13 @@ namespace Chatter.View
         {
             try
             {
-                var user = await api.getSpeificUser(userId);
+                userModel = sqliteManager.getUserModel();
+                otherUser = await api.getSpeificUser(userId);
                 var list = await api.otherUserImageList(userId);
                 var igPhotos = await api.getIgPhotos(userId);
-                BindingContext = user;
+                distanceLabel.Text = getDistance(otherUser);
+                metricLabel.Text = searchRefence.distance_metric == 0 ? "Km" : "Mi.";
+                BindingContext = otherUser;
                 foreach (GalleryModel model in list)
                 {
                     galleryModel.Add(model);
@@ -59,7 +69,7 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
-                //await DisplayAlert("Error",ex.ToString(),"Okay");
+                await DisplayAlert("Error",ex.ToString(),"Okay");
             }
         }
 
@@ -86,6 +96,34 @@ namespace Chatter.View
         private void backButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+        private string getDistance(UserModel model)
+        {
+
+            string[] currentLocArr = userModel.location.Split(',');
+            string[] otherUserLocArr = model.location.Split(',');
+            Location myLocation = new Location(Convert.ToDouble(currentLocArr[0]), Convert.ToDouble(currentLocArr[1]));
+            Location otherLocation = new Location(Convert.ToDouble(otherUserLocArr[0]), Convert.ToDouble(otherUserLocArr[1]));
+            double kmDistance = 0;
+            try
+            {
+                if (searchRefence.distance_metric == 0)
+                    kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Kilometers);
+                else
+                    kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Miles);
+
+                return Math.Round(kmDistance, 2).ToString();
+            }
+            catch (Exception ex)
+            {
+                kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Kilometers);
+                return Math.Round(kmDistance, 2).ToString();
+            }
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new ReportUserEntry());
         }
     }
 }

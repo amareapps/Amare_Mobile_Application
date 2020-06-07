@@ -24,14 +24,14 @@ namespace Chatter
             try
             {
                 string ip = sqlites.GetIpAddress().Url;
-                ApiConnection.Url = ip;
+                ApiConnection.SocketUrl = ip;
             }
             catch (Exception ex)
             {
-                ipAddress.Url = ApiConnection.Url;
+                ipAddress.Url = ApiConnection.SocketUrl;
                 sqlites.setIpAddress(ipAddress);
                 string ip = sqlites.GetIpAddress().Url;
-                ApiConnection.Url = ip;
+                ApiConnection.SocketUrl = ip;
             }
             MainPage = new NavigationPage(new SplashScreen());
             /**
