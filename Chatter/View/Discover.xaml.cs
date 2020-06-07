@@ -128,7 +128,7 @@ namespace Chatter
                                     continue;
                                 }
                             }
-                            if (userInterest != "Everyone")
+                            if (userInterest != "2")
                             {
                                 if (imageStorage.gender != userInterest)
                                     continue;

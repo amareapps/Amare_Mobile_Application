@@ -105,6 +105,10 @@ namespace Chatter.View
                 content.Add(new StringContent(isDistanceShow), "show_distance");
                 content.Add(new StringContent(userModel.location), "location");
                 content.Add(new StringContent(userModel.interest), "interest");
+                content.Add(new StringContent(userModel.height), "height");
+                content.Add(new StringContent(userModel.weight), "weight");
+                content.Add(new StringContent(userModel.hobby), "hobby");
+
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUser", content);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
