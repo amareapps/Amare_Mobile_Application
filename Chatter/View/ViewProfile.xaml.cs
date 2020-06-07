@@ -87,5 +87,10 @@ namespace Chatter.View
         {
             Navigation.PopModalAsync();
         }
+
+        private async void reportUser_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new ReportUserEntry()));
+        }
     }
 }

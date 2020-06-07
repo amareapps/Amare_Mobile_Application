@@ -76,19 +76,19 @@
                                 </Grid>
                             </FlexLayout>
                             <Grid Padding="20,10,0,0">
-                                <Frame CornerRadius="20" BackgroundColor="#C0D3D3D3" Padding="0" Margin="5" Grid.Row="0" Grid.Column="0">
+                                <!--<Frame CornerRadius="20" BackgroundColor="#Trans" Padding="0" Margin="5" Grid.Row="0" Grid.Column="0">-->
                                     <FlexLayout  Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
                                         <ffimageloading:CachedImage Source="locationdarkred.png" HeightRequest="15" WidthRequest="15" Margin="0,0,10,0" HorizontalOptions="Center"></ffimageloading:CachedImage>
                                         <Label Text="{Binding distance, StringFormat='{0}'}" FontSize="Medium" FontAttributes="Bold" />
                                         <Label Text="{Binding distance_metric,StringFormat='{0} away'}" FontSize="Small" FontAttributes="Bold" />
                                     </FlexLayout>
-                                </Frame>
-                                <Frame CornerRadius="20" BackgroundColor="#C0D3D3D3" Padding="0" Margin="5" Grid.Row="0" Grid.Column="1">
-                                    <FlexLayout  Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding gender,Converter={StaticResource stringtoBool}}">
+                                <!--</Frame>-->
+                                <!--<Frame CornerRadius="20" BackgroundColor="#Trans" Padding="0" Margin="5" Grid.Row="0" Grid.Column="0">-->
+                                <FlexLayout  Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding gender,Converter={StaticResource stringtoBool}}">
                                         <ffimageloading:CachedImage Source="genderdarkred.png" HeightRequest="15" WidthRequest="15" Margin="0,0,10,0"></ffimageloading:CachedImage>
                                         <Label Text="{Binding gender}" FontSize="Small" FontAttributes="Bold" />
                                     </FlexLayout>
-                                </Frame>
+                                <!--</Frame>-->
                                 <FlexLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
                                     <Grid BackgroundColor="Transparent" Padding="0" Margin="0">
                                         <Grid.RowDefinitions>
@@ -145,7 +145,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame HasShadow="True" Grid.Row="4" Padding="0" Margin="0" CornerRadius="30">
-                        <Button Text="Report this user" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium" CornerRadius="30"/>
+                        <Button Text="Report this user" x:Name="reportUser" Clicked="reportUser_Clicked" BackgroundColor="#98000b" TextColor="#EEEEEE" FontSize="Medium" CornerRadius="30"/>
                     </Frame>
                 </Grid>
             </ScrollView>

@@ -265,6 +265,11 @@ namespace Chatter
             return Math.Round(kmDistance, 2).ToString();
         }
 
+        private async void AmarePackage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new VipPremium()));
+        }
+
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var sample = coverFlowView.SelectedItem as ImageStorage;
