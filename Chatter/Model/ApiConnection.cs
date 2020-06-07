@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Android.Locations;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,23 +7,24 @@ namespace Chatter.Model
 {
     public class ApiConnection
     {
-        public static string ipaddress = "http://amareapp.000webhostapp.com/";
+        public static string ipaddress = "amareapp.000webhostapp.com/";
+        public static string hostUrl = "192.168.0.7";
         public static string Url
         {
             get
             {
                 return ipaddress;
             }
-            set
-            {
-                ipaddress = value;
-            }
         }
         public static string SocketUrl
         {
             get
             {
-                return "192.168.1.10";
+                return hostUrl;
+            }
+            set
+            {
+                hostUrl = value;
             }
         }
     }

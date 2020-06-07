@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
-﻿using Chatter.Classes;
-=======
 using Chatter.Classes;
->>>>>>> b8a36485c26930e0b00e05ac0999a9c4e15531c4
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
