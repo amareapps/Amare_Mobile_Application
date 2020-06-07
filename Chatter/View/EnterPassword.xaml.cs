@@ -1,9 +1,6 @@
 
-<<<<<<< HEAD
-﻿using Chatter.Classes;
-=======
+
 using Chatter.Classes;
->>>>>>> b8a36485c26930e0b00e05ac0999a9c4e15531c4
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -35,12 +32,12 @@ namespace Chatter.View
         {
             if (!sqliteManager.isCorrectPassword(passwordEntry.Text))
             {
-                await DisplayAlert("Error!", "Incorrect credentials, Please try again", "Okay");
+                await DisplayAlert("Error!", "Incorrect password!, Please try again", "Okay");
                 return;
             }
             if (!await api.deleteUser(Application.Current.Properties["Id"].ToString()))
             {
-                await DisplayAlert("Error!", "Unable to delete User", "Okay");
+                await DisplayAlert("Error!", "Unable to delete account!", "Okay");
                 return;
             }
             sqliteManager.logoutUser();

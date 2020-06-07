@@ -25249,10 +25249,13 @@ namespace Chatter.Droid
 			public const int vip = 2131165581;
 			
 			// aapt resource value: 0x7F07018E
-			public const int warning = 2131165582;
+			public const int vipdarkred = 2131165582;
 			
 			// aapt resource value: 0x7F07018F
-			public const int welcomelogo = 2131165583;
+			public const int warning = 2131165583;
+			
+			// aapt resource value: 0x7F070190
+			public const int welcomelogo = 2131165584;
 			
 			static Drawable()
 			{
