@@ -66,29 +66,38 @@ namespace Chatter
                     emailEntry.Text == string.Empty || gender == string.Empty || imageString == string.Empty || interestIn == string.Empty
                     || universityEntry.Text == string.Empty)
                 {
-                    await DisplayAlert("Oops!", "Incomplete credentials! Please fill the required fields.", "Okay");
+                    await DisplayAlert("Oops!", "Incomplete credentials! Ple    ase fill the required fields.", "Okay");
                     return;
                 }
+                if (imageString == string.Empty)
+                {
+                    await DisplayAlert("Image Selection", "Image required.", "Okay");
+                    return;
+                }
+                var locationLast = await Geolocation.GetLastKnownLocationAsync();
+                if (locationLast == null)
+                {
+                    var request = new GeolocationRequest(GeolocationAccuracy.High);
+                    var location = await Geolocation.GetLocationAsync(request);
+                    if (location == null)
+                    {
+                        return;
+                    }
+                    locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
+                }
+                else
+                {
+                    locationString = locationLast.Latitude.ToString() + "," + locationLast.Longitude.ToString();
+                }
                 overlay.IsVisible = true;
+                finalForm.RaiseChild(overlay);
                 Application.Current.Properties["Name"] = userNameEntry.Text;
                 Application.Current.Properties["Password"] = passwordEntry.Text;
                 Application.Current.Properties["Email"] = emailEntry.Text;
                 Application.Current.Properties["Gender"] = gender;
                 Application.Current.Properties["Birthday"] = birthdatePicker.ToString();
                 //await DisplayAlert("test",birthdatePicker.Date.ToString("MM/dd/yyyy"),"Okay");
-                var request = new GeolocationRequest(GeolocationAccuracy.High);
-                var location = await Geolocation.GetLocationAsync(request);
 
-                if (location == null)
-                {
-                    return;
-                }
-                locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
-                if (imageString == string.Empty)
-                {
-                    await DisplayAlert("Image Selection", "Image required.", "Okay");
-                    return;
-                }
                 await uploadtoServer();
                 await sampless();
                 //await Navigation.PushAsync(new ImageSelection());
@@ -119,7 +128,7 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Registration","Unable to continue " + ex.ToString(),"Okay");
+                await DisplayAlert("Unabel to continue","Please enable gps/location","Okay");
             }
         }
         private async Task sampless()
@@ -162,7 +171,7 @@ namespace Chatter
             string imgurl = stroageImage;
             imageString = imgurl;
         }
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
@@ -175,7 +184,10 @@ namespace Chatter
             btne.BackgroundColor = Color.FromHex("#cfcfcf");
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("#98000b");
-            gender = btne.Text;
+            if(btne == womanButton)
+                gender = "0";
+            else if(btne == manButton)
+                gender = "1";
         }
         private void Button_Interest(object sender, EventArgs e)
         {
@@ -190,7 +202,12 @@ namespace Chatter
             btne.BackgroundColor = Color.FromHex("#cfcfcf");
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("#98000b");
-            interestIn = btne.Text;
+            if(btne == womenInterestButton)
+                interestIn = "0";
+            else if (btne == menInterestButton)
+                interestIn = "1";
+            else if (btne == everyoneInterestButton)
+                interestIn = "2";
         }
         private void nextContent(object sender, EventArgs e)
         {

@@ -34,6 +34,9 @@ namespace Chatter.Model
         public string birthdate
         { get; set; } = "";
         public string interest { get; set; } = "";
+        public string height { get; set; } = "";
+        public string weight { get; set; } = "";
+        public string hobby { get; set; } = "";
     }   
 
 }

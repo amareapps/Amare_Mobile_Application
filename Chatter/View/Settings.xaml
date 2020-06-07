@@ -16,6 +16,22 @@
             </Grid>
             <ScrollView Padding="0,0,0,10">
                 <StackLayout Spacing="20" Margin="25,0,25,10">
+                    <Label Text="Account Settings" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Frame Padding="10" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Name"></Label>
+                            <Label Grid.Column="1" x:Name="userName" FontSize="Medium" HorizontalTextAlignment="End" Padding="0,0,10,0"></Label>
+                            <Label Grid.Column="2" FontSize="Medium" Text=">" FontAttributes="Bold" HorizontalTextAlignment="End"></Label>
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapChangename" Tapped="tapChangename_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
                     <Label Text="Discovery Settings" FontSize="Large" FontAttributes="Bold"></Label>
                     <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
                         <Grid.RowDefinitions>
@@ -41,13 +57,14 @@
                         <Picker x:Name="showmePicker" Grid.Column="0" Grid.Row="1" Title="" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
-                                    <x:String>Men</x:String>
                                     <x:String>Women</x:String>
+                                    <x:String>Men</x:String>
                                     <x:String>Everyone</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
                     </Grid>
+
                     <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
                         <Grid HorizontalOptions="CenterAndExpand">
                             <Label Grid.Column="0" FontAttributes="Bold"  Text="Maximum Distance" FontSize="Medium" Grid.ColumnSpan="2"></Label>
