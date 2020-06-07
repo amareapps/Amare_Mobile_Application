@@ -61,7 +61,7 @@ namespace Chatter.Classes
             string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
-                ApiConnection.Url = obj.Url;
+                ApiConnection.SocketUrl = obj.Url;
                 conn.CreateTable<IpAddress>();
                 var table5 = conn.Table<IpAddress>().Delete(x => x.Url != "");
                 conn.InsertOrReplace(obj);

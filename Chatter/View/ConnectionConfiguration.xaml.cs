@@ -21,11 +21,11 @@ namespace Chatter.View
         public ConnectionConfiguration()
         {
             InitializeComponent();
-            txtEntry.Text = ApiConnection.Url;
+            txtEntry.Text = ApiConnection.hostUrl;
         }
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            ApiConnection.Url = txtEntry.Text;
+            ApiConnection.hostUrl = txtEntry.Text;
             IpAddress address = new IpAddress();
             address.Url = txtEntry.Text;
             manager.setIpAddress(address);

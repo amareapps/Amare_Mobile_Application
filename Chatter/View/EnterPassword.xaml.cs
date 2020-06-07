@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b271a4e0d18ab8b44ba7b1bc04412a2d03a6978
 using Chatter.Classes;
 using Rg.Plugins.Popup.Services;
 using System;
