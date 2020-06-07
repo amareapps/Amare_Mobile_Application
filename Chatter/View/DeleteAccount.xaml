@@ -13,7 +13,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image Margin="5,0,0,0" Source="warning.png" Grid.Column="0" HeightRequest="25" Aspect="AspectFit" WidthRequest="25"></Image>
-                    <Label Grid.Column="1" Text="Delete account" FontSize="Large" HorizontalOptions="Start" TextColor="White" FontAttributes="Bold"
+                    <Label Grid.Column="1" Text="Delete Account" FontSize="Large" HorizontalOptions="Start" TextColor="White" FontAttributes="Bold"
                     VerticalOptions="CenterAndExpand"/>
                 </Grid>
                 <StackLayout >

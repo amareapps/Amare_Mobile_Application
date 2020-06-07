@@ -75,7 +75,7 @@
             </Frame>
         </StackLayout>
     </ContentPage>
-    <ContentPage  x:Name="schoolContent" BackgroundColor="#EEEEEE">
+    <!--<ContentPage  x:Name="schoolContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
                 <Label Text="My &#x0a;university is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
@@ -88,7 +88,7 @@
                 <Button x:Name="btnUniversity" BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="Skip" FontSize="Large" FontAttributes="Bold" Clicked="nextContent"></Button>
             </Frame>
         </StackLayout>
-    </ContentPage>
+    </ContentPage>-->
     <ContentPage  x:Name="genderContent" BackgroundColor="#EEEEEE">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,30,0,0">
