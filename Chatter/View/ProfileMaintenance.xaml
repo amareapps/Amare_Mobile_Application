@@ -120,17 +120,11 @@
         </StackLayout>
     </ContentPage>
     <ContentPage  x:Name="pictureContent" BackgroundColor="#EEEEEE">
-<<<<<<< HEAD
-        <AbsoluteLayout>
-            <StackLayout Margin="20,0,20,20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
-                <Frame CornerRadius="30" Padding="0" Margin="0,30,0,30"  BorderColor="Accent" BackgroundColor="Transparent" HeightRequest="400" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True">
-                    <ImageButton BackgroundColor="Transparent" Margin="0" Aspect="AspectFill"  x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HeightRequest="400" Source="add_pic.png" >
-=======
+
         <AbsoluteLayout x:Name="finalForm">
                 <StackLayout Margin="20,0,20,20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
                 <Frame CornerRadius="30" Padding="0" Margin="0,50,0,10" BorderColor="Accent" BackgroundColor="Transparent" HeightRequest="500" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True">
                     <ImageButton BackgroundColor="Transparent" Margin="0" Aspect="AspectFill"  x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HeightRequest="500" Source="add_pic.png" >
->>>>>>> 47bb864bb33e25051ae8d695e5d9bf30d73ef822
                     </ImageButton>
                 </Frame>
                 <Picker x:Name="imagePicker" IsVisible="False" SelectedIndexChanged="imagePicker_SelectedIndexChanged"></Picker>

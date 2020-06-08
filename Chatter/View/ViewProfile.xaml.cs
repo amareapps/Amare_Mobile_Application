@@ -97,12 +97,11 @@ namespace Chatter.View
         {
             Navigation.PopModalAsync();
         }
-<<<<<<< HEAD
 
         private async void reportUser_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new ReportUserEntry()));
-=======
+        }
         private string getDistance(UserModel model)
         {
 
@@ -125,12 +124,6 @@ namespace Chatter.View
                 kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Kilometers);
                 return Math.Round(kmDistance, 2).ToString();
             }
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PushAsync(new ReportUserEntry());
->>>>>>> 47bb864bb33e25051ae8d695e5d9bf30d73ef822
         }
     }
 }
