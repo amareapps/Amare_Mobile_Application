@@ -1,6 +1,7 @@
 ﻿using Android.Graphics;
 using Chatter.Classes;
 using Chatter.Model;
+using Java.Util;
 using Newtonsoft.Json;
 using SQLite;
 using System;
@@ -11,7 +12,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Color = Xamarin.Forms.Color;
@@ -23,10 +24,31 @@ namespace Chatter.View
     {
         ApiConnector api = new ApiConnector();
         private string number;
+        int timeCounter=60;
+        SmsSender smsSender = new SmsSender();
+        System.Timers.Timer timerSpan = new System.Timers.Timer();
         public OtpAuthentication(string _number)
         {
             InitializeComponent();
             number = _number;
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                timeCounter--;
+                if (timeCounter == 0)
+                {
+                    timerSpan.Stop();
+                    timerSpan.Enabled = false;
+                    resentButton.IsEnabled = true;
+                    resentButton.BackgroundColor = Color.FromHex("98000b");
+                    resentButton.Text = "RESEND";
+                    return false;
+                }
+                resentButton.Text = "RESEND ( " + timeCounter.ToString() + " )";
+                // Do something
+
+                return true; // True = Repeat again, False = Stop the timer
+            });
+
         }
 
         private async void confirmButton_Clicked(object sender,     EventArgs e)
@@ -64,5 +86,11 @@ namespace Chatter.View
             }
         }
 
+        private async void resentButton_Clicked(object sender, EventArgs e)
+        {
+            StringGenerator gen = new StringGenerator();
+            var otpCode = gen.generateRandomString();
+            var checker = await smsSender.SendSms(otpCode, number);
+        }
     }
 }

@@ -120,6 +120,7 @@ namespace Chatter
                         btnKm.TextColor = Color.FromHex("EEEEEE");
                         btnKm.BorderWidth = 2;
                         btnKm.BorderColor = Color.FromHex("#98000b");
+                        lblMetric.Text = "Km.";
                     }
                     else
                     {
@@ -127,7 +128,9 @@ namespace Chatter
                         btnMi.TextColor = Color.FromHex("EEEEEE");
                         btnMi.BorderWidth = 2;
                         btnMi.BorderColor = Color.FromHex("#98000b");
+                        lblMetric.Text = "Mi.";
                     }
+                    metric = model.distance_metric;
 
                 }
                 conn.CreateTable<UserModel>();
@@ -162,6 +165,17 @@ namespace Chatter
         {
 
         }
+        private int convertDistance(int metricTo,int value)
+        {
+            double result= 0;
+            if (metric == 0 && metricTo == 1)  //<----- kilometer to miles
+                result = value / 1.60934;
+            else if (metric == 1 && metricTo == 0)
+                result = value * 1.60934;      //<----- miles to kilometer
+            else
+                result = value;
+            return Convert.ToInt32(result);
+        }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
@@ -179,9 +193,18 @@ namespace Chatter
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("#98000b");
             if (btne.Text == "Km.")
+            {
+                int sample = Convert.ToInt32(slider.Value);
+                slider.Value = convertDistance(0, sample);
                 metric = 0;
+            }
             else
+            {
+                int sample = Convert.ToInt32(slider.Value);
+                slider.Value = convertDistance(1, sample);
                 metric = 1;
+            }
+            lblMetric.Text = btne.Text;
         }
         private void btnShareAmare_Clicked(object sender, EventArgs e)
         {
