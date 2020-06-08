@@ -23,3 +23,4 @@ Chatter.Android/bin/Debug/com.companyname.chatter-Signed.apk
 Chatter.Android/bin/Debug/Chatter.pdb
 Chatter.Android/bin/Debug/com.companyname.chatter.apk
 Chatter.Android/Chatter.Android.csproj.user
+*.user
