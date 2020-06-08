@@ -1,4 +1,3 @@
-
 using Chatter.Classes;
 using Rg.Plugins.Popup.Services;
 using System;

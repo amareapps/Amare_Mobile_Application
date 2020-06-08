@@ -65,6 +65,7 @@ namespace Chatter
                 if (userNameEntry.Text == string.Empty || passwordEntry.Text == string.Empty ||
                     emailEntry.Text == string.Empty || gender == string.Empty || imageString == string.Empty || interestIn == string.Empty
                     /*|| universityEntry.Text == string.Empty*/)
+
                 {
                     await DisplayAlert("Oops!", "Incomplete credentials! Ple    ase fill the required fields.", "Okay");
                     return;
@@ -147,7 +148,6 @@ namespace Chatter
                 content.Add(new StringContent(number), "phone_number");
                 content.Add(new StringContent(birthdatePicker.Date.ToString("MM/dd/yyyy")), "birthdate");
                 content.Add(new StringContent(interestIn), "interest");
-                //content.Add(new StringContent(universityEntry.Text), "school");
 
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
                 request.EnsureSuccessStatusCode();
@@ -224,9 +224,9 @@ namespace Chatter
                 this.CurrentPage = birthdayContent;
             }
             else if (this.CurrentPage == birthdayContent)
-            {
+           {
                 this.CurrentPage = genderContent;
-            }
+           }
             else if (this.CurrentPage == genderContent)
             {
                 this.CurrentPage = interestContent;
@@ -292,17 +292,15 @@ namespace Chatter
             // Bitmap bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
             chooseImageButton.Source = file.Path.ToString();
         }
-
-        private void universityEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            /*if (e.NewTextValue == string.Empty)
-                btnUniversity.Text = "SKIP";
-            else
-            {
-                btnUniversity.Text = "CONTINUE";
-            }
-            */
-        }
+        //private void universityEntry_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+            //if (e.NewTextValue == string.Empty)
+                //btnUniversity.Text = "SKIP";
+            //else
+           // {
+                //btnUniversity.Text = "CONTINUE";
+           // }
+       // }
 
         private async void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
