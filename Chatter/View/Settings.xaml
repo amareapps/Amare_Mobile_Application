@@ -72,7 +72,7 @@
                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" FontAttributes="Bold"  Text="Maximum Distance" FontSize="Medium" Grid.ColumnSpan="2"></Label>
+                            <Label Grid.Column="0" FontAttributes="Bold"  Text="Discovery Distance" FontSize="Medium" Grid.ColumnSpan="2"></Label>
                             <Label Grid.Column="1"  HorizontalTextAlignment="End" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
                             <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" FontSize="Body"></Label>
                         </Grid>

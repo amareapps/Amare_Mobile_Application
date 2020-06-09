@@ -30,7 +30,7 @@
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
                 <ImageButton x:Name="vipButton" Clicked="vipButton_Clicked" Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
-            <local:CustomFrame Padding="0,40,0,10" Grid.Row="1" CornerRadius="0,0,150,150" HasShadow="True" BackgroundColor="#EEEEEE" HeightRequest="280">
+            <local:CustomFrame Padding="0,40,0,0" Grid.Row="1" CornerRadius="0,0,150,150" BorderColor="Transparent" HasShadow="True" BackgroundColor="#EEEEEE" HeightRequest="280">
                 <StackLayout IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" >
                     <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
                         <Picker.ItemsSource>
@@ -61,8 +61,10 @@
                     </StackLayout>
                 </StackLayout>
             </local:CustomFrame>
+            <Image Source="heartbeat.gif" Grid.Row="2" Aspect="AspectFill" HorizontalOptions="FillAndExpand" TranslationY="-30"></Image>
             <ActivityIndicator IsRunning="True"  Grid.Row="2"  HeightRequest="80" WidthRequest="80"
                                              IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+
             <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,5" VerticalOptions="End" HorizontalOptions="Center">
                 <StackLayout >
                     <cards:CarouselView x:Name="autoSlider">

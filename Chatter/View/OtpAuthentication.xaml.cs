@@ -31,6 +31,7 @@ namespace Chatter.View
         {
             InitializeComponent();
             number = _number;
+            /*
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 timeCounter--;
@@ -47,7 +48,7 @@ namespace Chatter.View
                 // Do something
 
                 return true; // True = Repeat again, False = Stop the timer
-            });
+            });*/
 
         }
 

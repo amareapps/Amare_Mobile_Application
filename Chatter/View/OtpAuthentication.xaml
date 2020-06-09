@@ -9,12 +9,12 @@
         <StackLayout Spacing="50" Margin="20,80,20,20">
             <Label Text="Enter the code received below:" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
             <local:RoundedEntry x:Name="codeEntry" HorizontalTextAlignment="Center" TextChanged="codeEntry_TextChanged" FontSize="Title"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="1"
+            <Label Text="Resend code via SMS" FontAttributes="Bold" FontSize="Medium"  TextColor="DodgerBlue" HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="resentButton_Clicked"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+            <Button 
                         BackgroundColor="Gray" 
                         IsEnabled="False" 
                         CornerRadius="30" 
@@ -26,21 +26,6 @@
                         HeightRequest="50"
                         WidthRequest="300" 
                         Text="CONFIRM"></Button>
-                <Button Grid.Column="0"
-                        BackgroundColor="Gray" 
-                        IsEnabled="False" 
-                        CornerRadius="30" 
-                        x:Name="resentButton" 
-                        TextColor="#fffcf8" 
-                        FontAttributes="Bold" 
-                        FontSize="Large" 
-                        Clicked="resentButton_Clicked" 
-                        HeightRequest="50"
-                        WidthRequest="300" 
-                        Text="RESEND"></Button>
-            </Grid>
-            <Label Padding="20" Text="If you have not received the SMS, please press Resend after the time elapses" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
