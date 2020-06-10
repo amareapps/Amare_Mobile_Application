@@ -30,7 +30,7 @@
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
                 <ImageButton x:Name="vipButton" Clicked="vipButton_Clicked" Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
-            <local:CustomFrame Padding="0,40,0,0" Grid.Row="1" CornerRadius="0,0,150,150" BorderColor="Transparent" HasShadow="True" BackgroundColor="#EEEEEE" HeightRequest="280">
+            <local:CustomFrame Padding="0,40,0,40" Grid.Row="1" CornerRadius="0,0,150,150" BorderColor="Transparent" HasShadow="True" BackgroundColor="#EEEEEE" HeightRequest="280">
                 <StackLayout IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" >
                     <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
                         <Picker.ItemsSource>
@@ -50,22 +50,23 @@
                                            WidthRequest="200" Source="tzuyu.jpg" 
                                                      Aspect="AspectFill" Clicked="ProfileImage_Clicked"/>
                         </Frame>
+                        <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5, 0.5, 50, 50"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional" IsRunning="True"   HeightRequest="80" WidthRequest="80"
+                                             IsVisible="False" x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
                         <ImageButton AbsoluteLayout.LayoutBounds="0.7, 0.95, 35, 35"
                                                 AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                                      HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
                     </AbsoluteLayout>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label Padding="0,5,0,0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Padding="0,5,0,0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
                         <Label Padding="0" Text=", " FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="End"/>
                         <Label Padding="0" x:Name="age" Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="End"/>
                     </StackLayout>
                 </StackLayout>
             </local:CustomFrame>
-            <Image Source="heartbeat.gif" Grid.Row="2" Aspect="AspectFill" HorizontalOptions="FillAndExpand" TranslationY="-30"></Image>
-            <ActivityIndicator IsRunning="True"  Grid.Row="2"  HeightRequest="80" WidthRequest="80"
-                                             IsVisible="False"  x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+            <ffimageloading:CachedImage Opacity="0.4" HeightRequest="110" Source="heartbeat.gif" Margin="0,0,0,0" Grid.Row="2" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="End" TranslationY="-30"></ffimageloading:CachedImage>
 
-            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" Grid.RowSpan="2" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,5" VerticalOptions="End" HorizontalOptions="Center">
+            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" WidthRequest="600" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,5" VerticalOptions="End" HorizontalOptions="Center">
                 <StackLayout >
                     <cards:CarouselView x:Name="autoSlider">
                         <cards:CarouselView.ItemsSource>
