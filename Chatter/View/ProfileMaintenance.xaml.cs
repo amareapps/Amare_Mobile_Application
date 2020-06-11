@@ -134,7 +134,7 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Unabel to continue","Please enable gps/location","Okay");
+                await DisplayAlert("Unabel to continue", ex.ToString(), "Okay");
                 continueButton.IsEnabled = true;
             }
         }
