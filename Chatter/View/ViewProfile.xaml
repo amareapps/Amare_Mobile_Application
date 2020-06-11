@@ -15,10 +15,10 @@
     </Page.Resources>
     <ContentPage.Content>
         <StackLayout Padding="0,0,0,10">
-            <Grid HeightRequest="30" Margin="0" Padding="0,10,0,5">
+            <Grid HeightRequest="50" Margin="0" Padding="0,10,0,5">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
+                <Label FontAttributes="Bold" TextColor="Accent" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
             </Grid>
             <ScrollView Padding="10,5,10,0">
             <Grid>

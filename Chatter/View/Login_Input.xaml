@@ -16,7 +16,7 @@
                 <Image Source="Amare_logo.png" Aspect="AspectFit" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" VerticalOptions="Center" />
                 <Label Text="Welcome to Amare!" FontSize="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                 <StackLayout>
-                    <local:RoundedEntry WidthRequest="450" x:Name="emailEntry" Placeholder="Enter your e-mail address here..." FontSize="Small"></local:RoundedEntry>
+                    <local:RoundedEntry WidthRequest="450" x:Name="emailEntry" Keyboard="Email" Placeholder="Enter your e-mail address here..." FontSize="Small"></local:RoundedEntry>
                     <local:RoundedEntry WidthRequest="450" x:Name="passEntry" Placeholder="Enter your password here..." FontSize="Small" IsPassword="True"></local:RoundedEntry>
                     <Grid>
                         <Grid.RowDefinitions>

@@ -33,7 +33,7 @@ namespace Chatter
         {
             InitializeComponent();
             timer.Elapsed += Timer_Elapsed;
-            timer.Interval = 2000;
+            timer.Interval = 3000;
             timer.Enabled = true;
             timer.Start();
         }
@@ -42,7 +42,7 @@ namespace Chatter
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                if (autoSlider.SelectedIndex == 2)
+                if (autoSlider.SelectedIndex == 4)
                 {
                     autoSlider.SelectedIndex = 0;
                 }

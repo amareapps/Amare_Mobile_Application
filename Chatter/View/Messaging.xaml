@@ -64,7 +64,7 @@
                 <ImageButton Source="chatcamera.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
                 <ImageButton Source="audio.png" Released="voiceMessage_Released" Pressed="voiceMessage_Pressed"  BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="voiceMessage"  Clicked="voiceMessage_Clicked" Grid.Column="1"></ImageButton>
 
-                <local2:RoundedEntry x:Name="messageEntry" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="2" FontSize="Small"></local2:RoundedEntry>
+                <local2:RoundedEntry x:Name="messageEntry" Keyboard="Chat" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="2" FontSize="Small"></local2:RoundedEntry>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="3">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>

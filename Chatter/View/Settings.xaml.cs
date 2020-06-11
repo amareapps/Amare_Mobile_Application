@@ -186,7 +186,7 @@ namespace Chatter
             var looper = metricLayout.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("e3e1de");
+                btn.BackgroundColor = Color.Default;
                 btn.TextColor = Color.Black;
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;

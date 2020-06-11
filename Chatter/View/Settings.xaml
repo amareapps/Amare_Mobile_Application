@@ -9,22 +9,22 @@
              x:Class="Chatter.Settings" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="50" Margin="0" Padding="0,10,0,5">
+            <Grid HeightRequest="60" Margin="0" Padding="0,10,0,5">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" TextColor="Accent" Text="Preferences"/>
+                <Label FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" TextColor="Accent" Text="Preferences"/>
             </Grid>
-            <ScrollView Padding="0,0,0,10">
-                <StackLayout Spacing="20" Margin="25,0,25,10">
+            <ScrollView Padding="0,10,0,10">
+                <StackLayout Spacing="20" Margin="20,0,20,10">
                     <Label Text="Account Preferences" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Frame Padding="10" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                    <Frame Padding="10" Margin="10,0,10,0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <Grid HorizontalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Name"></Label>
+                            <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Change Name"></Label>
                             <Label Grid.Column="1" x:Name="userName" FontSize="Medium" HorizontalTextAlignment="End" Padding="0,0,10,0"></Label>
                             <Label Grid.Column="2" FontSize="Medium" Text=">" FontAttributes="Bold" HorizontalTextAlignment="End"></Label>
                         </Grid>
@@ -33,98 +33,113 @@
                         </Frame.GestureRecognizers>
                     </Frame>
                     <Label Text="Discovery Preferences" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="AUTO"></RowDefinition>
-                            <RowDefinition Height="AUTO"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Label Text="Location"  Grid.Column="0" Grid.Row="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                        <Picker x:Name="locationPicker" Grid.Column="0" Grid.Row="1" Title="Select Location" SelectedIndexChanged="Picker_SelectedIndexChanged">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Use current location</x:String>
-                                    <x:String>Set new location</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                    </Grid>
-                    <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10,5,10,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="AUTO"></RowDefinition>
-                            <RowDefinition Height="AUTO"></RowDefinition>
-                            <RowDefinition Height="AUTO"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Label Text="I am looking for.." Grid.Column="0" Grid.Row="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                        <Label Padding="10,0,0,0" Text="Men" FontSize="Medium" Grid.Column="0" Grid.Row="1"></Label>
-                        <Label Padding="10,0,0,0" Text="Women" FontSize="Medium" Grid.Column="0" Grid.Row="2"></Label>
-                        <Switch Grid.Column="1" x:Name="menSwitch" Toggled="menSwitch_Toggled" Grid.Row="1"/>
-                        <Switch  Grid.Column="1" x:Name="womenSwitch" Toggled="womenSwitch_Toggled" Grid.Row="2"/>
-                        <Picker x:Name="showmePicker" IsVisible="False"  Grid.Column="0" Grid.Row="1" Title="" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Women</x:String>
-                                    <x:String>Men</x:String>
-                                    <x:String>Everyone</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                    </Grid>
-
-                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
-                        <Grid HorizontalOptions="CenterAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" FontAttributes="Bold"  Text="Discovery Distance" FontSize="Medium" Grid.ColumnSpan="2"></Label>
-                            <Label Grid.Column="1"  HorizontalTextAlignment="End" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
-                            <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" FontSize="Body"></Label>
+                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Transparent" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Text="Location"  Grid.Column="0"  Grid.Row="0" FontSize="Medium" FontAttributes="Bold"></Label>
+                            <Picker x:Name="locationPicker" WidthRequest="250" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Title="Select Location" SelectedIndexChanged="Picker_SelectedIndexChanged">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Use current location</x:String>
+                                        <x:String>Set new location</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
                         </Grid>
-                        <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"  MinimumHeightRequest="10"></Slider>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
-                        <Grid HorizontalOptions="CenterAndExpand">
-                            <Label Grid.Column="0" FontAttributes="Bold" Text="Show Distances in" FontSize="Medium" Grid.ColumnSpan="2"></Label>
-                        </Grid>
-                        <StackLayout Orientation="Horizontal" x:Name="metricLayout">
-                            <Button x:Name="btnKm" Clicked="Button_Clicked" Text="Km." HorizontalOptions="FillAndExpand" CornerRadius="20" BackgroundColor="#e3e1de" ></Button>
-                            <Button x:Name="btnMi" Clicked="Button_Clicked" Text="Mi." HorizontalOptions="FillAndExpand" CornerRadius="20" BackgroundColor="#e3e1de"></Button>
+                    </Frame>
+                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <StackLayout Padding="10">
+                            <Label Text="I am looking for.." FontSize="Medium" FontAttributes="Bold"></Label>
+                            <Grid HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Padding="10,0,10,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Padding="0,0,0,0" HorizontalOptions="Start" Text="Men" FontSize="Medium" Grid.Column="0" Grid.Row="1"></Label>
+                                <Label Padding="0,0,0,0" HorizontalOptions="Start" Text="Women" FontSize="Medium" Grid.Column="0" Grid.Row="2"></Label>
+                                <Switch Grid.Column="1" HorizontalOptions="EndAndExpand" x:Name="menSwitch" Toggled="menSwitch_Toggled" Grid.Row="1"/>
+                                <Switch  Grid.Column="1" HorizontalOptions="EndAndExpand" x:Name="womenSwitch" Toggled="womenSwitch_Toggled" Grid.Row="2"/>
+                                <!--<Picker x:Name="showmePicker" IsVisible="False"  Grid.Column="0" Grid.Row="1" Title="" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Women</x:String>
+                                            <x:String>Men</x:String>
+                                            <x:String>Everyone</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker> -->
+                            </Grid>
                         </StackLayout>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" FontAttributes="Bold" Text="Age range" FontSize="Medium"></Label>
-                            <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0" Margin="0">
-                                <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=LowerValue, StringFormat='{0:N0} - '}"></Label>
-                                <Label FontSize="Body"  Text="{Binding Source={x:Reference Name=ageslider}, Path=UpperValue, StringFormat='{0:N0}'}" ></Label>
+                    </Frame>
+                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
+                            <Grid HorizontalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" FontAttributes="Bold"  Text="Discovery Distance" FontSize="Medium" Grid.ColumnSpan="2"></Label>
+                                <Label Grid.Column="1"  HorizontalTextAlignment="End" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
+                                <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" FontSize="Body"></Label>
+                            </Grid>
+                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"  MinimumHeightRequest="10"></Slider>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
+                            <Grid HorizontalOptions="CenterAndExpand">
+                                <Label Grid.Column="0" FontAttributes="Bold" Text="Show Distances in" FontSize="Medium" Grid.ColumnSpan="2"></Label>
+                            </Grid>
+                            <StackLayout Orientation="Horizontal" x:Name="metricLayout">
+                                <Button x:Name="btnKm" Clicked="Button_Clicked" Text="Km." HorizontalOptions="FillAndExpand" CornerRadius="20" BackgroundColor="Default" ></Button>
+                                <Button x:Name="btnMi" Clicked="Button_Clicked" Text="Mi." HorizontalOptions="FillAndExpand" CornerRadius="20" BackgroundColor="Default"></Button>
                             </StackLayout>
-                         </Grid>
-                        <forms:RangeSlider ActiveColor="Accent"  MaxThumbHidden="False" MinThumbHidden="False" BarHeight="5"  x:Name="ageslider" LowerValue="18"  UpperValue="100" MinimumValue="18" MaximumValue="100" TextSize="15" />
-                    </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" FontAttributes="Bold" Text="Age range" FontSize="Medium"></Label>
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0" Margin="0">
+                                    <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=LowerValue, StringFormat='{0:N0} - '}"></Label>
+                                    <Label FontSize="Body"  Text="{Binding Source={x:Reference Name=ageslider}, Path=UpperValue, StringFormat='{0:N0}'}" ></Label>
+                                </StackLayout>
+                            </Grid>
+                            <forms:RangeSlider ActiveColor="Accent"  MaxThumbHidden="False" MinThumbHidden="False" BarHeight="5"  x:Name="ageslider" LowerValue="18"  UpperValue="100" MinimumValue="18" MaximumValue="100" TextSize="15" />
+                        </StackLayout>
+                    </Frame>
 
-                    <Button x:Name="saveButton" Text="Save and Apply" Margin="0,0,0,10" CornerRadius="30" BackgroundColor="#e3e1de" Clicked="saveButton_Clicked"></Button>
+                    <Button x:Name="saveButton" Text="Save and Apply" Margin="10,0,10,10" CornerRadius="30" BackgroundColor="Default" Clicked="saveButton_Clicked"></Button>
                    
                     <Label Text="Contact Us" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Text="Help and Support" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
-                    <Button x:Name="btnShareAmare"  Clicked="btnShareAmare_Clicked" Text="Share Amare" CornerRadius="30" TextColor="#e3e1d3" BackgroundColor="Accent" FontAttributes="Bold"></Button>
+                    <Button Margin="10,0,10,0" Text="Help and Support" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+                    <Button Margin="10,0,10,0" x:Name="btnShareAmare"  Clicked="btnShareAmare_Clicked" Text="Share Amare" CornerRadius="30" TextColor="#EEEEEE" BackgroundColor="Accent"></Button>
                     
                     <Label Text="Legal" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Text="Privacy Policy" Clicked="PrivacyPolicy_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
-                    <Button Text="Terms of Service" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
-                    <Button Text="Licenses" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
-                    
-                    <Button Text="LOGOUT" Margin="0,30,0,10" TextColor="#98000b" BackgroundColor="#EEEEEE" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
-                    <Grid BackgroundColor="Transparent" Padding="0,20,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Button Margin="10,0,10,0" Text="Privacy Policy" Clicked="PrivacyPolicy_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+                    <Button Margin="10,0,10,0" Text="Terms of Service" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+                    <Button Margin="10,0,10,0" Text="Licenses" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+
+                    <Button Margin="10,0,10,0" Text="LOGOUT" TextColor="#98000b" BackgroundColor="#EEEEEE" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
+                    <Grid BackgroundColor="Transparent" Padding="0" Margin="0,40,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                         <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="150"></Image>
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
-                    <StackLayout Padding="0,30,0,0" >
-                        <Button Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="#EEEEEE" BackgroundColor="#98000b" FontAttributes="Bold" CornerRadius="30"></Button>
+                    <StackLayout Padding="0,10,0,0" >
+                        <Button Margin="10,0,10,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="#EEEEEE" BackgroundColor="#98000b" FontAttributes="Bold" CornerRadius="30"></Button>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

@@ -16,7 +16,7 @@
                 <Label Text="My &#x0a;email is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <local:RoundedEntry x:Name="emailEntry" HorizontalOptions="FillAndExpand" Placeholder="Email Address" FontSize="Medium" Grid.Row="0" VerticalOptions="CenterAndExpand" Margin="5"></local:RoundedEntry>
+                <local:RoundedEntry x:Name="emailEntry" Keyboard="Email" HorizontalOptions="FillAndExpand" Placeholder="Email Address" FontSize="Medium" Grid.Row="0" VerticalOptions="CenterAndExpand" Margin="5"></local:RoundedEntry>
                 <Label Margin="10,0,20,0" VerticalOptions="Start" Grid.Row="1" Text="Note: Enter your email address in order to recover your account later." FontSize="Micro" FontAttributes="Bold"></Label>
             </Grid>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
