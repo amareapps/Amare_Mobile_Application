@@ -129,7 +129,7 @@
                 </Frame>
                 <Picker x:Name="imagePicker" IsVisible="False" SelectedIndexChanged="imagePicker_SelectedIndexChanged"></Picker>
                 <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
-                        <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="PROCEED" FontSize="Large" FontAttributes="Bold" Clicked="continueButton_Clicked"></Button>
+                        <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="30" Text="PROCEED" FontSize="Large" FontAttributes="Bold" x:Name="continueButton" Clicked="continueButton_Clicked"></Button>
                 </Frame>
             </StackLayout>
             <!-- Overlay -->

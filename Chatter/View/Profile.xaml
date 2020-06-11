@@ -75,7 +75,7 @@
                                     <Label Text="Match around the world" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
                                     <Label Text="Navigate to anywhere with Amare!" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
                                 </StackLayout>
-                                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                <StackLayout Padding="70,20,70,5" HorizontalOptions="Center" VerticalOptions="Center">
                                     <Label Text="Control Your Profile" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
                                     <Label Text="Limit what others see with Amare" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
                                 </StackLayout>

@@ -12,11 +12,11 @@
             <Grid HeightRequest="50" Margin="0" Padding="0,10,0,5">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" TextColor="Accent" Text="Settings"/>
+                <Label FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" TextColor="Accent" Text="Preferences"/>
             </Grid>
             <ScrollView Padding="0,0,0,10">
                 <StackLayout Spacing="20" Margin="25,0,25,10">
-                    <Label Text="Account Settings" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Label Text="Account Preferences" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Padding="10" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <Grid HorizontalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
@@ -32,7 +32,7 @@
                             <TapGestureRecognizer x:Name="tapChangename" Tapped="tapChangename_Tapped"></TapGestureRecognizer>
                         </Frame.GestureRecognizers>
                     </Frame>
-                    <Label Text="Discovery Settings" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Label Text="Discovery Preferences" FontSize="Large" FontAttributes="Bold"></Label>
                     <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="AUTO"></RowDefinition>
@@ -52,9 +52,14 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="AUTO"></RowDefinition>
                             <RowDefinition Height="AUTO"></RowDefinition>
+                            <RowDefinition Height="AUTO"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label Text="Show me" Grid.Column="0" Grid.Row="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                        <Picker x:Name="showmePicker" Grid.Column="0" Grid.Row="1" Title="" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
+                        <Label Text="I am looking for.." Grid.Column="0" Grid.Row="0" FontSize="Medium" FontAttributes="Bold"></Label>
+                        <Label Padding="10,0,0,0" Text="Men" FontSize="Medium" Grid.Column="0" Grid.Row="1"></Label>
+                        <Label Padding="10,0,0,0" Text="Women" FontSize="Medium" Grid.Column="0" Grid.Row="2"></Label>
+                        <Switch Grid.Column="1" x:Name="menSwitch" Toggled="menSwitch_Toggled" Grid.Row="1"/>
+                        <Switch  Grid.Column="1" x:Name="womenSwitch" Toggled="womenSwitch_Toggled" Grid.Row="2"/>
+                        <Picker x:Name="showmePicker" IsVisible="False"  Grid.Column="0" Grid.Row="1" Title="" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Women</x:String>
