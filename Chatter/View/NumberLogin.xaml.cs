@@ -52,7 +52,7 @@ namespace Chatter.View
         {
             StringGenerator gen = new StringGenerator();
             var otpCode = gen.generateRandomString();
-            //var checker = await smsSender.SendSms(otpCode, phoneEntry.Text);
+            var checker = await smsSender.SendSms(otpCode, phoneEntry.Text);
             await Navigation.PushAsync(new OtpAuthentication(phoneEntry.Text), true);
         }
         private void phoneEntry_TextChanged(object sender, TextChangedEventArgs e)

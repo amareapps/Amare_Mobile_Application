@@ -62,17 +62,21 @@ namespace Chatter
         {
             try
             {
+                continueButton.IsEnabled = false;
                 if (userNameEntry.Text == string.Empty || passwordEntry.Text == string.Empty ||
                     emailEntry.Text == string.Empty || gender == string.Empty || imageString == string.Empty || interestIn == string.Empty
                     /*|| universityEntry.Text == string.Empty*/)
 
                 {
                     await DisplayAlert("Oops!", "Incomplete credentials! Ple    ase fill the required fields.", "Okay");
+
+                    continueButton.IsEnabled = true;
                     return;
                 }
                 if (imageString == string.Empty)
                 {
                     await DisplayAlert("Image Selection", "Image required.", "Okay");
+                    continueButton.IsEnabled = true;
                     return;
                 }
                 var locationLast = await Geolocation.GetLastKnownLocationAsync();
@@ -82,6 +86,7 @@ namespace Chatter
                     var location = await Geolocation.GetLocationAsync(request);
                     if (location == null)
                     {
+                        continueButton.IsEnabled = true;
                         return;
                     }
                     locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
@@ -130,6 +135,7 @@ namespace Chatter
             catch (Exception ex)
             {
                 await DisplayAlert("Unabel to continue","Please enable gps/location","Okay");
+                continueButton.IsEnabled = true;
             }
         }
         private async Task sampless()

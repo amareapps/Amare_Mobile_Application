@@ -14,6 +14,8 @@ using Android.Media;
 using Plugin.Share;
 using Plugin.Share.Abstractions;
 using Rg.Plugins.Popup.Services;
+using Json.Net;
+
 namespace Chatter
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -93,8 +95,9 @@ namespace Chatter
             }
 
             //Update user interest
-            var userModel = sqliteManager.getUserModel();
-            userModel.interest = showmePicker.SelectedIndex.ToString();
+            var userModel = sqliteManager.getUserModel();   
+            userModel.interest = genderLookingFor().ToString();
+            //userModel.interest = showmePicker.SelectedIndex.ToString();
             sqliteManager.updateUserModel(userModel);
             await api.updateUser(sqliteManager.getUserModel());
             await Navigation.PopModalAsync();
@@ -139,7 +142,8 @@ namespace Chatter
                 {
                     locationString = model.location;
                     userName.Text = model.username;
-                    showmePicker.SelectedIndex = Convert.ToInt32(model.interest);
+                    setGenderPicker(Convert.ToInt32(model.interest));
+                    //showmePicker.SelectedIndex = Convert.ToInt32(model.interest);
                 }
             }
         }
@@ -246,6 +250,54 @@ namespace Chatter
         private void tapChangename_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ModifyAccount("Change name","Name", userName.Text));
+        }
+
+        private void menSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (!e.Value)
+            {
+                womenSwitch.IsToggled = true;
+            }
+        }
+
+        private void womenSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (!e.Value)
+            {
+                menSwitch.IsToggled = true;
+            }
+        }
+        private int genderLookingFor()
+        {
+            if (menSwitch.IsToggled && womenSwitch.IsToggled)
+            {
+                return 2;
+            }
+            else if (menSwitch.IsToggled)
+            {
+                return 1;
+            }
+            else if (womenSwitch.IsToggled)
+            {
+                return 0;
+            }
+            return 2;
+        }
+        private void setGenderPicker(int genderInterest)
+        {
+            if (genderInterest == 0)
+            {
+                womenSwitch.IsToggled = true;
+            }
+            else if (genderInterest == 1)
+            {
+                menSwitch.IsToggled = true;
+            }
+            else if (genderInterest == 2)
+            {
+                menSwitch.IsToggled = true;
+                womenSwitch.IsToggled = true;
+            }
         }
     }
 }
