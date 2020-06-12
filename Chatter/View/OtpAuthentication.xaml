@@ -4,22 +4,22 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter"
              mc:Ignorable="d"
-             x:Class="Chatter.View.OtpAuthentication" BackgroundColor="#FFFCF8" Title="Mobile Verification">
+             x:Class="Chatter.View.OtpAuthentication" BackgroundColor="White" Title="Mobile Verification">
     <ContentPage.Content>
-        <StackLayout Spacing="50" Margin="20,80,20,20">
-            <Label Text="Enter the code received below:" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
-            <local:RoundedEntry x:Name="codeEntry" HorizontalTextAlignment="Center" TextChanged="codeEntry_TextChanged" FontSize="Title"/>
-            <Label Text="Resend code via SMS" FontAttributes="Bold" FontSize="Medium"  TextColor="DodgerBlue" HorizontalOptions="Center" HorizontalTextAlignment="Center">
+        <StackLayout Margin="20,80,20,20">
+            <Label Margin="0,0,0,20" Text="Enter the code received below:" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
+            <local:RoundedEntry x:Name="codeEntry" Margin="0,5,0,20" HorizontalTextAlignment="Center" TextChanged="codeEntry_TextChanged" FontSize="Title"/>
+            <Label Text="Resend code via SMS" Margin="0,10,0,30" FontAttributes="Bold" FontSize="Medium"  TextColor="DodgerBlue" HorizontalOptions="Center" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="resentButton_Clicked"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
             </Label>
             <Button 
-                        BackgroundColor="Gray" 
+                        BackgroundColor="Default" 
                         IsEnabled="False" 
                         CornerRadius="30" 
                         x:Name="confirmButton" 
-                        TextColor="#fffcf8" 
+                        TextColor="White" 
                         FontAttributes="Bold" 
                         FontSize="Large" 
                         Clicked="confirmButton_Clicked" 

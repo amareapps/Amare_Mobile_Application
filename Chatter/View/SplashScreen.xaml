@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              x:Class="Chatter.View.SplashScreen">
     <ContentPage.Content>
         <StackLayout>
-            <Image x:Name="imageLogo" Source="Amare_logo.png" Aspect="AspectFit"
+            <ffimageloading:CachedImage x:Name="imageLogo" Source="Amare_logo.png" Aspect="AspectFit"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" WidthRequest="100" HeightRequest="100" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

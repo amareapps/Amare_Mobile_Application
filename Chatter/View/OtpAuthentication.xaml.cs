@@ -78,12 +78,12 @@ namespace Chatter.View
             if (string.IsNullOrEmpty(_entry.Text))
             {
                 confirmButton.IsEnabled = false;
-                confirmButton.BackgroundColor = Color.Gray;
+                confirmButton.BackgroundColor = Color.Default;
             }
             else
             {
                 confirmButton.IsEnabled = true;
-                confirmButton.BackgroundColor = Color.FromHex("98000b");
+                confirmButton.BackgroundColor = Color.FromHex("3cc5d5");
             }
         }
 

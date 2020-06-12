@@ -24,10 +24,10 @@ namespace Chatter.iOS
 
             if (e.OldElement == null)
             {
-                Control.Layer.CornerRadius = 20;
-                Control.Layer.BorderWidth = 3f;
-                Control.Layer.BorderColor = Xamarin.Forms.Color.DeepPink.ToCGColor();
-                Control.Layer.BackgroundColor = Xamarin.Forms.Color.LightGray.ToCGColor();
+                Control.Layer.CornerRadius = 30f;
+                Control.Layer.BorderWidth = 5;
+                Control.Layer.BorderColor = Xamarin.Forms.Color.FromHex("310881").ToCGColor();
+                Control.Layer.BackgroundColor = Xamarin.Forms.Color.Transparent.ToCGColor();
 
                 Control.LeftView = new UIKit.UIView(new CGRect(0, 0, 10, 0));
                 Control.LeftViewMode = UIKit.UITextFieldViewMode.Always;

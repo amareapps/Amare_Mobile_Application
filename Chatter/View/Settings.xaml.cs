@@ -119,18 +119,18 @@ namespace Chatter
                     ageslider.UpperValue = float.Parse(model.age_end);
                     if (model.distance_metric == 0)
                     {
-                        btnKm.BackgroundColor = Color.FromHex("98000b");
+                        btnKm.BackgroundColor = Color.FromHex("3cc5d5");
                         btnKm.TextColor = Color.FromHex("EEEEEE");
                         btnKm.BorderWidth = 2;
-                        btnKm.BorderColor = Color.FromHex("#98000b");
+                        btnKm.BorderColor = Color.FromHex("3cc5d5");
                         lblMetric.Text = "Km.";
                     }
                     else
                     {
-                        btnMi.BackgroundColor = Color.FromHex("98000b");
+                        btnMi.BackgroundColor = Color.FromHex("3cc5d5");
                         btnMi.TextColor = Color.FromHex("EEEEEE");
                         btnMi.BorderWidth = 2;
-                        btnMi.BorderColor = Color.FromHex("#98000b");
+                        btnMi.BorderColor = Color.FromHex("3cc5d5");
                         lblMetric.Text = "Mi.";
                     }
                     metric = model.distance_metric;
@@ -192,10 +192,10 @@ namespace Chatter
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.Accent;
+            btne.BackgroundColor = Color.FromHex("3cc5d5");
             btne.TextColor = Color.FromHex("EEEEEE");
             btne.BorderWidth = 2;
-            btne.BorderColor = Color.FromHex("#98000b");
+            btne.BorderColor = Color.FromHex("3cc5d5");
             if (btne.Text == "Km.")
             {
                 int sample = Convert.ToInt32(slider.Value);

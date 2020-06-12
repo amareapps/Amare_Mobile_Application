@@ -118,7 +118,7 @@
                                     <Label FontSize="Body"  Text="{Binding Source={x:Reference Name=ageslider}, Path=UpperValue, StringFormat='{0:N0}'}" ></Label>
                                 </StackLayout>
                             </Grid>
-                            <forms:RangeSlider ActiveColor="Accent"  MaxThumbHidden="False" MinThumbHidden="False" BarHeight="5"  x:Name="ageslider" LowerValue="18"  UpperValue="100" MinimumValue="18" MaximumValue="100" TextSize="15" />
+                            <forms:RangeSlider ActiveColor="#3cc5d5" MaxThumbHidden="False" MinThumbHidden="False" BarHeight="7"  x:Name="ageslider" LowerValue="18"  UpperValue="100" MinimumValue="18" MaximumValue="100" TextSize="15" />
                         </StackLayout>
                     </Frame>
 
@@ -133,13 +133,13 @@
                     <Button Margin="10,0,10,0" Text="Terms of Service" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
                     <Button Margin="10,0,10,0" Text="Licenses" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
 
-                    <Button Margin="10,0,10,0" Text="LOGOUT" TextColor="#98000b" BackgroundColor="#EEEEEE" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
+                    <Button Margin="10,0,10,0" Text="LOGOUT" TextColor="#310881" BackgroundColor="Transparent" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
                     <Grid BackgroundColor="Transparent" Padding="0" Margin="0,40,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                         <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="150"></Image>
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
                     <StackLayout Padding="0,10,0,0" >
-                        <Button Margin="10,0,10,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="#EEEEEE" BackgroundColor="#98000b" FontAttributes="Bold" CornerRadius="30"></Button>
+                        <Button Margin="10,0,10,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="#EEEEEE" BackgroundColor="Accent" FontAttributes="Bold" CornerRadius="30"></Button>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

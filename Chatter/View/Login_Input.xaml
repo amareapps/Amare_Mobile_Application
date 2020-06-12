@@ -5,57 +5,60 @@
                   xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:gradient="clr-namespace:Chatter.Classes" 
+                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                   xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                   xmlns:local="clr-namespace:Chatter"
                   mc:Ignorable="d"
                   x:Class="Chatter.Login_Input">
-    <Frame CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,20,20,20" Padding="10" BackgroundColor="#FFEEEEEE" >
-        <AbsoluteLayout >
-            <StackLayout AbsoluteLayout.LayoutFlags="All"
-                  AbsoluteLayout.LayoutBounds="0,1,1,1" Padding="20" Spacing="24" BackgroundColor="#FFEEEEEE" HorizontalOptions="Center" VerticalOptions="Center">
-                <Image Source="Amare_logo.png" Aspect="AspectFit" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label Text="Welcome to Amare!" FontSize="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
-                <StackLayout>
-                    <local:RoundedEntry WidthRequest="450" x:Name="emailEntry" Keyboard="Email" Placeholder="Enter your e-mail address here..." FontSize="Small"></local:RoundedEntry>
-                    <local:RoundedEntry WidthRequest="450" x:Name="passEntry" Placeholder="Enter your password here..." FontSize="Small" IsPassword="True"></local:RoundedEntry>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="220"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <CheckBox IsChecked="False" CheckedChanged="CheckBox_CheckedChanged" HorizontalOptions="Start" VerticalOptions="Center"  Grid.Column="0" Grid.Row="0"></CheckBox>
-                        <Label Text="Show Password"  Grid.Column="1"  Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
-                    </Grid>
-                </StackLayout>
-                <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
-                    <Button BackgroundColor="#98000b" TextColor="#EEEEEE" CornerRadius="20" x:Name="loginButton" Clicked="loginButton_Clicked" Text="LOG IN" FontSize="Medium" FontAttributes="Bold"></Button>
-                </Frame>
-            </StackLayout>
-        
-            <!-- Overlay -->
-            <ContentView x:Name="overlay"  
-                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
-                     AbsoluteLayout.LayoutFlags="All"  
-                     IsVisible="False"  
-                     BackgroundColor="#FFEEEEEE"  
-                     Padding="0">
-
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
-                    <StackLayout Spacing="0" >
-                        <ff:CachedImage Source="welcomelogo.gif"   
-                                    HeightRequest="100"  
-                                    WidthRequest="100"/>
+    <Frame CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,20,20,20" Padding="10" BackgroundColor="#FFFFFFFF" >
+        <ScrollView>
+            <AbsoluteLayout >
+                <StackLayout AbsoluteLayout.LayoutFlags="All"
+                      AbsoluteLayout.LayoutBounds="0,1,1,1" Padding="20" Spacing="24" BackgroundColor="#FFFFFFFF" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ffimageloading:CachedImage Source="Amare_logo.png" Aspect="AspectFit" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Label Text="Welcome to Amare!" TextColor="Black" FontSize="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                    <StackLayout>
+                        <local:RoundedEntry WidthRequest="450" x:Name="emailEntry" Keyboard="Email" Placeholder="Enter your e-mail address here..." FontSize="Small"></local:RoundedEntry>
+                        <local:RoundedEntry WidthRequest="450" x:Name="passEntry" Placeholder="Enter your password here..." FontSize="Small" IsPassword="True"></local:RoundedEntry>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="220"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox IsChecked="False" CheckedChanged="CheckBox_CheckedChanged" HorizontalOptions="Start" VerticalOptions="Center"  Grid.Column="0" Grid.Row="0"></CheckBox>
+                            <Label Text="Show Password"  Grid.Column="1"  Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        </Grid>
                     </StackLayout>
+                    <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
+                        <Button BackgroundColor="#3cc5d5" TextColor="White" CornerRadius="20" x:Name="loginButton" Clicked="loginButton_Clicked" Text="LOG IN" FontSize="Medium" FontAttributes="Bold"></Button>
+                    </Frame>
                 </StackLayout>
+        
+                <!-- Overlay -->
+                <ContentView x:Name="overlay"  
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+                         AbsoluteLayout.LayoutFlags="All"  
+                         IsVisible="False"  
+                         BackgroundColor="#FFFFFFFF"  
+                         Padding="0">
 
-            </ContentView>
-            <!--<ActivityIndicator x:Name="activityIndicator" IsRunning="False" Color="#98000b" VerticalOptions="Center"
-                                   HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"
-                                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" PropertyChanged="activityIndicator_PropertyChanged" />-->
-        </AbsoluteLayout>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+                        <StackLayout Spacing="0" >
+                            <ff:CachedImage Source="welcomelogo.gif"   
+                                        HeightRequest="100"  
+                                        WidthRequest="100"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </ContentView>
+                <!--<ActivityIndicator x:Name="activityIndicator" IsRunning="False" Color="#98000b" VerticalOptions="Center"
+                                       HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" PropertyChanged="activityIndicator_PropertyChanged" />-->
+            </AbsoluteLayout>
+        </ScrollView>
     </Frame>
 </pages:PopupPage>

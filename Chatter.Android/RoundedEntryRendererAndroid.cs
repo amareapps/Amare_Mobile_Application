@@ -33,7 +33,7 @@ namespace Chatter.Classes
             {
                 var gradientDrawable = new GradientDrawable();
                 gradientDrawable.SetCornerRadius(30f);
-                gradientDrawable.SetStroke(5, Android.Graphics.Color.ParseColor("#98000b"));
+                gradientDrawable.SetStroke(5, Android.Graphics.Color.ParseColor("#310881"));
                 gradientDrawable.SetColor(Android.Graphics.Color.Transparent);
                 Control.SetBackground(gradientDrawable);
 

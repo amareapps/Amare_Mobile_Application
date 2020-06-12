@@ -41,8 +41,8 @@ namespace Chatter
             InitializeComponent();
             number = _number;
 
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("98000b");
-            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.FromHex("EEEEEE");
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("890447");
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
             BindingContext = new UserModelStorage();
 
             int year = DateTime.Now.Year;
@@ -182,14 +182,14 @@ namespace Chatter
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#cfcfcf");
+                btn.BackgroundColor = Color.Default;
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#cfcfcf");
+            btne.BackgroundColor = Color.Default;
             btne.BorderWidth = 2;
-            btne.BorderColor = Color.FromHex("#98000b");
+            btne.BorderColor = Color.FromHex("310881");
             if(btne == womanButton)
                 gender = "0";
             else if(btne == manButton)
@@ -200,14 +200,14 @@ namespace Chatter
             var looper = gridInterest.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("#cfcfcf");
+                btn.BackgroundColor = Color.Default;
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("#cfcfcf");
+            btne.BackgroundColor = Color.Default;
             btne.BorderWidth = 2;
-            btne.BorderColor = Color.FromHex("#98000b");
+            btne.BorderColor = Color.FromHex("310881");
             if(btne == womenInterestButton)
                 interestIn = "0";
             else if (btne == menInterestButton)

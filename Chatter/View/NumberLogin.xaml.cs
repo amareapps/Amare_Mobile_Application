@@ -23,8 +23,8 @@ namespace Chatter.View
         public NumberLogin()
         {
             InitializeComponent();
-            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("98000b");
-            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.FromHex("fffcf8");
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("890447");
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Default;
             GetJsonData();
         }
         void GetJsonData()
@@ -63,12 +63,12 @@ namespace Chatter.View
                 if (string.IsNullOrEmpty(_entry.Text.ToString()))
                 {
                     continueButton.IsEnabled = false;
-                    continueButton.BackgroundColor = Color.Gray;
+                    continueButton.BackgroundColor = Color.Default;
                 }
                 else
                 {
                     continueButton.IsEnabled = true;
-                    continueButton.BackgroundColor = Color.FromHex("98000b");
+                    continueButton.BackgroundColor = Color.FromHex("3cc5d5");
                 }
             }
         }

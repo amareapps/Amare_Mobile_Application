@@ -11,12 +11,12 @@
 		<item name="windowActionBar">false</item>
 		<!-- Set theme colors from https://aka.ms/material-colors -->
 		<!-- colorPrimary is used for the default action bar background -->
-		<item name="colorPrimary">#98000b</item>
+		<item name="colorPrimary">#890447</item>
 		<!-- colorPrimaryDark is used for the status bar -->
-		<item name="colorPrimaryDark">#98000b</item>
+		<item name="colorPrimaryDark">#890447</item>
 		<!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
-		<item name="colorAccent">#98000b</item>
+		<item name="colorAccent">#310881</item>
 		<!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
 		<item name="windowActionModeOverlay">true</item>
@@ -25,16 +25,16 @@
 	</style>
 
 	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-		<item name="colorAccent">#98000b</item>
+		<item name="colorAccent">#310881</item>
 	</style>
 
 	<style name="MyDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
-		<item name="colorAccent">#e3646c</item>
+		<item name="colorAccent">#b07abb</item>
 		<item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
 	</style>
 
 	<style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
-		<item name="android:headerBackground">#98000b</item>
+		<item name="android:headerBackground">#310881</item>
 	</style>
 
 </resources>

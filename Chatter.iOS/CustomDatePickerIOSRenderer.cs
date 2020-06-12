@@ -26,7 +26,7 @@ namespace Chatter.iOS
                 Control.Text = element.Placeholder;
             }
             Control.BorderStyle = UITextBorderStyle.RoundedRect;
-            Control.Layer.BorderColor = UIColor.FromRGB(152, 0, 11).CGColor;
+            Control.Layer.BorderColor = UIColor.FromRGB(49, 8, 129).CGColor;
             Control.Layer.CornerRadius = 30f;
             Control.Layer.BorderWidth = 5;
             Control.AdjustsFontSizeToFitWidth = true;
