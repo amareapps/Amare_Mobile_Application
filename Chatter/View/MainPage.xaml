@@ -10,7 +10,7 @@
              android:TabbedPage.OffscreenPageLimit="2"
              android:TabbedPage.IsSwipePagingEnabled="True"
              android:TabbedPage.IsSmoothScrollEnabled="True"
-             x:Class="Chatter.MainPage" BarBackgroundColor="#e6e6e6" UnselectedTabColor="Gray" SelectedTabColor="#98000b" NavigationPage.HasNavigationBar="False">
+             x:Class="Chatter.MainPage" BarBackgroundColor="#e6e6e6" UnselectedTabColor="Gray" SelectedTabColor="#310881" NavigationPage.HasNavigationBar="False">
 
     <TabbedPage.Children>
         <Local:Profile IconImageSource="profile.png"></Local:Profile>

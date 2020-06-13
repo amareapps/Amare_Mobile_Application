@@ -6,12 +6,12 @@
              mc:Ignorable="d" xmlns:local="clr-namespace:Chatter"
              x:Class="Chatter.View.ModifyAccount">
     <ContentPage.Content>
-        <StackLayout Spacing="20">
+        <StackLayout Spacing="20" Margin="20,30,20,10">
             <StackLayout Spacing="10">
-                <Label Margin="20" x:Name="accountFieldLabel" FontSize="Large"></Label>
+                <Label x:Name="accountFieldLabel" FontSize="Large" IsVisible="False"></Label>
                 <local:RoundedEntry x:Name="accountFieldEntry" Margin="10,0,10,0"></local:RoundedEntry>
             </StackLayout>
-            <Button x:Name="buttonUpdate" Padding="10" CornerRadius="30" BackgroundColor="#e3e1de"></Button>
+            <Button x:Name="buttonUpdate" Padding="10" CornerRadius="30" BackgroundColor="#3cc5d5" TextColor="White" FontAttributes="Bold"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
