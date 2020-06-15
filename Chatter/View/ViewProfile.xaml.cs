@@ -47,7 +47,7 @@ namespace Chatter.View
                 var list = await api.otherUserImageList(userId);
                 var igPhotos = await api.getIgPhotos(userId);
                 distanceLabel.Text = getDistance(otherUser);
-                metricLabel.Text = searchRefence.distance_metric == 0 ? "Km" : "Mi.";
+                metricLabel.Text = searchRefence.distance_metric == 0 ? "Km." : "Mi.";
                 BindingContext = otherUser;
                 foreach (GalleryModel model in list)
                 {

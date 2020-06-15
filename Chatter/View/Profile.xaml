@@ -92,7 +92,7 @@
                             </x:Array>
                         </cards:CarouselView.ItemsSource>
                     </cards:CarouselView>
-                    <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share the love" TextColor="#EEEEEE" BackgroundColor="#98000b"></Button>
+                    <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share the love" TextColor="White" BackgroundColor="#3cc5d5"></Button>
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10,0,0">
                     </StackLayout>
                 </StackLayout>

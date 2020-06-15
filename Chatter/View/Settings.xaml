@@ -5,14 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:Chatter.Classes" 
              xmlns:forms="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d" 
              x:Class="Chatter.Settings" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="60" Margin="0" Padding="0,10,0,5">
+            <Grid HeightRequest="70" Margin="0" Padding="0,10,0,0">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" TextColor="Accent" Text="Preferences"/>
+                <Label FontAttributes="Bold" TextColor="Accent" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Preferences"/>
             </Grid>
             <ScrollView Padding="0,10,0,10">
                 <StackLayout Spacing="20" Margin="20,0,20,10">
@@ -22,11 +23,11 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Change Name"></Label>
                             <Label Grid.Column="1" x:Name="userName" FontSize="Medium" HorizontalTextAlignment="End" Padding="0,0,10,0"></Label>
-                            <Label Grid.Column="2" FontSize="Medium" Text=">" FontAttributes="Bold" HorizontalTextAlignment="End"></Label>
+                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthan.png"></ffimageloading:CachedImage>
                         </Grid>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="tapChangename" Tapped="tapChangename_Tapped"></TapGestureRecognizer>
@@ -65,8 +66,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Padding="0,0,0,0" HorizontalOptions="Start" Text="Men" FontSize="Medium" Grid.Column="0" Grid.Row="1"></Label>
                                 <Label Padding="0,0,0,0" HorizontalOptions="Start" Text="Women" FontSize="Medium" Grid.Column="0" Grid.Row="2"></Label>
-                                <Switch Grid.Column="1" HorizontalOptions="EndAndExpand" x:Name="menSwitch" Toggled="menSwitch_Toggled" Grid.Row="1"/>
-                                <Switch  Grid.Column="1" HorizontalOptions="EndAndExpand" x:Name="womenSwitch" Toggled="womenSwitch_Toggled" Grid.Row="2"/>
+                                <Switch Grid.Column="1" HorizontalOptions="EndAndExpand" x:Name="menSwitch" Toggled="menSwitch_Toggled" Grid.Row="1" ThumbColor="#3cc5d5" OnColor="#3cc5d5"/>
+                                <Switch  Grid.Column="1" HorizontalOptions="EndAndExpand" x:Name="womenSwitch" Toggled="womenSwitch_Toggled" Grid.Row="2" ThumbColor="#3cc5d5" OnColor="#3cc5d5"/>
                                 <!--<Picker x:Name="showmePicker" IsVisible="False"  Grid.Column="0" Grid.Row="1" Title="" SelectedIndexChanged="showmePicker_SelectedIndexChanged">
                                     <Picker.ItemsSource>
                                         <x:Array Type="{x:Type x:String}">
@@ -91,7 +92,7 @@
                                 <Label Grid.Column="1"  HorizontalTextAlignment="End" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
                                 <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" FontSize="Body"></Label>
                             </Grid>
-                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"  MinimumHeightRequest="10"></Slider>
+                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"></Slider>
                         </StackLayout>
                     </Frame>
                     <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
@@ -112,7 +113,7 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" FontAttributes="Bold" Text="Age range" FontSize="Medium"></Label>
+                                <Label Grid.Column="0" FontAttributes="Bold" Text="Age Range" FontSize="Medium"></Label>
                                 <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0" Margin="0">
                                     <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=LowerValue, StringFormat='{0:N0} - '}"></Label>
                                     <Label FontSize="Body"  Text="{Binding Source={x:Reference Name=ageslider}, Path=UpperValue, StringFormat='{0:N0}'}" ></Label>
