@@ -310,14 +310,25 @@ namespace Chatter
         private void unreadFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderByDescending(entry => entry.has_unread);
+            stackFilter.IsVisible = false;
+
+            hamburgerImage.IsVisible = true;
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(1, 0.35, 0.1, 0.1));
         }
         private void receivedFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderByDescending(entry => entry.datetime);
+            stackFilter.IsVisible = false;
+
+            hamburgerImage.IsVisible = true;
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(1, 0.35, 0.1, 0.1));
         }
         private void nearbyFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderBy(entry => entry.distance);
+            stackFilter.IsVisible = false;
+            hamburgerImage.IsVisible = true;
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(1, 0.35, 0.1, 0.1));
         }
         private string getDistance(InboxModel model)
         {
@@ -338,6 +349,16 @@ namespace Chatter
         private void SearchBarNoUnderline_TextChanged(object sender, TextChangedEventArgs e)
         {
             InboxList.ItemsSource = inboxModels.Where(x => x.username.IndexOf(searchEntry.Text, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
+        }
+
+        private void hamburgerEvent_Tapped(object sender, EventArgs e)
+        {
+            //hamburgerImage.IsVisible = false;
+            if(!stackFilter.IsVisible)
+                stackFilter.IsVisible = true;
+            else
+                stackFilter.IsVisible = false;
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(1, 0.35, 0.4, 0.1));
         }
     }
 }
