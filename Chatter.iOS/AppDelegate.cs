@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using CarouselView.FormsPlugin.iOS;
+using Chatter.Classes;
+using Chatter.iOS.Services;
 using FFImageLoading.Forms.Platform;
 using Foundation;
 using PanCardView.iOS;
@@ -31,7 +33,7 @@ namespace Chatter.iOS
             //Xamarin.FormsMaps.Init();
             CachedImageRenderer.Init();
             CardsViewRenderer.Preserve();
-            LoadApplication(new App());
+            LoadApplication(new App(new OAuth2Service()));
 
             return base.FinishedLaunching(app, options);
         }

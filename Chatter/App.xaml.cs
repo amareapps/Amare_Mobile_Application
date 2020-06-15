@@ -18,7 +18,7 @@ namespace Chatter
         ApiConnector api = new ApiConnector();
         IpAddress ipAddress = new IpAddress();
         SqliteManager sqlites = new SqliteManager();
-        public App()
+        public App(IOAuth2Service oAuth2Service)
         {
             InitializeComponent();
             try
@@ -33,7 +33,7 @@ namespace Chatter
                 string ip = sqlites.GetIpAddress().Url;
                 ApiConnection.SocketUrl = ip;
             }
-            MainPage = new NavigationPage(new SplashScreen());
+            MainPage = new NavigationPage(new SplashScreen(oAuth2Service));
             /**
             if (hasLoggedIn())
             {

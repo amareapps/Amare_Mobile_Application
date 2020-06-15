@@ -3,6 +3,16 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
 	<application android:label="Amare" android:theme="@android:style/Theme.Material.Light">
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBENa2YmOdGXMI0mDTXVqQeFtcDRf9Z63k" />
+		<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+		<activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/facebook_app_name" />
+		<activity android:name="com.facebook.CustomTabActivity" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="@string/fb_login_protocol_scheme" />
+			</intent-filter>
+		</activity>
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.chatter.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
@@ -19,6 +29,7 @@
 	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 	<uses-feature android:name="android.hardware.location" android:required="true" />
 	<uses-feature android:name="android.hardware.location.gps" android:required="true" />

@@ -99,8 +99,8 @@ namespace Chatter
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
                     var profile = JsonConvert.DeserializeObject<FacebookProfile>(response);
-                    userModel.username = profile.Name;
-                    userModel.gender = profile.Gender;
+                    //userModel.username = profile.Name;
+                    //userModel.gender = profile.Gender;
                     userModel.id = profile.Id;
                     userModel.image = profile.Picture.Data.Url;
                     userModel.location = locationString;

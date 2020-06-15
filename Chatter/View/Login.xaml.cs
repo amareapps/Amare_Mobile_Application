@@ -12,8 +12,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Chatter.ViewModel;
 using Xamarin.Forms.Xaml;
 using eliteKit;
+using Plugin.FacebookClient;
 
 namespace Chatter
 {
@@ -28,10 +30,11 @@ namespace Chatter
             public static readonly int Instagram = 1;
             public static readonly int Google = 2;
         }
-        public Login()
+        public Login(IOAuth2Service oAuth2Service = null)
         {
             InitializeComponent();
-
+            this.BindingContext = new SocialMediaAuthentication(oAuth2Service);
+                
         }
         private void registerButton_Clicked(object sender, EventArgs e)
         {
@@ -54,7 +57,9 @@ namespace Chatter
                  await DisplayAlert("Nyek!", "May error", "Okay");
 
              */
-            await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Facebook));
+            await CrossFacebookClient.Current.RequestUserDataAsync(new string[] { "email", "first_name", "gender", "last_name", "birthday" }, new string[] { "email", "user_birthday" });
+            //await CrossFacebookClient.Current.LoginAsync(new string[] { "email" });
+            //await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Facebook));
         }
 
         private async void phoneRegister_Clicked(object sender, EventArgs e)

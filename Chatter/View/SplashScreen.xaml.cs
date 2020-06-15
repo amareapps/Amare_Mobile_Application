@@ -1,4 +1,5 @@
-﻿using Chatter.Model;
+﻿using Chatter.Classes;
+using Chatter.Model;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace Chatter.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SplashScreen : ContentPage
     {
-        public SplashScreen()
+        IOAuth2Service servicer;
+        public SplashScreen(IOAuth2Service oAuth2Service)
         {
             InitializeComponent();
+            servicer = oAuth2Service;
             NavigationPage.SetHasNavigationBar(this,false);
         }
         protected async override void OnAppearing()
@@ -32,7 +35,7 @@ namespace Chatter.View
             }
             else
             {
-                App.Current.MainPage = new NavigationPage(new Login());
+                App.Current.MainPage = new NavigationPage(new Login(servicer));
             }
         }
         private bool hasLoggedIn()

@@ -20,6 +20,7 @@ using Android.Support.V4.App;
 using Android.Content;
 using Plugin.InAppBilling;
 using Android.Webkit;
+using Plugin.FacebookClient;
 
 namespace Chatter.Droid
 {
@@ -37,6 +38,7 @@ namespace Chatter.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(savedInstanceState);
+            FacebookClientManager.Initialize(this);
             //Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Forms.Forms.SetFlags(new string[] { "CarouselView_Experimental", "IndicatorView_Experimental" });
             ImageCarouselRenderer.Init();
@@ -52,7 +54,7 @@ namespace Chatter.Droid
             {
                 ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.RecordAudio }, 1);
             }
-            LoadApplication(new App());
+            LoadApplication(new App(new OAuth2Service()));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
@@ -64,6 +66,7 @@ namespace Chatter.Droid
         {
             base.OnActivityResult(requestCode, resultCode, data);
             InAppBillingImplementation.HandleActivityResult(requestCode, resultCode, data);
+            FacebookClientManager.OnActivityResult(requestCode, resultCode, data);
         }
 
         public void OnCancelled(DatabaseError error)

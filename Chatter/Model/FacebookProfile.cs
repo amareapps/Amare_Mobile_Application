@@ -4,13 +4,13 @@ using System.Text;
 using Newtonsoft.Json;
 namespace Chatter.Model
 {
-    class FacebookProfile
+    public class Data
     {
-        public string Name { get; set; }
-        public Picture Picture { get; set; }
-        public string Locale { get; set; }
-        public string Gender { get; set; }
-        public string Id { get; set; }
+        [JsonProperty("is_silhouette")]
+        public bool IsSilhouette { get; set; }
+        public int Height { get; set; }
+        public string Url { get; set; }
+        public int Width { get; set; }
     }
 
     public class Picture
@@ -18,21 +18,16 @@ namespace Chatter.Model
         public Data Data { get; set; }
     }
 
-    public class Data
+    public class FacebookProfile
     {
-        public bool IsSilhouette { get; set; }
-        public string Url { get; set; }
-    }
-
-    public class Cover
-    {
+        public string Email { get; set; }
         public string Id { get; set; }
-        public int OffsetY { get; set; }
-        public string Source { get; set; }
+        public Picture Picture { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
     }
 
-    public class AgeRange
-    {
-        public int Min { get; set; }
-    }
 }
