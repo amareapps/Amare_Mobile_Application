@@ -3,43 +3,88 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:local="clr-namespace:Chatter.Classes" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:local="clr-namespace:Chatter.Classes"
              mc:Ignorable="d"
              x:Class="Chatter.Login" NavigationPage.HasNavigationBar="False" BackgroundImageSource="gradientbg.png">
     <ContentPage.Content>
+        <!--<AbsoluteLayout Margin="0,100,0,20" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            OVERLAY
+            <ContentView x:Name="overlay"  
+                         IsVisible="False"  
+                         BackgroundColor="#C0808080"  
+                         Padding="0" AbsoluteLayout.LayoutFlags="All"
+                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
+
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+                    <StackLayout Spacing="0" >
+                        <ffimageloading:CachedImage Source="welcomelogo.gif"  
+                                        HeightRequest="100"  
+                                        WidthRequest="100"/>
+                    </StackLayout>
+                </StackLayout>
+
+        </ContentView> -->
         <Grid VerticalOptions="CenterAndExpand" Margin="30,5,30,20" HorizontalOptions="CenterAndExpand" RowSpacing="5" ColumnSpacing="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="95"></ColumnDefinition>
-                <ColumnDefinition Width="95"></ColumnDefinition>
-                <ColumnDefinition Width="95"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="200"></RowDefinition>
-                <RowDefinition Height="AUTO"></RowDefinition>
-                <RowDefinition Height="AUTO"></RowDefinition>
-                <RowDefinition Height="AUTO"></RowDefinition>
-                <RowDefinition Height="AUTO"></RowDefinition>
-                <RowDefinition Height="AUTO"></RowDefinition>
-                <RowDefinition Height="AUTO"></RowDefinition>
-            </Grid.RowDefinitions>
-            <StackLayout Margin="10" Grid.Row="0" Grid.ColumnSpan="3" Orientation="Vertical" VerticalOptions="Center">
-                <Image Source="FINAL_AMERA.png" Aspect="AspectFit" HeightRequest="100" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-            </StackLayout>
-            <Button Padding="20,0,30,0" ImageSource="register.png" CornerRadius="30" x:Name="registerButton"  BackgroundColor="#fffcf3" TextColor="Black" Clicked="registerButton_Clicked" HeightRequest="50" WidthRequest="200" Text="REGISTER WITH AMARE" FontSize="12" FontAttributes="Bold" Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="Center"></Button>
-            <Button Margin="0,10,0,10" Padding="20,0,30,0" CornerRadius="30" x:Name="phoneRegister"  BackgroundColor="#fffcf3" TextColor="Black" Clicked="phoneRegister_Clicked"  HeightRequest="50" WidthRequest="200" Text="LOG IN WITH MOBILE NUMBER" FontSize="12" FontAttributes="Bold" Grid.Row="2" Grid.ColumnSpan="3" VerticalOptions="Center" ImageSource="mobile.png"/>
-            <Button Margin="0,0,0,0" Padding="20,0,30,0" ImageSource="email.png" CornerRadius="30" x:Name="LoginButton" BackgroundColor="#fffcf3" TextColor="Black" Clicked="LoginButton_Clicked"  HeightRequest="50" WidthRequest="200" Text="LOG IN WITH EMAIL ADDRESS" FontSize="12" FontAttributes="Bold" Grid.Row="3"  VerticalOptions="Center" Grid.ColumnSpan="3"></Button>
-            <ffimageloading:CachedImage Source="or.png" Margin="0,15,0,0" Aspect="AspectFit" HeightRequest="50" WidthRequest="200" Grid.Row="4" Grid.ColumnSpan="3" VerticalOptions="Center"></ffimageloading:CachedImage>
-            <Label Text="YOU CAN LOGIN USING:" Padding="0,15,0,15" TextColor="#EEEEEE" FontSize="Body" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3"></Label>
-            <StackLayout Margin="0,15,0,0" Grid.Row="6" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="Center" IsClippedToBounds="True">
-                <ImageButton x:Name="fbLoginButton" Clicked="fbLoginButton_Clicked" Margin="20,0,20,0" Source="fb_logo.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="0" />
-                <ImageButton Margin="20,0,20,0" Source="ig_logo.png" Clicked="instagram_Clicked" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="1" />
-                <ImageButton Margin="20,0,20,0" Source="google_logo.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="2" />
-            </StackLayout>
-        </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95"></ColumnDefinition>
+                    <ColumnDefinition Width="95"></ColumnDefinition>
+                    <ColumnDefinition Width="95"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Margin="10" Grid.Row="0" Grid.ColumnSpan="3" Orientation="Vertical" VerticalOptions="Start">
+                    <Image Source="FINAL_AMERA.png" Aspect="AspectFit" HeightRequest="100" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
+                    <local:EntryLogin WidthRequest="450" x:Name="emailEntry" TextColor="White" Keyboard="Email" Placeholder="Enter your e-mail address here" FontAttributes="Italic" FontSize="Small" VerticalOptions="StartAndExpand"></local:EntryLogin>
+                    <local:EntryLogin WidthRequest="450" x:Name="passEntry" TextColor="White" Placeholder="Enter your password here" FontAttributes="Italic" FontSize="Small" IsPassword="True" VerticalOptions="StartAndExpand" ></local:EntryLogin>
+                    <Button BackgroundColor="#3cc5d5" HeightRequest="45" TextColor="White" CornerRadius="5" x:Name="loginButton" Clicked="loginButton_Clicked" Text="LOGIN" FontSize="Medium"></Button>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Mobile Login"  Grid.Column="0"  Grid.Row="0" FontSize="Caption" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="phoneRegister" Tapped="phoneRegister_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,10" Grid.Column="1"  Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center">
+                            <Label Text="New user?" FontSize="Caption" TextColor="White" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                            <Label Text="REGISTER" FontSize="Caption" FontAttributes="Bold" TextColor="White" HorizontalOptions="End" VerticalOptions="Center">
+                                <Label.GestureRecognizers >
+                                    <TapGestureRecognizer x:Name="registerButton" Tapped="registerButton_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                
+                </StackLayout>
+                <!--<Button Padding="20,0,30,0" ImageSource="register.png" CornerRadius="30" x:Name="registerButton"  BackgroundColor="#fffcf3" TextColor="Black" Clicked="registerButton_Clicked" HeightRequest="50" WidthRequest="200" Text="REGISTER WITH AMARE" FontSize="12" FontAttributes="Bold" Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="Center"></Button>
+                <Button Margin="0,10,0,10" Padding="20,0,30,0" CornerRadius="30" x:Name="phoneRegister"  BackgroundColor="#fffcf3" TextColor="Black" Clicked="phoneRegister_Clicked"  HeightRequest="50" WidthRequest="200" Text="LOG IN WITH MOBILE NUMBER" FontSize="12" FontAttributes="Bold" Grid.Row="2" Grid.ColumnSpan="3" VerticalOptions="Center" ImageSource="mobile.png"/>
+                <Button Margin="0,0,0,0" Padding="20,0,30,0" ImageSource="email.png" CornerRadius="30" x:Name="LoginButton" BackgroundColor="#fffcf3" TextColor="Black" Clicked="LoginButton_Clicked"  HeightRequest="50" WidthRequest="200" Text="LOG IN WITH EMAIL ADDRESS" FontSize="12" FontAttributes="Bold" Grid.Row="3"  VerticalOptions="Center" Grid.ColumnSpan="3"></Button>
+                <ffimageloading:CachedImage Source="or.png" Margin="0,15,0,0" Aspect="AspectFit" HeightRequest="50" WidthRequest="200" Grid.Row="4" Grid.ColumnSpan="3" VerticalOptions="Center"></ffimageloading:CachedImage>-->
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End">
+                    <Label Text="Or login using" Padding="0,5,0,5" TextColor="White" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3"></Label>
+                    <StackLayout Margin="0,15,0,0" Orientation="Horizontal" HorizontalOptions="Center" IsClippedToBounds="True">
+                        <Grid>
+                        <ImageButton x:Name="fbLoginButton" Clicked="fbLoginButton_Clicked" Margin="5,0,5,0" Source="fb_logo.png" HeightRequest="45" WidthRequest="45" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="0" />
+                            <ImageButton Margin="5,0,5,0" Source="ig_logo.png" Clicked="instagram_Clicked" HeightRequest="45" WidthRequest="45" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="1" />
+                            <ImageButton Margin="5,0,5,0" Source="google_logo.png" HeightRequest="45" WidthRequest="45" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="2" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        <!--</AbsoluteLayout>-->
     </ContentPage.Content>
 </ContentPage>

@@ -16,12 +16,17 @@ using Chatter.ViewModel;
 using Xamarin.Forms.Xaml;
 using eliteKit;
 using Plugin.FacebookClient;
+using SQLite;
+using Plugin.Toast;
 
 namespace Chatter
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
+        UserModel userLogged = new UserModel();
+        SearchRefenceModel userSearchReference = new SearchRefenceModel();
+        List<GalleryModel> galleryModel = new List<GalleryModel>();
 
         SmsSender smsSender = new SmsSender();
         public class SocialMediaPlatform
@@ -36,7 +41,7 @@ namespace Chatter
             this.BindingContext = new SocialMediaAuthentication(oAuth2Service);
                 
         }
-        private void registerButton_Clicked(object sender, EventArgs e)
+        private void registerButton_Tapped(object sender, EventArgs e)
         {
             var edit = new ProfileMaintenance("");
             Navigation.PushAsync(edit);
@@ -62,7 +67,7 @@ namespace Chatter
             //await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Facebook));
         }
 
-        private async void phoneRegister_Clicked(object sender, EventArgs e)
+        private async void phoneRegister_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NumberLogin(),true);
         }
@@ -76,5 +81,244 @@ namespace Chatter
         {
             await PopupNavigation.Instance.PushAsync(new ConnectionConfiguration());
         }
+
+        private void LoginReg_Tapped(object sender, EventArgs e)
+        {
+            var edit = new ProfileMaintenance("");
+            Navigation.PushAsync(edit);
+        }
+
+        private async void loginButton_Clicked(object sender, EventArgs e)
+        {
+            //overlay.IsVisible = true;
+            string sample = emailEntry.Text + "," + passEntry.Text;
+            if (emailEntry.Text == string.Empty || passEntry.Text == string.Empty)
+            {
+                await DisplayAlert("Login Failed", "Please enter your registered email address and password.", "Okay");
+                //overlay.IsVisible = false;
+                return;
+            }
+            try
+            {
+                using (var cl = new HttpClient())
+                {
+                    JsonSerializerSettings settings = new JsonSerializerSettings();
+                    settings.NullValueHandling = NullValueHandling.Ignore;
+                    settings.DefaultValueHandling = DefaultValueHandling.Ignore;
+                    var request = await cl.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_userexists&email='" + sample + "'");
+                    request.EnsureSuccessStatusCode();
+                    var response = await request.Content.ReadAsStringAsync();
+                    if (response.ToString().Contains("Undefined"))
+                    {
+                        await DisplayAlert("Login Failed", "Please enter the correct registered email address and/or password.", "Okay");
+                        //overlay.IsVisible = false;
+                        return;
+                    }
+                    response = response.Replace(@"\", "");
+                    var looper = JsonConvert.DeserializeObject<List<UserModel>>(response, settings);
+                    foreach (UserModel model in looper)
+                    {
+                        //var webClient = new WebClient();
+                        //byte[] imageBytes = webClient.DownloadData(model.image);
+                        //string base64Image = Convert.ToBase64String(imageBytes);
+                        //model.image = base64Image;
+                        userLogged = model;
+                    }
+                    Application.Current.Properties["Id"] = "\"" + userLogged.id + "\"";
+                    CrossToastPopUp.Current.ShowToastMessage("Welcome to Amare, " + userLogged.username + "!");
+                }
+                await retrieveSearchReference();
+                await saveToSqlite();
+                await retrieveGallery();
+                await retrievInbox();
+                await loadRecentMatches();
+                App.Current.MainPage = new NavigationPage(new MainPage());
+                //await Navigation.PushModalAsync(new MainPage());
+                //overlay.IsVisible = false;
+                await PopupNavigation.Instance.PopAsync(true);
+
+            }
+            catch (Exception ex)
+            {
+                //overlay.IsVisible = false;
+                await DisplayAlert("Error", ex.ToString(), "Okay");
+            }
+        }
+        private async Task saveToSqlite()
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<UserModel>();
+                conn.Insert(userLogged);
+            }
+        }
+        private async Task saveSearchToSqlite()
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<SearchRefenceModel>();
+                conn.Insert(userSearchReference);
+            }
+        }
+        private async Task retrieveSearchReference()
+        {
+            using (var cl = new HttpClient())
+            {
+                string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_search_reference&id='" + Application.Current.Properties["Id"].ToString() + "'";
+                var request = await cl.GetAsync(urlString);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                //await DisplayAlert("Erro!", response.ToString(), "Okay");
+                if (response.ToString().Contains("Undefined"))
+                {
+                    return;
+                }
+                var looper = JsonConvert.DeserializeObject<List<SearchRefenceModel>>(response);
+                foreach (SearchRefenceModel model in looper)
+                {
+                    userSearchReference = model;
+                    break;
+                }
+                await saveSearchToSqlite();
+            }
+        }
+
+        private async Task saveGalleryToSqlite(GalleryModel model)
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<GalleryModel>();
+                conn.Insert(model);
+            }
+        }
+        private async Task retrieveGallery()
+        {
+            using (var cl = new HttpClient())
+            {
+                string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_gallery&user_id='" + Application.Current.Properties["Id"].ToString() + "'";
+                var request = await cl.GetAsync(urlString);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
+                if (response.ToString().Contains("Undefined"))
+                {
+                    return;
+                }
+                var modifString = response.Replace(@"\", "");
+                var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString);
+                foreach (GalleryModel model in looper)
+                {
+                    await saveGalleryToSqlite(model);
+                }
+            }
+        }
+        private async Task retrievInbox()
+        {
+            try
+            {
+                //Get the data for inbox list
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+                string strurl = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_inbox&id='" + Application.Current.Properties["Id"].ToString() + "'";
+                var request = await client.GetAsync(strurl);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                if (response.ToString().Contains("Undefined"))
+                    return;
+                var looper = JsonConvert.DeserializeObject<List<InboxModel>>(response.ToString());
+                //await DisplayAlert("testlang","hahaha","okay");
+                foreach (InboxModel messageContent in looper)
+                {
+                    //var webClient = new WebClient();
+                    //byte[] imageBytes = webClient.DownloadData(messageContent.image);
+
+                    //Bitmap bitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                    //Bitmap resizedImage = Bitmap.CreateScaledBitmap(bitmap, 50, 50, false);
+                    //using (var stream = new MemoryStream())
+                    // {
+                    //    resizedImage.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                    //    var bytes = stream.ToArray();
+                    //    var str = Convert.ToBase64String(bytes);
+                    //     messageContent.image = str;
+                    // }
+                    saveInbox(messageContent);
+                    //     inboxModels.Add(messageContent);
+                    // }
+                }
+                //InboxList.ItemsSource = inboxModels;
+            }
+            catch (Exception ex)
+            {
+                //await DisplayAlert("Error", ex.ToString(), "Okay");
+            }
+        }
+        private async Task saveInbox(InboxModel model)
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<InboxModel>();
+                conn.Insert(model);
+            }
+        }
+        private async Task loadRecentMatches()
+        {
+            try
+            {
+                //Get the data for inbox list
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+                string strurl = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_recentmatches&id='" + Application.Current.Properties["Id"].ToString() + "'";
+                var request = await client.GetAsync(strurl);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                if (response.ToString().Contains("Undefined"))
+                    return;
+                var looper = JsonConvert.DeserializeObject<List<RecentMatchesModel>>(response.ToString());
+                foreach (RecentMatchesModel matches in looper)
+                {
+                    //var webClient = new WebClient();
+                    //byte[] imageBytes = webClient.DownloadData(matches.image);
+                    //Bitmap bitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                    //Bitmap resizedImage = Bitmap.CreateScaledBitmap(bitmap, 50, 50, false);
+                    //using (var stream = new MemoryStream())
+                    //{
+                    //    resizedImage.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                    //    var bytes = stream.ToArray();
+                    //    var str = Convert.ToBase64String(bytes);
+                    //     matches.image = str;
+                    //}
+
+                    saveRecentToLocalDb(matches);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.ToString(), "Okay");
+            }
+        }
+        private void saveRecentToLocalDb(RecentMatchesModel model)
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<RecentMatchesModel>();
+                conn.InsertOrReplace(model);
+            }
+        }
+
     }
 }

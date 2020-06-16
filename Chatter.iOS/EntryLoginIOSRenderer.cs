@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using Chatter;
+using Chatter.Classes;
 using Chatter.iOS;
 using CoreGraphics;
 using Foundation;
@@ -13,10 +14,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 
-[assembly: ExportRenderer(typeof(RoundedEntry), typeof(RoundedEntryRendererIos))]
+[assembly: ExportRenderer(typeof(EntryLogin), typeof(EntryLoginIOSRenderer))]
 namespace Chatter.iOS
 {
-    class RoundedEntryRendererIos : EntryRenderer
+    class EntryLoginIOSRenderer : EntryRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
@@ -24,10 +25,10 @@ namespace Chatter.iOS
 
             if (e.OldElement == null)
             {
-                Control.Layer.CornerRadius = 30f;
-                Control.Layer.BorderWidth = 5;
-                Control.Layer.BorderColor = Xamarin.Forms.Color.FromHex("3cc5d5").ToCGColor();
-                Control.Layer.BackgroundColor = Xamarin.Forms.Color.Transparent.ToCGColor();
+                Control.Layer.CornerRadius = 10f;
+                //Control.Layer.BorderWidth = 5;
+                Control.Layer.BorderColor = Xamarin.Forms.Color.FromHex("310881").ToCGColor();
+                Control.Layer.BackgroundColor = Xamarin.Forms.Color.FromHex("C0FFFFFF").ToCGColor();
 
                 Control.LeftView = new UIKit.UIView(new CGRect(0, 0, 10, 0));
                 Control.LeftViewMode = UIKit.UITextFieldViewMode.Always;

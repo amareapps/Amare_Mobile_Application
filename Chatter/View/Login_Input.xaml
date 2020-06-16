@@ -4,10 +4,10 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                  xmlns:gradient="clr-namespace:Chatter.Classes" 
                   xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-                  xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-                  xmlns:local="clr-namespace:Chatter"
+                  xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+                  xmlns:local="clr-namespace:Chatter.Classes"
+                  xmlns:local1="clr-namespace:Chatter"
                   mc:Ignorable="d"
                   x:Class="Chatter.Login_Input">
     <Frame CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,20,20,20" Padding="10" BackgroundColor="#FFFFFFFF" >
@@ -18,8 +18,8 @@
                     <ffimageloading:CachedImage Source="Amare_logo.png" Aspect="AspectFit" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" VerticalOptions="Center" />
                     <Label Text="Welcome to Amare!" TextColor="Black" FontSize="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                     <StackLayout>
-                        <local:RoundedEntry WidthRequest="450" x:Name="emailEntry" Keyboard="Email" Placeholder="Enter your e-mail address here..." FontSize="Small"></local:RoundedEntry>
-                        <local:RoundedEntry WidthRequest="450" x:Name="passEntry" Placeholder="Enter your password here..." FontSize="Small" IsPassword="True"></local:RoundedEntry>
+                        <local:EntryLogin x:Name="emailEntry" Keyboard="Email" Placeholder="Enter your e-mail address here..." FontSize="Small"></local:EntryLogin>
+                        <local:EntryLogin x:Name="passEntry" Placeholder="Enter your password here..." FontSize="Small" IsPassword="True"></local:EntryLogin>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"></RowDefinition>

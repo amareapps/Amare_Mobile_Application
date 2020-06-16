@@ -17,13 +17,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using XFGloss;
 
-[assembly: ExportRenderer(typeof(RoundedEntry), typeof(RoundedEntryRendererAndroid))]
+[assembly: ExportRenderer(typeof(EntryLogin), typeof(EntryLoginAndroidRenderer))]
 
 namespace Chatter.Classes
 
 {
 #pragma warning disable CS0618 // Type or member is obsolete
-    public class RoundedEntryRendererAndroid : EntryRenderer
+    public class EntryLoginAndroidRenderer : EntryRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
@@ -32,9 +32,9 @@ namespace Chatter.Classes
             if (e.OldElement == null)
             {
                 var gradientDrawable = new GradientDrawable();
-                gradientDrawable.SetCornerRadius(30f);
-                gradientDrawable.SetStroke(5, Android.Graphics.Color.ParseColor("#3cc5d5"));
-                gradientDrawable.SetColor(Android.Graphics.Color.Transparent);
+                gradientDrawable.SetCornerRadius(10f);
+                gradientDrawable.SetColor(Android.Graphics.Color.ParseColor("#66EEEEEE"));
+                Control.SetHintTextColor(Android.Graphics.Color.White);
                 Control.SetBackground(gradientDrawable);
 
                 Control.SetPadding(50, Control.PaddingTop, Control.PaddingRight, Control.PaddingBottom);

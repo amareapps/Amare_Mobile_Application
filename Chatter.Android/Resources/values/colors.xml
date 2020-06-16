@@ -3,6 +3,6 @@
     <color name="launcher_background">#890447</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#310881</color>
-	<color name="colorCursors">#310881</color>
+    <color name="colorAccent">#3cc5d5</color>
+	<color name="colorCursors">#3cc5d5</color>
 </resources>
