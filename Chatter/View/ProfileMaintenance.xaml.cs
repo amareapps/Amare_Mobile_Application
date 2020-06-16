@@ -219,20 +219,20 @@ namespace Chatter
         {
             if (this.CurrentPage == emailContent)
             {
-                this.CurrentPage = passwordContent;
-            }
-            else if (this.CurrentPage == passwordContent)
-            {
                 this.CurrentPage = nameContent;
             }
+            // else if (this.CurrentPage == passwordContent)
+            //{
+            //    this.CurrentPage = nameContent;
+            //}
             else if (this.CurrentPage == nameContent)
             {
-                this.CurrentPage = birthdayContent;
-            }
-            else if (this.CurrentPage == birthdayContent)
-           {
                 this.CurrentPage = genderContent;
-           }
+            }
+            //else if (this.CurrentPage == birthdayContent)
+           //{
+            //    this.CurrentPage = genderContent;
+           //}
             else if (this.CurrentPage == genderContent)
             {
                 this.CurrentPage = interestContent;

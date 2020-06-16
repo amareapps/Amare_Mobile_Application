@@ -13,7 +13,8 @@
     </Page.Resources>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <Grid RowSpacing="10" Margin="0,10,0,0" AbsoluteLayout.LayoutFlags="All"
+
+            <Grid Margin="0,10,0,0" AbsoluteLayout.LayoutFlags="All"
               AbsoluteLayout.LayoutBounds="0,1,1,1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
@@ -24,12 +25,12 @@
                     <local:SearchBarNoUnderline x:Name="searchEntry" Placeholder="Search for your matches..." CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" TextChanged="SearchBarNoUnderline_TextChanged" VerticalOptions="CenterAndExpand"></local:SearchBarNoUnderline>
                 </Frame>
                 <StackLayout Grid.Row="1">
-                    <Label Text="Recent matches" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                    <Label Text="Recent matches" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
                     <ScrollView Orientation="Horizontal">
-                        <StackLayout x:Name="recentMatchesList" Orientation="Horizontal" HeightRequest="150">
+                        <StackLayout x:Name="recentMatchesList" Orientation="Horizontal">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout WidthRequest="80" HeightRequest="150" Margin="10">
+                                    <StackLayout WidthRequest="80" HeightRequest="80" Margin="10">
                                         <Frame CornerRadius="45" 
                                        HeightRequest="70"
                                        WidthRequest="70"
@@ -48,7 +49,7 @@
                                                    Source="{Binding image}"/>
                                             </Frame>
                                         </Frame>
-                                        <Label Text="{Binding username}"  HorizontalOptions="Center" FontSize="Micro" FontAttributes="Bold"></Label>
+                                        <!--<Label Text="{Binding username}"  HorizontalOptions="Center" FontSize="Micro" FontAttributes="Bold"></Label>-->
                                     </StackLayout>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
@@ -56,45 +57,54 @@
                     </ScrollView>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
-                    <StackLayout Orientation="Horizontal" Spacing="10">
-                        <Button x:Name="unreadFilterButton" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" HeightRequest="5" BackgroundColor="LightGray" CornerRadius="30" Margin="0" Padding="0" BorderWidth="10" BorderColor="#EEEEEE"></Button>
-                        <Button x:Name="receivedFilterButton" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro"  BackgroundColor="LightGray" CornerRadius="30" Margin="0" Padding="0" BorderWidth="10" BorderColor="#EEEEEE"></Button>
-                        <Button x:Name="nearbyFilterButton" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro"  BackgroundColor="LightGray" CornerRadius="30" Margin="0" Padding="0" BorderWidth="10" BorderColor="#EEEEEE"></Button>
-                    </StackLayout>
-                    <Label Text="Messages" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
-                    <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell >
-                                    <Grid HeightRequest="70" x:Name="listItem" Margin="10,10,10,10" RowSpacing="0" >
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="70"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="45" 
-                                           HeightRequest="90"
-                                           WidthRequest="90"
+                    <StackLayout Padding="0" Margin="0">
+                        <Label Text="Messages" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                        <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <Grid HeightRequest="80" x:Name="listItem" Margin="10,10,10,10" RowSpacing="0" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="80"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="45" 
+                                           HeightRequest="110"
+                                           WidthRequest="110"
                                            HorizontalOptions="Center"
                                            Padding="0"
                                            BorderColor="Black"
                                            IsClippedToBounds="True"
                                            HasShadow="True">
-                                            <ffimageloading:CachedImage DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
-                                        </Frame>
-                                        <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" FontAttributes="{Binding has_unread,Converter={StaticResource stringtoFontAtr}}" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
-                                        <StackLayout Grid.Column="2" Spacing="0" Grid.Row="0">
-                                            <Label Margin="0,0,5,0" FontSize="Small" TextColor="Black" Text="{Binding distance}"/>
-                                            <Label Margin="10,0,5,0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}"/>
-                                        </StackLayout>
-                                        <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message}" Grid.Column="1" Grid.Row="1"/>
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                                <ffimageloading:CachedImage DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
+                                            </Frame>
+                                            <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" FontAttributes="{Binding has_unread,Converter={StaticResource stringtoFontAtr}}" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
+                                            <StackLayout Grid.Column="2" Spacing="0" Grid.Row="0">
+                                                <Label Margin="0,0,5,0" FontSize="Small" TextColor="Black" Text="{Binding distance}"/>
+                                                <Label Margin="10,0,5,0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}"/>
+                                            </StackLayout>
+                                            <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message}" Grid.Column="1" Grid.Row="1"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                 </StackLayout>
             </Grid>
+            <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.95,0.29,0.1,0.1">
+                <StackLayout x:Name="stackFilter" IsVisible="False" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
+                    <Button x:Name="unreadFilterButton" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2"  Margin="0" Padding="0" ></Button>
+                    <Button x:Name="receivedFilterButton" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2" Margin="0" Padding="0"></Button>
+                    <Button x:Name="nearbyFilterButton" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2" Margin="0" Padding="0"></Button>
+                </StackLayout>
+                <ffimageloading:CachedImage VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="hamburgerEvent" Tapped="hamburgerEvent_Tapped" ></TapGestureRecognizer>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+            </StackLayout>
             <!-- Overlay -->
             <ContentView x:Name="overlay"  
                          IsVisible="False"  

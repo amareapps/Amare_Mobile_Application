@@ -64,7 +64,7 @@ namespace Chatter
                     else
                     {
                         hasSearchReference = true;
-                        imageSources.Clear();
+                        //imageSources.Clear();
                     }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
@@ -168,6 +168,7 @@ namespace Chatter
         {
             try
             {
+                imageSources.Remove(currentItem);
                 await checkIfLiked();
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
@@ -182,7 +183,7 @@ namespace Chatter
                     var response = await request.Content.ReadAsStringAsync();
                     await PopupNavigation.Instance.PushAsync(new AnimateMatched(UserProfilePicture, currentItem.image));
                     //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
-                    imageSources.Remove(currentItem);
+                    //imageSources.Remove(currentItem);
                 }
                 else
                 {
@@ -194,7 +195,7 @@ namespace Chatter
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
                     var exec = await DisplayAlert("Discover", "You liked " + currentItem.username, null, "OK");
-                    imageSources.Remove(currentItem);
+
                 }
             }
             catch (Exception ex)
@@ -285,9 +286,9 @@ namespace Chatter
         }
         private async Task dislikeUser()
         {
+            imageSources.Remove(currentItem);
             string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
             await api.saveToDislikedUser(user_id, currentUserIdSelected);
-            imageSources.Remove(currentItem);
         }
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
