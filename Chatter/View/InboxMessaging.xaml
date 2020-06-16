@@ -25,12 +25,12 @@
                     <local:SearchBarNoUnderline x:Name="searchEntry" Placeholder="Search for your matches..." CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" TextChanged="SearchBarNoUnderline_TextChanged" VerticalOptions="CenterAndExpand"></local:SearchBarNoUnderline>
                 </Frame>
                 <StackLayout Grid.Row="1">
-                    <Label Text="Recent matches" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                    <Label Text="Recent matches" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
                     <ScrollView Orientation="Horizontal">
-                        <StackLayout x:Name="recentMatchesList" Orientation="Horizontal" HeightRequest="150">
+                        <StackLayout x:Name="recentMatchesList" Orientation="Horizontal">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout WidthRequest="80" HeightRequest="150" Margin="10">
+                                    <StackLayout WidthRequest="80" HeightRequest="80" Margin="10">
                                         <Frame CornerRadius="45" 
                                        HeightRequest="70"
                                        WidthRequest="70"
@@ -49,7 +49,7 @@
                                                    Source="{Binding image}"/>
                                             </Frame>
                                         </Frame>
-                                        <Label Text="{Binding username}"  HorizontalOptions="Center" FontSize="Micro" FontAttributes="Bold"></Label>
+                                        <!--<Label Text="{Binding username}"  HorizontalOptions="Center" FontSize="Micro" FontAttributes="Bold"></Label>-->
                                     </StackLayout>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
@@ -58,20 +58,20 @@
                 </StackLayout>
                 <StackLayout Grid.Row="2">
                     <StackLayout Padding="0" Margin="0">
-                        <Label Text="Messages" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                        <Label Text="Messages" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
                         <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell >
-                                        <Grid HeightRequest="70" x:Name="listItem" Margin="10,10,10,10" RowSpacing="0" >
+                                        <Grid HeightRequest="80" x:Name="listItem" Margin="10,10,10,10" RowSpacing="0" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                                <ColumnDefinition Width="80"></ColumnDefinition>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="45" 
-                                           HeightRequest="90"
-                                           WidthRequest="90"
+                                           HeightRequest="110"
+                                           WidthRequest="110"
                                            HorizontalOptions="Center"
                                            Padding="0"
                                            BorderColor="Black"
@@ -93,11 +93,11 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-            <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,0.35,0.1,0.1">
+            <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.95,0.29,0.1,0.1">
                 <StackLayout x:Name="stackFilter" IsVisible="False" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
-                    <Button x:Name="unreadFilterButton" WidthRequest="40" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" BackgroundColor="LightGray"  Margin="0" Padding="0" ></Button>
-                    <Button x:Name="receivedFilterButton" WidthRequest="40" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro"  BackgroundColor="LightGray"  Margin="0" Padding="0"></Button>
-                    <Button x:Name="nearbyFilterButton" WidthRequest="40" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro"  BackgroundColor="LightGray" Margin="0" Padding="0"></Button>
+                    <Button x:Name="unreadFilterButton" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2"  Margin="0" Padding="0" ></Button>
+                    <Button x:Name="receivedFilterButton" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2" Margin="0" Padding="0"></Button>
+                    <Button x:Name="nearbyFilterButton" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2" Margin="0" Padding="0"></Button>
                 </StackLayout>
                 <ffimageloading:CachedImage VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
                     <ffimageloading:CachedImage.GestureRecognizers>

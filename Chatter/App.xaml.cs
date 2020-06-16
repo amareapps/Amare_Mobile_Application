@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Android.Widget;
 using Plugin.LocalNotifications;
 using Newtonsoft.Json;
+using DLToolkit.Forms.Controls;
 
 namespace Chatter
 {
@@ -21,6 +22,7 @@ namespace Chatter
         public App(IOAuth2Service oAuth2Service)
         {
             InitializeComponent();
+            FlowListView.Init();
             try
             {
                 string ip = sqlites.GetIpAddress().Url;

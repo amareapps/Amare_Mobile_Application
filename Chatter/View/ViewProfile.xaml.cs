@@ -65,7 +65,8 @@ namespace Chatter.View
                 {
                     instagramPhotos.Add(modeler);
                 }
-                BindableLayout.SetItemsSource(instagramAlbum, instagramPhotos);
+                instagramAlbum.FlowItemsSource = instagramPhotos;
+                //BindableLayout.SetItemsSource(instagramAlbum, instagramPhotos);
             }
             catch (Exception ex)
             {

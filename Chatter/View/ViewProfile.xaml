@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:local="clr-namespace:Chatter.Classes" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              mc:Ignorable="d"
              x:Class="Chatter.View.ViewProfile" BackgroundColor="#EEEEEE">
     <Page.Resources>
@@ -175,31 +175,25 @@
                     </Frame>
                     <Frame HasShadow="True" Grid.Row="2" Padding="10" Margin="0,0,0,0" CornerRadius="20" x:Name="instaFrame">
                         <StackLayout x:Name="instaLayout">
-                            <Label Text="Instagram Photos" FontSize="Medium" FontAttributes="Bold" Padding="10,0,0,0"></Label>
-                            <ScrollView Orientation="Horizontal">
-                                <StackLayout x:Name="instagramAlbum" Orientation="Horizontal" HeightRequest="120">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackLayout WidthRequest="100" HeightRequest="100" Margin="10,10,10,0">
-                                                <Frame
-                                                    HeightRequest="100"
-                                                    WidthRequest="100"
-                                                    HorizontalOptions="Center"
-                                                    Padding="0"
-                                                    Margin="0"
-                                                    IsClippedToBounds="True" CornerRadius="5">
-                                                    <ffimageloading:CachedImage Aspect="AspectFill"
-                                                                Source="{Binding image_url}">
-                                                        <ffimageloading:CachedImage.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                        </ffimageloading:CachedImage.GestureRecognizers>
-                                                    </ffimageloading:CachedImage>
-                                                </Frame>
-                                            </StackLayout>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </StackLayout>
-                            </ScrollView>
+                            <Label Text="Instagram Photos" FontSize="Medium" FontAttributes="Bold" Padding="10,0,10,0"></Label>
+                            <flv:FlowListView x:Name="instagramAlbum" HeightRequest="300" FlowColumnCount="3" RowHeight="100" SeparatorVisibility="Default" HasUnevenRows="False">
+                                 <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                        <Frame
+                                            HorizontalOptions="Center"
+                                            Padding="0"
+                                            Margin="0"
+                                            IsClippedToBounds="True">
+                                            <ffimageloading:CachedImage
+                                                                Source="{Binding image_url}" Aspect="Fill">
+                                                <ffimageloading:CachedImage.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                </ffimageloading:CachedImage.GestureRecognizers>
+                                            </ffimageloading:CachedImage>
+                                        </Frame>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
+                            </flv:FlowListView>
                         </StackLayout>
                     </Frame>
                         
