@@ -77,5 +77,9 @@ namespace Chatter.View
             }
             await Navigation.PopAsync();
         }
+        public void ShowPass_Tapped(object sender, EventArgs args)
+        {
+            accountFieldEntry.IsPassword = accountFieldEntry.IsPassword ? false : true;
+        }
     }
 }

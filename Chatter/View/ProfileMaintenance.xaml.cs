@@ -189,7 +189,7 @@ namespace Chatter
             Button btne = (Button)sender;
             btne.BackgroundColor = Color.Default;
             btne.BorderWidth = 2;
-            btne.BorderColor = Color.FromHex("310881");
+            btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womanButton)
                 gender = "0";
             else if(btne == manButton)
@@ -207,7 +207,7 @@ namespace Chatter
             Button btne = (Button)sender;
             btne.BackgroundColor = Color.Default;
             btne.BorderWidth = 2;
-            btne.BorderColor = Color.FromHex("310881");
+            btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womenInterestButton)
                 interestIn = "0";
             else if (btne == menInterestButton)

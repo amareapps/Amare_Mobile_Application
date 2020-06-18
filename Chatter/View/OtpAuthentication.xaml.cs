@@ -40,7 +40,7 @@ namespace Chatter.View
                     timerSpan.Stop();
                     timerSpan.Enabled = false;
                     resentButton.IsEnabled = true;
-                    resentButton.BackgroundColor = Color.FromHex("98000b");
+                    resentButton.BackgroundColor = Color.FromHex("3cc5d5");
                     resentButton.Text = "RESEND";
                     return false;
                 }

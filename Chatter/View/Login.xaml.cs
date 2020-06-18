@@ -18,6 +18,7 @@ using eliteKit;
 using Plugin.FacebookClient;
 using SQLite;
 using Plugin.Toast;
+using Android.Text.Method;
 
 namespace Chatter
 {
@@ -318,6 +319,11 @@ namespace Chatter
                 conn.CreateTable<RecentMatchesModel>();
                 conn.InsertOrReplace(model);
             }
+        }
+
+        public void ShowPass_Tapped(object sender, EventArgs args)
+        {
+            passEntry.IsPassword = passEntry.IsPassword ? false : true;
         }
 
     }

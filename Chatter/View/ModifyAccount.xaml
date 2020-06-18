@@ -9,7 +9,14 @@
         <StackLayout Spacing="20" Margin="20,30,20,10">
             <StackLayout Spacing="10">
                 <Label x:Name="accountFieldLabel" FontSize="Large" IsVisible="False"></Label>
-                <local:RoundedEntry x:Name="accountFieldEntry" Margin="10,0,10,0"></local:RoundedEntry>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <local:RoundedEntry x:Name="accountFieldEntry" Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Small" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True"></local:RoundedEntry>
+                    <Image Source="show.png" x:Name="show" IsVisible="True" Opacity="0.4" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" WidthRequest="20" HeightRequest="20" Margin="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShowPass_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
             </StackLayout>
             <Button x:Name="buttonUpdate" Clicked="buttonUpdate_Clicked" Padding="10" CornerRadius="30" BackgroundColor="#3cc5d5" TextColor="White" FontAttributes="Bold"></Button>
         </StackLayout>

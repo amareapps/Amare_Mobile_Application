@@ -7,7 +7,7 @@
              x:Class="Chatter.View.DeleteAccount" IsVisible="True">
     <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
         <StackLayout Spacing="5">
-                <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="DarkRed" Padding="5">
+                <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand" BackgroundColor="#890447" Padding="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="AUTO"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>

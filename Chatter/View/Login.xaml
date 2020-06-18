@@ -44,9 +44,16 @@
                     </Image>
                 </StackLayout>
                 <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
-                    <local:EntryLogin WidthRequest="450" x:Name="emailEntry" TextColor="White" Keyboard="Email" Placeholder="Enter your e-mail address here" FontAttributes="Italic" FontSize="Small" VerticalOptions="StartAndExpand"></local:EntryLogin>
-                    <local:EntryLogin WidthRequest="450" x:Name="passEntry" TextColor="White" Placeholder="Enter your password here" FontAttributes="Italic" FontSize="Small" IsPassword="True" VerticalOptions="StartAndExpand" ></local:EntryLogin>
-                    <Button BackgroundColor="#3cc5d5" HeightRequest="45" TextColor="White" CornerRadius="5" x:Name="loginButton" Clicked="loginButton_Clicked" Text="LOGIN" FontSize="Medium"></Button>
+                    <local:EntryLogin WidthRequest="450" x:Name="emailEntry" TextColor="White" Keyboard="Email" Placeholder="Enter Email Address" FontAttributes="Italic" FontSize="Small" VerticalOptions="StartAndExpand"></local:EntryLogin>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <local:EntryLogin WidthRequest="450" x:Name="passEntry" TextColor="White" Placeholder="Enter Password" FontAttributes="Italic" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Small" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True" ></local:EntryLogin>
+                    <Image Source="show.png" x:Name="show" IsVisible="True" Opacity="0.4" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" WidthRequest="20" HeightRequest="20" Margin="15">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShowPass_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <Button BackgroundColor="#3cc5d5" HeightRequest="45" TextColor="White" CornerRadius="5" x:Name="loginButton" Clicked="loginButton_Clicked" Text="LOGIN" FontSize="Medium"></Button>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>

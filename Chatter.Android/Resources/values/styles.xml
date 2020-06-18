@@ -29,12 +29,12 @@
 	</style>
 
 	<style name="MyDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
-		<item name="colorAccent">#b07abb</item>
+		<item name="colorAccent">#8af3ff</item>
 		<item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
 	</style>
 
 	<style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
-		<item name="android:headerBackground">#310881</item>
+		<item name="android:headerBackground">#3cc5d5</item>
 	</style>
 
 </resources>

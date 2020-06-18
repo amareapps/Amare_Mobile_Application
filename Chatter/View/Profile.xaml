@@ -27,7 +27,6 @@
                 <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
                                Clicked="EditButton_Clicked"/>
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
-                <ImageButton x:Name="vipButton" Clicked="vipButton_Clicked" Source="vip.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" BackgroundColor="Transparent" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" />
             </Grid>
             <StackLayout Grid.Row="1" IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" >
                 <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Select Image">
@@ -50,10 +49,13 @@
                     </Frame>
                     <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5, 0.5, 50, 50"
                                                 AbsoluteLayout.LayoutFlags="PositionProportional" IsRunning="True"   HeightRequest="80" WidthRequest="80"
-                                             IsVisible="False" x:Name="loadingIndicator" Color="#98000b" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+                                             IsVisible="False" x:Name="loadingIndicator" Color="#3cc5d5" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
                     <ImageButton AbsoluteLayout.LayoutBounds="0.7, 0.95, 35, 35"
                                                 AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                                      HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
+                    <ImageButton AbsoluteLayout.LayoutBounds="0.3, 0.95, 35, 35"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings1.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
+                               Clicked="EditButton_Clicked"/>
                 </AbsoluteLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <Label Padding="0,5,0,0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>

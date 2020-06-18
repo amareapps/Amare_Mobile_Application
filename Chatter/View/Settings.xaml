@@ -12,8 +12,8 @@
         <StackLayout>
             <Grid HeightRequest="70" Margin="0" Padding="0,10,0,0">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" TextColor="Accent" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Preferences"/>
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Preferences"/>
             </Grid>
             <ScrollView Padding="0,10,0,10">
                 <StackLayout Spacing="20" Margin="20,0,20,10">
@@ -27,7 +27,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Change Name"></Label>
                             <Label Grid.Column="1" x:Name="userName" FontSize="Medium" HorizontalTextAlignment="End" Padding="0,0,10,0"></Label>
-                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthan.png"></ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthanmint.png"></ffimageloading:CachedImage>
                         </Grid>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="tapChangename" Tapped="tapChangename_Tapped"></TapGestureRecognizer>
@@ -42,7 +42,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Change Password"></Label>
                             <Label Grid.Column="1" x:Name="passWordLabel" FontSize="Medium" HorizontalTextAlignment="End" Text="*****" Padding="0,0,10,0"></Label>
-                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthan.png"></ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthanmint.png"></ffimageloading:CachedImage>
                         </Grid>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="tapChangePassword" Tapped="tapChangePassword_Tapped"></TapGestureRecognizer>
@@ -149,7 +149,7 @@
                     <Button Margin="10,0,10,0" Text="Terms of Service" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
                     <Button Margin="10,0,10,0" Text="Licenses" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
 
-                    <Button Margin="10,0,10,0" Text="LOGOUT" TextColor="#310881" BackgroundColor="Transparent" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
+                    <Button Margin="10,0,10,0" Text="LOGOUT" TextColor="#3cc5d5" BackgroundColor="Transparent" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
                     <Grid BackgroundColor="Transparent" Padding="0" Margin="0,40,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                         <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="150"></Image>
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
