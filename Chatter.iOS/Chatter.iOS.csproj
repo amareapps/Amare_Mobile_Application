@@ -135,6 +135,9 @@
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView">
       <Version>2.0.11</Version>
     </PackageReference>
+    <PackageReference Include="EngineIoClientDotNet">
+      <Version>0.9.22</Version>
+    </PackageReference>
     <PackageReference Include="PhotoBrowser.Forms">
       <Version>0.1.4</Version>
     </PackageReference>
@@ -158,6 +161,9 @@
     </PackageReference>
     <PackageReference Include="Plugin.Share">
       <Version>7.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="SocketIoClientDotNet">
+      <Version>0.9.13</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer">
       <Version>1.4.0</Version>

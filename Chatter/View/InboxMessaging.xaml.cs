@@ -90,27 +90,27 @@ namespace Chatter
             userSearchReference = sqliteManager.GetSearchRefence();
             deleteSqliteData();
             await refreshData();
-            ClientWebSocket wsClient = new ClientWebSocket();
-            await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.SocketUrl + ":8080"), CancellationToken.None);
-            while (wsClient.State == WebSocketState.Open)
-            {
-                WebSocketReceiveResult result;
-                var message = new ArraySegment<byte>(new byte[4096]);
-                string receivedMessage;
-                do
-                {
-                    result = await wsClient.ReceiveAsync(message, CancellationToken.None);
-                    var messageBytes = message.Skip(message.Offset).Take(result.Count).ToArray();
-                    receivedMessage = System.Text.Encoding.UTF8.GetString(messageBytes);
-                    var resultModel = JsonConvert.DeserializeObject<ChatModel>(receivedMessage);
-                    if (resultModel.receiver_id == Application.Current.Properties["Id"].ToString().Replace("\"", "") ||
-                        resultModel.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", ""))
-                    {
-                        await refreshData();
-                    }
-                }
-                while (!result.EndOfMessage);
-            }
+            //ClientWebSocket wsClient = new ClientWebSocket();
+            //await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.SocketUrl + ":8080"), CancellationToken.None);
+            //while (wsClient.State == WebSocketState.Open)
+            //{
+            //    WebSocketReceiveResult result;
+            //    var message = new ArraySegment<byte>(new byte[4096]);
+            //    string receivedMessage;
+            //    do
+            //    {
+            //        result = await wsClient.ReceiveAsync(message, CancellationToken.None);
+            //        var messageBytes = message.Skip(message.Offset).Take(result.Count).ToArray();
+            //        receivedMessage = System.Text.Encoding.UTF8.GetString(messageBytes);
+            //        var resultModel = JsonConvert.DeserializeObject<ChatModel>(receivedMessage);
+            //        if (resultModel.receiver_id == Application.Current.Properties["Id"].ToString().Replace("\"", "") ||
+            //            resultModel.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", ""))
+           //         {
+           //             await refreshData();
+           //         }
+            //    }
+             //   while (!result.EndOfMessage);
+            //}
         }
         private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {

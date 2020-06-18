@@ -82,7 +82,7 @@ namespace Chatter
                 var locationLast = await Geolocation.GetLastKnownLocationAsync();
                 if (locationLast == null)
                 {
-                    var request = new GeolocationRequest(GeolocationAccuracy.High);
+                    var request = new GeolocationRequest(GeolocationAccuracy.Low);
                     var location = await Geolocation.GetLocationAsync(request);
                     if (location == null)
                     {

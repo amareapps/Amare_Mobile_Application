@@ -17,5 +17,13 @@ namespace Chatter.Classes
         {
                 MessagingCenter.Send<MessageCenterManager, ChatModel>(this, category.ToString(), message);
         }
+        public void sendMessage(ChatModel message)
+        {
+            MessagingCenter.Send<MessageCenterManager, ChatModel>(this, "sendMessage",message);
+        }
+        public void receiveMessage(ChatModel message)
+        {
+            MessagingCenter.Send<MessageCenterManager, ChatModel>(this, "messageReceived", message);
+        }
     }
 }

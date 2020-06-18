@@ -11,6 +11,8 @@ using Android.Widget;
 using Plugin.LocalNotifications;
 using Newtonsoft.Json;
 using DLToolkit.Forms.Controls;
+using Quobject.SocketIoClientDotNet.Client;
+using Android.Media;
 
 namespace Chatter
 {
@@ -19,10 +21,17 @@ namespace Chatter
         ApiConnector api = new ApiConnector();
         IpAddress ipAddress = new IpAddress();
         SqliteManager sqlites = new SqliteManager();
+        MessageCenterManager messenger = new MessageCenterManager();
+        Socket socket;
         public App(IOAuth2Service oAuth2Service)
         {
             InitializeComponent();
             FlowListView.Init();
+            MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "sendMessage", (sender, arg) =>
+            {
+                var value = JsonConvert.SerializeObject(arg);
+                socket.Emit("hi", value);
+            });
             try
             {
                 string ip = sqlites.GetIpAddress().Url;
@@ -50,7 +59,9 @@ namespace Chatter
 
         protected override void OnStart()
         {
-            Task.Run(async () =>
+
+            socket = IO.Socket("http://amarechat.herokuapp.com/");
+            /*Task.Run(async () =>
             {
                 await api.connectToServer();
                 while (api.ConnectedToServerAsync() == true)
@@ -64,6 +75,31 @@ namespace Chatter
                         DependencyService.Get<INotification>().CreateNotification(model.sender_username, model.message);
                     }
                 }
+            });*/
+
+            socket.On(Socket.EVENT_CONNECT, () =>
+            {
+                /*var test = new ChatModel();
+                test.id = "1";
+                test.message = "Hoy Gising";
+                var ss = JsonConvert.SerializeObject(test);
+                SocketIOManager.socket.Emit("hi", ss);*/
+            });
+
+            socket.On("hi", (data) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    var value = data.ToString();
+                    var model = JsonConvert.DeserializeObject<ChatModel>(value);
+                    if (model.receiver_id == Application.Current.Properties["Id"].ToString().Replace("\"", ""))
+                    {
+                        DependencyService.Get<INotification>().CreateNotification(model.sender_username, model.message);
+                    }
+                    messenger.receiveMessage(model);
+                }
+                );
+                //socket.Disconnect();
             });
         }
 

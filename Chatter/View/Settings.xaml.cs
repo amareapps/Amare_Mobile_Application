@@ -29,7 +29,6 @@ namespace Chatter
         {
             InitializeComponent();
             loadFromDatabase();
-
         }
 
         private void backButton_Clicked(object sender, EventArgs e)
