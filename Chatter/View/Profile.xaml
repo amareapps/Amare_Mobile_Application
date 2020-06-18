@@ -24,8 +24,8 @@
             </Grid.RowDefinitions>
             <Grid HeightRequest="50" Margin="0,0,0,0" Grid.Row="0" VerticalOptions="Start">
                 <BoxView BackgroundColor="#EEEEEE" Margin="0" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalOptions="Start" />
-                <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
-                               Clicked="EditButton_Clicked"/>
+                <!--<ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
+                               Clicked="EditButton_Clicked"/>-->
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
             </Grid>
             <StackLayout Grid.Row="1" IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" >
@@ -54,7 +54,7 @@
                                                 AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                                      HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
                     <ImageButton AbsoluteLayout.LayoutBounds="0.3, 0.95, 35, 35"
-                                                AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings1.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="90" WidthRequest="90" x:Name="EditButton" Source="settings1.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
                                Clicked="EditButton_Clicked"/>
                 </AbsoluteLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">

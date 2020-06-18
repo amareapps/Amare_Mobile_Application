@@ -13,8 +13,8 @@
         <StackLayout>
             <Grid HeightRequest="70" Margin="0" Padding="0,10,0,0">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" TextColor="Accent" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Profile"/>
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Profile"/>
             </Grid>
             <ScrollView Padding="0,10,0,10">
                 <StackLayout Spacing="10" Margin="20,0,20,10">
@@ -69,7 +69,8 @@
                     <Label x:Name="lblAbout" Margin="0,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="0" Margin="0">
-                            <StackLayout Padding="5,10,5,0">
+                            <StackLayout Padding="5,0,5,0">
+                                <Label Text="Describe yourself" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                                 <local1:CustomEditor x:Name="aboutEntry" FontSize="Small" Placeholder="Tell other users more about you..." Text="{Binding about}" HeightRequest="100"></local1:CustomEditor>
                             </StackLayout>
                             <StackLayout Padding="5,10,5,0">
@@ -98,31 +99,13 @@
                                     <local:RoundedEntry Grid.Row="1" Grid.Column="1" FontSize="Small" x:Name="weightEntry" Keyboard="Numeric" Placeholder="Kilograms" Text="{Binding weight}"></local:RoundedEntry>
                                 </StackLayout>
                             </Grid>
-                        </StackLayout>  
-                    </Frame>
-                    <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout Padding="0" Margin="0">
                             <Label Text="Job Title" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <StackLayout Padding="0">
-                                <local:RoundedEntry FontSize="Small" x:Name="jobEntry" Placeholder="Add job title" Text="{Binding job_title}"></local:RoundedEntry>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout Padding="0" Margin="0">
+                            <local:RoundedEntry FontSize="Small" x:Name="jobEntry" Placeholder="Add job title" Text="{Binding job_title}"></local:RoundedEntry>
                             <Label Text="Company" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <StackLayout Padding="0">
-                                <local:RoundedEntry FontSize="Small" x:Name="companyEntry" Placeholder="Add company" Text="{Binding company}"></local:RoundedEntry>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout Padding="0" Margin="0">
+                            <local:RoundedEntry FontSize="Small" x:Name="companyEntry" Placeholder="Add company" Text="{Binding company}"></local:RoundedEntry>
                             <Label Text="School" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <StackLayout Padding="0">
-                                <local:RoundedEntry FontSize="Small" x:Name="schoolEntry" Placeholder="Add school" Text="{Binding school}"></local:RoundedEntry>
-                            </StackLayout>
-                        </StackLayout>
+                            <local:RoundedEntry FontSize="Small" x:Name="schoolEntry" Placeholder="Add school" Text="{Binding school}"></local:RoundedEntry>
+                         </StackLayout>
                     </Frame>
                     <Label Text="Control Your Profile" Margin="0,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">

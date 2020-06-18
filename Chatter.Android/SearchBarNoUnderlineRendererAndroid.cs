@@ -37,7 +37,7 @@ namespace Chatter.Droid
             if (searchIconId > 0)
             {
                 var searchPlateIcon = searchView.FindViewById(searchIconId);
-                (searchPlateIcon as ImageView).SetImageResource(Resource.Drawable.searchicon);
+                (searchPlateIcon as ImageView).SetImageResource(Resource.Drawable.searchiconmint);
 
             }
         }

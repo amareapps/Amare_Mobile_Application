@@ -25524,37 +25524,40 @@ namespace Chatter.Droid
 			public const int settings = 2131165627;
 			
 			// aapt resource value: 0x7F0701BC
-			public const int show = 2131165628;
+			public const int settings1 = 2131165628;
 			
 			// aapt resource value: 0x7F0701BD
-			public const int tooltip_frame_dark = 2131165629;
+			public const int show = 2131165629;
 			
 			// aapt resource value: 0x7F0701BE
-			public const int tooltip_frame_light = 2131165630;
+			public const int tooltip_frame_dark = 2131165630;
 			
 			// aapt resource value: 0x7F0701BF
-			public const int tzuyu = 2131165631;
+			public const int tooltip_frame_light = 2131165631;
 			
 			// aapt resource value: 0x7F0701C0
-			public const int Up = 2131165632;
+			public const int tzuyu = 2131165632;
 			
 			// aapt resource value: 0x7F0701C1
-			public const int vip = 2131165633;
+			public const int Up = 2131165633;
 			
 			// aapt resource value: 0x7F0701C2
-			public const int vipdarkred = 2131165634;
+			public const int vip = 2131165634;
 			
 			// aapt resource value: 0x7F0701C3
-			public const int warning = 2131165635;
+			public const int vipdarkred = 2131165635;
 			
 			// aapt resource value: 0x7F0701C4
-			public const int weightmint = 2131165636;
+			public const int warning = 2131165636;
 			
 			// aapt resource value: 0x7F0701C5
-			public const int weightviolet = 2131165637;
+			public const int weightmint = 2131165637;
 			
 			// aapt resource value: 0x7F0701C6
-			public const int welcomelogo = 2131165638;
+			public const int weightviolet = 2131165638;
+			
+			// aapt resource value: 0x7F0701C7
+			public const int welcomelogo = 2131165639;
 			
 			static Drawable()
 			{

@@ -27,7 +27,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Change Name"></Label>
                             <Label Grid.Column="1" x:Name="userName" FontSize="Medium" HorizontalTextAlignment="End" Padding="0,0,10,0"></Label>
-                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthanmint.png"></ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthan.png"></ffimageloading:CachedImage>
                         </Grid>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="tapChangename" Tapped="tapChangename_Tapped"></TapGestureRecognizer>
@@ -42,7 +42,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Change Password"></Label>
                             <Label Grid.Column="1" x:Name="passWordLabel" FontSize="Medium" HorizontalTextAlignment="End" Text="*****" Padding="0,0,10,0"></Label>
-                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthanmint.png"></ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthan.png"></ffimageloading:CachedImage>
                         </Grid>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="tapChangePassword" Tapped="tapChangePassword_Tapped"></TapGestureRecognizer>

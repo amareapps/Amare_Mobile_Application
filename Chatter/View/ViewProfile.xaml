@@ -17,8 +17,8 @@
         <StackLayout Padding="0,0,0,0">
             <Grid HeightRequest="50" Margin="0" Padding="0,5,0,0">
                 <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <Button BackgroundColor="Transparent" ImageSource="backbuttonred.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" TextColor="Accent" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" TextColor="#890447" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
             </Grid>
             <ScrollView Padding="10,5,10,5">
                 <Grid>
@@ -54,7 +54,7 @@
                                             HorizontalOptions="Center" IndicatorSize="10"/>
                         </AbsoluteLayout>
                     </Frame>
-                    <Frame HasShadow="True" Grid.Row="1" CornerRadius="20">
+                    <Frame HasShadow="True" Grid.Row="1" CornerRadius="20" Margin="0">
                         <StackLayout Margin="0" Padding="0">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding username}" TextColor="Accent" FontSize="Large" FontAttributes="Bold">
@@ -77,47 +77,27 @@
                                         <ColumnDefinition Width="30"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <ffimageloading:CachedImage Source="aboutviolet.png" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"  HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
+                                    <ffimageloading:CachedImage Source="aboutmint.png" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"  HeightRequest="15" WidthRequest="15" Margin="0,0,10,0">
                                     </ffimageloading:CachedImage>
                                     <Label Text="{Binding about}" Grid.Row="0" Grid.Column="1" VerticalOptions="Start" FontSize="Small" FontAttributes="Bold" WidthRequest="280"/>
                                 </Grid>
                             </FlexLayout>
-                            <Grid Padding="5,10,5,0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Frame CornerRadius="10" BackgroundColor="WhiteSmoke" Grid.Row="0" Grid.Column="0" IsVisible="{Binding gender,Converter={StaticResource stringtoBool}}">
-                                    <FlexLayout  Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
-                                        <StackLayout Orientation="Vertical">
-                                            <ffimageloading:CachedImage Source="genderviolet.png" HeightRequest="30" WidthRequest="30" Margin="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center"></ffimageloading:CachedImage>
-                                            <Label Text="{Binding gender,Converter={StaticResource numberToGender}}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                                        </StackLayout>
-                                    </FlexLayout>
-                                </Frame>
-                                <Frame CornerRadius="10" BackgroundColor="WhiteSmoke" Grid.Row="0" Grid.Column="1" IsVisible="{Binding height,Converter={StaticResource numbertoBool}}">
-                                    <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
-                                        <StackLayout Orientation="Vertical">
-                                            <ffimageloading:CachedImage Source="heightviolet.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
-                                            </ffimageloading:CachedImage>
-                                            <Label Text="{Binding height}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                                        </StackLayout>
-                                    </FlexLayout>
-                                </Frame>
-                                <Frame CornerRadius="10" BackgroundColor="WhiteSmoke" Grid.Row="0" Grid.Column="2" IsVisible="{Binding weight,Converter={StaticResource numbertoBool}}">
-                                    <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
-                                        <StackLayout Orientation="Vertical">
-                                            <ffimageloading:CachedImage Source="weightviolet.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
-                                            </ffimageloading:CachedImage>
-                                            <Label Text="{Binding weight}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                                        </StackLayout>
-                                    </FlexLayout>
-                                </Frame>
-                            </Grid>
+                            <Frame Padding="20,10,20,10" Margin="5,10,5,0" CornerRadius="10" BackgroundColor="WhiteSmoke" IsVisible="{Binding gender,Converter={StaticResource stringtoBool}}">
+                                <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
+                                    <Grid  VerticalOptions="Center" Padding="0" Margin="0" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*"></ColumnDefinition>
+                                            <ColumnDefinition Width="80*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="gendermint.png" HorizontalOptions="Start"  HeightRequest="20" WidthRequest="30" Margin="0,0,20,0">
+                                        </ffimageloading:CachedImage>
+                                        <Label Text="{Binding gender,Converter={StaticResource numberToGender}}" Grid.Row="0" Grid.Column="1" FontSize="Small" Padding="0" Margin="0" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
+                                    </Grid>
+                                </FlexLayout>
+                            </Frame>
                             <Frame Padding="20,10,20,10" Margin="5,0,5,0" CornerRadius="10" BackgroundColor="WhiteSmoke" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
                                 <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
                                     <Grid  VerticalOptions="Center" Padding="0" Margin="0" >
@@ -128,7 +108,7 @@
                                             <ColumnDefinition Width="20*"></ColumnDefinition>
                                             <ColumnDefinition Width="80*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="schoolviolet.png" HorizontalOptions="Start"  HeightRequest="20" WidthRequest="30" Margin="0,0,20,0">
+                                        <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="schoolmint.png" HorizontalOptions="Start"  HeightRequest="20" WidthRequest="30" Margin="0,0,20,0">
                                         </ffimageloading:CachedImage>
                                         <Label Text="{Binding school}" Grid.Row="0" Grid.Column="1" FontSize="Small" Padding="0" Margin="0" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
                                     </Grid>
@@ -144,7 +124,7 @@
                                             <ColumnDefinition Width="20*"></ColumnDefinition>
                                             <ColumnDefinition Width="80*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <ffimageloading:CachedImage  Grid.Row="0" Grid.Column="0" Source="jobviolet.png" HorizontalOptions="Center" HeightRequest="25" WidthRequest="30" Margin="0,0,10,0" >
+                                        <ffimageloading:CachedImage  Grid.Row="0" Grid.Column="0" Source="jobmint.png" HorizontalOptions="Center" HeightRequest="25" WidthRequest="30" Margin="0,0,10,0" >
                                         </ffimageloading:CachedImage>
                                         <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label Text="{Binding job_title}" FontSize="Small" Padding="0" Margin="0" FontAttributes="Bold" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
@@ -155,7 +135,7 @@
                                     </Grid>
                                 </FlexLayout>
                             </Frame>
-                            <Frame Padding="20,10,20,10" Margin="5,0,5,10" CornerRadius="10" BackgroundColor="WhiteSmoke" IsVisible="{Binding school,Converter={StaticResource stringtoBool}}">
+                            <Frame Padding="20,10,20,10" Margin="5,0,5,0" CornerRadius="10" BackgroundColor="WhiteSmoke" IsVisible="{Binding hobby,Converter={StaticResource stringtoBool}}">
                                 <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
                                     <Grid  VerticalOptions="Center" Padding="0" Margin="0" >
                                         <Grid.RowDefinitions>
@@ -165,19 +145,47 @@
                                             <ColumnDefinition Width="20*"></ColumnDefinition>
                                             <ColumnDefinition Width="80*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="hobbyviolet.png"  HeightRequest="25" WidthRequest="30" Margin="0,0,20,0">
+                                        <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="hobbymint.png"  HeightRequest="25" WidthRequest="30" Margin="0,0,20,0">
                                         </ffimageloading:CachedImage>
                                         <Label Text="{Binding hobby}" Grid.Row="0" Grid.Column="1" FontSize="Small" Padding="0" Margin="0" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
                                     </Grid>
                                 </FlexLayout>
                             </Frame>
+                            <Grid Padding="5,0,5,0" IsVisible="{Binding height,Converter={StaticResource numbertoBool}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Frame CornerRadius="10" BackgroundColor="WhiteSmoke" Grid.Row="0" Grid.Column="0" IsVisible="{Binding height,Converter={StaticResource stringtoBool}}">
+                                    <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
+                                        <StackLayout Orientation="Vertical">
+                                            <ffimageloading:CachedImage Source="heightmint.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
+                                            </ffimageloading:CachedImage>
+                                            <Label Text="{Binding height}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </FlexLayout>
+                                </Frame>
+                                <Frame CornerRadius="10" BackgroundColor="WhiteSmoke" Grid.Row="0" Grid.Column="1" IsVisible="{Binding weight,Converter={StaticResource stringtoBool}}">
+                                    <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
+                                        <StackLayout Orientation="Vertical">
+                                            <ffimageloading:CachedImage Source="weightmint.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
+                                            </ffimageloading:CachedImage>
+                                            <Label Text="{Binding weight}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </FlexLayout>
+                                </Frame>
+                            </Grid>
                         </StackLayout>
                     </Frame>
+                    
                     <Frame HasShadow="True" Grid.Row="2" Padding="10" Margin="0,0,0,0" CornerRadius="20" x:Name="instaFrame">
                         <StackLayout x:Name="instaLayout">
                             <Label Text="Instagram Photos" FontSize="Medium" FontAttributes="Bold" Padding="10,0,10,0"></Label>
                             <flv:FlowListView x:Name="instagramAlbum" HeightRequest="300" FlowColumnCount="3" RowHeight="100" SeparatorVisibility="Default" HasUnevenRows="False">
-                                 <flv:FlowListView.FlowColumnTemplate>
+                                <flv:FlowListView.FlowColumnTemplate>
                                     <DataTemplate>
                                         <Frame
                                             HorizontalOptions="Center"
@@ -196,7 +204,6 @@
                             </flv:FlowListView>
                         </StackLayout>
                     </Frame>
-                        
                     <Frame HasShadow="True" Grid.Row="3" Padding="0" Margin="0" CornerRadius="30">
                         <Button Text="Report this user" x:Name="reportUser" Clicked="reportUser_Clicked" BackgroundColor="#3cc5d5" TextColor="White" FontSize="Medium" CornerRadius="30" FontAttributes="Bold"/>
                     </Frame>

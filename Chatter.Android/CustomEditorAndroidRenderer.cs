@@ -32,7 +32,7 @@ namespace Chatter.Droid
             {
                 GradientDrawable gd = new GradientDrawable();
                 gd.SetCornerRadius(30f);
-                gd.SetStroke(5, Android.Graphics.Color.ParseColor("#310881"));
+                gd.SetStroke(5, Android.Graphics.Color.ParseColor("#3cc5d5"));
                 Control.SetAutoSizeTextTypeWithDefaults(AutoSizeTextType.Uniform);
                 Control.SetMinHeight(200);
                 Control.SetBackground(gd);
