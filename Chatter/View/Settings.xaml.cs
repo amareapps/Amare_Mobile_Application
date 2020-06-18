@@ -249,7 +249,7 @@ namespace Chatter
 
         private void tapChangename_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ModifyAccount("Change name","Name", userName.Text));
+            Navigation.PushAsync(new ModifyAccount(0, userName.Text));
         }
 
         private void menSwitch_Toggled(object sender, ToggledEventArgs e)
@@ -298,6 +298,11 @@ namespace Chatter
                 menSwitch.IsToggled = true;
                 womenSwitch.IsToggled = true;
             }
+        }
+
+        private void tapChangePassword_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ModifyAccount(1,"******"));
         }
     }
 }

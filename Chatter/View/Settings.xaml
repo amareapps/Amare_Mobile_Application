@@ -33,6 +33,21 @@
                             <TapGestureRecognizer x:Name="tapChangename" Tapped="tapChangename_Tapped"></TapGestureRecognizer>
                         </Frame.GestureRecognizers>
                     </Frame>
+                    <Frame Padding="10" Margin="10,0,10,0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontSize="Medium" FontAttributes="Bold" Text="Change Password"></Label>
+                            <Label Grid.Column="1" x:Name="passWordLabel" FontSize="Medium" HorizontalTextAlignment="End" Text="*****" Padding="0,0,10,0"></Label>
+                            <ffimageloading:CachedImage Grid.Column="2" Source="greaterthan.png"></ffimageloading:CachedImage>
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapChangePassword" Tapped="tapChangePassword_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
                     <Label Text="Discovery Preferences" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Transparent" Padding="10">

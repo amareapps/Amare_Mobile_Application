@@ -91,7 +91,7 @@ namespace Chatter
             deleteSqliteData();
             await refreshData();
             ClientWebSocket wsClient = new ClientWebSocket();
-            await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.SocketUrl + ":8088"), CancellationToken.None);
+            await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.SocketUrl + ":8080"), CancellationToken.None);
             while (wsClient.State == WebSocketState.Open)
             {
                 WebSocketReceiveResult result;

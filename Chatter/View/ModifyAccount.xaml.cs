@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Chatter.Classes;
+using eliteKit.MarkupExtensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +14,68 @@ namespace Chatter.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ModifyAccount : ContentPage
     {
-        public ModifyAccount(string title,string fieldtoUpdate,string fieldEntry)
+        private int category = 0;
+        ApiConnector api = new ApiConnector();
+        SqliteManager sqliteManager = new SqliteManager();
+        private string value = "";
+        public ModifyAccount(int _category,string _value)
         {
             InitializeComponent();
-            this.Title = title;
-            accountFieldLabel.Text = fieldtoUpdate;
-            accountFieldEntry.Text = fieldEntry;
-            buttonUpdate.Text = "Update " + fieldtoUpdate;
+            category = _category;
+            value = _value;
+            initializeUI();
+        }
+        private void initializeUI()
+        {
+            if(category == 0)
+            {
+                this.Title = "Change name";
+                accountFieldLabel.Text = "Name";
+                accountFieldEntry.Placeholder = value;
+                buttonUpdate.Text = "Update";
+            }
+            else if (category == 1)
+            {
+                this.Title = "Change password";
+                accountFieldLabel.Text = "Password";
+                accountFieldEntry.Placeholder = value;
+                buttonUpdate.Text = "Update";
+            }
+        }
+
+        private async void buttonUpdate_Clicked(object sender, EventArgs e)
+        {
+            await updateField();
+        }
+        private async Task updateField()
+        {
+            if (category == 0)
+            {
+                var userModel = sqliteManager.getUserModel();
+                userModel.username = accountFieldEntry.Text;
+                sqliteManager.updateUserModel(userModel);
+                var isSucess = await api.updateUser(userModel.id, userModel.username);
+                if (!isSucess)
+                {
+                    await DisplayAlert("Update", "Unable to update username", "Okay");
+                    return;
+                }
+                await DisplayAlert("Update", "Username successfully changed", "Okay");
+            }
+            else if (category == 1)
+            {
+                var userModel = sqliteManager.getUserModel();
+                userModel.password = accountFieldEntry.Text;
+                sqliteManager.updateUserModel(userModel);
+                var isSucess = await api.updatePassword(userModel.id, userModel.password);
+                if (!isSucess)
+                {
+                    await DisplayAlert("Update", "Unable to update password", "Okay");
+                    return;
+                }
+                await DisplayAlert("Update", "Password successfully changed", "Okay");
+            }
+            await Navigation.PopAsync();
         }
     }
 }

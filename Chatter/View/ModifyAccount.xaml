@@ -11,7 +11,7 @@
                 <Label x:Name="accountFieldLabel" FontSize="Large" IsVisible="False"></Label>
                 <local:RoundedEntry x:Name="accountFieldEntry" Margin="10,0,10,0"></local:RoundedEntry>
             </StackLayout>
-            <Button x:Name="buttonUpdate" Padding="10" CornerRadius="30" BackgroundColor="#3cc5d5" TextColor="White" FontAttributes="Bold"></Button>
+            <Button x:Name="buttonUpdate" Clicked="buttonUpdate_Clicked" Padding="10" CornerRadius="30" BackgroundColor="#3cc5d5" TextColor="White" FontAttributes="Bold"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

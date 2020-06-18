@@ -390,7 +390,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <AndroidResource Include="Resources\drawable\gradientbgnew.png" />
   </ItemGroup>
   <ItemGroup>
@@ -416,9 +415,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\greaterthan.png" />
-=======
     <AndroidResource Include="Resources\drawable\hamburger.png" />
->>>>>>> 26691b836afd1c5c96ea00119f753760e20ecf23
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

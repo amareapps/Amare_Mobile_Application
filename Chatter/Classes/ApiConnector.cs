@@ -553,6 +553,40 @@ namespace Chatter.Classes
                 return null;
             }
         }
+        public async Task<bool> updateUser(string id,string value)
+        {
+            try
+            {
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                content.Add(new StringContent(id), "user_id");
+                content.Add(new StringContent(value), "username");
+                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUsername", content);
+                request.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> updatePassword(string id, string value)
+        {
+            try
+            {
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                content.Add(new StringContent(id), "user_id");
+                content.Add(new StringContent(value), "password");
+                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updatePassword", content);
+                request.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public async Task<bool> deleteUser(string id)
         {
             try
