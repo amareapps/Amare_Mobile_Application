@@ -45,6 +45,7 @@ namespace Chatter
         string userLoggedIn = Application.Current.Properties["Id"].ToString().Replace("\"", "");
         ClientWebSocket wsClient = new ClientWebSocket();
         FireStorage fireStorage = new FireStorage();
+        MessageCenterManager messenger = new MessageCenterManager();
         ApiConnector api = new ApiConnector();
         AudioRecorderService audioRecorder = new AudioRecorderService { StopRecordingOnSilence = false };
         //System.Timers.Timer timer;
@@ -76,6 +77,19 @@ namespace Chatter
                 await Clipboard.SetTextAsync(arg.message);
                 CrossToastPopUp.Current.ShowToastMessage("Copied to clipboard");
             });
+            MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "messageReceived", async (sender, arg) =>
+            {
+                if ((arg.sender_id == userLoggedIn && arg.receiver_id == Receiver_Id) ||
+                    (arg.sender_id == Receiver_Id && arg.receiver_id == userLoggedIn))
+                {
+                    if (arg.receiver_id == userLoggedIn)
+                        await api.setMessageasRead(Session_Id, userLoggedIn);
+                    //await DisplayAlert("Anayre", userLoggedIn + resultModel.sender_id + resultModel.receiver_id, "Okay");
+                    arg.image = Image_Source;
+                    chatModels.Add(arg);
+                    ChatList.ItemsSource = chatModels.OrderByDescending(entry => entry.datetime);
+                }   
+            });
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "0", async (sender, arg) =>
             {
                 reply_id = arg.id;
@@ -83,19 +97,19 @@ namespace Chatter
                 lblMessagetoReply.Text = reply_message;
                 replyStack.IsVisible = true;
             });
-            Task.Run(() =>
+            /*Task.Run(() =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await connectionManager();
                 });
-            });
+            });*/
                 //userImage.Source = Image_Source;
             }
 
         async Task ConnectToServerAsync()
         {
-            await wsClient.ConnectAsync(new Uri("ws://"+ApiConnection.SocketUrl+":8088"), CancellationToken.None);
+            //await wsClient.ConnectAsync(new Uri("ws://"+ApiConnection.SocketUrl+":8088"), CancellationToken.None);
         }
 
         protected async override void OnAppearing()
@@ -362,11 +376,12 @@ namespace Chatter
                 reply_to_id = reply_id,
                 reply_to_message = reply_message
             };
-            string val = JsonConvert.SerializeObject(modeler);
+            //string val = JsonConvert.SerializeObject(modeler);
+            messenger.sendMessage(modeler);
             //await DisplayAlert("Test", val, "Okay");
-            var byteMessage = System.Text.Encoding.UTF8.GetBytes(val);
-            var segmnet = new ArraySegment<byte>(byteMessage);
-            await wsClient.SendAsync(segmnet, WebSocketMessageType.Text, true, CancellationToken.None);
+            //var byteMessage = System.Text.Encoding.UTF8.GetBytes(val);
+            //var segmnet = new ArraySegment<byte>(byteMessage);
+            //await wsClient.SendAsync(segmnet, WebSocketMessageType.Text, true, CancellationToken.None);
             messageEntry.Text = string.Empty;
             messageEntry.Unfocus();
             reply_id = string.Empty;
