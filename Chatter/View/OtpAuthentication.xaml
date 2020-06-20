@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter"
              mc:Ignorable="d"
-             x:Class="Chatter.View.OtpAuthentication" BackgroundColor="White" Title="Mobile Verification">
+             x:Class="Chatter.View.OtpAuthentication" BackgroundColor="GhostWhite" Title="Mobile Verification">
     <ContentPage.Content>
         <StackLayout Margin="20,50,20,20">
             <Label Margin="0,0,0,20" Text="Enter the code received below:" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>

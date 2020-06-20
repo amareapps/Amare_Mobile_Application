@@ -10,7 +10,7 @@
                mc:Ignorable="d"
              x:Class="Chatter.ProfileMaintenance" Title="Register with us!">
 
-    <ContentPage x:Name="emailContent" BackgroundColor="White">
+    <ContentPage x:Name="emailContent" BackgroundColor="GhostWhite">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,10,0,0">
                 <Label Text="My Login &#x0a;Credentials..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
@@ -36,7 +36,7 @@
             </Frame>
         </StackLayout>
     </ContentPage>
-    <ContentPage  x:Name="nameContent" BackgroundColor="White">
+    <ContentPage  x:Name="nameContent" BackgroundColor="GhostWhite">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,10,0,0">
                 <Label Text="My Personal &#x0a;Info is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
@@ -47,7 +47,9 @@
                     
                 </Grid>
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <local1:CustomDatePicker x:Name="birthdatePicker" Margin="5" Format="MM/dd/yyyy" Placeholder="Select Date of Birth" FontSize="Medium"></local1:CustomDatePicker>
+                    <local1:CustomDatePicker x:Name="birthdatePicker" Margin="5" Format="MM/dd/yyyy" Placeholder="Select Date of Birth" FontSize="Medium" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"></local1:CustomDatePicker>
+                    <CheckBox IsChecked="False" CheckedChanged="CheckBox_CheckedChanged" HorizontalOptions="End" VerticalOptions="Center"  Grid.Column="0" Grid.Row="1" ></CheckBox>
+                    <Label Text="Show age on my profile" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center"/>
                 </Grid>
             </StackLayout>
             <Grid HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2">
@@ -60,7 +62,7 @@
             </Frame>
         </StackLayout>
     </ContentPage>
-    <!--<ContentPage x:Name="birthdayContent" BackgroundColor="White">
+    <!--<ContentPage x:Name="birthdayContent" BackgroundColor="GhostWhite">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,10,0,0">
                 <Label Text="My &#x0a;birthday is..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
@@ -84,7 +86,7 @@
             </Frame>
         </StackLayout>
     </ContentPage>-->
-    <ContentPage  x:Name="genderContent" BackgroundColor="White">
+    <ContentPage  x:Name="genderContent" BackgroundColor="GhostWhite">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,10,0,0">
                 <Label Text="Gender..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
@@ -99,7 +101,7 @@
 
         </StackLayout>
     </ContentPage>
-    <ContentPage  x:Name="interestContent" BackgroundColor="White">
+    <ContentPage  x:Name="interestContent" BackgroundColor="GhostWhite">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,10,0,0">
                 <Label Text="I am &#x0a;interested in.." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
@@ -114,7 +116,7 @@
             </Frame>
         </StackLayout>
     </ContentPage>
-    <ContentPage  x:Name="pictureContent" BackgroundColor="White">
+    <ContentPage  x:Name="pictureContent" BackgroundColor="GhostWhite">
         <AbsoluteLayout x:Name="finalForm" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,1,1,1">
                 <StackLayout Margin="20,0,20,20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
                 <Frame CornerRadius="30" Padding="0" Margin="0,20,0,10" BorderColor="Accent" BackgroundColor="Transparent" HeightRequest="300" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True">

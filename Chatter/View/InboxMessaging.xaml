@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              mc:Ignorable="d"  
-             x:Class="Chatter.InboxMessaging" BackgroundColor="#EEEEEE">
+             x:Class="Chatter.InboxMessaging" BackgroundColor="WhiteSmoke">
     <Page.Resources>
         <local:StringToFontAttribute x:Key="stringtoFontAtr"></local:StringToFontAttribute>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>

@@ -7,23 +7,23 @@
              xmlns:control="http://xamarin.com/schemas/2014/forms" 
              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" 
              xmlns:local="clr-namespace:Chatter.Classes" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
              mc:Ignorable="d"
-             x:Class="Chatter.Profile" BackgroundColor="#EEEEEE">
+             x:Class="Chatter.Profile" BackgroundColor="White">
     <Page.Resources>
         <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
         <local:StringToBoolen x:Key="stringtoBool"></local:StringToBoolen>
         <local:NumbertoBooleanConverter x:Key="numbertoBool"></local:NumbertoBooleanConverter>
     </Page.Resources>
     <ContentPage.Content>
-        <Grid Margin="0,0,0,0" Padding="0" BackgroundColor="#EEEEEE" >
+        <Grid Margin="0,0,0,0" Padding="0" BackgroundColor="White" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid HeightRequest="50" Margin="0,0,0,0" Grid.Row="0" VerticalOptions="Start">
-                <BoxView BackgroundColor="#EEEEEE" Margin="0" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalOptions="Start" />
+                <BoxView BackgroundColor="White" Margin="0" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" VerticalOptions="Start" />
                 <!--<ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="28" x:Name="EditButton" Source="settings.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1"
                                Clicked="EditButton_Clicked"/>-->
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
@@ -65,7 +65,7 @@
             </StackLayout>
             <ffimageloading:CachedImage Opacity="0.4" HeightRequest="110" Source="heartbeat.gif" Margin="0,0,0,0" Grid.Row="2" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="Start"></ffimageloading:CachedImage>
 
-            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" WidthRequest="600" BackgroundColor="#e6e6e6" Margin="0,0,0,0" Padding="0,0,0,5" VerticalOptions="End" HorizontalOptions="Center">
+            <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" WidthRequest="600" BackgroundColor="WhiteSmoke" Margin="0,0,0,0" Padding="0,0,0,5" VerticalOptions="End" HorizontalOptions="Center">
                 <StackLayout >
                     <cards:CarouselView x:Name="autoSlider">
                         <cards:CarouselView.ItemsSource>
@@ -78,20 +78,9 @@
                                     <Label Text="Control Your Profile" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
                                     <Label Text="Limit what others see with Amare" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
                                 </StackLayout>
-                                <StackLayout Padding="50,20,50,5" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label Text="Get Amare Basic now" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
-                                    <Label Text="Experience the basic additional features" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                                </StackLayout>
-                                <StackLayout Padding="30,20,30,5" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label Text="Try Amare Premium" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
-                                    <Label Text="Level up your Amare app with premiumity" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                                </StackLayout>
-                                <StackLayout Padding="30,20,30,5" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label Text="Subscribe to Amare VIP" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Accent" FontAttributes="Bold"></Label>
-                                    <Label Text="Maximize your Amare usage with VIP access" FontSize="Small" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                                </StackLayout>
                             </x:Array>
                         </cards:CarouselView.ItemsSource>
+                        <controls:IndicatorsControl/>
                     </cards:CarouselView>
                     <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share the love" TextColor="White" BackgroundColor="#3cc5d5"></Button>
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10,0,0">
