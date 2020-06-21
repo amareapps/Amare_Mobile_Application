@@ -14,7 +14,7 @@
     <ContentPage.Content>
         <AbsoluteLayout>
 
-            <Grid Margin="0,10,0,0" AbsoluteLayout.LayoutFlags="All"
+            <Grid Margin="10,10,10,0" AbsoluteLayout.LayoutFlags="All"
               AbsoluteLayout.LayoutBounds="0,1,1,1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
@@ -22,7 +22,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>  
                 <Frame BackgroundColor="Transparent" BorderColor="Accent" CornerRadius="10" Padding="0,5,0,5" Margin="0" HorizontalOptions="Center" VerticalOptions="Center">
-                    <local:SearchBarNoUnderline x:Name="searchEntry" Placeholder="Search for your matches..." CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" TextChanged="SearchBarNoUnderline_TextChanged" VerticalOptions="CenterAndExpand"></local:SearchBarNoUnderline>
+                    <local:SearchBarNoUnderline x:Name="searchEntry" Placeholder="Search for your matches" FontSize="Medium" CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" TextChanged="SearchBarNoUnderline_TextChanged" VerticalOptions="CenterAndExpand"></local:SearchBarNoUnderline>
                 </Frame>
                 <StackLayout Grid.Row="1">
                     <Label Text="Recent matches" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
@@ -95,11 +95,11 @@
             </Grid>
             <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.95,0.29,0.1,0.1">
                 <StackLayout x:Name="stackFilter" IsVisible="False" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
-                    <Button x:Name="unreadFilterButton" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2"  Margin="0" Padding="0" ></Button>
-                    <Button x:Name="receivedFilterButton" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2" Margin="0" Padding="0"></Button>
-                    <Button x:Name="nearbyFilterButton" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" BackgroundColor="White" BorderColor="BlueViolet" BorderWidth="2" Margin="0" Padding="0"></Button>
+                    <Button x:Name="unreadFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" FontAttributes="Bold" TextColor="White"  Margin="0" Padding="0" ></Button>
+                    <Button x:Name="receivedFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0"></Button>
+                    <Button x:Name="nearbyFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0"></Button>
                 </StackLayout>
-                <ffimageloading:CachedImage VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
+                <ffimageloading:CachedImage Margin="0" VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
                     <ffimageloading:CachedImage.GestureRecognizers>
                         <TapGestureRecognizer x:Name="hamburgerEvent" Tapped="hamburgerEvent_Tapped" ></TapGestureRecognizer>
                     </ffimageloading:CachedImage.GestureRecognizers>

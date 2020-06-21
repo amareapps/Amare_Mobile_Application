@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid HeightRequest="50" Margin="0,0,0,0" Padding="0" Grid.Row="0">
-                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
+                <BoxView BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
             </Grid>
             <AbsoluteLayout x:Name="samplesss" Grid.Row="1" Grid.Column="0">

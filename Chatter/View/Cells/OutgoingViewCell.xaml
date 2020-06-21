@@ -14,7 +14,7 @@
                 Direction="Column"
                 AlignItems="End"
                 JustifyContent="SpaceEvenly" Margin="0,0,60,0" Padding="10,3,10,3">
-                <Frame BackgroundColor="#e3646c" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                <Frame BackgroundColor="#adf6ff" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
                     <Label  Text="{Binding message}"
                                   TextColor="Black" Padding="10" HorizontalTextAlignment="Start" />
                 </Frame>

@@ -50,6 +50,7 @@ namespace Chatter
 
             birthdatePicker.SetValue(DatePicker.MaximumDateProperty, DateTime.Now.AddYears(-18));
             birthdatePicker.SetValue(DatePicker.MinimumDateProperty, firstDay.AddYears(-60));
+
         }
 
         private void clearFields()
@@ -182,12 +183,12 @@ namespace Chatter
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.Default;
+                btn.BackgroundColor = Color.FromHex("EEEEEE");
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.Default;
+            btne.BackgroundColor = Color.FromHex("EEEEEE");
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womanButton)
@@ -200,12 +201,12 @@ namespace Chatter
             var looper = gridInterest.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.Default;
+                btn.BackgroundColor = Color.FromHex("EEEEEE");
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.Default;
+            btne.BackgroundColor = Color.FromHex("EEEEEE");
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womenInterestButton)
@@ -323,6 +324,31 @@ namespace Chatter
         {
             passwordEntry.IsPassword = passwordEntry.IsPassword ? false : true;
         }
+
+        private void emailEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (emailEntry.Text.Length == emailEntry.MaxLength)
+            {
+                DisplayAlert("Oops!", "Maximum of 50 characters reached!", "Okay");
+            }
+        }
+
+        private void passwordEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (passwordEntry.Text.Length == passwordEntry.MaxLength)
+            {
+                DisplayAlert("Oops!", "Maximum of 20 characters reached!", "Okay");
+            }
+        }
+
+        private void userNameEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (userNameEntry.Text.Length == userNameEntry.MaxLength)
+            {
+                DisplayAlert("Oops!", "Maximum of 50 characters reached!", "Okay");
+            }
+        }
+
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
 

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False" BackgroundColor="#EEEEEE">
+             x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
             <ffimageloading:CachedImage HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="welcomelogonew.gif" Margin="0"/>
