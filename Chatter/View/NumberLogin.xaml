@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter"
              mc:Ignorable="d"
-             x:Class="Chatter.View.NumberLogin" Title="Mobile  Log In" BackgroundColor="White">
+             x:Class="Chatter.View.NumberLogin" Title="Mobile Log In" BackgroundColor="GhostWhite">
     <ContentPage.Content>
         <StackLayout Margin="20">
             <StackLayout VerticalOptions="Center" Margin="0,0,0,40">

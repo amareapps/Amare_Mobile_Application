@@ -30,6 +30,7 @@ namespace Chatter
         List<GalleryModel> galleryModel = new List<GalleryModel>();
 
         SmsSender smsSender = new SmsSender();
+
         public class SocialMediaPlatform
         {
             public static readonly int Facebook = 0;
@@ -91,12 +92,12 @@ namespace Chatter
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            //overlay.IsVisible = true;
+            overlay.IsVisible = true;
             string sample = emailEntry.Text + "," + passEntry.Text;
             if (emailEntry.Text == string.Empty || passEntry.Text == string.Empty)
             {
                 await DisplayAlert("Login Failed", "Please enter your registered email address and password.", "Okay");
-                //overlay.IsVisible = false;
+                overlay.IsVisible = false;
                 return;
             }
             try
@@ -112,7 +113,7 @@ namespace Chatter
                     if (response.ToString().Contains("Undefined"))
                     {
                         await DisplayAlert("Login Failed", "Please enter the correct registered email address and/or password.", "Okay");
-                        //overlay.IsVisible = false;
+                        overlay.IsVisible = false;
                         return;
                     }
                     response = response.Replace(@"\", "");
@@ -134,13 +135,10 @@ namespace Chatter
                 await retrievInbox();
                 await loadRecentMatches();
                 App.Current.MainPage = new NavigationPage(new MainPage());
-                //await Navigation.PushModalAsync(new MainPage());
-                //overlay.IsVisible = false;
-                //await PopupNavigation.Instance.PopAsync(true);
             }
             catch (Exception ex)
             {
-                //overlay.IsVisible = false;
+                overlay.IsVisible = false;
                 await DisplayAlert("Error", ex.ToString(), "Okay");
             }
         }
@@ -324,6 +322,19 @@ namespace Chatter
         {
             passEntry.IsPassword = passEntry.IsPassword ? false : true;
         }
-
+        private void emailEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (emailEntry.Text.Length == emailEntry.MaxLength)
+            {
+                DisplayAlert("Oops!", "Maximum of 50 characters reached!", "Okay");
+            }
+        }
+        private void passEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (passEntry.Text.Length == passEntry.MaxLength)
+            {
+                DisplayAlert("Oops!", "Maximum of 20 characters reached!", "Okay");
+            }
+        }
     }
 }

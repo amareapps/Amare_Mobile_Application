@@ -5,11 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False" BackgroundColor="#EEEEEE">
+             x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <Label  Margin="20,40,20,40"  HorizontalOptions="Center" Text="WELCOME TO AMARE!" HorizontalTextAlignment="Center" FontSize="40" TextColor="Black" FontAttributes="Bold"/>
-            <ffimageloading:CachedImage HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="welcomelogo.gif" Margin="0"/>
+            <ffimageloading:CachedImage HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="welcomelogonew.gif" Margin="0"/>
             <Label Margin="20,40,20,30" Padding="0" TextColor="Black" HorizontalTextAlignment="Center" 
                    Text="Thank you for registering to Amare! We welcome you to a new world where &#x0a;love is limitless!" FontSize="Medium"/>
             <StackLayout>
@@ -18,7 +17,7 @@
                 <Label Margin="0" Padding="0" HorizontalTextAlignment="Center" 
                    Text="©Francis de Sales" FontAttributes="Bold" FontSize="Micro"></Label>
             </StackLayout>
-            <Button x:Name="btnGetStarted" VerticalOptions="End" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="30" TextColor="#EEEEEE" Text="Get Started" Padding="20" Margin="0,20,0,10" BackgroundColor="#98000b"  Clicked="btnGetStarted_Clicked"></Button>
+            <Button x:Name="btnGetStarted" VerticalOptions="End" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="30" TextColor="#EEEEEE" Text="Get Started" Padding="20" Margin="0,20,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

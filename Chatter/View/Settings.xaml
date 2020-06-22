@@ -7,11 +7,11 @@
              xmlns:forms="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d" 
-             x:Class="Chatter.Settings" BackgroundColor="#EEEEEE" NavigationPage.HasNavigationBar="False">
+             x:Class="Chatter.Settings" BackgroundColor="WhiteSmoke" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
             <Grid HeightRequest="70" Margin="0" Padding="0,10,0,0">
-                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
+                <BoxView BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Preferences"/>
             </Grid>
@@ -142,7 +142,7 @@
 
                     <Label Text="Contact Us" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Margin="10,0,10,0" Text="Help and Support" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
-                    <Button Margin="10,0,10,0" x:Name="btnShareAmare"  Clicked="btnShareAmare_Clicked" Text="Share Amare" CornerRadius="30" TextColor="#EEEEEE" BackgroundColor="Accent"></Button>
+                    <Button Margin="10,0,10,0" x:Name="btnShareAmare"  Clicked="btnShareAmare_Clicked" Text="Share Amare" CornerRadius="30" TextColor="White" BackgroundColor="Accent"></Button>
 
                     <Label Text="Legal" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Margin="10,0,10,0" Text="Privacy Policy" Clicked="PrivacyPolicy_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
@@ -155,7 +155,7 @@
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
                     <StackLayout Padding="0,10,0,0" >
-                        <Button Margin="10,0,10,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="#EEEEEE" BackgroundColor="Accent" FontAttributes="Bold" CornerRadius="30"></Button>
+                        <Button Margin="10,0,10,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="White" BackgroundColor="Accent" FontAttributes="Bold" CornerRadius="30"></Button>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

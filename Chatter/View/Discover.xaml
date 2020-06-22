@@ -8,7 +8,7 @@
              x:Class="Chatter.Discover"
              xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions" 
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:local="clr-namespace:Chatter.Classes" BackgroundColor="#EEEEEE">
+             xmlns:local="clr-namespace:Chatter.Classes" BackgroundColor="WhiteSmoke">
     <Page.Resources>
         <local:BirthdaytoAgeConverter x:Key="birthdaytoage"></local:BirthdaytoAgeConverter>
         <local:StringToBoolen x:Key="stringtoBool"></local:StringToBoolen>
@@ -25,22 +25,21 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid HeightRequest="50" Margin="0,0,0,0" Padding="0" Grid.Row="0">
-                <BoxView BackgroundColor="#EEEEEE" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
+                <BoxView BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
-             </Grid>
+            </Grid>
             <AbsoluteLayout x:Name="samplesss" Grid.Row="1" Grid.Column="0">
-                <StackLayout AbsoluteLayout.LayoutFlags="SizeProportional" 
-                                               AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">
-                    <StackLayout VerticalOptions="CenterAndExpand">
-                        <Label FontSize="60" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
-                        </Label>
-                        <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
-                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="It looks like you've reached your maximum swipe for the day!" HorizontalOptions="CenterAndExpand"></Label>
-                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="Avail one of Amare's subscriptions now to get additional swipe!" HorizontalOptions="CenterAndExpand"></Label>
-                        <Button Text="GET AMARE PREMIUM" x:Name="AmarePackage" Clicked="AmarePackage_Clicked" BackgroundColor="Accent" CornerRadius="30" TextColor="#EEEEEE" Padding="20" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"></Button>
+                <Frame BackgroundColor="Transparent" CornerRadius="20">
+                    <StackLayout AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">
+                        <StackLayout VerticalOptions="CenterAndExpand">
+                            <Label FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
+                            </Label>
+                            <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
+                             <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="Avail one of Amare's subscriptions now to get additional swipe!" HorizontalOptions="CenterAndExpand"></Label>
+                          </StackLayout>
                     </StackLayout>
-                </StackLayout>
-                <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
+                </Frame>
+            <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="True">
                     <cards:CardsView.ItemTemplate>
                         <DataTemplate>
@@ -55,7 +54,7 @@
 
                                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
                                             <StackLayout Spacing="0" >
-                                                <ffimageloading:CachedImage Source="welcomelogo.gif"   
+                                                <ffimageloading:CachedImage Source="welcomelogonew.gif"   
                                                 HeightRequest="100"  
                                                 WidthRequest="100"/>
                                             </StackLayout>
