@@ -109,11 +109,9 @@ namespace Chatter
                 //await Navigation.PushAsync(new ImageSelection());
                 //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
                 if (string.IsNullOrEmpty(number))
-                {
+                {    
                     var userModels = await api.loginUser(emailEntry.Text, passwordEntry.Text);
-                    await DisplayAlert("ano value nito", userModels.id, "test");
-                    Application.Current.Properties["Id"] = "\"" + userModels.id + "\"";
-                    overlay.IsVisible = false;
+                    //overlay.IsVisible = false;
                     App.Current.MainPage = new NavigationPage(new WelcomePage());
                     //await Navigation.PushAsync(new WelcomePage());
                     //await Navigation.PopToRootAsync();
@@ -125,7 +123,6 @@ namespace Chatter
                     {
                         await DisplayAlert("Oops!", value.username, "Okay");
                     }
-                    Application.Current.Properties["Id"] = "\"" + value.id + "\"";
                     overlay.IsVisible = false;
                     App.Current.MainPage = new NavigationPage(new WelcomePage());
                     //await Navigation.PushAsync(new WelcomePage());

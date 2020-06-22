@@ -68,13 +68,28 @@ namespace Chatter
         }
         protected async override void OnAppearing()
         {
-            var requestLoc = new GeolocationRequest(GeolocationAccuracy.High);
-            var location = await Geolocation.GetLocationAsync(requestLoc);
-            if (location == null)
+            try
             {
-                return;
+                var locationLast = await Geolocation.GetLastKnownLocationAsync();
+                if (locationLast == null)
+                {
+                    var request = new GeolocationRequest(GeolocationAccuracy.Low);
+                    var location = await Geolocation.GetLocationAsync(request);
+                    if (location == null)
+                    {
+                        return;
+                    }
+                    locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
+                }
+                else
+                {
+                    locationString = locationLast.Latitude.ToString() + "," + locationLast.Longitude.ToString();
+                }
             }
-            locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
+            catch (FeatureNotEnabledException ex)
+            {
+                await DisplayAlert("Location",ex.ToString(),"Okay");
+            }
         }
         private async void WebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
@@ -95,22 +110,24 @@ namespace Chatter
             {
                 using (var cl = new HttpClient())
                 {
-                    var request = await cl.GetAsync("https://graph.facebook.com/v6.0/me/?fields=name,picture.width(800),gender&access_token=" + accessToken);
+                    var request = await cl.GetAsync("https://graph.facebook.com/v6.0/me/?fields=name,birthday,picture.width(800),gender&access_token=" + accessToken);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
+                    await DisplayAlert("testing nga fb", response, "okay");
                     var profile = JsonConvert.DeserializeObject<FacebookProfile>(response);
                     //userModel.username = profile.Name;
                     //userModel.gender = profile.Gender;
                     userModel.id = profile.Id;
                     userModel.image = profile.Picture.Data.Url;
                     userModel.location = locationString;
+                    await DisplayAlert("testing nga", userModel.birthdate,"okay");  
                     await sampless();
                     await saveDataSqlite();
                 }
             }
             catch(Exception ex)
             {
-                await DisplayAlert("Connection Error","Unable to connect to Facebook, Please try again","Okay");
+                await DisplayAlert("Connection Error", ex.ToString(), "Okay");
                 await Navigation.PopAsync(false);
             }
         }
@@ -252,7 +269,7 @@ namespace Chatter
             var client = new HttpClient();
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(userModel.id), "id");
+            //content.Add(new StringContent(userModel.id), "id");
             content.Add(new StringContent(""), "email");
             content.Add(new StringContent(""), "password");
             content.Add(new StringContent(userModel.username), "username");
@@ -260,7 +277,7 @@ namespace Chatter
             content.Add(new StringContent(userModel.location), "location");
             content.Add(new StringContent(userModel.image), "image");
             await DisplayAlert("sdasda", content.ToString(),"Okay");
-            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_fb_user", content);
+            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
             request.EnsureSuccessStatusCode(); 
             var response = await request.Content.ReadAsStringAsync();
             var exec = await DisplayAlert("Congratulations!", "You are successfully logged in", null, "OK");

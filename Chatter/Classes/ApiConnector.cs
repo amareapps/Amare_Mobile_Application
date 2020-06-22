@@ -74,7 +74,7 @@ namespace Chatter.Classes
                 {
                     return null;
                 }
-                var looper = JsonConvert.DeserializeObject<List<UserModel>>(response).ToList();
+                var looper = JsonConvert.DeserializeObject<List<UserModel>>(response);
                 foreach (UserModel modeler in looper)
                 {
                     // var webClient = new WebClient();
@@ -83,6 +83,7 @@ namespace Chatter.Classes
                     // modeler.image = base64Image;
                     user = modeler;
                 }
+                Application.Current.Properties["Id"] = "\"" + user.id + "\"";
                 await saveToSqlite(user);
                 await retrieveSearchReference();
                 await retrieveGallery();
@@ -522,6 +523,9 @@ namespace Chatter.Classes
         {
             try
             {
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.NullValueHandling = NullValueHandling.Ignore;
+                settings.DefaultValueHandling = DefaultValueHandling.Ignore;
                 string sample = email + "," + password;
                 UserModel user = new UserModel();
                 string urlstring = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_userexists&email='" + sample + "'";
@@ -532,7 +536,7 @@ namespace Chatter.Classes
                 {
                     return null;
                 }
-                var looper = JsonConvert.DeserializeObject<List<UserModel>>(response).ToList();
+                var looper = JsonConvert.DeserializeObject<List<UserModel>>(response,settings);
                 foreach (UserModel modeler in looper)
                 {
                     // var webClient = new WebClient();
@@ -541,6 +545,7 @@ namespace Chatter.Classes
                     // modeler.image = base64Image;
                     user = modeler;
                 }
+                Application.Current.Properties["Id"] = "\"" + user.id + "\"";
                 await saveToSqlite(user);
                 await retrieveSearchReference();
                 await retrieveGallery();

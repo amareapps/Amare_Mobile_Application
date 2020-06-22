@@ -85,11 +85,11 @@ namespace Chatter
                     }
                 }
                 await loadData();
-                if (coverFlowView.ItemsCount == 1)
-                {
-                    maxReachFrame.IsVisible = true;
-                    samplesss.RaiseChild(maxReachFrame);
-                }
+                //if (coverFlowView.ItemsCount == 1)
+                //{
+                //    maxReachFrame.IsVisible = true;
+                //    samplesss.RaiseChild(maxReachFrame);
+                //}
             }
             catch(Exception e)
             {
@@ -305,8 +305,8 @@ namespace Chatter
             {
                 await likeUser();
             }
-            if (coverFlowView.ItemsCount == 1)
-                maxReachFrame.IsVisible = true;
+            //if (coverFlowView.ItemsCount == 1)
+            //    maxReachFrame.IsVisible = true;
         }
 
         private async void reloadButton_Clicked(object sender, EventArgs e)

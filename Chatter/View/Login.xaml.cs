@@ -63,9 +63,9 @@ namespace Chatter
                  await DisplayAlert("Nyek!", "May error", "Okay");
 
              */
-            await CrossFacebookClient.Current.RequestUserDataAsync(new string[] { "email", "first_name", "gender", "last_name", "birthday" }, new string[] { "email", "user_birthday" });
+            //await CrossFacebookClient.Current.RequestUserDataAsync(new string[] { "email", "first_name", "gender", "last_name", "birthday" }, new string[] { "email", "user_birthday" });
             //await CrossFacebookClient.Current.LoginAsync(new string[] { "email" });
-            //await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Facebook));
+            await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Facebook));
         }
 
         private async void phoneRegister_Tapped(object sender, EventArgs e)
@@ -136,8 +136,7 @@ namespace Chatter
                 App.Current.MainPage = new NavigationPage(new MainPage());
                 //await Navigation.PushModalAsync(new MainPage());
                 //overlay.IsVisible = false;
-                await PopupNavigation.Instance.PopAsync(true);
-
+                //await PopupNavigation.Instance.PopAsync(true);
             }
             catch (Exception ex)
             {
@@ -306,7 +305,7 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", ex.ToString(), "Okay");
+                //await DisplayAlert("Error", ex.ToString(), "Okay");
             }
         }
         private void saveRecentToLocalDb(RecentMatchesModel model)
