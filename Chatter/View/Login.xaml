@@ -23,11 +23,7 @@
                                         WidthRequest="100"/>
                     </StackLayout>
                 </StackLayout>
-                
-                
-                
-                
-
+              
             </ContentView>
             <Grid VerticalOptions="CenterAndExpand" Margin="30,5,30,20" HorizontalOptions="CenterAndExpand" RowSpacing="5" ColumnSpacing="3" 
                    AbsoluteLayout.LayoutFlags="All"
@@ -38,7 +34,7 @@
                     <ColumnDefinition Width="95"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
