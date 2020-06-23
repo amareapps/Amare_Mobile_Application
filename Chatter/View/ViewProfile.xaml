@@ -33,8 +33,8 @@
                         <RowDefinition Height="AUTO" />
                     </Grid.RowDefinitions>
                     <Frame HasShadow="True" IsClippedToBounds="True" Grid.Row="0" CornerRadius="20" Padding="0">
-                        <cards:CubeView x:Name="galleryView" >
-                            <cards:CubeView.ItemTemplate>
+                        <cards:CarouselView x:Name="galleryView" >
+                            <cards:CarouselView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout>
                                         <Frame HasShadow="True"
@@ -49,9 +49,9 @@
                                         </Frame>
                                     </StackLayout>
                                 </DataTemplate>
-                            </cards:CubeView.ItemTemplate>
+                            </cards:CarouselView.ItemTemplate>
                             <controls:IndicatorsControl HidesForSingleIndicator="True"/>
-                        </cards:CubeView>
+                        </cards:CarouselView>
                     </Frame>
                     <Frame HasShadow="True" Grid.Row="1" CornerRadius="20" Margin="0" BackgroundColor="White"> 
                         <StackLayout Margin="0" Padding="0">
@@ -117,7 +117,7 @@
                                 </Frame>
                             </FlexLayout>
                             <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" IsVisible="{Binding job_title,Converter={StaticResource stringtoBool}}">
-                                <Frame Padding="20,10,20,10" Margin="5,0,5,0" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                                <Frame Padding="20,10,20,10" Margin="5,0,5,0" CornerRadius="10" BackgroundColor="WhiteSmoke">
                                     <Grid  VerticalOptions="Center" Padding="0" Margin="0" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"></RowDefinition>
@@ -126,11 +126,11 @@
                                             <ColumnDefinition Width="20*"></ColumnDefinition>
                                             <ColumnDefinition Width="80*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <ffimageloading:CachedImage  Grid.Row="0" Grid.Column="0" Source="jobmint.png" HorizontalOptions="Center" HeightRequest="20" WidthRequest="30" Margin="0,0,10,0" >
+                                        <ffimageloading:CachedImage  Grid.Row="0" Grid.Column="0" Source="jobmint.png" HorizontalOptions="Center" HeightRequest="20" WidthRequest="30" Margin="0,0,20,0" >
                                         </ffimageloading:CachedImage>
                                         <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label Text="{Binding job_title}" FontSize="Small" Padding="0" Margin="0" FontAttributes="Bold" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
-                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="{Binding company,Converter={StaticResource stringtoBool}}">
                                                 <Label Text="at"  Padding="0" Margin="0" FontSize="Small" FontAttributes="Bold" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
                                                 <Label Text="{Binding company}" FontSize="Small" Padding="0" Margin="0" FontAttributes="Bold" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
                                             </StackLayout>
