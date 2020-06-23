@@ -12,6 +12,8 @@ using System.Net.Http;
 using Chatter.Classes;
 using System.Data;
 using Plugin.Media.Abstractions;
+using Google.Protobuf.WellKnownTypes;
+using System.Collections.ObjectModel;
 
 namespace Chatter.View
 {
@@ -21,6 +23,8 @@ namespace Chatter.View
         UserModel userModel = new UserModel();
         GalleryModel galleryModel = new GalleryModel();
         MediaFile file;
+        ApiConnector api = new ApiConnector();
+        ObservableCollection<InstagramPhotosModel> instagramPhotos = new ObservableCollection<InstagramPhotosModel>();
         FireStorage fireStorage = new FireStorage();
         string imageUrl;
         public EditProfile()
@@ -31,8 +35,34 @@ namespace Chatter.View
         {
 
             lblAbout.Text = "About " + Application.Current.Properties["username"].ToString();
+            instagramPhotos.Clear();
             await loadFromDb();
             await loadFromSqlite();
+            try
+            {
+                var igPhotos = await api.getIgPhotos(Application.Current.Properties["Id"].ToString().Replace("\"", ""));
+                if (igPhotos == null)
+                {
+                    instagramButton.Text = "Connect to Instagram";
+                    instagrammer.IsVisible = false;
+                }
+                else
+                {
+                    instagramButton.Text = "Disconnect to Instagram";
+                    instagrammer.IsVisible = true;
+                }
+                foreach (var modeler in igPhotos)
+                {
+                    instagramPhotos.Add(modeler);
+                }
+
+                instagrammer.FlowItemsSource = instagramPhotos;
+            }
+            catch (Exception ex)
+            {
+                instagramButton.Text = "Connect to Instagram";
+                instagrammer.IsVisible = false;
+            }
         }
         protected async override void OnDisappearing()
         {
@@ -236,10 +266,36 @@ namespace Chatter.View
             }
         }
 
-        private void instagramButton_Clicked(object sender, EventArgs e)
+        private async void instagramButton_Clicked(object sender, EventArgs e)
         {
-            SocialMediaLogin instagramLogin = new SocialMediaLogin(1,false,Application.Current.Properties["Id"].ToString());
-            Navigation.PushAsync(instagramLogin);
+            if (instagramButton.Text.Contains("Disconnect"))
+            {
+                var isAccepted = await DisplayAlert("Instagram","Are you sure to disconnect your IG images?","Yes","No");
+                if (isAccepted)
+                {
+                    await api.removeInstagram(Application.Current.Properties["Id"].ToString());
+                    instagramPhotos.Clear();
+                    instagrammer.IsVisible = false;
+                    instagramButton.Text = "Connect to Instagram";
+                }
+            }
+            else
+            {
+                SocialMediaLogin instagramLogin = new SocialMediaLogin(1, false, Application.Current.Properties["Id"].ToString());
+                await Navigation.PushAsync(instagramLogin);
+                instagramButton.Text = "Disconnect to Instagram";
+
+            }
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            List<string> images = new List<string>();
+            foreach (InstagramPhotosModel imageUrl in instagramPhotos)
+            {
+                images.Add(imageUrl.image_url);
+            }
+            await Navigation.PushModalAsync(new NavigationPage(new ImageViewer(images, "Instagram Photos")));
         }
     }
 }

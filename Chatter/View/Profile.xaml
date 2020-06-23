@@ -37,7 +37,7 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <AbsoluteLayout IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                <AbsoluteLayout IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
                     <Frame HasShadow="True"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
@@ -63,8 +63,8 @@
                     <Label Padding="0" x:Name="age" Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="End"/>
                 </StackLayout>
             </StackLayout>
-            <ffimageloading:CachedImage Opacity="0.4" HeightRequest="110" Source="heartbeat.gif" Margin="0,0,0,0" Grid.Row="2" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="Start"></ffimageloading:CachedImage>
-
+            <!--<ffimageloading:CachedImage Opacity="0.4" HeightRequest="110" Source="heartbeat.gif" Margin="0,0,0,0" Grid.Row="2" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="Start"></ffimageloading:CachedImage>
+-->
             <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="3" WidthRequest="600" BackgroundColor="WhiteSmoke" Margin="0,0,0,0" Padding="0,0,0,5" VerticalOptions="End" HorizontalOptions="Center">
                 <StackLayout >
                     <cards:CarouselView x:Name="autoSlider">
@@ -80,9 +80,9 @@
                                 </StackLayout>
                             </x:Array>
                         </cards:CarouselView.ItemsSource>
-                        <controls:IndicatorsControl/>
+                        <controls:IndicatorsControl BackgroundColor="DarkGray"  HidesForSingleIndicator="True"/>
                     </cards:CarouselView>
-                    <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share the love" TextColor="White" BackgroundColor="#3cc5d5"></Button>
+                    <Button x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" HorizontalOptions="Center" Padding="50,0,50,0" VerticalOptions="End" FontSize="Small" FontAttributes="Bold" CornerRadius="20" Text="Share the love" TextColor="White" BackgroundColor="#3cc5d5"></Button>
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10,0,0">
                     </StackLayout>
                 </StackLayout>

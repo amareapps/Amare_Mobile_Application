@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Chatter.Classes" 
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" 
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
@@ -32,30 +33,25 @@
                         <RowDefinition Height="AUTO" />
                     </Grid.RowDefinitions>
                     <Frame HasShadow="True" IsClippedToBounds="True" Grid.Row="0" CornerRadius="20" Padding="0">
-                        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                            <CarouselView x:Name="galleryView" >
-                                <CarouselView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout>
-                                            <Frame HasShadow="True"
+                        <cards:CubeView x:Name="galleryView" >
+                            <cards:CubeView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame HasShadow="True"
                                                        BorderColor="DarkGray"
                                                        Margin="0"
                                                        Padding="0"
                                                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                <ImageButton Source="{Binding image}" 
+                                            <ImageButton Source="{Binding image}" 
                                                                  HorizontalOptions="FillAndExpand" 
                                                                  VerticalOptions="FillAndExpand" 
                                                                  Aspect="AspectFill" Clicked="ImageButton_Clicked" />
-                                            </Frame>
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </CarouselView.ItemTemplate>
-                            </CarouselView>
-                            <IndicatorView x:Name="indicatorView" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="True" AbsoluteLayout.LayoutFlags="All"
-                                            IndicatorColor="LightGray" BackgroundColor="Accent" 
-                                            SelectedIndicatorColor="Accent"
-                                            HorizontalOptions="Center" IndicatorSize="10"/>
-                        </AbsoluteLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </cards:CubeView.ItemTemplate>
+                            <controls:IndicatorsControl HidesForSingleIndicator="True"/>
+                        </cards:CubeView>
                     </Frame>
                     <Frame HasShadow="True" Grid.Row="1" CornerRadius="20" Margin="0" BackgroundColor="White"> 
                         <StackLayout Margin="0" Padding="0">
@@ -191,16 +187,16 @@
                     <Frame HasShadow="True" Grid.Row="2" Padding="10" Margin="0,0,0,0" CornerRadius="20" x:Name="instaFrame">
                         <StackLayout x:Name="instaLayout">
                             <Label Text="Instagram Photos" FontSize="Medium" FontAttributes="Bold" Padding="10,0,10,0"></Label>
-                            <flv:FlowListView x:Name="instagramAlbum" HeightRequest="300" FlowColumnCount="3" RowHeight="100" SeparatorVisibility="Default" HasUnevenRows="False">
+                            <flv:FlowListView x:Name="instagramAlbum" HeightRequest="360" FlowColumnCount="3" RowHeight="120" SeparatorVisibility="Default" HasUnevenRows="False">
                                 <flv:FlowListView.FlowColumnTemplate>
                                     <DataTemplate>
                                         <Frame
-                                            HorizontalOptions="Center"
-                                            Padding="0"
-                                            Margin="0"
+                                            HorizontalOptions="FillAndExpand"
+                                            Padding="0" BackgroundColor="White"
+                                            Margin="1" BorderColor="White"
                                             IsClippedToBounds="True">
-                                            <ffimageloading:CachedImage
-                                                                Source="{Binding image_url}" Aspect="Fill">
+                                            <ffimageloading:CachedImage BackgroundColor="Black"
+                                                                Source="{Binding image_url}" Aspect="AspectFill">
                                                 <ffimageloading:CachedImage.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                                 </ffimageloading:CachedImage.GestureRecognizers>

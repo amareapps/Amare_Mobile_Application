@@ -9,6 +9,7 @@
              x:Class="Chatter.InboxMessaging" BackgroundColor="WhiteSmoke">
     <Page.Resources>
         <local:StringToFontAttribute x:Key="stringtoFontAtr"></local:StringToFontAttribute>
+        <local:MessageContentConverter x:Key="convertMessage"></local:MessageContentConverter>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>
     </Page.Resources>
     <ContentPage.Content>
@@ -26,11 +27,11 @@
                 </Frame>
                 <StackLayout Grid.Row="1">
                     <Label Text="Recent matches" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
-                    <ScrollView Orientation="Horizontal">
-                        <StackLayout x:Name="recentMatchesList" Orientation="Horizontal">
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <StackLayout x:Name="recentMatchesList" Orientation="Horizontal" Spacing="0">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout WidthRequest="80" HeightRequest="80" Margin="10">
+                                    <StackLayout WidthRequest="80" HeightRequest="80" Margin="5">
                                         <Frame CornerRadius="45" 
                                        HeightRequest="70"
                                        WidthRequest="70"
@@ -46,13 +47,20 @@
                                        BorderColor="Red"
                                        IsClippedToBounds="True">
                                                 <ffimageloading:CachedImage DownsampleToViewSize="True" Aspect="AspectFill" BitmapOptimizations="True"
-                                                   Source="{Binding image}"/>
+                                                   Source="{Binding image}">
+                                                    <ffimageloading:CachedImage.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="recentMatch" Tapped="recentMatch_Tapped"/>
+                                                    </ffimageloading:CachedImage.GestureRecognizers>
+                                                </ffimageloading:CachedImage>
                                             </Frame>
                                         </Frame>
                                         <!--<Label Text="{Binding username}"  HorizontalOptions="Center" FontSize="Micro" FontAttributes="Bold"></Label>-->
                                     </StackLayout>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
@@ -62,7 +70,7 @@
                         <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell >
+                                    <ViewCell>
                                         <Grid HeightRequest="80" x:Name="listItem" Margin="10,10,10,10" RowSpacing="0" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="80"></ColumnDefinition>
@@ -84,7 +92,7 @@
                                                 <Label Margin="0,0,5,0" FontSize="Small" TextColor="Black" Text="{Binding distance}"/>
                                                 <Label Margin="10,0,5,0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}"/>
                                             </StackLayout>
-                                            <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message}" Grid.Column="1" Grid.Row="1"/>
+                                            <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
                                         </Grid>
                                     </ViewCell>
                                 </DataTemplate>
