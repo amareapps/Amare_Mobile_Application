@@ -202,7 +202,7 @@ namespace Chatter
                     {
                         await api.getInstagramPhotos(profile.Data[0].Id, profile.Data[a].MediaUrl);
                     }
-                    await DisplayAlert("anyare?","dsadasdasd","Okay");
+                    //await DisplayAlert("anyare?","dsadasdasd","Okay");
                     userModel.location = locationString;
                     userModel.gender = "";
                     //await DisplayAlert("Checker", profile.Data[0].MediaUrl, "Okay");
@@ -217,7 +217,7 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Connection Error","Unable to connect to Instagram, Please try again","Okay");
+                await DisplayAlert("Connection Error",ex.ToString() + ", Please try again","Okay");
                 await Navigation.PopAsync(false);
             }
         }

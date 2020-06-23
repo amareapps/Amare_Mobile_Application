@@ -20,6 +20,7 @@ using Firebase.Storage;
 using Xamarin.Essentials;
 using Chatter.Classes;
 using Chatter.View;
+using Google.Protobuf.WellKnownTypes;
 
 namespace Chatter
 {
@@ -32,6 +33,7 @@ namespace Chatter
         string locationString = "";
         string imageString;
         string number = "";
+        string isShowAge = "0";
         MediaFile file;
         ApiConnector api = new ApiConnector();
         private byte[] imageaRray;
@@ -152,6 +154,7 @@ namespace Chatter
                 content.Add(new StringContent(number), "phone_number");
                 content.Add(new StringContent(birthdatePicker.Date.ToString("MM/dd/yyyy")), "birthdate");
                 content.Add(new StringContent(interestIn), "interest");
+                content.Add(new StringContent(isShowAge), "show_age");
 
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
                 request.EnsureSuccessStatusCode();
@@ -348,7 +351,10 @@ namespace Chatter
 
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-
+            if (e.Value)
+                isShowAge = "1";
+            else
+                isShowAge = "0";
         }
     }
 }

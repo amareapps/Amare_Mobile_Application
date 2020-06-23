@@ -23,6 +23,8 @@ using System.Net.WebSockets;
 using System.Threading;
 using Android.OS;
 using Xamarin.Essentials;
+using Chatter.View;
+using FFImageLoading.Forms;
 
 namespace Chatter
 {
@@ -313,7 +315,11 @@ namespace Chatter
             stackFilter.IsVisible = false;
 
             hamburgerImage.IsVisible = true;
+<<<<<<< HEAD
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.33, 0.1, 0.1));
+=======
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+>>>>>>> 1779348fc6ea4fcb18da922706d6b26ec18d602b
         }
         private void receivedFilterButton_Clicked(object sender, EventArgs e)
         {
@@ -321,14 +327,22 @@ namespace Chatter
             stackFilter.IsVisible = false;
 
             hamburgerImage.IsVisible = true;
+<<<<<<< HEAD
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.33, 0.1, 0.1));
+=======
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+>>>>>>> 1779348fc6ea4fcb18da922706d6b26ec18d602b
         }
         private void nearbyFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderBy(entry => entry.distance);
             stackFilter.IsVisible = false;
             hamburgerImage.IsVisible = true;
+<<<<<<< HEAD
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.33, 0.1, 0.1));
+=======
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+>>>>>>> 1779348fc6ea4fcb18da922706d6b26ec18d602b
         }
         private string getDistance(InboxModel model)
         {
@@ -358,7 +372,28 @@ namespace Chatter
                 stackFilter.IsVisible = true;
             else
                 stackFilter.IsVisible = false;
+<<<<<<< HEAD
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.33, 0.55, 0.1));
+=======
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+        }
+
+        private async void recentMatch_Tapped(object sender, EventArgs e)
+        {
+            var valuer = (CachedImage)sender;
+            foreach(RecentMatchesModel b in matchesModel)
+            {
+                if (b.image == valuer.Source.ToString().Replace("Uri: ", ""))
+                    await Navigation.PushModalAsync(new ViewProfile(b.user_id));
+            }
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            //var stacker = (StackLayout)sender;
+            //RecentMatchesModel model = (RecentMatchesModel)stacker.BindingContext;
+            //await DisplayAlert("test",model.user_id,"Okay");
+>>>>>>> 1779348fc6ea4fcb18da922706d6b26ec18d602b
         }
     }
 }

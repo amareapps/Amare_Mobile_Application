@@ -436,7 +436,7 @@ namespace Chatter.Classes
             {
                 return null;
             }
-            var looper = JsonConvert.DeserializeObject<List<InstagramPhotosModel>>(response).ToList();
+            var looper = JsonConvert.DeserializeObject<List<InstagramPhotosModel>>(response);
             return looper;
         }
         public async Task<string> checkIfAlreadyRegistered(string id)
@@ -597,6 +597,20 @@ namespace Chatter.Classes
             try
             {
                 var request = await client.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=deleteUser&id=" + id.Replace("\"",""));
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> removeInstagram(string id)
+        {
+            try
+            {
+                var request = await client.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=removeInstagram&id=" + id.Replace("\"", ""));
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
                 return true;

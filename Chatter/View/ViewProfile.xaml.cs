@@ -35,6 +35,7 @@ namespace Chatter.View
         }
         protected async override void OnAppearing()
         {
+            instagramPhotos.Clear();
             base.OnAppearing();
             await loadUser();
         }
