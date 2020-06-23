@@ -24,7 +24,8 @@
             Margin="0" 
             HasUnevenRows="True" 
             VerticalOptions="FillAndExpand" 
-            SeparatorColor="Transparent" CachingStrategy="RecycleElement">
+            SeparatorColor="Transparent" CachingStrategy="RecycleElement"
+            HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <ListView.ItemTemplate>
                 <local:ChatTemplateSelector></local:ChatTemplateSelector>
             </ListView.ItemTemplate>

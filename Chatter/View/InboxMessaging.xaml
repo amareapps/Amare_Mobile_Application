@@ -26,21 +26,21 @@
                 </Frame>
                 <StackLayout Grid.Row="1">
                     <Label Text="Recent matches" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
-                    <ScrollView Orientation="Horizontal">
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                         <StackLayout x:Name="recentMatchesList" Orientation="Horizontal">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout WidthRequest="80" HeightRequest="80" Margin="10">
+                                    <StackLayout WidthRequest="70" HeightRequest="70" Margin="2,5,2,5">
                                         <Frame CornerRadius="45" 
-                                       HeightRequest="70"
-                                       WidthRequest="70"
+                                       HeightRequest="60"
+                                       WidthRequest="60"
                                        HorizontalOptions="Center"
                                        Padding="5"
-                                       BorderColor="#98000b"
-                                       IsClippedToBounds="True">
+                                       BorderColor="Accent"
+                                       IsClippedToBounds="True" BackgroundColor="Transparent" >
                                             <Frame CornerRadius="45" 
-                                       HeightRequest="70"
-                                       WidthRequest="70"
+                                       HeightRequest="60"
+                                       WidthRequest="60"
                                        HorizontalOptions="Center"
                                        Padding="0"
                                        BorderColor="Red"
@@ -59,7 +59,7 @@
                 <StackLayout Grid.Row="2">
                     <StackLayout Padding="0" Margin="0">
                         <Label Text="Messages" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
-                        <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" >
+                        <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell >
@@ -70,8 +70,8 @@
                                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="45" 
-                                           HeightRequest="110"
-                                           WidthRequest="110"
+                                           HeightRequest="90"
+                                           WidthRequest="90"
                                            HorizontalOptions="Center"
                                            Padding="0"
                                            BorderColor="Black"
@@ -93,11 +93,11 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-            <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.95,0.29,0.1,0.1">
+            <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.95,0.33,0.1,0.1">
                 <StackLayout x:Name="stackFilter" IsVisible="False" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
-                    <Button x:Name="unreadFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" FontAttributes="Bold" TextColor="White"  Margin="0" Padding="0" ></Button>
-                    <Button x:Name="receivedFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0"></Button>
-                    <Button x:Name="nearbyFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0"></Button>
+                    <Button x:Name="unreadFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" FontAttributes="Bold" TextColor="White"  Margin="0" Padding="0" CornerRadius="20" ></Button>
+                    <Button x:Name="receivedFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
+                    <Button x:Name="nearbyFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
                 </StackLayout>
                 <ffimageloading:CachedImage Margin="0" VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
                     <ffimageloading:CachedImage.GestureRecognizers>

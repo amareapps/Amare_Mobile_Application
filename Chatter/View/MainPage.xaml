@@ -14,7 +14,7 @@
 
     <TabbedPage.Children>
         <Local:Profile IconImageSource="profile.png"></Local:Profile>
-        <Local:Discover IconImageSource="amare_a.png"></Local:Discover>
+        <Local:Discover IconImageSource="welcomelogonew.gif"></Local:Discover>
         <Local:InboxMessaging IconImageSource="message.png"></Local:InboxMessaging>
     </TabbedPage.Children>
 </TabbedPage>

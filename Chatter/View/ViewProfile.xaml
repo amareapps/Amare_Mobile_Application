@@ -23,7 +23,7 @@
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label FontAttributes="Bold" TextColor="#890447" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
             </Grid>
-            <ScrollView Padding="10,5,10,10">
+            <ScrollView Padding="10,5,10,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="500" />
