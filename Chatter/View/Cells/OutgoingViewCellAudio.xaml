@@ -12,7 +12,7 @@
             TapVibrationDuration="150" 
             LongPressed="MultiGestureView_LongPressed">
         <multigestureviewplugin:MultiGestureView.Content>
-            <FlexLayout>
+            <FlexLayout Margin="0,0,60,0" Padding="10,3,10,3">
                 <Frame Rotation="180"  HorizontalOptions="End" CornerRadius="20" BackgroundColor="Transparent" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
                     <Button ImageSource="playaudio.png" BackgroundColor="#adf6ff" Text="Play audio" Clicked="Button_Clicked" HorizontalOptions="Start"></Button>
                 </Frame>

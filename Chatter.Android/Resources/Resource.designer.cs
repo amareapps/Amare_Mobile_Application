@@ -25487,10 +25487,13 @@ namespace Chatter.Droid
 			public const int weightmint = 2131165615;
 			
 			// aapt resource value: 0x7F0701B0
-			public const int welcomelogonew = 2131165616;
+			public const int welcomelogo = 2131165616;
 			
 			// aapt resource value: 0x7F0701B1
-			public const int welcomelogonew1 = 2131165617;
+			public const int welcomelogonew = 2131165617;
+			
+			// aapt resource value: 0x7F0701B2
+			public const int welcomelogonew1 = 2131165618;
 			
 			static Drawable()
 			{
