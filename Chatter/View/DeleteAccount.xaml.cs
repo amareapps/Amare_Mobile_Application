@@ -23,7 +23,7 @@ namespace Chatter.View
                 if (string.IsNullOrEmpty(reasondelete.Text.ToString()))
                 {
                     deleteButton.IsEnabled = false;
-                deleteButton.BackgroundColor = Color.Default;
+                    deleteButton.BackgroundColor = Color.Default;
                 }
                 else
                 {
@@ -35,8 +35,8 @@ namespace Chatter.View
 
         private async void deleteButton_Clicked(object sender, EventArgs e)
         {
+            await PopupNavigation.Instance.PopAsync();
             await PopupNavigation.Instance.PushAsync(new EnterPassword(reasondelete.Text));
-            //await PopupNavigation.Instance.PopAsync(DeleteAccount);
         }
 
         private async void CancelButton_Clicked(object sender, EventArgs e)

@@ -17,7 +17,7 @@
         <ToolbarItem Name="Unmatch" Order="Secondary" Clicked="Menu1_Clicked" Priority="0" />
         <ToolbarItem Name="Report" Order="Secondary" Clicked="Report_Clicked" Priority="1" />
     </ContentPage.ToolbarItems>
-    <StackLayout Margin="0,0,0,10">
+    <StackLayout Margin="0" Padding="0">
         <multigestureviewplugin:MultiGestureView LongPressed="LongPressEffect_LongPressed">
         <ListView x:Name="ChatList"  ItemSelected="ChatList_ItemSelected" ItemTapped="ChatList_ItemTapped" FlowDirection="RightToLeft"
             Rotation="180"
@@ -54,7 +54,7 @@
                 <Button Text="x" WidthRequest="35" x:Name="btnHidereply" Clicked="btnHidereply_Clicked" FontSize="Micro" Padding="0" Margin="0" CornerRadius="10" Grid.Column="1"></Button>
             </Grid>
         </StackLayout>
-        <Frame BackgroundColor="#EEEEEE" IsClippedToBounds="True" CornerRadius="10" HasShadow="True" Margin="0" Padding="0" VerticalOptions="End">
+        <Frame BackgroundColor="#EEEEEE" IsClippedToBounds="True" Margin="0" Padding="0" VerticalOptions="End">
             <Grid Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"></ColumnDefinition>
@@ -65,7 +65,7 @@
                 <ImageButton Source="chatcamera.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
                 <ImageButton Source="audio.png" Released="voiceMessage_Released" Pressed="voiceMessage_Pressed"  BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="voiceMessage"  Clicked="voiceMessage_Clicked" Grid.Column="1"></ImageButton>
 
-                <local2:RoundedEntry x:Name="messageEntry" Keyboard="Chat" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="2" FontSize="Small"></local2:RoundedEntry>
+                <local:CustomEditor HeightRequest="20" x:Name="messageEntry" Keyboard="Chat" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="2" FontSize="Small"></local:CustomEditor>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="3">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>

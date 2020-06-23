@@ -33,13 +33,13 @@ namespace Chatter.View
             deleteButton.IsEnabled = false;
             if (!sqliteManager.isCorrectPassword(passwordEntry.Text))
             {
-                await DisplayAlert("Error!", "Incorrect password!, Please try again", "Okay");
+                await DisplayAlert("Oops!", "Incorrect password!, Please try again", "Okay");
                 deleteButton.IsEnabled = true;
                 return;
             }
             if (!await api.deleteUser(Application.Current.Properties["Id"].ToString()))
             {
-                await DisplayAlert("Error!", "Unable to delete account!", "Okay");
+                await DisplayAlert("Oops!", "Unable to delete account!", "Okay");
                 deleteButton.IsEnabled = true;
                 return;
             }

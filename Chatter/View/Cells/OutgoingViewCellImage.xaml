@@ -15,7 +15,7 @@
                 AlignItems="End"
                 JustifyContent="SpaceEvenly" Margin="0,0,60,0" Padding="10">
                 <Frame BackgroundColor="#e3646c" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-                    <ffimageloading:CachedImage x:Name="imageSent" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding message}" Aspect="AspectFill"></ffimageloading:CachedImage>
+                    <ffimageloading:CachedImage x:Name="imageSent" BackgroundColor="#adf6ff" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding message}" Aspect="AspectFill"></ffimageloading:CachedImage>
                 </Frame>
                 <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
                 <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">

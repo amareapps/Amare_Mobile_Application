@@ -12,7 +12,7 @@
              android:TabbedPage.IsSmoothScrollEnabled="True"
              x:Class="Chatter.MainPage" BarBackgroundColor="WhiteSmoke" UnselectedTabColor="Gray" SelectedTabColor="#3cc5d5" NavigationPage.HasNavigationBar="False">
 
-    <TabbedPage.Children>
+    <TabbedPage.Children >
         <Local:Profile IconImageSource="profile.png"></Local:Profile>
         <Local:Discover IconImageSource="welcomelogonew.gif"></Local:Discover>
         <Local:InboxMessaging IconImageSource="message.png"></Local:InboxMessaging>
