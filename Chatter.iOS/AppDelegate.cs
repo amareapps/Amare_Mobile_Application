@@ -36,6 +36,7 @@ namespace Chatter.iOS
             LoadApplication(new App(new OAuth2Service()));
 
             return base.FinishedLaunching(app, options);
+
         }
     }
 }

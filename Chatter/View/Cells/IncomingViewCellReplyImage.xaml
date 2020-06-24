@@ -38,9 +38,9 @@
                         <Frame BackgroundColor="LightGray" CornerRadius="10" Opacity="0.5" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
                             <ffimageloading:CachedImage x:Name="imageContent" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding reply_to_message}" Aspect="AspectFill"></ffimageloading:CachedImage>
                         </Frame>
-                        <Frame BackgroundColor="#c4c2c2" TranslationY="-10" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                        <Frame BackgroundColor="#ebebeb" TranslationY="-10" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
                             <Label  Text="{Binding message}"
-                                  TextColor="Black" Padding="10" HorizontalTextAlignment="Start" />
+                                  TextColor="Black" Padding="10" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                         </Frame>
                         <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
                         <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">

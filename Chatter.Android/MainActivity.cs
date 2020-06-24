@@ -28,7 +28,7 @@ namespace Chatter.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IValueEventListener
     {
         readonly string[] permissionGroup =
-{
+        {
             Manifest.Permission.ReadExternalStorage,
             Manifest.Permission.WriteExternalStorage,
             Manifest.Permission.Camera
@@ -55,6 +55,7 @@ namespace Chatter.Droid
                 ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.RecordAudio }, 1);
             }
             LoadApplication(new App(new OAuth2Service()));
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
@@ -78,5 +79,8 @@ namespace Chatter.Droid
         {
             throw new NotImplementedException();
         }
+
+        
+
     }
 }

@@ -21,10 +21,10 @@
                     <local:MessageContentConverter x:Key="messageConverter"></local:MessageContentConverter>
                 </FlexLayout.Resources>
                 <Label Text="You replied to "></Label>
-                <Frame BackgroundColor="#e3646c" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                <Frame BackgroundColor="#adf6ff" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
                     <ffimageloading:CachedImage x:Name="imageSent" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding reply_to_message}" Aspect="AspectFill"></ffimageloading:CachedImage>
                 </Frame>
-                <Frame BackgroundColor="#e3646c" TranslationY="-10" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+                <Frame BackgroundColor="#adf6ff" TranslationY="-10" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
                     <Label  Text="{Binding message}"
                                   TextColor="Black" Padding="10" HorizontalTextAlignment="Start" />
                 </Frame>

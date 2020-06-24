@@ -15,7 +15,7 @@
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Preferences"/>
             </Grid>
-            <ScrollView Padding="0,10,0,10">
+            <ScrollView Padding="0,10,0,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <StackLayout Spacing="20" Margin="20,0,20,10">
                     <Label Text="Account Preferences" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Padding="10" Margin="10,0,10,0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">

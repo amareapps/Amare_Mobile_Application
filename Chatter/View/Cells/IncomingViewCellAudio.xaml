@@ -33,7 +33,7 @@
                         AlignItems="Start"
                         JustifyContent="SpaceEvenly" Margin="0"  Padding="0">
                         <Frame Padding="0" Margin="0" BackgroundColor="Transparent" CornerRadius="10" IsClippedToBounds="True"  Grid.Column="1">
-                            <Button Text="Play audio" Clicked="Button_Clicked"></Button>
+                            <Button ImageSource="playaudio.png" Text="Play audio" BackgroundColor="#ebebeb" Clicked="Button_Clicked"></Button>
                         </Frame>
                         <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" Grid.Column="1" Grid.Row="1" FontSize="Micro" HorizontalTextAlignment="Start"></Label>
                         <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">

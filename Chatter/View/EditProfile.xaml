@@ -15,7 +15,7 @@
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Profile"/>
             </Grid>
-            <ScrollView Padding="0,10,0,10">
+            <ScrollView Padding="0,10,0,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <StackLayout Spacing="10" Margin="20,0,20,10">
                     <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="ImagePicker_SelectedIndexChanged" Title="Select Image">
                         <Picker.ItemsSource>

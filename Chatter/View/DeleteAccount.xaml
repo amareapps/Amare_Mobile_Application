@@ -18,8 +18,7 @@
                 <Label FontAttributes="Bold" Padding="15,15,15,5" Text="Warning! &#x0a;This cannot be undone." FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
                 <Label HorizontalOptions="Center" FontAttributes="Bold" Text="We're sad that you're going away..." HorizontalTextAlignment="Center"></Label>
                 <Label HorizontalTextAlignment="Center" Padding="15,5,15,10" Text="Are you sure you want to delete your account? If you delete your account, you will permanently lose your profile, messages, and photos." FontSize="Small" HorizontalOptions="Center"></Label>
-                <Label HorizontalTextAlignment="Center" x:Name="reasonrequired" Padding="15,5,15,0" Text="*Please enter your reason" FontSize="Micro" TextColor="Accent" HorizontalOptions="Start" IsVisible="False"></Label>
-                <local:CustomEditor x:Name="reasondelete" TextChanged="reasondelete_TextChanged" Margin="15,0,15,0" Placeholder="Please let us know why you're leaving Amare..." HeightRequest="100" FontSize="Small"></local:CustomEditor>
+                <local:CustomEditor x:Name="reasondelete" TextChanged="reasondelete_TextChanged" Margin="15,0,15,0" Placeholder="Let us know why you're leaving Amare" HeightRequest="100" FontSize="Small"></local:CustomEditor>
                     <Grid Margin="0,10,0,5" Padding="15">
                         <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>

@@ -42,7 +42,7 @@ namespace Chatter
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                if (autoSlider.SelectedIndex == 1)
+                if (autoSlider.SelectedIndex == 4)
                 {
                     autoSlider.SelectedIndex = 0;
                 }

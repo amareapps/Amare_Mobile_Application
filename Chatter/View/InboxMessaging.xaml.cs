@@ -315,7 +315,7 @@ namespace Chatter
             stackFilter.IsVisible = false;
 
             hamburgerImage.IsVisible = true;
-            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.1, 0.1));
         }
         private void receivedFilterButton_Clicked(object sender, EventArgs e)
         {
@@ -323,14 +323,14 @@ namespace Chatter
             stackFilter.IsVisible = false;
 
             hamburgerImage.IsVisible = true;
-            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.1, 0.1));
         }
         private void nearbyFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderBy(entry => entry.distance);
             stackFilter.IsVisible = false;
             hamburgerImage.IsVisible = true;
-            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.1, 0.1));
         }
         private string getDistance(InboxModel model)
         {
@@ -360,7 +360,7 @@ namespace Chatter
                 stackFilter.IsVisible = true;
             else
                 stackFilter.IsVisible = false;
-            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.29, 0.5, 0.1));
+            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.55, 0.1));
         }
 
         private async void recentMatch_Tapped(object sender, EventArgs e)

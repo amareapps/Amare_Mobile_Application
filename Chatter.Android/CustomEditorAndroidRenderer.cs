@@ -36,6 +36,8 @@ namespace Chatter.Droid
                 Control.SetAutoSizeTextTypeWithDefaults(AutoSizeTextType.Uniform);
                 Control.SetMinHeight(200);
                 Control.SetBackground(gd);
+
+                Control.SetPadding(50, Control.PaddingTop, Control.PaddingRight, Control.PaddingBottom);
             }
         }
     }
