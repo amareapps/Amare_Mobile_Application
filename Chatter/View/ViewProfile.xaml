@@ -154,7 +154,7 @@
                                     </Grid>
                                 </FlexLayout>
                             </Frame>
-                            <Grid Padding="5,0,5,0" IsVisible="{Binding height,Converter={StaticResource numbertoBool}}">
+                            <Grid Padding="5,0,5,5" IsVisible="{Binding height,Converter={StaticResource numbertoBool}}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>

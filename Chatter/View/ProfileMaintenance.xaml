@@ -93,22 +93,14 @@
     <ContentPage  x:Name="genderContent" BackgroundColor="GhostWhite">
         <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,10,0,0">
-                <Label Text="Gender..." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="I am a..." FontSize="30" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid x:Name="iamGrid"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="50,0,50,0">
                 <Button x:Name="womanButton" Grid.Row="0" CornerRadius="30" Text="Woman" Clicked="Button_Clicked" BackgroundColor="#EEEEEE" TextColor="Black" FontAttributes="Bold"></Button>
                 <Button x:Name="manButton" Grid.Row="1" CornerRadius="30" Text="Man" Clicked="Button_Clicked" BackgroundColor="#EEEEEE" TextColor="Black" FontAttributes="Bold"></Button>
             </Grid>
-            <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
-                <Button BackgroundColor="#3cc5d5" TextColor="White" CornerRadius="30" Text="CONTINUE" FontSize="Large" FontAttributes="Bold" Clicked="nextContent"></Button>
-            </Frame>
-
-        </StackLayout>
-    </ContentPage>
-    <ContentPage  x:Name="interestContent" BackgroundColor="GhostWhite">
-        <StackLayout Margin="20,10,20,20">
             <StackLayout VerticalOptions="Center" Margin="0,10,0,0">
-                <Label Text="I am &#x0a;interested in.." FontSize="45" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                <Label Text="I am interested in.." FontSize="30" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
             </StackLayout>
             <Grid x:Name="gridInterest" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="50,0,50,0">
                 <Button x:Name="womenInterestButton" Grid.Row="0" CornerRadius="30" Text="Women" Clicked="Button_Interest" BackgroundColor="#EEEEEE" TextColor="Black" FontAttributes="Bold"></Button>
@@ -131,15 +123,15 @@
                 <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30">
                     <Button BackgroundColor="#3cc5d5" TextColor="White" CornerRadius="30" Text="PROCEED" FontSize="Large" FontAttributes="Bold" x:Name="continueButton" Clicked="continueButton_Clicked"></Button>
                 </Frame>
-            </StackLayout>
+                </StackLayout>
             <!-- Overlay -->
             <ContentView x:Name="overlay"  
-                         IsVisible="False"  
+                         IsVisible="False"
                          BackgroundColor="#C0808080"  
-                         Padding="0" AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" >
+                         Padding="0" AbsoluteLayout.LayoutFlags="All"
+                                   AbsoluteLayout.LayoutBounds="0,0,1,1" >
 
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+                <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout Spacing="0" >
                         <ffimageloading:CachedImage Source="welcomelogo.gif"  
                                         HeightRequest="100"  

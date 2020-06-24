@@ -14,7 +14,6 @@
     </Page.Resources>
     <ContentPage.Content>
         <AbsoluteLayout>
-
             <Grid Margin="10,10,10,0" AbsoluteLayout.LayoutFlags="All"
               AbsoluteLayout.LayoutBounds="0,1,1,1">
                 <Grid.RowDefinitions>
@@ -44,7 +43,7 @@
                                        WidthRequest="60"
                                        HorizontalOptions="Center"
                                        Padding="0"
-                                       BorderColor="Red"
+                                       BorderColor="Accent"
                                        IsClippedToBounds="True">
                                                 <ffimageloading:CachedImage DownsampleToViewSize="True" Aspect="AspectFill" BitmapOptimizations="True"
                                                    Source="{Binding image}">
@@ -77,20 +76,25 @@
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
-                                            <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="45" 
-                                           HeightRequest="80"
-                                           WidthRequest="80"
+                                            <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="50" 
+                                           HeightRequest="78"
+                                           WidthRequest="78"
                                            HorizontalOptions="Center"
                                            Padding="0"
                                            BorderColor="Black"
                                            IsClippedToBounds="True"
                                            HasShadow="True">
-                                                <ffimageloading:CachedImage DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
+                                                <ffimageloading:CachedImage  DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
                                             </Frame>
                                             <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" FontAttributes="{Binding has_unread,Converter={StaticResource stringtoFontAtr}}" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
                                             <StackLayout Grid.Column="2" Spacing="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End">
-                                                <Label Margin="0,0,5,0" FontSize="Small" TextColor="Black" HorizontalTextAlignment="End" Text="{Binding distance}"/>
-                                                <Label Margin="10,0,5,0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}"/>
+                                                <StackLayout Orientation="Vertical">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Image Source="locationmint.png" Aspect="AspectFill" HeightRequest="1" WidthRequest="15"></Image>
+                                                        <Label Margin="0,0,5,0" FontSize="Small" TextColor="Black" HorizontalTextAlignment="End" Text="{Binding distance}"/>
+                                                    </StackLayout>
+                                                    <Label Margin="10,0,5,0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </StackLayout>
                                             <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
                                         </Grid>
