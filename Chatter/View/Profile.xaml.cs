@@ -148,7 +148,7 @@ namespace Chatter
 
         private async void imagePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadingIndicator.IsVisible = true;
+            overlay.IsVisible = true;
             Picker picker = sender as Picker;
             string userId = Application.Current.Properties["Id"].ToString().Replace("\"", "");
             if (picker.SelectedIndex == -1)
@@ -169,7 +169,7 @@ namespace Chatter
             retrieveUserProp();
             imagePicker.IsVisible = false;
             imagePicker.SelectedIndex = -1;
-            loadingIndicator.IsVisible = false;
+            overlay.IsVisible = false;
         }
 
 

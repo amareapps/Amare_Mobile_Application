@@ -236,11 +236,11 @@ namespace Chatter
            //}
             else if (this.CurrentPage == genderContent)
             {
-                this.CurrentPage = interestContent;
-            }
-            else if (this.CurrentPage == interestContent) {
                 this.CurrentPage = pictureContent;
             }
+            //else if (this.CurrentPage == interestContent) {
+                //this.CurrentPage = pictureContent;
+            //}
         }
 
         private void chooseImageButton_Clicked(object sender, EventArgs e)
