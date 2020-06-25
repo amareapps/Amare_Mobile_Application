@@ -47,7 +47,7 @@
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Take Photo</x:String>
                                     <x:String>Choose from Gallery</x:String>
-                                </x:Array>
+                                </x:Array>                                                                   
                             </Picker.ItemsSource>
                         </Picker>
                         <AbsoluteLayout IsClippedToBounds="True" HorizontalOptions="FillAndExpand">

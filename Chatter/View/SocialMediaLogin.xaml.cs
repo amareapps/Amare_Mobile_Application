@@ -9,11 +9,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Chatter.Model;
 
 namespace Chatter
 {
@@ -24,14 +26,22 @@ namespace Chatter
         ApiConnector api = new ApiConnector();
         public string client_ID = "249917976134115";
         public string ig_clientID = "273184830525964";
+        private string anyare;
         private string userIdToSync;
         private int socialMedieChosen;
         string locationString;
         bool isRegistration = true;
+        class AccessToken
+        {
+            public string access_token { get; set; }
+            public string token_type { get; set; }
+            public long expires_in { get; set; }
+        }
         public class SocialMediaPlatform {
             public static readonly int Facebook = 0;
             public static readonly int Instagram = 1;
             public static readonly int Google = 2;
+            public static readonly int Spotify = 3;
         }
         protected override void OnDisappearing()
         {
@@ -56,7 +66,11 @@ namespace Chatter
             {
                 apiRequest = "https://api.instagram.com/oauth/authorize?client_id="+ ig_clientID +
                 "&redirect_uri=https://www.instagram.com/&scope=user_profile,user_media&response_type=code";
-            }   
+            }
+            if (platform == SocialMediaPlatform.Spotify)
+            {
+                apiRequest = "https://accounts.spotify.com/authorize?response_type=code&client_id=36fe49c37d3c4f42842d639875571090&scope=user-top-read&redirect_uri=https://developer.spotify.com";
+            }
             var webView = new WebView
             {
                 Source = apiRequest,
@@ -94,13 +108,15 @@ namespace Chatter
         private async void WebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
             var ewan = e.Url;
-            var accessToken = ExtractAccessTokenFromUrl(e.Url);
+            var accessToken = await ExtractAccessTokenFromUrl(e.Url);
             if (accessToken != "" || string.IsNullOrEmpty(accessToken) == false)
             {
                 if(socialMedieChosen == SocialMediaPlatform.Facebook)
                     await getFacebookProfileAsync(accessToken);
                 else if(socialMedieChosen == SocialMediaPlatform.Instagram)
                     await getInstagramProfileAsync(accessToken);
+                else if(socialMedieChosen == SocialMediaPlatform.Spotify)
+                    await getSpotifyPlayList(accessToken);
             }
         }
         public async Task getFacebookProfileAsync(string accessToken)
@@ -131,6 +147,40 @@ namespace Chatter
                 await Navigation.PopAsync(false);
             }
         }
+        public async Task getSpotifyPlayList(string accessToken)
+        {
+            overlay.IsVisible = true;
+            try
+            {
+                var client = new HttpClient();
+                await DisplayAlert("Game!", accessToken, "Okay");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                var request = await client.GetAsync("https://api.spotify.com/v1/me/top/artists");
+                //request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                //var objectionss = JsonConvert.DeserializeObject<InstagramResponse>(response);
+                await DisplayAlert("Barbie sabi ko na", response, "Okay");
+                var test =  JsonConvert.DeserializeObject<SpotifyModel>(response);
+                
+                foreach (var items in test.items)
+                {
+                    string genress = "";
+                    foreach (string a in test.items[0].genres)
+                    {
+                        genress += a + ", ";
+                    }
+                    await DisplayAlert("Amare Got", "Artist name:" + test.items[0].name + "\n Genres: " + genress, "Okay");
+                    await api.insertSpotify(items.name,genress,items.followers.total.ToString());
+                }
+                await Navigation.PopAsync();
+                //await getInstagramInfo(objectionss.user_id, objectionss.access_token);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error!", ex.ToString(), "Okay");
+            }
+        }
         public async Task getInstagramProfileAsync(string accessToken)
         {
             overlay.IsVisible = true;
@@ -140,11 +190,11 @@ namespace Chatter
                 var form = new MultipartFormDataContent();
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 content.Add(new StringContent(ig_clientID), "client_id");
-                content.Add(new StringContent("e4d498bb21f77504bec7981e2b0ef2bc"), "client_secret");
+                content.Add(new StringContent("e4d498bb21f77504bec7981e2b0ef2bc"), "Authorization");
                 content.Add(new StringContent("authorization_code"), "grant_type");
                 content.Add(new StringContent("https://www.instagram.com/"), "redirect_uri");
                 content.Add(new StringContent(accessToken), "code");
-                var request = await client.PostAsync("https://api.instagram.com/oauth/access_token", content);
+                var request = await client.GetAsync("https://api.instagram.com/oauth/access_token");
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
                 //await DisplayAlert("Game!",response.ToString(),"Okay");
@@ -221,7 +271,7 @@ namespace Chatter
                 await Navigation.PopAsync(false);
             }
         }
-        private string ExtractAccessTokenFromUrl(string url)
+        private async Task<string> ExtractAccessTokenFromUrl(string url)
         {
             if (socialMedieChosen == SocialMediaPlatform.Facebook)
             {
@@ -244,6 +294,17 @@ namespace Chatter
                 var two = one.Replace("#_", "");
                 //DisplayAlert("Laman mo?2", two, "Okay");
                 return two;
+            }
+            if (socialMedieChosen == SocialMediaPlatform.Spotify)
+            {
+                if (!url.Contains("https://developer.spotify.com/?code="))
+                    return string.Empty;
+                //DisplayAlert("Laman mo?",url,"Okay");
+                var one = url.Replace("https://developer.spotify.com/?code=", "");
+                //await DisplayAlert("Laman mo?2", one, "Okay");
+                var testing = await getSpotifyAcessToken(one);
+                return testing;
+
             }
             return string.Empty;
         }
@@ -281,6 +342,44 @@ namespace Chatter
             request.EnsureSuccessStatusCode(); 
             var response = await request.Content.ReadAsStringAsync();
             var exec = await DisplayAlert("Congratulations!", "You are successfully logged in", null, "OK");
+        }
+        private async Task<string> getSpotifyAcessToken(string coder)
+        {
+            try
+            {
+                string clientId = "36fe49c37d3c4f42842d639875571090";
+                string clientSecret = "33e5bc092ec14202aca45540d2dd0df9";
+                string credentials = String.Format("{0}:{1}", clientId, clientSecret);
+
+                using (var client = new HttpClient())
+                {
+                    //Define Headers
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(credentials)));
+
+                    //Prepare Request Body
+                    List<KeyValuePair<string, string>> requestData = new List<KeyValuePair<string, string>>();
+                    requestData.Add(new KeyValuePair<string, string>("grant_type", "authorization_code"));
+                    requestData.Add(new KeyValuePair<string, string>("code", coder));
+                    requestData.Add(new KeyValuePair<string, string>("redirect_uri", "https://developer.spotify.com"));
+
+
+                    FormUrlEncodedContent requestBody = new FormUrlEncodedContent(requestData);
+
+                    //Request Token
+                    var request = await client.PostAsync("https://accounts.spotify.com/api/token", requestBody);
+                    var response = await request.Content.ReadAsStringAsync();
+                    //await DisplayAlert("testerss", response, "Okay");
+                    return JsonConvert.DeserializeObject<AccessToken>(response).access_token;
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.ToString(), "Okay");
+                return "";
+            }
         }
     }
 }

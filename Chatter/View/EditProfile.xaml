@@ -120,10 +120,25 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
+                    <Label Text="Spotify Playlist" Margin="0,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
+                    <StackLayout Padding="10,10,10,0">
+                        <Button BackgroundColor="Transparent" CornerRadius="30" ImageSource="ig_logo_small.png" TextColor="Accent" FontAttributes="Bold"  BorderColor="Accent" BorderWidth="2" x:Name="spotifyButton" Clicked="spotifyButton_Clicked" Text="Connect to Spotify"></Button>
+                    </StackLayout>
+                    <StackLayout x:Name="spotifyListLayout">
+                        <ListView x:Name="spotifyListView" HeightRequest="100">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding artist_name}" Detail="{Binding genres}" TextColor="Green" 
+                                              DetailColor="Black"></TextCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                     <Label Text="Show my Instagram Photos" Margin="0,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <StackLayout Padding="10,10,10,0">
                         <Button BackgroundColor="Transparent" CornerRadius="30" ImageSource="ig_logo_small.png" TextColor="Accent" FontAttributes="Bold"  BorderColor="Accent" BorderWidth="2" x:Name="instagramButton" Clicked="instagramButton_Clicked" Text="Connect to Instagram"></Button>
                     </StackLayout>
+
 
                     <flv:FlowListView x:Name="instagrammer" HeightRequest="360" FlowColumnCount="3" RowHeight="120" SeparatorVisibility="Default" HasUnevenRows="False">
                         <flv:FlowListView.FlowColumnTemplate>
