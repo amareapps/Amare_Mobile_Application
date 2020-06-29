@@ -133,7 +133,7 @@ namespace Chatter
                     var profile = JsonConvert.DeserializeObject<FacebookProfile>(response);
                     //userModel.username = profile.Name;
                     //userModel.gender = profile.Gender;
-                    userModel.id = profile.Id;
+                    userModel.email = profile.Id;
                     userModel.username = profile.UserName;
                     userModel.image = profile.Picture.Data.Url;
                     userModel.location = locationString;
@@ -143,8 +143,9 @@ namespace Chatter
                         userModel.gender = "1";
                     else
                         userModel.gender = "0";
-                    await DisplayAlert("testing nga", userModel.birthdate,"okay");  
+                    //await DisplayAlert("testing nga", userModel.birthdate,"okay");  
                     await sampless();
+                    await loginUser();
                     await saveDataSqlite();
                 }
             }
@@ -241,17 +242,17 @@ namespace Chatter
                         await Navigation.PopAsync(false);
                         return;
                     }
-                    var userExist = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(profile.Data[0].Id)).ToList();
-                    foreach(UserModel midek in userExist)
-                    {
-                        userModel = midek;
-                        break;
-                    }
-                    if(userExist.Count > 0)
-                    {
-                        await saveDataSqlite();
-                        return;
-                    }
+                    //var userExist = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(profile.Data[0].Id)).ToList();
+                    //foreach(UserModel midek in userExist)
+                    //{
+                    //    userModel = midek;
+                    //    break;
+                    //}
+                    //if(userExist.Count > 0)
+                    //{
+                    //    await saveDataSqlite();
+                    //    return;
+                    //}
                     userModel.username = profile.Data[0].Username;
                     userModel.id = profile.Data[0].Id;
                     userModel.image = profile.Data[0].MediaUrl;
@@ -270,6 +271,7 @@ namespace Chatter
                     //userModel.image = imageUrl;
                 }
                 await sampless();
+                await loginUser();
                 await saveDataSqlite();
             }
             catch (Exception ex)
@@ -334,23 +336,58 @@ namespace Chatter
         }
         private async Task sampless()
         {
-            var client = new HttpClient();
-            var form = new MultipartFormDataContent();
-            MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(""), "email");
-            content.Add(new StringContent(""), "password");
-            content.Add(new StringContent(userModel.username), "username");
-            content.Add(new StringContent(userModel.gender), "gender");
-            content.Add(new StringContent(userModel.location), "location");
-            content.Add(new StringContent(userModel.image), "image");
-            content.Add(new StringContent(""), "phone_number");
-            content.Add(new StringContent(userModel.birthdate), "birthdate");
-            content.Add(new StringContent("2"), "interest");
-            content.Add(new StringContent("0"), "show_age");
-            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
-            request.EnsureSuccessStatusCode();
-            var response = await request.Content.ReadAsStringAsync();
-            await DisplayAlert("waitlang",response,"Okay");
+            try
+            {
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                var strVal =await api.checkIfAlreadyRegistered(userModel.email);
+                if (!strVal.Contains("Undefined"))
+                {
+                    var userExist = JsonConvert.DeserializeObject<List<UserModel>>(strVal);
+                    foreach (UserModel midek in userExist)
+                    {
+                        userModel = midek;
+                        return;
+                    }
+                }
+                /*if (userExist.Count > 0)
+                {
+                    await saveDataSqlite();
+                    return;
+                }*/
+                content.Add(new StringContent(userModel.email), "email");
+                content.Add(new StringContent(""), "password");
+                content.Add(new StringContent(userModel.username), "username");
+                content.Add(new StringContent(userModel.gender), "gender");
+                content.Add(new StringContent(userModel.location), "location");
+                content.Add(new StringContent(userModel.image), "image");
+                content.Add(new StringContent(""), "phone_number");
+                content.Add(new StringContent(userModel.birthdate), "birthdate");
+                content.Add(new StringContent("2"), "interest");
+                content.Add(new StringContent("0"), "show_age");
+                content.Add(new StringContent(""), "school");
+                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                await DisplayAlert("una dapat to",response,"Okay");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("una dapat to", ex.ToString(), "Okay");
+                return;
+            }
+        }
+        private async Task loginUser()
+        {
+            var strModel = await api.checkIfAlreadyRegistered(userModel.email);
+            await DisplayAlert("Test1", userModel.email + strModel, "Okay");
+            var userExist = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(userModel.email));
+            foreach (UserModel midek in userExist)
+            {
+                userModel = midek;
+                return;
+            }
         }
         private async Task<string> getSpotifyAcessToken(string coder)
         {

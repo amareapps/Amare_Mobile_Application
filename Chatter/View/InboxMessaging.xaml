@@ -65,7 +65,21 @@
                 </StackLayout>
                 <StackLayout Grid.Row="2" Padding="0,10,0,0">
                     <StackLayout Padding="0" Margin="0">
-                        <Label Text="Messages" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="Messages" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold" HorizontalOptions="Start"></Label>
+                            <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <StackLayout x:Name="stackFilter" IsVisible="False" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
+                                    <Button x:Name="unreadFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" FontAttributes="Bold" TextColor="White"  Margin="0" Padding="0" CornerRadius="20" ></Button>
+                                    <Button x:Name="receivedFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
+                                    <Button x:Name="nearbyFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
+                                </StackLayout>
+                                <ffimageloading:CachedImage Margin="0" VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
+                                    <ffimageloading:CachedImage.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="hamburgerEvent" Tapped="hamburgerEvent_Tapped" ></TapGestureRecognizer>
+                                    </ffimageloading:CachedImage.GestureRecognizers>
+                                </ffimageloading:CachedImage>
+                            </StackLayout>
+                        </StackLayout>
                         <ListView  x:Name="InboxList" HasUnevenRows="True" Margin="0,0,0,0" ItemTapped="InboxList_ItemTapped" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -105,18 +119,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-            <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.95,0.35,0.1,0.1">
-                <StackLayout x:Name="stackFilter" IsVisible="False" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
-                    <Button x:Name="unreadFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" FontAttributes="Bold" TextColor="White"  Margin="0" Padding="0" CornerRadius="20" ></Button>
-                    <Button x:Name="receivedFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
-                    <Button x:Name="nearbyFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
-                </StackLayout>
-                <ffimageloading:CachedImage Margin="0" VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
-                    <ffimageloading:CachedImage.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="hamburgerEvent" Tapped="hamburgerEvent_Tapped" ></TapGestureRecognizer>
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
-            </StackLayout>
+
             <!-- Overlay -->
             <ContentView x:Name="overlay"  
                          IsVisible="False"  

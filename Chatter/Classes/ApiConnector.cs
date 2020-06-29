@@ -445,7 +445,7 @@ namespace Chatter.Classes
                 NullValueHandling = NullValueHandling.Ignore,
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
-            string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=is_social_media_account_exists&user_id=" + id + "";
+            string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=is_social_media_account_exists&user_id=" + id;
             var request = await client.GetAsync(urlString);
             request.EnsureSuccessStatusCode();
             var response = await request.Content.ReadAsStringAsync();
