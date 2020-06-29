@@ -41,17 +41,17 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <StackLayout IsVisible="False" x:Name="replyStack" Padding="10" BackgroundColor="WhiteSmoke">
+        <StackLayout IsVisible="False" x:Name="replyStack" Padding="10" Margin="0" BackgroundColor="#C03cc5d5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="AUTO"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="0" Padding="10,0,0,0" Spacing="0">
-                    <Label Text="Replying to"></Label>
-                    <Label x:Name="lblMessagetoReply" Padding="10,0,0,0"></Label>
+                    <Label Text="Replying to:" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label x:Name="lblMessagetoReply" Padding="10,0,0,0" TextColor="White" FontAttributes="Italic"></Label>
                 </StackLayout>
-                <Button Text="x" WidthRequest="35" x:Name="btnHidereply" Clicked="btnHidereply_Clicked" FontSize="Micro" Padding="0" Margin="0" CornerRadius="10" Grid.Column="1"></Button>
+                <Button Text="x" WidthRequest="35" x:Name="btnHidereply" BackgroundColor="Transparent" Clicked="btnHidereply_Clicked" FontSize="Small" FontAttributes="Bold" TextColor="White" Padding="0" Margin="0" CornerRadius="10" Grid.Column="1"></Button>
             </Grid>
         </StackLayout>
         <Frame BackgroundColor="#EEEEEE" IsClippedToBounds="True" Margin="0" Padding="0" VerticalOptions="End">
@@ -65,7 +65,7 @@
                 <ImageButton Source="chatcamera.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
                 <ImageButton Source="audio.png" Released="voiceMessage_Released" Pressed="voiceMessage_Pressed"  BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="voiceMessage"  Clicked="voiceMessage_Clicked" Grid.Column="1"></ImageButton>
 
-                <local:CustomEditor HeightRequest="20" x:Name="messageEntry" Keyboard="Chat" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="2" FontSize="Small"></local:CustomEditor>
+                <local:CustomEditor HeightRequest="20" MinimumHeightRequest="20" x:Name="messageEntry" Keyboard="Chat" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="2" FontSize="Small"></local:CustomEditor>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="3">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
