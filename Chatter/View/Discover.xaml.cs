@@ -271,6 +271,16 @@ namespace Chatter
             await Navigation.PushModalAsync(new NavigationPage(new VipPremium()));
         }
 
+        private void tapLeft_Tapped(object sender, EventArgs e)
+        {
+            if(coverFlowView.SelectedIndex > 0)
+                coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
+        }
+
+        private void tapRight_Tapped(object sender, EventArgs e)
+        {
+            coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+        }
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var sample = coverFlowView.SelectedItem as ImageStorage;
@@ -286,7 +296,8 @@ namespace Chatter
         }
         private async Task dislikeUser()
         {
-            imageSources.Remove(currentItem);
+            //mageSources.Remove(currentItem);
+            coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
             string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
             await api.saveToDislikedUser(user_id, currentUserIdSelected);
         }

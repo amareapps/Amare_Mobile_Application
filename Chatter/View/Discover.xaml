@@ -101,21 +101,40 @@
                                             </FlexLayout>
                                         </StackLayout>
                                     </StackLayout>
+
+                                    <Frame AbsoluteLayout.LayoutFlags="All"
+                                            AbsoluteLayout.LayoutBounds="0,0,0.5,1" BackgroundColor="Transparent">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="tapLeft" Tapped="tapLeft_Tapped"></TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                    </Frame >
+                                    <Frame AbsoluteLayout.LayoutFlags="All"
+                                            AbsoluteLayout.LayoutBounds="1,0,0.5,1" BackgroundColor="Transparent">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="tapRight" Tapped="tapRight_Tapped"></TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                    </Frame >
+                                    <Frame AbsoluteLayout.LayoutFlags="All"
+                                            AbsoluteLayout.LayoutBounds="0,1,1,0.2" BackgroundColor="Transparent">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
                                 </AbsoluteLayout>
                             </Frame>
                         </DataTemplate>
                     </cards:CardsView.ItemTemplate>
                 </cards:CardsView>
-                <!--<Grid Margin="10" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="0.9,0.95,-1,-1">
+                <Grid Margin="3" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="1,0.95,-1,-1" ColumnSpacing="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                        <ColumnDefinition Width="AUTO"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <ImageButton 
-                                 WidthRequest="80"
-                                 HeightRequest="80"
+                                 WidthRequest="60"
+                                 HeightRequest="60"
                                  Padding="10"
                                  Source="heart.png" 
                                  Grid.Column="2" 
@@ -125,7 +144,19 @@
                                  HorizontalOptions="Center" 
                                  Clicked="heartButton_Clicked"
                                  Opacity="0.7"/>
-                    </Grid>-->
+                    <ImageButton 
+                                 WidthRequest="40"
+                                 HeightRequest="40"
+                                 Padding="3" CornerRadius="30"
+                                 Source="dislike.png" 
+                                 Grid.Column="1" 
+                                 BackgroundColor="White" 
+                                 x:Name="xButton" 
+                                Clicked="dislikeButton_Clicked"
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="Center" 
+                                 Opacity="0.7"/>
+                </Grid>
             </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>
