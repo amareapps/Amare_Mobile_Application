@@ -32,11 +32,14 @@ namespace Chatter.View
                 this.Title = "Change name";
                 accountFieldLabel.Text = "Name";
                 accountFieldEntry.Placeholder = value;
+                show.IsVisible = false;
+                accountFieldEntry.IsPassword = false;
                 buttonUpdate.Text = "Update";
             }
             else if (category == 1)
             {
                 this.Title = "Change password";
+                accountFieldEntry.IsPassword = true;
                 accountFieldLabel.Text = "Password";
                 accountFieldEntry.Placeholder = value;
                 buttonUpdate.Text = "Update";
@@ -54,7 +57,7 @@ namespace Chatter.View
                 var userModel = sqliteManager.getUserModel();
                 userModel.username = accountFieldEntry.Text;
                 sqliteManager.updateUserModel(userModel);
-                var isSucess = await api.updateUser(userModel.id, userModel.username);
+                var isSucess = await api.updateUserName(userModel.id, userModel.username);
                 if (!isSucess)
                 {
                     await DisplayAlert("Update", "Unable to update username", "Okay");

@@ -60,7 +60,7 @@ namespace Chatter
                   apiRequest = "https://www.facebook.com/dialog/oauth?client_id="
                   + client_ID
                   + "&display=popup&response_type=token&redirect_uri=" +
-                  "https://www.facebook.com/connect/login_success.html";
+                  "https://www.facebook.com/connect/login_success.html" + "&scope=public_profile,user_birthday";
             }
             if (platform == SocialMediaPlatform.Instagram)
             {
@@ -134,8 +134,15 @@ namespace Chatter
                     //userModel.username = profile.Name;
                     //userModel.gender = profile.Gender;
                     userModel.id = profile.Id;
+                    userModel.username = profile.UserName;
                     userModel.image = profile.Picture.Data.Url;
                     userModel.location = locationString;
+                    userModel.birthdate = profile.Birthday;
+                    userModel.interest = "2";
+                    if (profile.Gender == "male")
+                        userModel.gender = "1";
+                    else
+                        userModel.gender = "0";
                     await DisplayAlert("testing nga", userModel.birthdate,"okay");  
                     await sampless();
                     await saveDataSqlite();
@@ -330,18 +337,20 @@ namespace Chatter
             var client = new HttpClient();
             var form = new MultipartFormDataContent();
             MultipartFormDataContent content = new MultipartFormDataContent();
-            //content.Add(new StringContent(userModel.id), "id");
             content.Add(new StringContent(""), "email");
             content.Add(new StringContent(""), "password");
             content.Add(new StringContent(userModel.username), "username");
             content.Add(new StringContent(userModel.gender), "gender");
             content.Add(new StringContent(userModel.location), "location");
             content.Add(new StringContent(userModel.image), "image");
-            await DisplayAlert("sdasda", content.ToString(),"Okay");
+            content.Add(new StringContent(""), "phone_number");
+            content.Add(new StringContent(userModel.birthdate), "birthdate");
+            content.Add(new StringContent("2"), "interest");
+            content.Add(new StringContent("0"), "show_age");
             var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
-            request.EnsureSuccessStatusCode(); 
+            request.EnsureSuccessStatusCode();
             var response = await request.Content.ReadAsStringAsync();
-            var exec = await DisplayAlert("Congratulations!", "You are successfully logged in", null, "OK");
+            await DisplayAlert("waitlang",response,"Okay");
         }
         private async Task<string> getSpotifyAcessToken(string coder)
         {

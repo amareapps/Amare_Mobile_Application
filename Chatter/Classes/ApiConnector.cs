@@ -557,7 +557,7 @@ namespace Chatter.Classes
                 return null;
             }
         }
-        public async Task<bool> updateUser(string id,string value)
+        public async Task<bool> updateUserName(string id,string value)
         {
             try
             {

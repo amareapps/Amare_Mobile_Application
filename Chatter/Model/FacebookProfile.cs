@@ -24,10 +24,13 @@ namespace Chatter.Model
         public string Id { get; set; }
         public Picture Picture { get; set; }
 
-        [JsonProperty("last_name")]
-        public string LastName { get; set; }
-        [JsonProperty("first_name")]
-        public string FirstName { get; set; }
+        [JsonProperty("name")]
+        public string UserName { get; set; }
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+        [JsonProperty("gender")]
+        public string Gender { get; set; }
+
     }
 
 }
