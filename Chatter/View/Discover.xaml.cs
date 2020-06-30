@@ -296,10 +296,15 @@ namespace Chatter
         }
         private async Task dislikeUser()
         {
-            //mageSources.Remove(currentItem);
+            if (coverFlowView.SelectedIndex > 1)
+            {
+                imageSources.RemoveAt(0);
+                var usertoRemove = imageSources.GetItem(0) as ImageStorage;
+                string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
+                await api.saveToDislikedUser(user_id, usertoRemove.id);
+                //imageSources.Remove(currentItem);
+            }
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
-            string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
-            await api.saveToDislikedUser(user_id, currentUserIdSelected);
         }
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
