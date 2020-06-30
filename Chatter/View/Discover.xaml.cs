@@ -271,15 +271,30 @@ namespace Chatter
             await Navigation.PushModalAsync(new NavigationPage(new VipPremium()));
         }
 
-        private void tapLeft_Tapped(object sender, EventArgs e)
+        private async void tapLeft_Tapped(object sender, EventArgs e)
         {
-            if(coverFlowView.SelectedIndex > 0)
+            if (coverFlowView.SelectedIndex > 0)
+            {
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
+                await autoDislikeOldUser();
+            }
         }
 
-        private void tapRight_Tapped(object sender, EventArgs e)
+        private async void tapRight_Tapped(object sender, EventArgs e)
         {
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+            await autoDislikeOldUser();
+        }
+        private async Task autoDislikeOldUser()
+        {
+            if (coverFlowView.SelectedIndex > 1)
+            {
+                var usertoRemove = imageSources[0];
+                string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
+                await api.saveToDislikedUser(user_id, usertoRemove.id);
+                imageSources.RemoveAt(0);
+                //imageSources.Remove(currentItem);
+            }
         }
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
@@ -296,14 +311,7 @@ namespace Chatter
         }
         private async Task dislikeUser()
         {
-            if (coverFlowView.SelectedIndex > 1)
-            {
-                imageSources.RemoveAt(0);
-                var usertoRemove = imageSources.GetItem(0) as ImageStorage;
-                string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
-                await api.saveToDislikedUser(user_id, usertoRemove.id);
-                //imageSources.Remove(currentItem);
-            }
+
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
         }
 
