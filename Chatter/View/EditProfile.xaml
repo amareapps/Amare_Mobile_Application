@@ -15,10 +15,10 @@
     </Page.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="70" Margin="0" Padding="0,10,0,0">
+            <Grid HeightRequest="70" Margin="0" Padding="0,7,0,0">
                 <BoxView BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Profile"/>
+                <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" HorizontalOptions="Center" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Center" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Profile"/>
             </Grid>
             <ScrollView Padding="0,10,0,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <StackLayout Spacing="10" Margin="20,0,20,10" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
@@ -99,8 +99,13 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+                                   <!-- <Picker SelectedIndex="1" Title="Centimeter"  x:Name="heightEntry">
+                                        <Picker.Items>
+                                            <x:String>A</x:String>
+                                        </Picker.Items>
+                                    </Picker>-->
                                     <Label Text="Height" Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                                    <local:RoundedEntry Grid.Row="1" Grid.Column="0" FontSize="Small"  x:Name="heightEntry" Keyboard="Numeric" Placeholder="Centimeters" Text="{Binding height}"></local:RoundedEntry>
+                                    <local:RoundedEntry Grid.Row="1" Grid.Column="0" FontSize="Small"  Keyboard="Numeric" Placeholder="Centimeters" Text="{Binding height}"></local:RoundedEntry>
                                 </StackLayout>
                                 <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="Weight" Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"></Label>
@@ -133,7 +138,7 @@
                     <StackLayout Padding="10,10,10,0">
                         <Button BackgroundColor="#1ed760" CornerRadius="30" ImageSource="spotify.png" TextColor="White" FontAttributes="Bold"  x:Name="spotifyButton" Clicked="spotifyButton_Clicked" Text="Connect to Spotify"></Button>
                     </StackLayout>
-                    <StackLayout x:Name="spotifyListLayout">
+                    <StackLayout x:Name="spotifyListLayout" IsVisible="false">
                         <ListView x:Name="spotifyListView" HeightRequest="100">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -149,8 +154,6 @@
                             <gradient:GradientColorStack StartColor="#962fbf" EndColor="#fa7e1e" Padding="13,0,0,0" GradientColorOrientation="Horizontal" BackgroundColor="Transparent" ImageSource="instagram.png" TextColor="White" FontAttributes="Bold"  x:Name="instagramButton" Clicked="instagramButton_Clicked" Text="Connect to Instagram"></gradient:GradientColorStack>
                         </Frame>
                     </StackLayout>
-
-
                     <flv:FlowListView x:Name="instagrammer" HeightRequest="360" FlowColumnCount="3" RowHeight="120" SeparatorVisibility="Default" HasUnevenRows="False">
                         <flv:FlowListView.FlowColumnTemplate>
                             <DataTemplate>

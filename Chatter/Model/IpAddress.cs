@@ -7,6 +7,6 @@ namespace Chatter.Model
 {
     public class IpAddress
     {
-        public string Url { get; set; } = "192.168.1.7";
+        public string Url { get; set; } = "192.168.1.2";
     }
 }
