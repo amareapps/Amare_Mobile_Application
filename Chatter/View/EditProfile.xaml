@@ -15,7 +15,7 @@
     </Page.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="70" Margin="0" Padding="0,7,0,0">
+            <Grid HeightRequest="100" Margin="0" Padding="0,7,0,0">
                 <BoxView BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" HorizontalOptions="Center" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Center" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Profile"/>

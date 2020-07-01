@@ -25,7 +25,7 @@
                     <local:SearchBarNoUnderline x:Name="searchEntry" Placeholder="Search for your matches" FontSize="Medium" CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" TextChanged="SearchBarNoUnderline_TextChanged" VerticalOptions="CenterAndExpand"></local:SearchBarNoUnderline>
                 </Frame>
                 <StackLayout Grid.Row="1">
-                    <Label Text="Recent matches" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                    <Label Text="Matches" TextColor="Black" FontSize="Medium" Margin="10,0,0,0" FontAttributes="Bold"></Label>
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                         <StackLayout x:Name="recentMatchesList" Orientation="Horizontal" Margin="10,0,0,0">
                             <BindableLayout.ItemTemplate>

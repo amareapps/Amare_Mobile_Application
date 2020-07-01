@@ -183,12 +183,12 @@ namespace Chatter
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("EEEEEE");
+                btn.BackgroundColor = Color.Default;
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("EEEEEE");
+            btne.BackgroundColor = Color.Transparent;
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womanButton)
@@ -201,12 +201,12 @@ namespace Chatter
             var looper = gridInterest.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("EEEEEE");
+                btn.BackgroundColor = Color.Default;
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("EEEEEE");
+            btne.BackgroundColor = Color.Transparent;
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womenInterestButton)
@@ -220,16 +220,16 @@ namespace Chatter
         {
             if (this.CurrentPage == emailContent)
             {
-                this.CurrentPage = nameContent;
+                this.CurrentPage = genderContent;
             }
             // else if (this.CurrentPage == passwordContent)
             //{
             //    this.CurrentPage = nameContent;
             //}
-            else if (this.CurrentPage == nameContent)
-            {
-                this.CurrentPage = genderContent;
-            }
+            //else if (this.CurrentPage == nameContent)
+            //{
+            //    this.CurrentPage = genderContent;
+            //}
             //else if (this.CurrentPage == birthdayContent)
            //{
             //    this.CurrentPage = genderContent;
