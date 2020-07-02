@@ -39,8 +39,8 @@
                           </StackLayout>
                     </StackLayout>
                 </Frame>
-            <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
-                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="False">
+                <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
+                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="False" ItemAppeared="coverFlowView_ItemAppeared">
                     <cards:CardsView.ItemTemplate>
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="20" HasShadow="True">
@@ -120,43 +120,43 @@
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                         </Frame.GestureRecognizers>
                                     </Frame>
+                                    <Grid Margin="3" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        AbsoluteLayout.LayoutBounds="1,0.95,-1,-1" ColumnSpacing="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                            <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton 
+                                             WidthRequest="60"
+                                             HeightRequest="60"
+                                             Padding="10"
+                                             Source="heart.png" 
+                                             Grid.Column="2" 
+                                             BackgroundColor="Transparent" 
+                                             x:Name="heartButton" 
+                                             VerticalOptions="Center" 
+                                             HorizontalOptions="Center" 
+                                             Clicked="heartButton_Clicked"
+                                             Opacity="0.7"/>
+                                        <ImageButton 
+                                             WidthRequest="40"
+                                             HeightRequest="40"
+                                             Padding="3" CornerRadius="30"
+                                             Source="dislike.png" 
+                                             Grid.Column="1" 
+                                             BackgroundColor="White" 
+                                             x:Name="xButton" 
+                                            Clicked="dislikeButton_Clicked"
+                                             VerticalOptions="Center" 
+                                             HorizontalOptions="Center" 
+                                             Opacity="0.7"/>
+                                    </Grid>
                                 </AbsoluteLayout>
                             </Frame>
                         </DataTemplate>
                     </cards:CardsView.ItemTemplate>
                 </cards:CardsView>
-                <Grid Margin="3" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
-                    AbsoluteLayout.LayoutBounds="1,0.95,-1,-1" ColumnSpacing="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                        <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <ImageButton 
-                                 WidthRequest="60"
-                                 HeightRequest="60"
-                                 Padding="10"
-                                 Source="heart.png" 
-                                 Grid.Column="2" 
-                                 BackgroundColor="Transparent" 
-                                 x:Name="heartButton" 
-                                 VerticalOptions="Center" 
-                                 HorizontalOptions="Center" 
-                                 Clicked="heartButton_Clicked"
-                                 Opacity="0.7"/>
-                    <ImageButton 
-                                 WidthRequest="40"
-                                 HeightRequest="40"
-                                 Padding="3" CornerRadius="30"
-                                 Source="dislike.png" 
-                                 Grid.Column="1" 
-                                 BackgroundColor="White" 
-                                 x:Name="xButton" 
-                                Clicked="dislikeButton_Clicked"
-                                 VerticalOptions="Center" 
-                                 HorizontalOptions="Center" 
-                                 Opacity="0.7"/>
-                </Grid>
             </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>
