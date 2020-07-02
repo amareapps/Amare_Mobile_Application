@@ -18,12 +18,14 @@
         <local:NumberToGenderConverter x:Key="numberToGender"></local:NumberToGenderConverter>
     </Page.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="0,0,0,0">
-            <Grid HeightRequest="70" Margin="0" Padding="0,5,0,0">
-                <BoxView BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
-                <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
-                <Label FontAttributes="Bold" TextColor="#890447" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
-            </Grid>
+        <StackLayout>
+            <Frame HasShadow="True" BackgroundColor="GhostWhite" Margin="0" Padding="0">
+                <Grid HeightRequest="50" Margin="0">
+                    <BoxView BackgroundColor="GhostWhite" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
+                    <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" HorizontalOptions="Center" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
+                    <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Center" VerticalOptions="Center" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="{Binding username, StringFormat='{0:F2}\&apos;s Profile'}"/>
+                </Grid>
+            </Frame>
             <ScrollView Padding="10,5,10,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <Grid>
                     <Grid.RowDefinitions>
