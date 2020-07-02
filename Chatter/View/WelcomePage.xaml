@@ -8,7 +8,7 @@
              x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <ffimageloading:CachedImage HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="welcomelogonew1.gif" Margin="0"/>
+            <ffimageloading:CachedImage WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="FINAL_AMERA.png" Margin="0"/>
             <Label Margin="20,40,20,30" Padding="0" TextColor="Black" HorizontalTextAlignment="Center" 
                    Text="Thank you for registering to Amare! We welcome you to a new world where &#x0a;love is limitless!" FontSize="Medium"/>
             <StackLayout>

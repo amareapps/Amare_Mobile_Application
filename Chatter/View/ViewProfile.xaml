@@ -19,7 +19,7 @@
     </Page.Resources>
     <ContentPage.Content>
         <StackLayout Padding="0,0,0,0">
-            <Grid HeightRequest="40" Margin="0" Padding="0,5,0,0">
+            <Grid HeightRequest="70" Margin="0" Padding="0,5,0,0">
                 <BoxView BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                 <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
                 <Label FontAttributes="Bold" TextColor="#890447" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Text="View Profile"/>
@@ -150,7 +150,7 @@
                                         <StackLayout Orientation="Vertical">
                                             <ffimageloading:CachedImage Source="heightmint.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
                                             </ffimageloading:CachedImage>
-                                            <Label Text="{Binding height}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding height, StringFormat='{0:F2} CM'}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                         </StackLayout>
                                     </FlexLayout>
                                 </Frame>
@@ -159,7 +159,7 @@
                                         <StackLayout Orientation="Vertical">
                                             <ffimageloading:CachedImage Source="weightmint.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
                                             </ffimageloading:CachedImage>
-                                            <Label Text="{Binding weight}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding weight, StringFormat='{0:F2} KG'}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                         </StackLayout>
                                     </FlexLayout>
                                 </Frame>
