@@ -274,20 +274,22 @@ namespace Chatter
             await Navigation.PushModalAsync(new NavigationPage(new VipPremium()));
         }
 
-        private async void tapLeft_Tapped(object sender, EventArgs e)
+        private void tapLeft_Tapped(object sender, EventArgs e)
         {
             if (coverFlowView.SelectedIndex > 0)
             {
+                DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
+                int sample = coverFlowView.SelectedIndex;
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
-                await autoDislikeOldUser();
+                //await autoDislikeOldUser();
             }
         }
 
-        private async void tapRight_Tapped(object sender, EventArgs e)
+        private void tapRight_Tapped(object sender, EventArgs e)
         {
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
-            await autoDislikeOldUser();
         }
+        
         private async Task autoDislikeOldUser()
         {
             if (coverFlowView.SelectedIndex > 1)
@@ -299,6 +301,12 @@ namespace Chatter
                 //imageSources.Remove(currentItem);
             }
         }
+
+        private async void coverFlowView_ItemAppeared(CardsView view, PanCardView.EventArgs.ItemAppearedEventArgs args)
+        {
+            await autoDislikeOldUser();
+        }
+
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var sample = coverFlowView.SelectedItem as ImageStorage;

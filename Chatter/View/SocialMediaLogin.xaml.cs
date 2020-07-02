@@ -203,16 +203,16 @@ namespace Chatter
                 content.Add(new StringContent("https://www.instagram.com/"), "redirect_uri");
                 content.Add(new StringContent(accessToken), "code");
                 var request = await client.GetAsync("https://api.instagram.com/oauth/access_token");
-                request.EnsureSuccessStatusCode();
+                //request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
-                //await DisplayAlert("Game!",response.ToString(),"Okay");
+                await DisplayAlert("Game!",response,"Okay");
                 var objectionss = JsonConvert.DeserializeObject<InstagramResponse>(response);
                 //await DisplayAlert("Barbie sabi ko na", objectionss.access_token +" USERID" +  objectionss.user_id,"Okay");
                 await getInstagramInfo(objectionss.user_id,objectionss.access_token);
             }
             catch (Exception ex)
             {
-                //await DisplayAlert("Error!", ex.ToString(), "Okay");
+                await DisplayAlert("Error!", ex.ToString(), "Okay");
             }
         }
         private async Task getInstagramInfo(string user_Id,string accesstoken)
@@ -238,21 +238,21 @@ namespace Chatter
                         {
                             await api.getInstagramPhotos(userIdToSync.Replace("\"",""), profile.Data[a].MediaUrl);
                         }
-                        await DisplayAlert("Instagram", "", "Instagram Photos successfully synced");
+                        await DisplayAlert("Instagram", "Instagram Photos successfully synced", "Okay");
                         await Navigation.PopAsync(false);
                         return;
                     }
-                    //var userExist = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(profile.Data[0].Id)).ToList();
-                    //foreach(UserModel midek in userExist)
-                    //{
-                    //    userModel = midek;
-                    //    break;
-                    //}
-                    //if(userExist.Count > 0)
-                    //{
-                    //    await saveDataSqlite();
-                    //    return;
-                    //}
+                    var userExist = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(profile.Data[0].Id)).ToList();
+                    foreach(UserModel midek in userExist)
+                    {
+                        userModel = midek;
+                        break;
+                    }
+                    if(userExist.Count > 0)
+                    {
+                        await saveDataSqlite();
+                        return;
+                    }
                     userModel.username = profile.Data[0].Username;
                     userModel.id = profile.Data[0].Id;
                     userModel.image = profile.Data[0].MediaUrl;
