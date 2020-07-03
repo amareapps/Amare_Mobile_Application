@@ -145,6 +145,7 @@
     <Compile Include="EntryLoginAndroidRenderer.cs" />
     <Compile Include="GradientColorStackRenderer.cs" />
     <Compile Include="IClearCookiesImplementation.cs" />
+    <Compile Include="LocationZ.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NotificationHelper.cs" />
     <Compile Include="DroidOAuth2Authenticator.cs" />

@@ -21,10 +21,11 @@ using Xamarin.Essentials;
 using Chatter.Classes;
 using Chatter.View;
 using Google.Protobuf.WellKnownTypes;
-
+[assembly: Xamarin.Forms.Dependency(typeof(Chatter.Classes.ILocSettings))]
 namespace Chatter
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
 
     public partial class ProfileMaintenance : CarouselPage
     {
@@ -80,6 +81,17 @@ namespace Chatter
                 {
                     await DisplayAlert("Image Selection", "Image required.", "Okay");
                     continueButton.IsEnabled = true;
+                    return;
+                }
+                var myAction = await DisplayAlert("Location", "You need to turn on location first", "OK", "CANCEL");
+                if (myAction)
+                {
+                        //DependencyService.Get<ISettingsService>().OpenSettings();
+                        global::Xamarin.Forms.DependencyService.Get<global::Chatter.Classes.ILocSettings>().OpenSettings();
+                }
+                else
+                {
+                    await DisplayAlert("Alert", "User Denied Permission", "OK");
                     return;
                 }
                 var locationLast = await Geolocation.GetLastKnownLocationAsync();
