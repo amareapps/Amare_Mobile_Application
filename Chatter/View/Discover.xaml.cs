@@ -64,7 +64,7 @@ namespace Chatter
                     else
                     {
                         hasSearchReference = true;
-                        //imageSources.Clear();
+                        imageSources.Clear();
                     }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
@@ -168,7 +168,6 @@ namespace Chatter
         {
             try
             {
-                imageSources.Remove(currentItem);
                 await checkIfLiked();
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
@@ -197,6 +196,7 @@ namespace Chatter
                     var exec = await DisplayAlert("Discover", "You liked " + currentItem.username, null, "OK");
 
                 }
+                imageSources.Remove(currentItem);
             }
             catch (Exception ex)
             {
@@ -207,7 +207,7 @@ namespace Chatter
         {
             string sample = Application.Current.Properties["Id"].ToString().Replace("\"","") + "," + currentUserIdSelected;
             string strurl = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_likeexists&userparam='" + sample + "'";
-            //await DisplayAlert("Sample",strurl,"Okay");
+
             using (var cl = new HttpClient())
             {
                 var request = await cl.GetAsync(strurl);
@@ -217,9 +217,12 @@ namespace Chatter
                 {
                     isLiked = false; 
                 }
+                else if(response == "null")
+                {
+                    isLiked = false;
+                }
                 else
                 {
-                    //await DisplayAlert("Game", strurl + " hayss" + response, "Okay");
                     liked_Id = Convert.ToInt32(response.Replace("\"", ""));
                     isLiked = true;
                 }
@@ -271,6 +274,35 @@ namespace Chatter
             await Navigation.PushModalAsync(new NavigationPage(new VipPremium()));
         }
 
+        private async void tapLeft_Tapped(object sender, EventArgs e)
+        {
+            if (coverFlowView.SelectedIndex > 0)
+            {
+                //DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
+                int sample = coverFlowView.SelectedIndex;
+                coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
+            }
+        }
+
+        private async void tapRight_Tapped(object sender, EventArgs e)
+        {
+            await autoDislikeOldUser();
+            coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+        }
+        
+        private async Task autoDislikeOldUser()
+        {
+            if (coverFlowView.SelectedIndex >= 1)
+            {
+                var usertoRemove = imageSources[0];
+                string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
+                await api.saveToDislikedUser(user_id, usertoRemove.id);
+                imageSources.Remove(usertoRemove);
+                //imageSources.Remove(currentItem);
+            }
+        }
+
+
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var sample = coverFlowView.SelectedItem as ImageStorage;
@@ -286,9 +318,8 @@ namespace Chatter
         }
         private async Task dislikeUser()
         {
-            imageSources.Remove(currentItem);
-            string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
-            await api.saveToDislikedUser(user_id, currentUserIdSelected);
+
+            coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
         }
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)

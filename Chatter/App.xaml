@@ -6,6 +6,13 @@
              mc:Ignorable="d"
              x:Class="Chatter.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Nunito-Regular.ttf#Nunito-Regular"></Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="Nunito-Regular.ttf#Nunito-Regular"></Setter>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

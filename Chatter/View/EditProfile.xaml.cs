@@ -25,6 +25,8 @@ namespace Chatter.View
         MediaFile file;
         ApiConnector api = new ApiConnector();
         ObservableCollection<InstagramPhotosModel> instagramPhotos = new ObservableCollection<InstagramPhotosModel>();
+        ObservableCollection<SpotifyModelLocal> spotifyModelLocals = new ObservableCollection<SpotifyModelLocal>();
+
         FireStorage fireStorage = new FireStorage();
         string imageUrl;
         public EditProfile()
@@ -40,7 +42,19 @@ namespace Chatter.View
             await loadFromSqlite();
             try
             {
+                var spotifyList = await api.getSpotifyList(Application.Current.Properties["Id"].ToString().Replace("\"", ""));
                 var igPhotos = await api.getIgPhotos(Application.Current.Properties["Id"].ToString().Replace("\"", ""));
+                if (spotifyList == null)
+                {
+                    spotifyButton.Text = "Connect to Spotify";
+                    spotifyListLayout.IsVisible = false;
+                }
+                else
+                {
+                    spotifyButton.Text = "Disconnect to Spotify";
+                    spotifyListLayout.IsVisible = true;
+                }
+
                 if (igPhotos == null)
                 {
                     instagramButton.Text = "Connect to Instagram";
@@ -51,11 +65,15 @@ namespace Chatter.View
                     instagramButton.Text = "Disconnect to Instagram";
                     instagrammer.IsVisible = true;
                 }
+                foreach (var spotVal in spotifyList)
+                {
+                    spotifyModelLocals.Add(spotVal);
+                }
                 foreach (var modeler in igPhotos)
                 {
                     instagramPhotos.Add(modeler);
                 }
-
+                spotifyListView.ItemsSource = spotifyModelLocals;
                 instagrammer.FlowItemsSource = instagramPhotos;
             }
             catch (Exception ex)
@@ -296,6 +314,11 @@ namespace Chatter.View
                 images.Add(imageUrl.image_url);
             }
             await Navigation.PushModalAsync(new NavigationPage(new ImageViewer(images, "Instagram Photos")));
+        }
+
+        private async void spotifyButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SocialMediaLogin(3));
         }
     }
 }

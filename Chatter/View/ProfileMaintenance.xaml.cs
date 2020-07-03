@@ -21,10 +21,11 @@ using Xamarin.Essentials;
 using Chatter.Classes;
 using Chatter.View;
 using Google.Protobuf.WellKnownTypes;
-
+[assembly: Xamarin.Forms.Dependency(typeof(Chatter.Classes.ILocSettings))]
 namespace Chatter
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
 
     public partial class ProfileMaintenance : CarouselPage
     {
@@ -80,6 +81,17 @@ namespace Chatter
                 {
                     await DisplayAlert("Image Selection", "Image required.", "Okay");
                     continueButton.IsEnabled = true;
+                    return;
+                }
+                var myAction = await DisplayAlert("Location", "You need to turn on location first", "OK", "CANCEL");
+                if (myAction)
+                {
+                        //DependencyService.Get<ISettingsService>().OpenSettings();
+                        global::Xamarin.Forms.DependencyService.Get<global::Chatter.Classes.ILocSettings>().OpenSettings();
+                }
+                else
+                {
+                    await DisplayAlert("Alert", "User Denied Permission", "OK");
                     return;
                 }
                 var locationLast = await Geolocation.GetLastKnownLocationAsync();
@@ -183,12 +195,12 @@ namespace Chatter
             var looper = iamGrid.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("EEEEEE");
+                btn.BackgroundColor = Color.Default;
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("EEEEEE");
+            btne.BackgroundColor = Color.Transparent;
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womanButton)
@@ -201,12 +213,12 @@ namespace Chatter
             var looper = gridInterest.Children.Where(x => x is Button);
             foreach (Button btn in looper)
             {
-                btn.BackgroundColor = Color.FromHex("EEEEEE");
+                btn.BackgroundColor = Color.Default;
                 btn.BorderColor = Color.Transparent;
                 btn.BorderWidth = 0;
             }
             Button btne = (Button)sender;
-            btne.BackgroundColor = Color.FromHex("EEEEEE");
+            btne.BackgroundColor = Color.Transparent;
             btne.BorderWidth = 2;
             btne.BorderColor = Color.FromHex("3cc5d5");
             if(btne == womenInterestButton)
@@ -220,16 +232,16 @@ namespace Chatter
         {
             if (this.CurrentPage == emailContent)
             {
-                this.CurrentPage = nameContent;
+                this.CurrentPage = genderContent;
             }
             // else if (this.CurrentPage == passwordContent)
             //{
             //    this.CurrentPage = nameContent;
             //}
-            else if (this.CurrentPage == nameContent)
-            {
-                this.CurrentPage = genderContent;
-            }
+            //else if (this.CurrentPage == nameContent)
+            //{
+            //    this.CurrentPage = genderContent;
+            //}
             //else if (this.CurrentPage == birthdayContent)
            //{
             //    this.CurrentPage = genderContent;

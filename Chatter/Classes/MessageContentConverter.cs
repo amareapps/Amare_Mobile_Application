@@ -14,9 +14,13 @@ namespace Chatter.Classes
             {
                 return "sent an image";
             }
-            if (passedValue.Contains("chatter-7b8e4") && passedValue.Contains("UserImages"))
+            if (passedValue.Contains("chatter-7b8e4") && passedValue.Contains("AudioCollection"))
             {
                 return "sent a voice clip";
+            }
+            if (passedValue.Contains("firebasestorage"))
+            {
+                return "sent an attachment";
             }
             return passedValue;
         }

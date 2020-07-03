@@ -82,7 +82,7 @@ namespace Chatter.ViewModel
                                 Foreground = authNetwork.Foreground,
                                 Background = authNetwork.Background,
                                 Picture = facebookProfile.Picture.Data.Url,
-                                Name = $"{facebookProfile.FirstName} {facebookProfile.LastName}",
+                                Name = facebookProfile.UserName
                             };
                             await App.Current.MainPage.Navigation.PushModalAsync(new WelcomePage());
                             break;
