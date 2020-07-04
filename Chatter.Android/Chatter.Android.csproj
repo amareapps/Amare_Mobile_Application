@@ -157,6 +157,7 @@
     <GoogleServicesJson Include="google-services.json" />
     <AndroidAsset Include="Assets\BasikBook.ttf" />
     <AndroidAsset Include="Assets\Nunito-Regular.ttf" />
+    <AndroidAsset Include="Assets\Nunito-Bold.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
