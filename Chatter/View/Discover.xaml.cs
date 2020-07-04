@@ -64,7 +64,7 @@ namespace Chatter
                     else
                     {
                         hasSearchReference = true;
-                        //imageSources.Clear();
+                        imageSources.Clear();
                     }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
@@ -274,38 +274,34 @@ namespace Chatter
             await Navigation.PushModalAsync(new NavigationPage(new VipPremium()));
         }
 
-        private void tapLeft_Tapped(object sender, EventArgs e)
+        private async void tapLeft_Tapped(object sender, EventArgs e)
         {
             if (coverFlowView.SelectedIndex > 0)
             {
-                DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
+                //DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
                 int sample = coverFlowView.SelectedIndex;
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
-                //await autoDislikeOldUser();
             }
         }
 
-        private void tapRight_Tapped(object sender, EventArgs e)
+        private async void tapRight_Tapped(object sender, EventArgs e)
         {
+            await autoDislikeOldUser();
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
         }
         
         private async Task autoDislikeOldUser()
         {
-            if (coverFlowView.SelectedIndex > 1)
+            if (coverFlowView.SelectedIndex >= 1)
             {
                 var usertoRemove = imageSources[0];
                 string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
                 await api.saveToDislikedUser(user_id, usertoRemove.id);
-                imageSources.RemoveAt(0);
+                imageSources.Remove(usertoRemove);
                 //imageSources.Remove(currentItem);
             }
         }
 
-        private async void coverFlowView_ItemAppeared(CardsView view, PanCardView.EventArgs.ItemAppearedEventArgs args)
-        {
-            await autoDislikeOldUser();
-        }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {

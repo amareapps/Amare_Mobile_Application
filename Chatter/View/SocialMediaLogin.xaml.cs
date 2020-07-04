@@ -295,6 +295,7 @@ namespace Chatter
             }
             if (socialMedieChosen == SocialMediaPlatform.Instagram)
             {
+                await DisplayAlert("Today",url,"Okay");
                 if (!url.Contains("https://www.instagram.com/?code="))
                     return string.Empty;
 
