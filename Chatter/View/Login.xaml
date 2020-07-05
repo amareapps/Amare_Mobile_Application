@@ -1,4 +1,4 @@
-﻿ <?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -73,7 +73,7 @@
                             <Grid>
                                 <ImageButton x:Name="fbLoginButton" Clicked="fbLoginButton_Clicked" Margin="5,0,5,0" Source="fb_logo.png" HeightRequest="45" WidthRequest="45" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="0" />
                                 <ImageButton Margin="5,0,5,0" Source="ig_logo.png" Clicked="instagram_Clicked" HeightRequest="45" WidthRequest="45" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="1" />
-                                <ImageButton Margin="5,0,5,0" Source="google_logo.png" HeightRequest="45" WidthRequest="45" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="2" />
+                                <ImageButton Margin="5,0,5,0" Source="google_logo.png" Clicked="ImageButton_Clicked" HeightRequest="45" WidthRequest="45" HorizontalOptions="Center" BackgroundColor="Transparent"  Grid.Column="2" />
                             </Grid>
                         </StackLayout>
                     </StackLayout>

@@ -40,6 +40,14 @@ namespace Chatter.Classes
         }
         public SearchRefenceModel GetSearchRefence()
         {
+            SearchRefenceModel returnDefault = new SearchRefenceModel
+            {
+                user_id = Application.Current.Properties["Id"].ToString().Replace("\"", ""),
+                distance_metric = 0,
+                maximum_distance = "100",
+                age_end = "100",
+                age_start = "1"
+            };
             string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
             System.IO.Directory.CreateDirectory(applicationFolderPath);
             string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
@@ -52,7 +60,7 @@ namespace Chatter.Classes
                     return userModel;
                 }
             }
-            return null;
+            return returnDefault;
         }
         public void setIpAddress(IpAddress obj)
         {

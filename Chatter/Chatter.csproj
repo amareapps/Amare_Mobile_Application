@@ -44,6 +44,7 @@
     <PackageReference Include="Plugin.Facebook" Version="1.0.0" />
     <PackageReference Include="Plugin.FacebookClient" Version="2.2.1" />
     <PackageReference Include="Plugin.Google" Version="1.0.1" />
+    <PackageReference Include="Plugin.GoogleClient" Version="2.1.12" />
     <PackageReference Include="Plugin.InAppBilling" Version="2.0.0" />
     <PackageReference Include="Plugin.Instagram" Version="1.0.0" />
     <PackageReference Include="Plugin.Share" Version="7.1.1" />

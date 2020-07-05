@@ -302,7 +302,6 @@ namespace Chatter.View
                 SocialMediaLogin instagramLogin = new SocialMediaLogin(1, false, Application.Current.Properties["Id"].ToString());
                 await Navigation.PushAsync(instagramLogin);
                 instagramButton.Text = "Disconnect to Instagram";
-
             }
         }
 

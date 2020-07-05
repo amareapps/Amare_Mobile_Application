@@ -301,7 +301,7 @@ namespace Chatter.Classes
                     return null;
                 }
                 var modifString = response.Replace(@"\", "");
-                var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString).ToList();
+                var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString);
                 return looper;
             }
             catch (Exception ex)

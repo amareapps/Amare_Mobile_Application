@@ -64,7 +64,7 @@ namespace Chatter
                     else
                     {
                         hasSearchReference = true;
-                        imageSources.Clear();
+                        //imageSources.Clear();
                     }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
@@ -276,18 +276,22 @@ namespace Chatter
 
         private async void tapLeft_Tapped(object sender, EventArgs e)
         {
+            coverFlowView.IsEnabled = false;
             if (coverFlowView.SelectedIndex > 0)
             {
                 //DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
                 int sample = coverFlowView.SelectedIndex;
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
             }
+            coverFlowView.IsEnabled = true;
         }
 
         private async void tapRight_Tapped(object sender, EventArgs e)
         {
+            coverFlowView.IsEnabled = false;
             await autoDislikeOldUser();
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+            coverFlowView.IsEnabled = true;
         }
         
         private async Task autoDislikeOldUser()
