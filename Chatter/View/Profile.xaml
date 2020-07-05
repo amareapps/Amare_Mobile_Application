@@ -33,7 +33,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="390"></RowDefinition>
-                    <RowDefinition Height="160"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid HeightRequest="50" Margin="0,0,0,0" Padding="0" Grid.Row="0">
                     <BoxView BackgroundColor="White" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
@@ -93,7 +93,7 @@
                     <!--</local:CustomFrame>-->
                 <!--<ffimageloading:CachedImage Opacity="0.4" HeightRequest="110" Source="heartbeat.gif" Margin="0,0,0,0" Grid.Row="2" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="Start"></ffimageloading:CachedImage>
     -->
-                <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="2" WidthRequest="600" BackgroundColor="WhiteSmoke" Margin="0,0,0,0" Padding="0,0,0,0" VerticalOptions="End" HorizontalOptions="Center">
+                <local:CustomFrame CornerRadius="20,20,0,0" Grid.Row="2" WidthRequest="600" BackgroundColor="WhiteSmoke" Margin="0,0,0,0" Padding="0,0,0,0" VerticalOptions="End" HorizontalOptions="FillAndExpand">
                     <StackLayout >
                         <cards:CarouselView x:Name="autoSlider" Padding="0" Margin="0,0,0,5">
                             <cards:CarouselView.ItemsSource>

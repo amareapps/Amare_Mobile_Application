@@ -546,8 +546,8 @@ namespace Chatter.Classes
                 }
                 Application.Current.Properties["Id"] = "\"" + user.id + "\"";
                 await saveToSqlite(user);
-                await retrieveSearchReference();
                 await retrieveGallery();
+                await retrieveSearchReference();
                 await retrievInbox();
                 await loadRecentMatches();
                 return user;

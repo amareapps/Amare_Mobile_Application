@@ -109,6 +109,7 @@ namespace Chatter
                     string sample = response.ToString().Replace(@"\", "");
                     //await DisplayAlert("Discover", response, "Okay");
                     var looper = JsonConvert.DeserializeObject<List<ImageStorage>>(sample);
+                    imageSources.Clear();
                     if (sample.Contains("Undefined"))
                     {
                         await DisplayAlert("Discover", "No user to display", "Okay");
@@ -117,8 +118,8 @@ namespace Chatter
                     }
                     foreach (ImageStorage imageStorage in looper)
                     {
-                        if (!imageSources.Any(x => x.id == imageStorage.id))
-                        {
+                        //if (!imageSources.Any(x => x.id == imageStorage.id))
+                        //{
                             if (hasSearchReference == true)
                             {
                                 if (CheckSearching(imageStorage) == false)
@@ -137,7 +138,7 @@ namespace Chatter
                             imageStorage.distance = getDistance(imageStorage);
                             //await DisplayAlert("nagcontinue ba?", imageStorage.birthdate, "Okay");
                             imageSources.Add(imageStorage);
-                        }
+                        //}
                     }
                     //coverFlowView.SetBinding(CoverFlowView.ItemsSourceProperty,nameof(imageSources.));
                     coverFlowView.ItemsSource = imageSources;

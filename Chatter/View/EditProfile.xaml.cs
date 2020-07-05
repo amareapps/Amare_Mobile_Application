@@ -78,6 +78,7 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
+                //await DisplayAlert("test", ex.ToString(), "test");
                 instagramButton.Text = "Connect to Instagram";
                 instagrammer.IsVisible = false;
             }
