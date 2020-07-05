@@ -28,6 +28,7 @@
                     </Grid>
                     <local:CustomEditor Placeholder="Give us any additional context on what happened..." x:Name="entryReport" FontSize="Small"></local:CustomEditor>
                     <Button CornerRadius="5" Text="Report" x:Name="btnReport" Clicked="btnReport_Clicked" BackgroundColor="Accent" TextColor="White"/>
+                    <Button CornerRadius="5" Text="Cancel" x:Name="btnReportCancel" Clicked="btnReportCancel_Clicked" BackgroundColor="Default"/>
                     </StackLayout>
                 </ScrollView>
                 </StackLayout>
