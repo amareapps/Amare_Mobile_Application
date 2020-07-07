@@ -104,8 +104,8 @@
                                             <StackLayout Grid.Column="2" Spacing="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End">
                                                 <StackLayout Orientation="Vertical">
                                                     <StackLayout Orientation="Horizontal" Padding="0" Margin="0">
-                                                        <Label Margin="0,0,5,0" FontSize="Small" TextColor="Black" HorizontalTextAlignment="End" Text="{Binding distance}"/>
-                                                        <Label Padding="0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalTextAlignment="Start" VerticalOptions="End"/>
+                                                        <Label FontAttributes="Italic" Margin="0,0,0,0" FontSize="Small" TextColor="Black" HorizontalTextAlignment="End" Text="{Binding distance}"/>
+                                                        <Label FontAttributes="Italic" Padding="0" FontSize="Small" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalTextAlignment="Start" VerticalOptions="End"/>
                                                     </StackLayout>
                                                     
                                                 </StackLayout>
