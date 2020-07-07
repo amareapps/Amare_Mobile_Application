@@ -63,7 +63,7 @@ namespace Chatter
         }
         protected async override void OnAppearing()
         {
-            /*InboxModel initModel = new InboxModel()
+            InboxModel initModel = new InboxModel()
             {
                 user_id = "amare",
                 image = "Amare_logo.png",
@@ -72,10 +72,9 @@ namespace Chatter
                 username = "Amare Chat Bot",
                 datetime = DateTime.Now.ToString("MM/dd/yyyy"),
                 distance = "0",
+                message = "Hi!, I am amare chatbot",
                 distance_metric = "0"
-        };
-
-
+            };
             RecentMatchesModel initRecent = new RecentMatchesModel()
             {
                 user_id = "amare",
@@ -83,12 +82,11 @@ namespace Chatter
                 image = "Amare_logo.png",
                 username = "Amare"
             };
-            */
 
             inboxModels.Clear();
             matchesModel.Clear();
-            //matchesModel.Add(initRecent);
-           // inboxModels.Add(initModel);
+            matchesModel.Add(initRecent);
+            inboxModels.Add(initModel);
             userSearchReference = sqliteManager.GetSearchRefence();
             deleteSqliteData();
             await refreshData();
@@ -197,7 +195,7 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", ex.ToString(), "Okay");
+                //await DisplayAlert("Error", ex.ToString(), "Okay");
             }
         }
 
@@ -241,7 +239,7 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", ex.ToString(), "Okay");
+                //await DisplayAlert("Error", ex.ToString(), "Okay");
             }
         }
         private void saveToLocalDb(InboxModel model)

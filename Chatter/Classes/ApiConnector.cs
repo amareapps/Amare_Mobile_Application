@@ -301,7 +301,7 @@ namespace Chatter.Classes
                     return null;
                 }
                 var modifString = response.Replace(@"\", "");
-                var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString).ToList();
+                var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString);
                 return looper;
             }
             catch (Exception ex)
@@ -546,8 +546,8 @@ namespace Chatter.Classes
                 }
                 Application.Current.Properties["Id"] = "\"" + user.id + "\"";
                 await saveToSqlite(user);
-                await retrieveSearchReference();
                 await retrieveGallery();
+                await retrieveSearchReference();
                 await retrievInbox();
                 await loadRecentMatches();
                 return user;

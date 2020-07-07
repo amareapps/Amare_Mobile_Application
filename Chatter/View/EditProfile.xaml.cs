@@ -78,6 +78,7 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
+                //await DisplayAlert("test", ex.ToString(), "test");
                 instagramButton.Text = "Connect to Instagram";
                 instagrammer.IsVisible = false;
             }
@@ -302,7 +303,6 @@ namespace Chatter.View
                 SocialMediaLogin instagramLogin = new SocialMediaLogin(1, false, Application.Current.Properties["Id"].ToString());
                 await Navigation.PushAsync(instagramLogin);
                 instagramButton.Text = "Disconnect to Instagram";
-
             }
         }
 

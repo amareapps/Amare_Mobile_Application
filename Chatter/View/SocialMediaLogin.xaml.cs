@@ -16,6 +16,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Chatter.Model;
+using Newtonsoft.Json.Linq;
 
 namespace Chatter
 {
@@ -26,6 +27,8 @@ namespace Chatter
         ApiConnector api = new ApiConnector();
         public string client_ID = "249917976134115";
         public string ig_clientID = "273184830525964";
+        public string google_ClientID = "381232475938-ia5gh8vg53rtfvpm4ul8gij8hq25vsgg.apps.googleusercontent.com";
+        public string google_ClientSecret = "rMXjY-Mcj0EXQozloY868rd-";
         private string anyare;
         private string userIdToSync;
         private int socialMedieChosen;
@@ -52,7 +55,7 @@ namespace Chatter
             InitializeComponent();
             isRegistration = _isRegistration;
             socialMedieChosen = platform;
-            DisplayAlert("hayss",isRegistration.ToString(),"Okay");
+            //DisplayAlert("hayss",isRegistration.ToString(),"Okay");
             userIdToSync = user_id;
             var apiRequest = "";
             if (platform == SocialMediaPlatform.Facebook)
@@ -71,8 +74,14 @@ namespace Chatter
             {
                 apiRequest = "https://accounts.spotify.com/authorize?response_type=code&client_id=36fe49c37d3c4f42842d639875571090&scope=user-top-read&redirect_uri=https://developer.spotify.com";
             }
+            if (platform == SocialMediaPlatform.Google)
+            {
+                apiRequest = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&scope=openid%20profile%20email&redirect_uri=http://amareapp.com&client_id=" + google_ClientID;
+            }
+
             var webView = new WebView
             {
+                
                 Source = apiRequest,
                 HeightRequest = 1
             };
@@ -109,15 +118,65 @@ namespace Chatter
         {
             var ewan = e.Url;
             var accessToken = await ExtractAccessTokenFromUrl(e.Url);
+            await DisplayAlert("checking pa111", accessToken, "Okay");
             if (accessToken != "" || string.IsNullOrEmpty(accessToken) == false)
             {
-                if(socialMedieChosen == SocialMediaPlatform.Facebook)
+                if (socialMedieChosen == SocialMediaPlatform.Facebook)
+                {
                     await getFacebookProfileAsync(accessToken);
-                else if(socialMedieChosen == SocialMediaPlatform.Instagram)
+                }
+                else if (socialMedieChosen == SocialMediaPlatform.Instagram)
+                {
+                    //await getInstagramInfo(Application.Current.Properties["Id"].ToString().Replace("\"",""), accessToken);
                     await getInstagramProfileAsync(accessToken);
-                else if(socialMedieChosen == SocialMediaPlatform.Spotify)
+                }
+                else if (socialMedieChosen == SocialMediaPlatform.Spotify)
+                {
                     await getSpotifyPlayList(accessToken);
+                }
+                else if (socialMedieChosen == SocialMediaPlatform.Google)
+                {
+                    await getGoogleProfile(accessToken);
+                    //await DisplayAlert("Access TOKENER",accessToken,"Okay");
+                }
             }
+        }
+        private async Task getGoogleProfile(string accessToken)
+        {
+            var client = new HttpClient();
+            var request = await client.GetAsync("https://www.googleapis.com/userinfo/v2/me?access_token=" + accessToken);
+            var value = await request.Content.ReadAsStringAsync();
+            var email = JsonConvert.DeserializeObject<JObject>(value).Value<string>("email");
+            var name = JsonConvert.DeserializeObject<JObject>(value).Value<string>("name");
+            var picture = JsonConvert.DeserializeObject<JObject>(value).Value<string>("picture");
+            var id = JsonConvert.DeserializeObject<JObject>(value).Value<string>("id");
+
+            userModel.email = id;
+            userModel.username = name;
+            userModel.image = picture;
+            userModel.password = email;
+            try
+            {
+                var test = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(userModel.email)).ToList();
+                int userExist = test.Count;
+                foreach (UserModel midek in test)
+                {
+                    userModel = midek;
+                    if (userExist > 0)
+                    {
+                        await saveDataSqlite();
+                        await loadMainPage();
+                        return;
+                    }
+                    break;
+                }
+                await loadMainPage();
+            }
+            catch (Exception ex)
+            {
+                await Navigation.PushAsync(new ProfileMaintenance("", true, userModel));
+            }
+                
         }
         public async Task getFacebookProfileAsync(string accessToken)
         {
@@ -161,7 +220,7 @@ namespace Chatter
             try
             {
                 var client = new HttpClient();
-                await DisplayAlert("Game!", accessToken, "Okay");
+                await DisplayAlert("Game! Spotify to e", accessToken, "Okay");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 var request = await client.GetAsync("https://api.spotify.com/v1/me/top/artists");
@@ -197,15 +256,15 @@ namespace Chatter
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
                 MultipartFormDataContent content = new MultipartFormDataContent();
-                content.Add(new StringContent(ig_clientID), "client_id");
-                content.Add(new StringContent("e4d498bb21f77504bec7981e2b0ef2bc"), "Authorization");
+                content.Add(new StringContent("273184830525964"), "client_id");
+                content.Add(new StringContent("e4d498bb21f77504bec7981e2b0ef2bc"), "client_secret");
                 content.Add(new StringContent("authorization_code"), "grant_type");
                 content.Add(new StringContent("https://www.instagram.com/"), "redirect_uri");
                 content.Add(new StringContent(accessToken), "code");
-                var request = await client.GetAsync("https://api.instagram.com/oauth/access_token");
-                //request.EnsureSuccessStatusCode();
+                var request = await client.PostAsync("https://api.instagram.com/oauth/access_token",content);
+                request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
-                await DisplayAlert("Game!",response,"Okay");
+                await DisplayAlert("Gameersssss!",response,"Okay");
                 var objectionss = JsonConvert.DeserializeObject<InstagramResponse>(response);
                 //await DisplayAlert("Barbie sabi ko na", objectionss.access_token +" USERID" +  objectionss.user_id,"Okay");
                 await getInstagramInfo(objectionss.user_id,objectionss.access_token);
@@ -224,12 +283,23 @@ namespace Chatter
                     //await DisplayAlert("Dapat meron na",accesstoken, "Okay");
                     string commander = "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + accesstoken;
                     string commander22 = "https://graph.facebook.com/" + user_Id + "/media&access_token="+ accesstoken;
-                    string commander2 = "https://graph.instagram.com/me/media?fields=id,ig_id,media_url,username&access_token=" + accesstoken;
+                    string commander2;
+                    if (isRegistration)
+                    {
+                        commander2 = "https://graph.instagram.com/me/media?fields=id,username,media_url&access_token=" + accesstoken;
+                    }
+                    else
+                    {
+                        commander2 = "https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp&access_token=" + accesstoken;
+                    }
+                    
                     //await DisplayAlert("Bbalabala", commander22, "Okay");
                     var request = await cl.GetAsync(commander2);
                     //request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
+                    await DisplayAlert("Instagram", response, "Okay");
                     var profile = JsonConvert.DeserializeObject<InstagramModel>(response);
+
                     //var existingUser = ;
                     if (!isRegistration)
                     {
@@ -295,7 +365,7 @@ namespace Chatter
             }
             if (socialMedieChosen == SocialMediaPlatform.Instagram)
             {
-                await DisplayAlert("Today",url,"Okay");
+                //await DisplayAlert("Today",url,"Okay");
                 if (!url.Contains("https://www.instagram.com/?code="))
                     return string.Empty;
 
@@ -316,7 +386,48 @@ namespace Chatter
                 return testing;
 
             }
+            if (socialMedieChosen == SocialMediaPlatform.Google)
+            {
+                if (!url.Contains("http://amareapp.com/?code="))
+                    return string.Empty;
+                await DisplayAlert("Laman mo?",url,"Okay");
+                int firstStringPosition = url.IndexOf("=");
+                int secondStringPosition = url.IndexOf("&");
+                string stringBetweenTwoStrings = url.Substring(firstStringPosition + 1,
+                    secondStringPosition - firstStringPosition);
+                //var two = one.Replace("&scope=openid&authuser=0&prompt=consent#", "");
+                //var three = two.Replace("&scope=openid%20profile%20email,email&authuser=0&prompt=none#", "");
+
+                //await DisplayAlert("test",two,"Okay");
+                await DisplayAlert("test", stringBetweenTwoStrings, "Okay");
+                var final = await getGoogleAccessToken(stringBetweenTwoStrings);
+                //await DisplayAlert("Laman mo?2", one, "Okay");
+                return final;
+            }
             return string.Empty;
+        }
+        private async Task<string> getGoogleAccessToken(string code)
+        {
+            string urls = "https://www.googleapis.com/oauth2/v4/token" + 
+                "?code=" + code + 
+                "&client_id=" + google_ClientID +   
+                "&client_secret=" + google_ClientSecret +
+                "&redirect_uri=http://amareapp.com" +
+                "&grant_type=authorization_code";
+            var client = new HttpClient();
+            var response = await client.PostAsync(urls,null);
+            //response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            await DisplayAlert("Nays", json, "Okay");
+            var accesstoken = JsonConvert.DeserializeObject<JObject>(json).Value<string>("access_token");
+            await DisplayAlert("Nays", accesstoken, "Okay"); 
+            return accesstoken;
+            //MultipartFormDataContent content = new MultipartFormDataContent();
+            //content.Add(new StringContent(google_ClientID), "client_id");
+            //content.Add(new StringContent(google_ClientSecret), "client_secret");
+            //content.Add(new StringContent("authorization_code"), "grant_type");
+            //content.Add(new StringContent("http://amareapp.com"), "redirect_uri");
+            //content.Add(new StringContent(code), "code");
         }
         private async Task saveDataSqlite()
         {
