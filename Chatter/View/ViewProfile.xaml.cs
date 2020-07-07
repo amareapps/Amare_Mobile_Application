@@ -1,6 +1,7 @@
 ﻿using Android.Database;
 using Chatter.Classes;
 using Chatter.Model;
+using eliteKit.MarkupExtensions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,6 @@ namespace Chatter.View
         protected async override void OnAppearing()
         {
             instagramPhotos.Clear();
-            base.OnAppearing();
             await loadUser();
         }
         async Task loadUser()

@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,10 @@ namespace Chatter.View
                 bodyMessage += "Other reasons: " + entryReport.Text;
             var message = new EmailMessage("Report User", bodyMessage, "amareappdev@gmail.com");
             Email.ComposeAsync(message);
+        }
+        private async void btnReportCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }

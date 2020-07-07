@@ -64,7 +64,7 @@ namespace Chatter
                     else
                     {
                         hasSearchReference = true;
-                        imageSources.Clear();
+                        //imageSources.Clear();
                     }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
@@ -109,6 +109,7 @@ namespace Chatter
                     string sample = response.ToString().Replace(@"\", "");
                     //await DisplayAlert("Discover", response, "Okay");
                     var looper = JsonConvert.DeserializeObject<List<ImageStorage>>(sample);
+                    imageSources.Clear();
                     if (sample.Contains("Undefined"))
                     {
                         await DisplayAlert("Discover", "No user to display", "Okay");
@@ -117,8 +118,8 @@ namespace Chatter
                     }
                     foreach (ImageStorage imageStorage in looper)
                     {
-                        if (!imageSources.Any(x => x.id == imageStorage.id))
-                        {
+                        //if (!imageSources.Any(x => x.id == imageStorage.id))
+                        //{
                             if (hasSearchReference == true)
                             {
                                 if (CheckSearching(imageStorage) == false)
@@ -137,7 +138,7 @@ namespace Chatter
                             imageStorage.distance = getDistance(imageStorage);
                             //await DisplayAlert("nagcontinue ba?", imageStorage.birthdate, "Okay");
                             imageSources.Add(imageStorage);
-                        }
+                        //}
                     }
                     //coverFlowView.SetBinding(CoverFlowView.ItemsSourceProperty,nameof(imageSources.));
                     coverFlowView.ItemsSource = imageSources;
@@ -276,18 +277,22 @@ namespace Chatter
 
         private async void tapLeft_Tapped(object sender, EventArgs e)
         {
+            coverFlowView.IsEnabled = false;
             if (coverFlowView.SelectedIndex > 0)
             {
                 //DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
                 int sample = coverFlowView.SelectedIndex;
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
             }
+            coverFlowView.IsEnabled = true;
         }
 
         private async void tapRight_Tapped(object sender, EventArgs e)
         {
+            coverFlowView.IsEnabled = false;
             await autoDislikeOldUser();
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+            coverFlowView.IsEnabled = true;
         }
         
         private async Task autoDislikeOldUser()

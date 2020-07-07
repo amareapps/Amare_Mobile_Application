@@ -166,24 +166,31 @@ namespace Chatter
         }
         private async Task retrieveSearchReference()
         {
-            using (var cl = new HttpClient())
+            try
             {
-                string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_search_reference&id='" + Application.Current.Properties["Id"].ToString() + "'";
-                var request = await cl.GetAsync(urlString);
-                request.EnsureSuccessStatusCode();
-                var response = await request.Content.ReadAsStringAsync();
-                //await DisplayAlert("Erro!", response.ToString(), "Okay");
-                if (response.ToString().Contains("Undefined"))
+                using (var cl = new HttpClient())
                 {
-                    return;
+                    string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_search_reference&id='" + Application.Current.Properties["Id"].ToString() + "'";
+                    var request = await cl.GetAsync(urlString);
+                    request.EnsureSuccessStatusCode();
+                    var response = await request.Content.ReadAsStringAsync();
+                    //await DisplayAlert("Erro!", response.ToString(), "Okay");
+                    if (response.ToString().Contains("Undefined"))
+                    {
+                        return;
+                    }
+                    var looper = JsonConvert.DeserializeObject<List<SearchRefenceModel>>(response);
+                    foreach (SearchRefenceModel model in looper)
+                    {
+                        userSearchReference = model;
+                        break;
+                    }
+                    await saveSearchToSqlite();
                 }
-                var looper = JsonConvert.DeserializeObject<List<SearchRefenceModel>>(response);
-                foreach (SearchRefenceModel model in looper)
-                {
-                    userSearchReference = model;
-                    break;
-                }
-                await saveSearchToSqlite();
+            }
+            catch (Exception e)
+            {
+                return;
             }
         }
 
@@ -200,23 +207,30 @@ namespace Chatter
         }
         private async Task retrieveGallery()
         {
-            using (var cl = new HttpClient())
+            try
             {
-                string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_gallery&user_id='" + Application.Current.Properties["Id"].ToString() + "'";
-                var request = await cl.GetAsync(urlString);
-                request.EnsureSuccessStatusCode();
-                var response = await request.Content.ReadAsStringAsync();
-                //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
-                if (response.ToString().Contains("Undefined"))
+                using (var cl = new HttpClient())
                 {
-                    return;
+                    string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_gallery&user_id='" + Application.Current.Properties["Id"].ToString() + "'";
+                    var request = await cl.GetAsync(urlString);
+                    request.EnsureSuccessStatusCode();
+                    var response = await request.Content.ReadAsStringAsync();
+                    //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
+                    if (response.ToString().Contains("Undefined"))
+                    {
+                        return;
+                    }
+                    var modifString = response.Replace(@"\", "");
+                    var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString);
+                    foreach (GalleryModel model in looper)
+                    {
+                        await saveGalleryToSqlite(model);
+                    }
                 }
-                var modifString = response.Replace(@"\", "");
-                var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString);
-                foreach (GalleryModel model in looper)
-                {
-                    await saveGalleryToSqlite(model);
-                }
+            }
+            catch (Exception e)
+            {
+                return;
             }
         }
         private async Task retrievInbox()
@@ -335,6 +349,11 @@ namespace Chatter
             {
                 DisplayAlert("Oops!", "Maximum of 20 characters reached!", "Okay");
             }
+        }
+
+        private async void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Google));
         }
     }
 }
