@@ -104,10 +104,10 @@
                                             <StackLayout Grid.Column="2" Spacing="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End">
                                                 <StackLayout Orientation="Vertical">
                                                     <StackLayout Orientation="Horizontal" Padding="0" Margin="0">
-                                                        <Image Source="locationmint.png" Aspect="AspectFill" HeightRequest="1" WidthRequest="15"></Image>
                                                         <Label Margin="0,0,5,0" FontSize="Small" TextColor="Black" HorizontalTextAlignment="End" Text="{Binding distance}"/>
+                                                        <Label Padding="0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalTextAlignment="Start" VerticalOptions="End"/>
                                                     </StackLayout>
-                                                    <Label Margin="10,0,5,0" Padding="0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalTextAlignment="Start" VerticalOptions="End"/>
+                                                    
                                                 </StackLayout>
                                             </StackLayout>
                                             <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
