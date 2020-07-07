@@ -21,7 +21,7 @@
                     <RowDefinition Height="AUTO"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>  
-                <Frame BackgroundColor="Transparent" BorderColor="Accent" CornerRadius="10" Padding="0,5,0,5" Margin="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Frame BackgroundColor="Transparent" BorderColor="Accent" CornerRadius="10" Margin="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                     <local:SearchBarNoUnderline x:Name="searchEntry" Placeholder="Search for your matches" FontSize="Medium" CancelButtonColor="Accent" Grid.Row="0" Margin="0,0,0,0" HorizontalOptions="Center" TextChanged="SearchBarNoUnderline_TextChanged" VerticalOptions="CenterAndExpand"></local:SearchBarNoUnderline>
                 </Frame>
                 <StackLayout Grid.Row="1">
@@ -84,15 +84,15 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid HeightRequest="80" x:Name="listItem" Margin="10,10,10,10" RowSpacing="0" >
+                                        <Grid HeightRequest="60" x:Name="listItem" Margin="10,10,10,10" RowSpacing="0" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="80"></ColumnDefinition>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                                 <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Frame Grid.Column="0" Grid.RowSpan="2" CornerRadius="50" 
-                                           HeightRequest="78"
-                                           WidthRequest="78"
+                                           HeightRequest="60"
+                                           WidthRequest="60"
                                            HorizontalOptions="Center"
                                            Padding="0"
                                            BorderColor="Black"
@@ -110,7 +110,7 @@
                                                     <Label Margin="10,0,5,0" Padding="0" FontSize="Micro" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalTextAlignment="Start" VerticalOptions="End"/>
                                                 </StackLayout>
                                             </StackLayout>
-                                            <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="30" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
+                                            <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="10" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
                                         </Grid>
                                     </ViewCell>
                                 </DataTemplate>

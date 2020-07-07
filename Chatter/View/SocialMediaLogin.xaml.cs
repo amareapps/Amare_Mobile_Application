@@ -55,7 +55,7 @@ namespace Chatter
             InitializeComponent();
             isRegistration = _isRegistration;
             socialMedieChosen = platform;
-            DisplayAlert("hayss",isRegistration.ToString(),"Okay");
+            //DisplayAlert("hayss",isRegistration.ToString(),"Okay");
             userIdToSync = user_id;
             var apiRequest = "";
             if (platform == SocialMediaPlatform.Facebook)
@@ -146,7 +146,37 @@ namespace Chatter
             var client = new HttpClient();
             var request = await client.GetAsync("https://www.googleapis.com/userinfo/v2/me?access_token=" + accessToken);
             var value = await request.Content.ReadAsStringAsync();
-            await DisplayAlert("Googleapi", value, "Okay");
+            var email = JsonConvert.DeserializeObject<JObject>(value).Value<string>("email");
+            var name = JsonConvert.DeserializeObject<JObject>(value).Value<string>("name");
+            var picture = JsonConvert.DeserializeObject<JObject>(value).Value<string>("picture");
+            var id = JsonConvert.DeserializeObject<JObject>(value).Value<string>("id");
+
+            userModel.email = id;
+            userModel.username = name;
+            userModel.image = picture;
+            userModel.password = email;
+            try
+            {
+                var test = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(userModel.email)).ToList();
+                int userExist = test.Count;
+                foreach (UserModel midek in test)
+                {
+                    userModel = midek;
+                    if (userExist > 0)
+                    {
+                        await saveDataSqlite();
+                        await loadMainPage();
+                        return;
+                    }
+                    break;
+                }
+                await loadMainPage();
+            }
+            catch (Exception ex)
+            {
+                await Navigation.PushAsync(new ProfileMaintenance("", true, userModel));
+            }
+                
         }
         public async Task getFacebookProfileAsync(string accessToken)
         {

@@ -21,6 +21,10 @@ using Xamarin.Essentials;
 using Chatter.Classes;
 using Chatter.View;
 using Google.Protobuf.WellKnownTypes;
+using System.Runtime.CompilerServices;
+using eliteKit.MarkupExtensions;
+using SQLite;
+
 [assembly: Xamarin.Forms.Dependency(typeof(Chatter.Classes.ILocSettings))]
 namespace Chatter
 {
@@ -35,15 +39,17 @@ namespace Chatter
         string imageString;
         string number = "";
         string isShowAge = "0";
+        UserModel userModelMain = new UserModel();
         MediaFile file;
         ApiConnector api = new ApiConnector();
+        bool _isSocialMediaRegistation = false;
         private byte[] imageaRray;
 
-        public ProfileMaintenance(string _number)
+        public ProfileMaintenance(string _number, bool isSocialMediaRegistation = false,UserModel userModel = null)
         {
             InitializeComponent();
+            _isSocialMediaRegistation = isSocialMediaRegistation;
             number = _number;
-
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("890447");
             ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
             BindingContext = new UserModelStorage();
@@ -53,6 +59,19 @@ namespace Chatter
 
             birthdatePicker.SetValue(DatePicker.MaximumDateProperty, DateTime.Now.AddYears(-18));
             birthdatePicker.SetValue(DatePicker.MinimumDateProperty, firstDay.AddYears(-60));
+            List<ContentPage> pageList = Children.ToList();
+            if (isSocialMediaRegistation)
+            {
+                userModelMain = userModel;
+                chooseImageButton.Source = userModel.image;
+                foreach (var child in Children.ToList())
+                {
+                    if (child == emailContent)
+                    {
+                        Children.Remove(child);
+                    }
+                }
+            }
 
         }
 
@@ -66,89 +85,122 @@ namespace Chatter
         {
             try
             {
-                continueButton.IsEnabled = false;
-                if (userNameEntry.Text == string.Empty || passwordEntry.Text == string.Empty ||
-                    emailEntry.Text == string.Empty || gender == string.Empty || imageString == string.Empty || interestIn == string.Empty
-                    /*|| universityEntry.Text == string.Empty*/)
-
-                {
-                    await DisplayAlert("Oops!", "Incomplete credentials! Ple    ase fill the required fields.", "Okay");
-
-                    continueButton.IsEnabled = true;
-                    return;
-                }
-                if (imageString == string.Empty)
-                {
-                    await DisplayAlert("Image Selection", "Image required.", "Okay");
-                    continueButton.IsEnabled = true;
-                    return;
-                }
-                var myAction = await DisplayAlert("Location", "You need to turn on location first", "OK", "CANCEL");
-                if (myAction)
-                {
-                        //DependencyService.Get<ISettingsService>().OpenSettings();
-                        global::Xamarin.Forms.DependencyService.Get<global::Chatter.Classes.ILocSettings>().OpenSettings();
-                }
-                else
-                {
-                    await DisplayAlert("Alert", "User Denied Permission", "OK");
-                    return;
-                }
-                var locationLast = await Geolocation.GetLastKnownLocationAsync();
-                if (locationLast == null)
-                {
-                    var request = new GeolocationRequest(GeolocationAccuracy.Low);
-                    var location = await Geolocation.GetLocationAsync(request);
-                    if (location == null)
+                    continueButton.IsEnabled = false;
+                    if (userNameEntry.Text == string.Empty || passwordEntry.Text == string.Empty ||
+                        emailEntry.Text == string.Empty || gender == string.Empty || imageString == string.Empty || interestIn == string.Empty
+                        /*|| universityEntry.Text == string.Empty*/)
                     {
+                        if (_isSocialMediaRegistation == false)
+                        {
+                            await DisplayAlert("Oops!", "Incomplete credentials! Ple    ase fill the required fields.", "Okay");
+
+                            continueButton.IsEnabled = true;
+                            return;
+                        }
+                    }
+                    if (imageString == string.Empty)
+                    {
+                        await DisplayAlert("Image Selection", "Image required.", "Okay");
                         continueButton.IsEnabled = true;
                         return;
                     }
-                    locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
-                }
-                else
-                {
-                    locationString = locationLast.Latitude.ToString() + "," + locationLast.Longitude.ToString();
-                }
-                overlay.IsVisible = true;
-                finalForm.RaiseChild(overlay);
-                Application.Current.Properties["Name"] = userNameEntry.Text;
-                Application.Current.Properties["Password"] = passwordEntry.Text;
-                Application.Current.Properties["Email"] = emailEntry.Text;
-                Application.Current.Properties["Gender"] = gender;
-                Application.Current.Properties["Birthday"] = birthdatePicker.ToString();
-                //await DisplayAlert("test",birthdatePicker.Date.ToString("MM/dd/yyyy"),"Okay");
-
-                await uploadtoServer();
-                await sampless();
-                //await Navigation.PushAsync(new ImageSelection());
-                //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
-                if (string.IsNullOrEmpty(number))
-                {    
-                    var userModels = await api.loginUser(emailEntry.Text, passwordEntry.Text);
-                    //overlay.IsVisible = false;
-                    App.Current.MainPage = new NavigationPage(new WelcomePage());
-                    //await Navigation.PushAsync(new WelcomePage());
-                    //await Navigation.PopToRootAsync();
-                }
-                else
-                {
-                    var value = await api.getUserModel(number);
-                    if (value == null)
+                    var myAction = await DisplayAlert("Location", "You need to turn on location first", "OK", "CANCEL");
+                    if (myAction)
                     {
-                        await DisplayAlert("Oops!", value.username, "Okay");
+                        //DependencyService.Get<ISettingsService>().OpenSettings();
+                        global::Xamarin.Forms.DependencyService.Get<global::Chatter.Classes.ILocSettings>().OpenSettings();
                     }
-                    overlay.IsVisible = false;
-                    App.Current.MainPage = new NavigationPage(new WelcomePage());
-                    //await Navigation.PushAsync(new WelcomePage());
-                    //await Navigation.PopToRootAsync();
-                }
+                    else
+                    {
+                        await DisplayAlert("Alert", "User Denied Permission", "OK");
+                        return;
+                    }
+                    var locationLast = await Geolocation.GetLastKnownLocationAsync();
+                    if (locationLast == null)
+                    {
+                        var request = new GeolocationRequest(GeolocationAccuracy.Low);
+                        var location = await Geolocation.GetLocationAsync(request);
+                        if (location == null)
+                        {
+                            continueButton.IsEnabled = true;
+                            return;
+                        }
+                        locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
+                    }
+                    else
+                    {
+                        locationString = locationLast.Latitude.ToString() + "," + locationLast.Longitude.ToString();
+                    }
+                    overlay.IsVisible = true;
+                    finalForm.RaiseChild(overlay);
+                    Application.Current.Properties["Name"] = _isSocialMediaRegistation == true ? userModelMain.username : userNameEntry.Text;
+                    Application.Current.Properties["Password"] = _isSocialMediaRegistation == true ? "" : passwordEntry.Text;
+                    Application.Current.Properties["Email"] = _isSocialMediaRegistation == true ? userModelMain.email : emailEntry.Text;
+                    Application.Current.Properties["Gender"] = gender;
+                    Application.Current.Properties["Birthday"] = birthdatePicker.ToString();
+                    //await DisplayAlert("test",birthdatePicker.Date.ToString("MM/dd/yyyy"),"Okay");
+
+                    await uploadtoServer();
+                    await sampless();
+                    //await Navigation.PushAsync(new ImageSelection());
+                    //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
+                    if (string.IsNullOrEmpty(number))
+                    {
+                    if (_isSocialMediaRegistation)
+                    {
+                        var testing = await api.checkIfAlreadyRegistered(userModelMain.email);
+                        await DisplayAlert("Oops!", testing, "Okay");
+                        var userExist = JsonConvert.DeserializeObject<List<UserModel>>(testing).ToList();
+                        foreach (UserModel midek in userExist)
+                        {
+                            userModelMain = midek;
+                            break;
+                        }
+                        if (userExist.Count > 0)
+                        {
+                            await saveDataSqlite();
+                            App.Current.MainPage = new NavigationPage(new WelcomePage());
+                        }
+                    }
+                    else
+                    {
+                        var userModels = await api.loginUser(emailEntry.Text, passwordEntry.Text);
+                        //overlay.IsVisible = false;
+                        App.Current.MainPage = new NavigationPage(new WelcomePage());
+                        //await Navigation.PushAsync(new WelcomePage());
+                        //await Navigation.PopToRootAsync();
+                    }
+                    }
+                    else
+                    {
+                        var value = await api.getUserModel(number);
+                        if (value == null)
+                        {
+                            await DisplayAlert("Oops!", value.username, "Okay");
+                        }
+                        overlay.IsVisible = false;
+                        App.Current.MainPage = new NavigationPage(new WelcomePage());
+                        //await Navigation.PushAsync(new WelcomePage());
+                        //await Navigation.PopToRootAsync();
+                    }
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Unabel to continue", ex.ToString(), "Okay");
                 continueButton.IsEnabled = true;
             }
+        }
+        private async Task saveDataSqlite()
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<UserModel>();
+                conn.Insert(userModelMain);
+            }
+            overlay.IsVisible = false;
         }
         private async Task sampless()
         {
@@ -230,6 +282,7 @@ namespace Chatter
         }
         private void nextContent(object sender, EventArgs e)
         {
+           
             if (this.CurrentPage == emailContent)
             {
                 this.CurrentPage = genderContent;
