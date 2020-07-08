@@ -40,6 +40,8 @@ namespace Chatter.Droid
                 (searchPlateIcon as ImageView).SetImageResource(Resource.Drawable.searchiconmint);
 
             }
+
+            
         }
 
     }

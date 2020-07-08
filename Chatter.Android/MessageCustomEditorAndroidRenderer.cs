@@ -15,13 +15,13 @@ using Chatter.Classes;
 using Xamarin.Forms.Platform.Android;
 using Android.Graphics.Drawables;
 
-[assembly: ExportRenderer(typeof(CustomEditor), typeof(CustomEditorAndroidRenderer))]
+[assembly: ExportRenderer(typeof(MessageCustomEditor), typeof(MessageCustomEditorAndroidRenderer))]
 
 namespace Chatter.Droid
 {
-    public class CustomEditorAndroidRenderer : EditorRenderer
+    public class MessageCustomEditorAndroidRenderer : EditorRenderer
     {
-        public CustomEditorAndroidRenderer(Context context) : base(context)
+        public MessageCustomEditorAndroidRenderer(Context context) : base(context)
         {
 
         }
@@ -37,7 +37,7 @@ namespace Chatter.Droid
                 Control.SetMinHeight(200);
                 Control.SetBackground(gd);
 
-                Control.SetPadding(30, 20, 30, 20);
+                Control.SetPadding(30, 20, 100, 20);
             }
         }
     }

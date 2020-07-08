@@ -120,8 +120,8 @@
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                         </Frame.GestureRecognizers>
                                     </Frame>
-                                    <Grid Margin="3" Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
-                                        AbsoluteLayout.LayoutBounds="1,0.95,-1,-1" ColumnSpacing="2">
+                                    <Grid Grid.Row="1" AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        AbsoluteLayout.LayoutBounds="1,0.97,-1,-1" ColumnSpacing="2" Margin="0,0,5,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                             <ColumnDefinition Width="AUTO"></ColumnDefinition>
@@ -130,7 +130,7 @@
                                         <ImageButton 
                                              WidthRequest="60"
                                              HeightRequest="60"
-                                             Padding="10"
+                                             Padding="5"
                                              Source="heart.png" 
                                              Grid.Column="2" 
                                              BackgroundColor="Transparent" 
@@ -140,12 +140,12 @@
                                              Clicked="heartButton_Clicked"
                                              Opacity="0.7"/>
                                         <ImageButton 
-                                             WidthRequest="40"
-                                             HeightRequest="40"
-                                             Padding="3" CornerRadius="30"
+                                             WidthRequest="60"
+                                             HeightRequest="60"
+                                             Padding="5"
                                              Source="dislike.png" 
                                              Grid.Column="1" 
-                                             BackgroundColor="White" 
+                                             BackgroundColor="Transparent" 
                                              x:Name="xButton" 
                                             Clicked="dislikeButton_Clicked"
                                              VerticalOptions="Center" 

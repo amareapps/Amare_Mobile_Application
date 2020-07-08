@@ -7,18 +7,17 @@
              xmlns:local2="clr-namespace:Chatter"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
              mc:Ignorable="d"
-             x:Class="Chatter.Messaging" NavigationPage.HasNavigationBar="true" NavigationPage.HasBackButton="True">
+             x:Class="Chatter.Messaging" NavigationPage.HasNavigationBar="True" NavigationPage.HasBackButton="True" >
     <Page.Resources>
         <local:Base64toImageConverter x:Key="base64toImageSource"></local:Base64toImageConverter>
         <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
     </Page.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="call.png"  Order="Primary">
-        </ToolbarItem>
+        <ToolbarItem Name="Call" Order="Primary" Priority="1" Text="Call"></ToolbarItem>
         <ToolbarItem Name="Unmatch" Order="Secondary" Clicked="Menu1_Clicked" Priority="0" />
         <ToolbarItem Name="Report" Order="Secondary" Clicked="Report_Clicked" Priority="1" />
     </ContentPage.ToolbarItems>
-    <StackLayout Margin="0" Padding="0">
+        <StackLayout Margin="0" Padding="0">
         <multigestureviewplugin:MultiGestureView LongPressed="LongPressEffect_LongPressed">
         <ListView x:Name="ChatList"  ItemSelected="ChatList_ItemSelected" ItemTapped="ChatList_ItemTapped" FlowDirection="RightToLeft"
             Rotation="180"
@@ -59,14 +58,13 @@
             <Grid Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"></ColumnDefinition>
-                    <ColumnDefinition Width="40"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ImageButton Source="chatcamera.png" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
-                <ImageButton Source="audio.png" Released="voiceMessage_Released" Pressed="voiceMessage_Pressed"  BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="voiceMessage"  Clicked="voiceMessage_Clicked" Grid.Column="1"></ImageButton>
-
-                <local:CustomEditor HeightRequest="20" MinimumHeightRequest="20" x:Name="messageEntry" Keyboard="Chat" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="2" FontSize="Small"></local:CustomEditor>
+                <ImageButton Source="chatcamera.png" Opacity="1" BackgroundColor="Transparent" CornerRadius="20" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" x:Name="sendimageButton"  Clicked="sendimageButton_Clicked" Grid.Column="0"></ImageButton>
+                <local:MessageCustomEditor HeightRequest="20" MinimumHeightRequest="20" x:Name="messageEntry" Keyboard="Chat" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="1" Grid.ColumnSpan="2" FontSize="Small"></local:MessageCustomEditor>
+                <ImageButton Source="audio.png" Opacity="0.5"  HorizontalOptions="End" VerticalOptions="Center" Released="voiceMessage_Released" Pressed="voiceMessage_Pressed"  BackgroundColor="Transparent" Padding="5" Margin="3" Aspect="AspectFill" HeightRequest="30" WidthRequest="30" x:Name="voiceMessage"  Clicked="voiceMessage_Clicked" Grid.Column="2"></ImageButton>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="Transparent" FontSize="Medium" x:Name="lblEmoji" IsVisible="True" Grid.Column="3">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
