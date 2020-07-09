@@ -498,6 +498,7 @@ namespace Chatter
             foreach (UserModel midek in userExist)
             {
                 userModel = midek;
+                await api.loadUserData(userModel);
                 return;
             }
         }

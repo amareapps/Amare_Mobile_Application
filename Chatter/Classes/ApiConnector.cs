@@ -557,6 +557,15 @@ namespace Chatter.Classes
                 return null;
             }
         }
+        public async Task loadUserData(UserModel model)
+        {
+            Application.Current.Properties["Id"] = model.id;
+            await saveToSqlite(model);
+            await retrieveGallery();
+            await retrieveSearchReference();
+            await retrievInbox();
+            await loadRecentMatches();
+        }
         public async Task<bool> updateUserName(string id,string value)
         {
             try

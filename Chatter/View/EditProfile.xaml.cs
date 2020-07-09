@@ -53,8 +53,12 @@ namespace Chatter.View
                 {
                     spotifyButton.Text = "Disconnect to Spotify";
                     spotifyListLayout.IsVisible = true;
+                    foreach (var spotVal in spotifyList)
+                    {
+                        spotifyModelLocals.Add(spotVal);
+                    }
+                    spotifyListView.ItemsSource = spotifyModelLocals;
                 }
-
                 if (igPhotos == null)
                 {
                     instagramButton.Text = "Connect to Instagram";
@@ -64,21 +68,17 @@ namespace Chatter.View
                 {
                     instagramButton.Text = "Disconnect to Instagram";
                     instagrammer.IsVisible = true;
+                    foreach (var modeler in igPhotos)
+                    {
+                        instagramPhotos.Add(modeler);
+                    }
+                    instagrammer.FlowItemsSource = instagramPhotos;
                 }
-                foreach (var spotVal in spotifyList)
-                {
-                    spotifyModelLocals.Add(spotVal);
-                }
-                foreach (var modeler in igPhotos)
-                {
-                    instagramPhotos.Add(modeler);
-                }
-                spotifyListView.ItemsSource = spotifyModelLocals;
-                instagrammer.FlowItemsSource = instagramPhotos;
+
             }
             catch (Exception ex)
             {
-                //await DisplayAlert("test", ex.ToString(), "test");
+                await DisplayAlert("test", ex.ToString(), "test");
                 instagramButton.Text = "Connect to Instagram";
                 instagrammer.IsVisible = false;
             }
