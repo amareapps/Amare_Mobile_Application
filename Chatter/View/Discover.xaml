@@ -73,7 +73,7 @@
                                                     </Label.GestureRecognizers>
                                                 </Label>
                                                 <Label Text="|" TextColor="White" FontSize="Large" FontAttributes="Bold"></Label>
-                                                <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Medium" VerticalOptions="End" TextColor="White"></Label>
+                                                <Label Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Large" VerticalOptions="Center" TextColor="White"></Label>
                                             </StackLayout>
                                             <!--
                                             <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding about,Converter={StaticResource stringtoBool}}">

@@ -164,6 +164,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="NotificationHelper.cs" />
     <Compile Include="DroidOAuth2Authenticator.cs" />
+    <Compile Include="OTPEntryAndroidRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundedEntryRendererAndroid.cs" />

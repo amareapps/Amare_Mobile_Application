@@ -70,6 +70,7 @@
     <Compile Include="IClearCookiesImplementation.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="OTPEntryIOSRenderer.cs" />
     <Compile Include="RoundedEntryRendererIos.cs" />
     <Compile Include="Services\OAuth2Service.cs" />
     <None Include="Entitlements.plist" />

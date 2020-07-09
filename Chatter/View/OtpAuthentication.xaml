@@ -2,13 +2,68 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Chatter.View.OtpAuthentication" BackgroundColor="GhostWhite" Title="Mobile Verification">
     <ContentPage.Content>
         <StackLayout Margin="20,50,20,20">
             <Label Margin="0,0,0,20" Text="Enter the code received below:" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="Body" FontAttributes="Bold"/>
-            <local:RoundedEntry x:Name="codeEntry" Margin="0,5,0,20" HorizontalTextAlignment="Center" TextChanged="codeEntry_TextChanged" FontSize="Title"/>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackLayout Grid.Column="0">
+
+                        <Label x:Name="label1" Text="" TextColor="Black" HorizontalTextAlignment="Center" HeightRequest="30"/>
+                        <BoxView BackgroundColor="Gray" HeightRequest="1" WidthRequest="60" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+
+                        <Label x:Name="label2" Text="" TextColor="Black" HorizontalTextAlignment="Center" Grid.Column="1" HeightRequest="30"/>
+                        <BoxView BackgroundColor="Gray" HeightRequest="1" WidthRequest="60" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2">
+
+                        <Label x:Name="label3" Text="" TextColor="Black" HorizontalTextAlignment="Center" Grid.Column="2" HeightRequest="30"/>
+                        <BoxView BackgroundColor="Gray" HeightRequest="1" WidthRequest="60" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="3">
+
+                        <Label x:Name="label4" Text="" TextColor="Black" HorizontalTextAlignment="Center" Grid.Column="3" HeightRequest="30"/>
+                        <BoxView BackgroundColor="Gray" HeightRequest="1" WidthRequest="60" HorizontalOptions="Center"/>
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Column="4">
+
+                        <Label x:Name="label5" Text="" TextColor="Black" HorizontalTextAlignment="Center" Grid.Column="3" HeightRequest="30"/>
+                        <BoxView BackgroundColor="Gray" HeightRequest="1" WidthRequest="60" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                </Grid>
+                <Editor x:Name="codeEntry" TextChanged="Editor_TextChanged" Keyboard="Text" TextColor="Transparent" BackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" Grid.Row="0"/>
+
+            </Grid>
             <Label Text="Resend code via SMS" Margin="0,10,0,30" FontAttributes="Bold" FontSize="Small"  TextColor="DodgerBlue" HorizontalOptions="Center" HorizontalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="resentButton_Clicked"></TapGestureRecognizer>

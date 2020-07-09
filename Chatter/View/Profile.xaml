@@ -50,7 +50,7 @@
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>
-                    <StackLayout IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
+                    <AbsoluteLayout IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
                         <Frame HasShadow="True"
                                                HorizontalOptions="Center"
                                                VerticalOptions="Center"
@@ -68,7 +68,7 @@
                                                     AbsoluteLayout.LayoutFlags="PositionProportional" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" 
                                                          HeightRequest="90" WidthRequest="90" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>-->
                         
-                        </StackLayout>
+                        </AbsoluteLayout>
                         <StackLayout Margin="0,5,0,0" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End">
                             <Label Padding="0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username, StringFormat='{0:F2},'}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Padding="0" x:Name="age" Text="{Binding birthdate,Converter={StaticResource birthdaytoage}}" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="End"/>
@@ -121,7 +121,7 @@
                                     </StackLayout>
                                 </x:Array>
                             </cards:CarouselView.ItemsSource>
-                            <controls:IndicatorsControl Padding="0" Margin="0" VerticalOptions="EndAndExpand" Orientation="Horizontal" SelectedIndicatorStyle="{StaticResource ActiveIndicator}"  UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" BackgroundColor="Transparent"  HidesForSingleIndicator="True" IsUserInteractionRunning="True"/>
+                            <controls:IndicatorsControl x:Name="carouselindicator" Padding="0" Margin="0" VerticalOptions="EndAndExpand" Orientation="Horizontal" SelectedIndicatorStyle="{StaticResource ActiveIndicator}"  UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" BackgroundColor="Transparent"  HidesForSingleIndicator="True" IsUserInteractionRunning="True"/>
                         </cards:CarouselView>
                         <Frame IsClippedToBounds="True" Padding="0,0,0,0" CornerRadius="30" Margin="80,0,80,0">
                             <gradient:GradientColorStack StartColor="#d4129b" EndColor="#3cc5d5" GradientColorOrientation="Horizontal" x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" Text="Share the Love" CornerRadius="30" TextColor="White" BackgroundColor="Transparent"></gradient:GradientColorStack>
