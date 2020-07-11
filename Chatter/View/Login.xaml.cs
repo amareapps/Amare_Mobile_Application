@@ -19,6 +19,7 @@ using Plugin.FacebookClient;
 using SQLite;
 using Plugin.Toast;
 using Android.Text.Method;
+using Rg.Plugins.Popup.Extensions;
 
 namespace Chatter
 {
@@ -96,7 +97,7 @@ namespace Chatter
             string sample = emailEntry.Text + "," + passEntry.Text;
             if (emailEntry.Text == string.Empty || passEntry.Text == string.Empty)
             {
-                await DisplayAlert("Login Failed", "Please enter your registered email address and password.", "Okay");
+                await PopupNavigation.Instance.PushAsync(new LoginFailedEmptyField());
                 overlay.IsVisible = false;
                 return;
             }
@@ -112,7 +113,7 @@ namespace Chatter
                     var response = await request.Content.ReadAsStringAsync();
                     if (response.ToString().Contains("Undefined"))
                     {
-                        await DisplayAlert("Login Failed", "Please enter the correct registered email address and/or password.", "Okay");
+                        await PopupNavigation.Instance.PushAsync(new LoginFailedIncorrect());
                         overlay.IsVisible = false;
                         return;
                     }
@@ -336,18 +337,18 @@ namespace Chatter
         {
             passEntry.IsPassword = passEntry.IsPassword ? false : true;
         }
-        private void emailEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void emailEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (emailEntry.Text.Length == emailEntry.MaxLength)
             {
-                DisplayAlert("Oops!", "Maximum of 50 characters reached!", "Okay");
+                await PopupNavigation.Instance.PushAsync(new Max50Char());
             }
         }
-        private void passEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void passEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (passEntry.Text.Length == passEntry.MaxLength)
             {
-                DisplayAlert("Oops!", "Maximum of 20 characters reached!", "Okay");
+                await PopupNavigation.Instance.PushAsync(new Max20Char());
             }
         }
 

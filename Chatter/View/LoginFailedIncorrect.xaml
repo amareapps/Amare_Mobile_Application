@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes"
+                  mc:Ignorable="d"
+             x:Class="Chatter.View.LoginFailedIncorrect" IsVisible="True">
+    <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
+        <StackLayout Spacing="5">
+            <Frame BackgroundColor="#890447" HasShadow="True" Padding="10">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Login Failed!" FontSize="Large" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold"
+                    VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Frame>
+            <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" Padding="10,0,10,0">
+                <StackLayout >
+                    <Label FontAttributes="Bold" Padding="15,15,15,5" Text="Please enter the correct registered email address and/or password." FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+                    <Grid Margin="0,10,0,5" Padding="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Okay" x:Name="okay" Clicked="okay_Clicked"  Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="30" FontAttributes="Bold" HorizontalOptions="FillAndExpand" ></Button>
+                     </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

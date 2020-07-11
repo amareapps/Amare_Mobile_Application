@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Chatter;
 using Chatter.Classes;
 using Chatter.Droid;
 using Xamarin.Forms;
@@ -16,7 +17,7 @@ using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(OTPEntry), typeof(OTPEntryAndroidRenderer))]
 
-namespace Chatter.Droid
+namespace Chatter.Classes
 {
     public class OTPEntryAndroidRenderer : EditorRenderer
     {
