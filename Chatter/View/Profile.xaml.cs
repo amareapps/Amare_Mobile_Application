@@ -187,8 +187,8 @@ namespace Chatter
                 return;
             CrossShare.Current.Share(new ShareMessage
             {
-                Title = "Amare Dating App",
-                Text = "Checkout the new Amare App where you can experience love being limitless!",
+                Title = "Amare: Love is Limitless",
+                Text = "Checkout the new Amare App where you can experience limitless love!",
                 Url = "https://www.facebook.com/amareapps/"
             });
         }

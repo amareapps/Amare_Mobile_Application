@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Chatter.View
+namespace Chatter.View.Popup
+
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginFailedIncorrect : PopupPage
+    public partial class LoginFailedEmptyField : PopupPage
     {
-        public LoginFailedIncorrect()
+        public LoginFailedEmptyField()
         {
             InitializeComponent();
         }

@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Chatter.View
+namespace Chatter.View.Popup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Max20Char : PopupPage
+    public partial class Max50Char : PopupPage
     {
-        public Max20Char()
+        public Max50Char()
         {
             InitializeComponent();
         }
+
 
         private async void okay_Clicked(object sender, EventArgs e)
         {

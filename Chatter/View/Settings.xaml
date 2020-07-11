@@ -8,17 +8,17 @@
              xmlns:forms="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d" 
-             x:Class="Chatter.Settings" BackgroundColor="WhiteSmoke" NavigationPage.HasNavigationBar="False">
+             x:Class="Chatter.Settings" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Frame HasShadow="True" BackgroundColor="GhostWhite" Padding="5,10,5,10">
-                <Grid HeightRequest="70" Margin="0">
+            <Frame HasShadow="True" BackgroundColor="GhostWhite" Padding="5,10,5,10" Margin="0">
+                <Grid HeightRequest="70" Margin="0" Padding="0">
                     <BoxView BackgroundColor="GhostWhite" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"/>
                     <Button BackgroundColor="Transparent" ImageSource="backbuttonpurp.png" HorizontalOptions="Center" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" x:Name="backButton" Clicked="backButton_Clicked"/>
                     <Label FontAttributes="Bold" TextColor="#890447" VerticalTextAlignment="Center" FontSize="Medium" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Preferences"/>
                 </Grid>
             </Frame>
-            <ScrollView Padding="0,0,0,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <ScrollView Padding="0,0,0,10" Margin="0" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <StackLayout Spacing="10" Margin="10,0,10,10">
                     <Label Text="Account" Margin="10,0,10,0" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Padding="10" Margin="5,0,5,0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
@@ -51,7 +51,7 @@
                             <TapGestureRecognizer x:Name="tapChangePassword" Tapped="tapChangePassword_Tapped"></TapGestureRecognizer>
                         </Frame.GestureRecognizers>
                     </Frame>
-                    <Label Text="Discovery" Margin="10,0,10,0" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Label Text="Discovery" Margin="5,0,5,0" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Transparent" Padding="10">
                             <Grid.RowDefinitions>
@@ -69,7 +69,7 @@
                             </Picker>
                         </Grid>
                     </Frame>
-                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="10">
                             <Label Text="I am looking for.." FontSize="Large" FontAttributes="Bold"></Label>
                             <Grid HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Padding="10,0,10,5">
@@ -98,7 +98,7 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
-                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
                             <Grid HorizontalOptions="CenterAndExpand">
                                 <Grid.ColumnDefinitions>
@@ -113,7 +113,7 @@
                             <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"></Slider>
                         </StackLayout>
                     </Frame>
-                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
                             <Grid HorizontalOptions="CenterAndExpand">
                                 <Label Grid.Column="0" FontAttributes="Bold" Text="Show Distances in" FontSize="Large" Grid.ColumnSpan="2"></Label>
@@ -124,7 +124,7 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <Frame Padding="10" Margin="10,0,10,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -143,23 +143,23 @@
 
                     <Button x:Name="saveButton" Text="APPLY CHANGES" Margin="10,0,10,10" CornerRadius="30" BackgroundColor="Default" Clicked="saveButton_Clicked"></Button>
 
-                    <Label Margin="10,0,10,0" Text="Contact Us" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Margin="10,0,10,0" Text="Help and Support" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
-                    <Frame IsClippedToBounds="True" Padding="0,0,0,0" CornerRadius="30" Margin="10,0,10,0">
+                    <Label Margin="5,0,5,0" Text="Contact Us" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Button Margin="5,0,5,0" Text="Help and Support" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+                    <Frame IsClippedToBounds="True" Padding="0,0,0,0" CornerRadius="30" Margin="5,0,5,0">
                         <gradient:GradientColorStack StartColor="#d4129b" EndColor="#3cc5d5" GradientColorOrientation="Horizontal" x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" Text="Share the Love" CornerRadius="30" TextColor="White" BackgroundColor="Transparent"></gradient:GradientColorStack>
                     </Frame>
-                    <Label Margin="10,0,10,0" Text="Legal" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Margin="10,0,10,0" Text="Privacy Policy" Clicked="PrivacyPolicy_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
-                    <Button Margin="10,0,10,0" Text="Terms of Service" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
-                    <Button Margin="10,0,10,0" Text="Licenses" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+                    <Label Margin="5,0,5,0" Text="Legal" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Button Margin="5,0,5,0" Text="Privacy Policy" Clicked="PrivacyPolicy_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+                    <Button Margin="5,0,5,0" Text="Terms of Service" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
+                    <Button Margin="5,0,5,0" Text="Licenses" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="30" BackgroundColor="Default"></Button>
 
-                    <Button Margin="10,0,10,0" Text="LOGOUT" TextColor="#3cc5d5" BackgroundColor="Transparent" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
+                    <Button Margin="5,0,5,0" Text="LOGOUT" TextColor="#3cc5d5" BackgroundColor="Transparent" BorderColor="Accent" BorderWidth="2" CornerRadius="30" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
                     <Grid BackgroundColor="Transparent" Padding="0" Margin="0,40,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                         <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="200"></Image>
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
-                    <StackLayout Padding="0,10,0,0" >
-                        <Button Margin="10,0,10,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="White" BackgroundColor="Accent" FontAttributes="Bold" CornerRadius="30"></Button>
+                    <StackLayout Margin="5,0,5,0" >
+                        <Button Margin="5,0,5,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="White" BackgroundColor="Accent" FontAttributes="Bold" CornerRadius="30"></Button>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

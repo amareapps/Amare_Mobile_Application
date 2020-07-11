@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes"
+                  mc:Ignorable="d"
+             x:Class="Chatter.View.Popup.Max20Char" IsVisible="True">
+    <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
+        <StackLayout Margin="0,20,0,0" Spacing="5">
+            <StackLayout >
+                <Image Margin="0,10,0,5" Source="max20char.png" HeightRequest="100" Aspect="AspectFit" WidthRequest="100"></Image>
+                <!--<Label Text="Oops!" FontSize="Large" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold"
+                    VerticalOptions="CenterAndExpand"/>-->
+                <Label FontAttributes="Bold" Padding="15,15,15,5" Text="Oops! Maximum of 20 characters reached!" FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+                <Grid Margin="0,10,0,5" Padding="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Okay" x:Name="okay" Clicked="okay_Clicked"  Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="8" FontAttributes="Bold" HorizontalOptions="Center" ></Button>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

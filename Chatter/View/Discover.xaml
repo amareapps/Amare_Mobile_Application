@@ -35,8 +35,8 @@
                             <Label FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
                             </Label>
                             <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
-                             <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="Avail one of Amare's subscriptions now to get additional swipe!" HorizontalOptions="CenterAndExpand"></Label>
-                          </StackLayout>
+                            <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="Avail one of Amare's subscriptions now to get additional swipe!" HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
                     </StackLayout>
                 </Frame>
                 <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
@@ -157,6 +157,33 @@
                         </DataTemplate>
                     </cards:CardsView.ItemTemplate>
                 </cards:CardsView>
+                <!-- Overlay -->
+                <Frame x:Name="userliked"  
+                         IsVisible="False"
+                         BackgroundColor="#C0808080"  
+                         Padding="0" AbsoluteLayout.LayoutFlags="All"
+                                   AbsoluteLayout.LayoutBounds="0,0,1,1" IsClippedToBounds="True" Margin="0,0,0,0" CornerRadius="20" HasShadow="True">
+                    <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
+                        <StackLayout Margin="0,20,0,0" Spacing="5">
+                            <StackLayout >
+                                <Image Margin="0,10,0,5" Source="welcomelogonew.gif" HeightRequest="100" Aspect="AspectFit" WidthRequest="100"></Image>
+                                <!--<Label Text="Oops!" FontSize="Large" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold"
+                    VerticalOptions="CenterAndExpand"/>-->
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Label FontAttributes="Bold" Padding="0,15,0,5" TextColor="Black" Text="You liked" FontSize="Medium"></Label>
+                                <Label FontAttributes="Bold" Padding="0,15,0,5" TextColor="Black" Text="{Binding currentItem.username}" FontSize="Medium"></Label>
+                                </StackLayout>
+                                <Grid Margin="0,10,0,5" Padding="15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Text="CONTINUE" x:Name="continue" Clicked="continue_Clicked"  Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="8" FontAttributes="Bold" HorizontalOptions="Center" ></Button>
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
             </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>

@@ -16,7 +16,8 @@ using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Color = Xamarin.Forms.Color;
-using Chatter.View;
+using Chatter.View.Popup;
+using Rg.Plugins.Popup.Services;
 
 namespace Chatter.View
 {
@@ -112,11 +113,11 @@ namespace Chatter.View
             }
         }
 
-        private async void confirmButton_Clicked(object sender,     EventArgs e)
+        private async void confirmButton_Clicked(object sender, EventArgs e)
         {
             if (!await api.checkCode(number, codeEntry.Text))
             {
-                await DisplayAlert("Oops!", "Code mismatch!", "Try again");
+                await PopupNavigation.Instance.PushAsync(new OTPMismatch());
                 return;
             }
             var user = await api.getUserModel(number);

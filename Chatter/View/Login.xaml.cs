@@ -1,6 +1,7 @@
 ﻿using Android.Widget;
 using Chatter.Classes;
 using Chatter.Model;
+using Chatter.View.Popup;
 using Chatter.View;
 using Java.Sql;
 using Newtonsoft.Json;

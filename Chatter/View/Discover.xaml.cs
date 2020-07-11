@@ -194,7 +194,9 @@ namespace Chatter
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_liked", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    var exec = await DisplayAlert("Discover", "You liked " + currentItem.username, null, "OK");
+                    string likeduser = currentItem.username;
+                    //userliked.IsVisible = true;
+                    var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
 
                 }
                 imageSources.Remove(currentItem);
@@ -307,6 +309,10 @@ namespace Chatter
             }
         }
 
+        private void continue_Clicked(object sender, EventArgs e)
+        {
+            userliked.IsVisible = false;
+        }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {

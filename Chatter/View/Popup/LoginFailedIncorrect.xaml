@@ -5,7 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes"
                   mc:Ignorable="d"
-             x:Class="Chatter.View.LoginFailedIncorrect" IsVisible="True">
+             x:Class="Chatter.View.Popup.LoginFailedIncorrect" IsVisible="True">
     <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
         <StackLayout Spacing="5">
             <Frame BackgroundColor="#890447" HasShadow="True" Padding="10">
@@ -22,7 +22,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Text="Okay" x:Name="okay" Clicked="okay_Clicked"  Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="30" FontAttributes="Bold" HorizontalOptions="FillAndExpand" ></Button>
+                        <Button Text="Okay" x:Name="okay" Clicked="okay_Clicked"  Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="8" FontAttributes="Bold" HorizontalOptions="Center" ></Button>
                      </Grid>
                 </StackLayout>
             </ScrollView>

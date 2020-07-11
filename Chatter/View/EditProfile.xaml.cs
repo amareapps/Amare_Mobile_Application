@@ -289,7 +289,7 @@ namespace Chatter.View
         {
             if (instagramButton.Text.Contains("Disconnect"))
             {
-                var isAccepted = await DisplayAlert("Instagram","Are you sure to disconnect your IG images?","Yes","No");
+                var isAccepted = await DisplayAlert("Disconnecting Instagram","Are you sure to disconnect your Instagram account?","YES","NO");
                 if (isAccepted)
                 {
                     await api.removeInstagram(Application.Current.Properties["Id"].ToString());

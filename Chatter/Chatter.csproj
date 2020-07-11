@@ -82,16 +82,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="View\Max20Char.xaml.cs">
+    <Compile Update="View\Popup\Max20Char.xaml.cs">
       <DependentUpon>Max20Char.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Max50Char.xaml.cs">
+    <Compile Update="View\Popup\Max50Char.xaml.cs">
       <DependentUpon>Max50Char.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\LoginFailedIncorrect.xaml.cs">
+    <Compile Update="View\Popup\LoginFailedIncorrect.xaml.cs">
       <DependentUpon>LoginFailedIncorrect.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\LoginFailedEmptyField.xaml.cs">
+    <Compile Update="View\Popup\LoginFailedEmptyField.xaml.cs">
       <DependentUpon>LoginFailedEmptyField.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -169,7 +169,13 @@
     <EmbeddedResource Update="View\Login.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\LoginFailedEmptyField.xaml">
+    <EmbeddedResource Update="View\Popup\ImageNotSupported.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Popup\ImageRequired.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Popup\LoginFailedEmptyField.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Login_Input.xaml">
@@ -190,6 +196,9 @@
     <EmbeddedResource Update="View\OtpAuthentication.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="View\Popup\OTPMismatch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\PrivacyPolicy.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -197,6 +206,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ProfileMaintenance.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Popup\RegistrationIncomplete.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ReportUserEntry.xaml">

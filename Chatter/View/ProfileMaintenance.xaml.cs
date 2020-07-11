@@ -24,6 +24,8 @@ using Google.Protobuf.WellKnownTypes;
 using System.Runtime.CompilerServices;
 using eliteKit.MarkupExtensions;
 using SQLite;
+using Rg.Plugins.Popup.Services;
+using Chatter.View.Popup;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Chatter.Classes.ILocSettings))]
 namespace Chatter
@@ -92,19 +94,20 @@ namespace Chatter
                     {
                         if (_isSocialMediaRegistation == false)
                         {
-                            await DisplayAlert("Oops!", "Incomplete credentials! Ple    ase fill the required fields.", "Okay");
 
-                            continueButton.IsEnabled = true;
+                        PopupNavigation.Instance.PushAsync(new RegistrationIncomplete());
+
+                        continueButton.IsEnabled = true;
                             return;
                         }
                     }
                     if (imageString == string.Empty)
                     {
-                        await DisplayAlert("Image Selection", "Image required.", "Okay");
-                        continueButton.IsEnabled = true;
+                    PopupNavigation.Instance.PushAsync(new ImageRequired());
+                    continueButton.IsEnabled = true;
                         return;
                     }
-                    var myAction = await DisplayAlert("Location", "You need to turn on location first", "OK", "CANCEL");
+                    var myAction = await DisplayAlert("", "Letting us know your location by turning it on will make it easier for you to find the love that's waiting for you here in Amare! Do you want to turn your location on?", "YES", "NO");
                     if (myAction)
                     {
                         //DependencyService.Get<ISettingsService>().OpenSettings();
@@ -112,7 +115,7 @@ namespace Chatter
                     }
                     else
                     {
-                        await DisplayAlert("Alert", "User Denied Permission", "OK");
+                        await DisplayAlert("", "Permission to turn on location denied", "OK");
                         return;
                     }
                     var locationLast = await Geolocation.GetLastKnownLocationAsync();
@@ -345,7 +348,7 @@ namespace Chatter
 
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
-                await DisplayAlert("Oops!", "Image is not supported on this device. Please try again.", "Okay");
+                PopupNavigation.Instance.PushAsync(new ImageNotSupported());
                 return;
             }
 
@@ -390,27 +393,27 @@ namespace Chatter
             passwordEntry.IsPassword = passwordEntry.IsPassword ? false : true;
         }
 
-        private void emailEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void emailEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (emailEntry.Text.Length == emailEntry.MaxLength)
             {
-                DisplayAlert("Oops!", "Maximum of 50 characters reached!", "Okay");
+                PopupNavigation.Instance.PushAsync(new Max50Char());
             }
         }
 
-        private void passwordEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void passwordEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (passwordEntry.Text.Length == passwordEntry.MaxLength)
             {
-                DisplayAlert("Oops!", "Maximum of 20 characters reached!", "Okay");
+                await PopupNavigation.Instance.PushAsync(new Max20Char());
             }
         }
 
-        private void userNameEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void userNameEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (userNameEntry.Text.Length == userNameEntry.MaxLength)
             {
-                DisplayAlert("Oops!", "Maximum of 50 characters reached!", "Okay");
+                await PopupNavigation.Instance.PushAsync(new Max50Char());
             }
         }
 
