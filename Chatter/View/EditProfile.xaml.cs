@@ -29,9 +29,22 @@ namespace Chatter.View
 
         FireStorage fireStorage = new FireStorage();
         string imageUrl;
+
         public EditProfile()
         {
             InitializeComponent();
+
+            int h, w;
+            for (h = 130; h < 301; h++)
+            {
+                int height = h;
+                heightEntry.Items.Add(height.ToString());
+            }
+            for (w = 30; w < 100; w++)
+            {
+                int weight = w;
+                weightEntry.Items.Add(weight.ToString());
+            }
         }
         protected async override void OnAppearing()
         {

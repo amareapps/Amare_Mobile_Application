@@ -23,7 +23,7 @@
                 </Grid>
             </Frame>
             <ScrollView Padding="0,0,0,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                <StackLayout Spacing="10" Margin="20,0,20,10" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Spacing="10" Margin="10,0,10,10" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
                     <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="ImagePicker_SelectedIndexChanged" Title="Select Image">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
@@ -76,7 +76,7 @@
                         </Grid>
                     </AbsoluteLayout>
                     <Button Margin="10" CornerRadius="30" TextColor="White" FontAttributes="Bold" FontSize="Medium" Text="Add media" BackgroundColor="#3cc5d5" Clicked="ImageButton_Clicked"></Button>
-                    <Label x:Name="lblAbout" Margin="0,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Label x:Name="lblAbout" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="0" Margin="0">
                             <StackLayout Padding="5,0,5,0">
@@ -91,28 +91,25 @@
                     </Frame>
                     <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="0" Margin="0">
-                            <Grid>
+                            <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
-                                   <!-- <Picker SelectedIndex="1" Title="Centimeter"  x:Name="heightEntry">
-                                        <Picker.Items>
-                                            <x:String>A</x:String>
-                                        </Picker.Items>
-                                    </Picker>-->
-                                    <Label Text="Height" Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                                    <local:RoundedEntry Grid.Row="1" Grid.Column="0" FontSize="Small"  Keyboard="Numeric" Placeholder="Centimeters" Text="{Binding height}"></local:RoundedEntry>
-                                </StackLayout>
-                                <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="1">
-                                    <Label Text="Weight" Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"></Label>
-                                    <local:RoundedEntry Grid.Row="1" Grid.Column="1" FontSize="Small" x:Name="weightEntry" Keyboard="Numeric" Placeholder="Kilograms" Text="{Binding weight}"></local:RoundedEntry>
-                                </StackLayout>
+                                <Label Text="Height (CM)" Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                    <Picker Title="Choose your height" x:Name="heightEntry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    </Picker>
+                                <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="1" Grid.Column="1" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                <Label Text="Weight (KG)" Grid.Row="2" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <Picker Title="Choose your weight" x:Name="weightEntry" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                </Picker>
+                                <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="3" Grid.Column="1" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
                             </Grid>
                             <Label Text="Job Title" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                             <local:RoundedEntry FontSize="Small" x:Name="jobEntry" Placeholder="Add job title" Text="{Binding job_title}"></local:RoundedEntry>
@@ -122,7 +119,7 @@
                             <local:RoundedEntry FontSize="Small" x:Name="schoolEntry" Placeholder="Add school" Text="{Binding school}"></local:RoundedEntry>
                          </StackLayout>
                     </Frame>
-                    <Label Text="Control Your Profile" Margin="0,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Label Text="Control Your Profile" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="0" Margin="0">
                             <Label Text="Show my" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
@@ -136,7 +133,7 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <Label Text="Share More About You" Margin="0,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
+                    <Label Text="Share More About You" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame BackgroundColor="GhostWhite" HasShadow="True" CornerRadius="10" Margin="5">
                         <StackLayout>
                             <Label Text="Add my Spotify Playlist" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>

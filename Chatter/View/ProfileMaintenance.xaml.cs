@@ -107,7 +107,7 @@ namespace Chatter
                     continueButton.IsEnabled = true;
                         return;
                     }
-                    var myAction = await DisplayAlert("", "Letting us know your location by turning it on will make it easier for you to find the love that's waiting for you here in Amare! Do you want to turn your location on?", "YES", "NO");
+                    var myAction = await DisplayAlert("Turn On Location", "Letting us know your location will make it easier for you to find the love that's waiting for you here in Amare! Do you want to turn your location on?", "YES", "NO");
                     if (myAction)
                     {
                         //DependencyService.Get<ISettingsService>().OpenSettings();

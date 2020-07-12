@@ -25725,82 +25725,85 @@ namespace Chatter.Droid
 			public const int no_image = 2131165593;
 			
 			// aapt resource value: 0x7F0701A6
-			public const int playaudio = 2131165606;
+			public const int pickerarrow = 2131165606;
 			
 			// aapt resource value: 0x7F0701A7
-			public const int plugin_lc_smallicon = 2131165607;
+			public const int playaudio = 2131165607;
 			
 			// aapt resource value: 0x7F0701A8
-			public const int Prev = 2131165608;
+			public const int plugin_lc_smallicon = 2131165608;
 			
 			// aapt resource value: 0x7F0701A9
-			public const int profile = 2131165609;
+			public const int Prev = 2131165609;
 			
 			// aapt resource value: 0x7F0701AA
-			public const int profile_white = 2131165610;
+			public const int profile = 2131165610;
 			
 			// aapt resource value: 0x7F0701AB
-			public const int register = 2131165611;
+			public const int profile_white = 2131165611;
 			
 			// aapt resource value: 0x7F0701AC
-			public const int reward = 2131165612;
+			public const int register = 2131165612;
 			
 			// aapt resource value: 0x7F0701AD
-			public const int RoundCorner = 2131165613;
+			public const int reward = 2131165613;
 			
 			// aapt resource value: 0x7F0701AE
-			public const int schoolmint = 2131165614;
+			public const int RoundCorner = 2131165614;
 			
 			// aapt resource value: 0x7F0701AF
-			public const int searchiconmint = 2131165615;
+			public const int schoolmint = 2131165615;
 			
 			// aapt resource value: 0x7F0701B0
-			public const int send = 2131165616;
+			public const int searchiconmint = 2131165616;
 			
 			// aapt resource value: 0x7F0701B1
-			public const int settings = 2131165617;
+			public const int send = 2131165617;
 			
 			// aapt resource value: 0x7F0701B2
-			public const int settings1 = 2131165618;
+			public const int settings = 2131165618;
 			
 			// aapt resource value: 0x7F0701B3
-			public const int show = 2131165619;
+			public const int settings1 = 2131165619;
 			
 			// aapt resource value: 0x7F0701B4
-			public const int spotify = 2131165620;
+			public const int show = 2131165620;
 			
 			// aapt resource value: 0x7F0701B5
-			public const int tooltip_frame_dark = 2131165621;
+			public const int spotify = 2131165621;
 			
 			// aapt resource value: 0x7F0701B6
-			public const int tooltip_frame_light = 2131165622;
+			public const int tooltip_frame_dark = 2131165622;
 			
 			// aapt resource value: 0x7F0701B7
-			public const int tzuyu = 2131165623;
+			public const int tooltip_frame_light = 2131165623;
 			
 			// aapt resource value: 0x7F0701B8
-			public const int unequal = 2131165624;
+			public const int tzuyu = 2131165624;
 			
 			// aapt resource value: 0x7F0701B9
-			public const int Up = 2131165625;
+			public const int unequal = 2131165625;
 			
 			// aapt resource value: 0x7F0701BA
-			public const int vip = 2131165626;
+			public const int Up = 2131165626;
 			
 			// aapt resource value: 0x7F0701BB
-			public const int warning = 2131165627;
+			public const int vip = 2131165627;
 			
 			// aapt resource value: 0x7F0701BC
-			public const int weightmint = 2131165628;
+			public const int warning = 2131165628;
 			
 			// aapt resource value: 0x7F0701BD
-			public const int welcomelogo = 2131165629;
+			public const int weightmint = 2131165629;
 			
 			// aapt resource value: 0x7F0701BE
-			public const int welcomelogonew = 2131165630;
+			public const int welcomelogo = 2131165630;
 			
 			// aapt resource value: 0x7F0701BF
-			public const int welcomelogonew1 = 2131165631;
+			public const int welcomelogonew = 2131165631;
+			
+			// aapt resource value: 0x7F0701C0
+			public const int welcomelogonew1 = 2131165632;
 			
 			static Drawable()
 			{

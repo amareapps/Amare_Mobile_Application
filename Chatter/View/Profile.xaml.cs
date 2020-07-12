@@ -53,14 +53,6 @@ namespace Chatter
             });
         }
 
-        private void ColorIndicator(object sender, PanCardView.Controls.IndicatorsControl e)
-        {
-            if (autoSlider.SelectedIndex == 0)
-            {
-                
-            }
-        }
-
         protected override void OnAppearing()
         {
             retrieveUserProp();
