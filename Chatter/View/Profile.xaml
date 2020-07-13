@@ -123,7 +123,7 @@
                             </cards:CarouselView.ItemsSource>
                             <controls:IndicatorsControl x:Name="carouselindicator" Padding="0" Margin="0" VerticalOptions="EndAndExpand" Orientation="Horizontal" SelectedIndicatorStyle="{StaticResource ActiveIndicator}"  UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" BackgroundColor="Transparent"  HidesForSingleIndicator="True" IsUserInteractionRunning="True"/>
                         </cards:CarouselView>
-                        <Frame IsClippedToBounds="True" Padding="0,0,0,0" CornerRadius="30" Margin="80,0,80,0">
+                        <Frame IsClippedToBounds="True" Padding="0,0,0,0" CornerRadius="10" Margin="80,0,80,0">
                             <gradient:GradientColorStack StartColor="#d4129b" EndColor="#3cc5d5" GradientColorOrientation="Horizontal" x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" Text="Share the Love" CornerRadius="30" TextColor="White" BackgroundColor="Transparent"></gradient:GradientColorStack>
                         </Frame>
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,10,0,0">

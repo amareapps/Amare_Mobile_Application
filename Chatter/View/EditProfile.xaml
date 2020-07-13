@@ -75,7 +75,7 @@
                             </Frame>
                         </Grid>
                     </AbsoluteLayout>
-                    <Button Margin="10" CornerRadius="30" TextColor="White" FontAttributes="Bold" FontSize="Medium" Text="Add media" BackgroundColor="#3cc5d5" Clicked="ImageButton_Clicked"></Button>
+                    <Button Margin="5,10,5,10" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" Text="Add media" BackgroundColor="#3cc5d5" Clicked="ImageButton_Clicked"></Button>
                     <Label x:Name="lblAbout" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="0" Margin="0">
@@ -136,9 +136,9 @@
                     <Label Text="Share More About You" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
                     <Frame BackgroundColor="GhostWhite" HasShadow="True" CornerRadius="10" Margin="5">
                         <StackLayout>
-                            <Label Text="Add my Spotify Playlist" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                            <Label Text="Add my Spotify playlist" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                             <StackLayout Padding="5,10,5,10">
-                                <Button Padding="13,0,0,0" FontAttributes="Bold" BackgroundColor="#1ed760" CornerRadius="30" ImageSource="spotify.png" TextColor="White"  x:Name="spotifyButton" Clicked="spotifyButton_Clicked" Text="Connect to Spotify"></Button>
+                                <Button Padding="13,0,0,0" FontAttributes="Bold" BackgroundColor="#1ed760" CornerRadius="10" ImageSource="spotify.png" TextColor="White"  x:Name="spotifyButton" Clicked="spotifyButton_Clicked" Text="Connect to Spotify"></Button>
                             </StackLayout>
                             <StackLayout x:Name="spotifyListLayout" IsVisible="false">
                                 <ListView x:Name="spotifyListView" HeightRequest="100">
@@ -150,9 +150,9 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
-                            <Label Text="Show my Instagram Photos" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                            <Label Text="Show my Instagram photos" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                             <StackLayout Padding="5,10,5,10">
-                                <Frame IsClippedToBounds="True" Padding="0,0,0,0" Margin="0" CornerRadius="30">
+                                <Frame IsClippedToBounds="True" Padding="0,0,0,0" Margin="0" CornerRadius="10">
                                     <gradient:GradientColorStack StartColor="#962fbf" EndColor="#fa7e1e" Padding="13,0,0,0" GradientColorOrientation="Horizontal" BackgroundColor="Transparent" ImageSource="instagram.png" TextColor="White" FontAttributes="Bold"  x:Name="instagramButton" Clicked="instagramButton_Clicked" Text="Connect to Instagram"></gradient:GradientColorStack>
                                 </Frame>
                             </StackLayout>
