@@ -22,7 +22,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="AUTO"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Frame Grid.Row="0" Grid.Column="0" HeightRequest="40" WidthRequest="40" IsClippedToBounds="True" CornerRadius="40" Padding="0" Margin="0">
                         <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Source="{Binding image}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></ffimageloading:CachedImage>
@@ -31,7 +31,7 @@
                         AlignItems="Start"
                         JustifyContent="SpaceEvenly" Margin="0"  Padding="0">
                         <Frame Padding="0" Margin="0" BackgroundColor="#ebebeb" CornerRadius="10" IsClippedToBounds="True"  Grid.Column="1">
-                            <Label Text="{Binding message}" Padding="10" VerticalTextAlignment="Start" TextColor="Black" />
+                            <Label Text="{Binding message}" LineBreakMode="WordWrap" Padding="10" VerticalTextAlignment="Start" TextColor="Black" />
                         </Frame>
                         <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" Grid.Column="1" Grid.Row="1" FontSize="Micro" HorizontalTextAlignment="Start"></Label>
                         <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">

@@ -205,7 +205,7 @@ namespace Chatter
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error!",ex.ToString(),"Okay");
+                //await DisplayAlert("Error!",ex.ToString(),"Okay");
             }
         }
 

@@ -110,7 +110,7 @@
                                                     
                                                 </StackLayout>
                                             </StackLayout>
-                                            <Label Margin="15,0,10,0" FontSize="Small" TextColor="Black" MaxLines="10" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
+                                            <Label Margin="15,0,10,0" LineBreakMode="TailTruncation" FontSize="Small" TextColor="Black" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
                                         </Grid>
                                     </ViewCell>
                                 </DataTemplate>
