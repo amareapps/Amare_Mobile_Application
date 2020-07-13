@@ -91,6 +91,7 @@ namespace Chatter
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     var value = data.ToString();
+                    
                     var model = JsonConvert.DeserializeObject<ChatModel>(value);
                     if (model.receiver_id == Application.Current.Properties["Id"].ToString().Replace("\"", ""))
                     {

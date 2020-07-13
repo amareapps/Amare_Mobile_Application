@@ -40,7 +40,14 @@ namespace Chatter
         public InboxMessaging()
         {
             InitializeComponent();
-
+            MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "messageReceived", async (sender, arg) =>
+            {
+                   if (arg.receiver_id == Application.Current.Properties["Id"].ToString().Replace("\"", "") ||
+                        arg.sender_id == Application.Current.Properties["Id"].ToString().Replace("\"", ""))
+                    {
+                           await refreshData();
+                    }
+            });
             //  Task.Run(async () => { await retrieveAll(); });
         }
         private void SyncFromDb()
@@ -63,33 +70,13 @@ namespace Chatter
         }
         protected async override void OnAppearing()
         {
-            InboxModel initModel = new InboxModel()
-            {
-                user_id = "amare",
-                image = "Amare_logo.png",
-                has_unread = "1",
-                location = "0,0",
-                username = "Amare Chat Bot",
-                datetime = DateTime.Now.ToString("MM/dd/yyyy"),
-                distance = "0",
-                message = "Hi!, I am amare chatbot",
-                distance_metric = "0"
-            };
-            RecentMatchesModel initRecent = new RecentMatchesModel()
-            {
-                user_id = "amare",
-                datetime = DateTime.Now.ToString("MM/dd/yyyy"),
-                image = "Amare_logo.png",
-                username = "Amare"
-            };
 
-            inboxModels.Clear();
-            matchesModel.Clear();
-            matchesModel.Add(initRecent);
-            inboxModels.Add(initModel);
+
+
             userSearchReference = sqliteManager.GetSearchRefence();
             deleteSqliteData();
             await refreshData();
+
             //ClientWebSocket wsClient = new ClientWebSocket();
             //await wsClient.ConnectAsync(new Uri("ws://" + ApiConnection.SocketUrl + ":8080"), CancellationToken.None);
             //while (wsClient.State == WebSocketState.Open)
@@ -127,6 +114,33 @@ namespace Chatter
         }
         private async Task refreshData()
         {
+            deleteSqliteData();
+            InboxModel initModel = new InboxModel()
+            {
+                user_id = "amare",
+                session_id = "0",
+                emoji = "?",
+                last_sender = "amare",
+                image = "Amare_logo.png",
+                has_unread = "1",
+                location = "0,0",
+                username = "Amare Chat Bot",
+                datetime = DateTime.Now.ToString("MM/dd/yyyy"),
+                distance = "0",
+                message = "Hi!, I am amare chatbot",
+                distance_metric = "0"
+            };
+            RecentMatchesModel initRecent = new RecentMatchesModel()
+            {
+                user_id = "amare",
+                datetime = DateTime.Now.ToString("MM/dd/yyyy"),
+                image = "Amare_logo.png",
+                username = "Amare"
+            };
+            inboxModels.Clear();
+            matchesModel.Clear();
+            matchesModel.Add(initRecent);
+            inboxModels.Add(initModel);
             await loadData();
             await loadRecentMatches();
             SyncFromDb();
