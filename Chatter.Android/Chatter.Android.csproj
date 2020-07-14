@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomDatePickerAndroidRenderer.cs" />
+    <Compile Include="ExtendedButtonAndroidRenderer.cs" />
     <Compile Include="MessageCustomEditorAndroidRenderer.cs" />
     <Compile Include="CustomEditorAndroidRenderer.cs" />
     <Compile Include="CustomFrameAndroidRenderer.cs" />

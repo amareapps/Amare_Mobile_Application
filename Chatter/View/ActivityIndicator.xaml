@@ -16,7 +16,7 @@
                         Padding="0" BackgroundColor="#C0808080">
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
             <StackLayout Spacing="0" >
-                <ffimageloading:CachedImage Source="amareactivityindicator.gif"   
+                <ffimageloading:CachedImage Source="welcomelogonew.gif"   
                         HeightRequest="40"  
                         WidthRequest="40"/>
             </StackLayout>

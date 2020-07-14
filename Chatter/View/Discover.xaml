@@ -157,7 +157,7 @@
                         </DataTemplate>
                     </cards:CardsView.ItemTemplate>
                 </cards:CardsView>
-                <!-- Overlay -->
+                <!-- Overlay 
                 <Frame x:Name="userliked"  
                          IsVisible="False"
                          BackgroundColor="#C0808080"  
@@ -167,8 +167,8 @@
                         <StackLayout Margin="0,20,0,0" Spacing="5">
                             <StackLayout >
                                 <Image Margin="0,10,0,5" Source="welcomelogonew.gif" HeightRequest="100" Aspect="AspectFit" WidthRequest="100"></Image>
-                                <!--<Label Text="Oops!" FontSize="Large" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold"
-                    VerticalOptions="CenterAndExpand"/>-->
+                                <Label Text="Oops!" FontSize="Large" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold"
+                    VerticalOptions="CenterAndExpand"/>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                     <Label FontAttributes="Bold" Padding="0,15,0,5" TextColor="Black" Text="You liked" FontSize="Medium"></Label>
                                 <Label FontAttributes="Bold" Padding="0,15,0,5" TextColor="Black" Text="{Binding currentItem.username}" FontSize="Medium"></Label>
@@ -183,7 +183,7 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                </Frame>
+                </Frame> -->
             </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>

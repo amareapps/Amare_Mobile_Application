@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes"
+                  mc:Ignorable="d"
+             x:Class="Chatter.View.Popup.LikedUser" IsVisible="True">
+    <Frame x:Name="userliked"  
+                         IsVisible="True"
+                         BackgroundColor="#C0808080"  
+                         Padding="0" AbsoluteLayout.LayoutFlags="All"
+                                   AbsoluteLayout.LayoutBounds="0,0,1,1" IsClippedToBounds="True" Margin="0,0,0,0" HasShadow="True">
+        <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
+            <StackLayout Margin="0,20,0,0" Spacing="5">
+                <StackLayout >
+                    <Frame CornerRadius="100" Padding="0" Margin="0" HasShadow="True"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            IsClippedToBounds="True" BackgroundColor="Transparent">
+                        <Image x:Name="likeduserpic" HeightRequest="150" Aspect="AspectFill" WidthRequest="150"></Image>
+                    </Frame>
+                    <Label FontAttributes="Bold" Padding="0,15,0,5" TextColor="Black" Text="You liked:" FontSize="Medium" HorizontalTextAlignment="Center"></Label>
+                    <Label FontAttributes="Bold" x:Name="likedusername" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center" Padding="0"></Label>
+
+                    <Grid Margin="0,5,0,5" Padding="15,10,15,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="CONTINUE" x:Name="continue" Clicked="continue_Clicked"  Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="8" FontAttributes="Bold" HorizontalOptions="Center" ></Button>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </Frame>
+</pages:PopupPage>

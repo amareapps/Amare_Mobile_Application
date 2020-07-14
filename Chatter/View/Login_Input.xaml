@@ -47,7 +47,7 @@
 
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
                         <StackLayout Spacing="0" >
-                            <ff:CachedImage Source="welcomelogo.gif"   
+                            <ff:CachedImage Source="welcomelogonew.gif"   
                                         HeightRequest="100"  
                                         WidthRequest="100"/>
                         </StackLayout>
