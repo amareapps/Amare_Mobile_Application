@@ -27,6 +27,7 @@ namespace Chatter
         {
             InitializeComponent();
             FlowListView.Init();
+            connectToSocket();
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "sendMessage", (sender, arg) =>
             {
                 var value = JsonConvert.SerializeObject(arg);
@@ -56,8 +57,7 @@ namespace Chatter
             }
             */
         }
-
-        protected override void OnStart()
+        private void connectToSocket()
         {
 
             socket = IO.Socket("http://amarechat.herokuapp.com/");
@@ -77,21 +77,21 @@ namespace Chatter
                 }
             });*/
 
-            socket.On(Socket.EVENT_CONNECT, () =>
-            {
-                /*var test = new ChatModel();
-                test.id = "1";
-                test.message = "Hoy Gising";
-                var ss = JsonConvert.SerializeObject(test);
-                SocketIOManager.socket.Emit("hi", ss);*/
-            });
+            //socket.On(Socket.EVENT_CONNECT, () =>
+            //{
+            /*var test = new ChatModel();
+            test.id = "1";
+            test.message = "Hoy Gising";
+            var ss = JsonConvert.SerializeObject(test);
+            SocketIOManager.socket.Emit("hi", ss);*/
+            //});
 
             socket.On("hi", (data) =>
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     var value = data.ToString();
-                    
+
                     var model = JsonConvert.DeserializeObject<ChatModel>(value);
                     if (model.receiver_id == Application.Current.Properties["Id"].ToString().Replace("\"", ""))
                     {
@@ -102,6 +102,10 @@ namespace Chatter
                 );
                 //socket.Disconnect();
             });
+        }
+        protected override void OnStart()
+        {
+
         }
 
         protected override void OnSleep()
