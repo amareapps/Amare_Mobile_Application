@@ -93,6 +93,18 @@ namespace Chatter
         {
             try
             {
+                var myAction = await DisplayAlert("Turn On Location", "Letting us know your location will make it easier for you to find the love that's waiting for you here in Amare! Do you want to turn your location on?", "YES", "NO");
+                if (myAction)
+                {
+                    //DependencyService.Get<ISettingsService>().OpenSettings();
+                    global::Xamarin.Forms.DependencyService.Get<global::Chatter.Classes.ILocSettings>().OpenSettings();
+                }
+                else
+                {
+                    await DisplayAlert("", "Permission to turn on location denied", "OK");
+                    await Navigation.PopAsync();
+                    return;
+                }
                 var locationLast = await Geolocation.GetLastKnownLocationAsync();
                 if (locationLast == null)
                 {
@@ -100,6 +112,8 @@ namespace Chatter
                     var location = await Geolocation.GetLocationAsync(request);
                     if (location == null)
                     {
+                        await DisplayAlert("Location", "Permission to turn on location denied", "OK");
+                        await Navigation.PopAsync();
                         return;
                     }
                     locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
@@ -111,14 +125,15 @@ namespace Chatter
             }
             catch (FeatureNotEnabledException ex)
             {
-                await DisplayAlert("Location",ex.ToString(),"Okay");
+                //await DisplayAlert("Location",ex.ToString(),"Okay");
+                await Navigation.PopAsync();
             }
         }
         private async void WebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
             var ewan = e.Url;
             var accessToken = await ExtractAccessTokenFromUrl(e.Url);
-            await DisplayAlert("checking pa111", accessToken, "Okay");
+            //await DisplayAlert("checking pa111", accessToken, "Okay");
             if (accessToken != "" || string.IsNullOrEmpty(accessToken) == false)
             {
                 if (socialMedieChosen == SocialMediaPlatform.Facebook)
@@ -165,6 +180,7 @@ namespace Chatter
                     if (userExist > 0)
                     {
                         await saveDataSqlite();
+                        await api.loadUserData(userModel);
                         await loadMainPage();
                         return;
                     }
@@ -188,7 +204,7 @@ namespace Chatter
                     var request = await cl.GetAsync("https://graph.facebook.com/v6.0/me/?fields=name,birthday,picture.width(800),gender&access_token=" + accessToken);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await DisplayAlert("testing nga fb", response, "okay");
+                    //await DisplayAlert("testing nga fb", response, "okay");
                     var profile = JsonConvert.DeserializeObject<FacebookProfile>(response);
                     //userModel.username = profile.Name;
                     //userModel.gender = profile.Gender;
@@ -220,7 +236,7 @@ namespace Chatter
             try
             {
                 var client = new HttpClient();
-                await DisplayAlert("Game! Spotify to e", accessToken, "Okay");
+                //await DisplayAlert("Game! Spotify to e", accessToken, "Okay");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 var request = await client.GetAsync("https://api.spotify.com/v1/me/top/artists");
@@ -264,7 +280,7 @@ namespace Chatter
                 var request = await client.PostAsync("https://api.instagram.com/oauth/access_token",content);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
-                await DisplayAlert("Gameersssss!",response,"Okay");
+                //await DisplayAlert("Gameersssss!",response,"Okay");
                 var objectionss = JsonConvert.DeserializeObject<InstagramResponse>(response);
                 //await DisplayAlert("Barbie sabi ko na", objectionss.access_token +" USERID" +  objectionss.user_id,"Okay");
                 await getInstagramInfo(objectionss.user_id,objectionss.access_token);
@@ -297,13 +313,13 @@ namespace Chatter
                     var request = await cl.GetAsync(commander2);
                     //request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await DisplayAlert("Instagram", response, "Okay");
+                    //await DisplayAlert("Instagram", response, "Okay");
                     var profile = JsonConvert.DeserializeObject<InstagramModel>(response);
 
                     //var existingUser = ;
                     if (!isRegistration)
                     {
-                        await DisplayAlert("Anu ba to?","Tae","Okay");
+                        //await DisplayAlert("Anu ba to?","Tae","Okay");
                         for (int a = 0; a < profile.Data.Length; a++)
                         {
                             await api.getInstagramPhotos(userIdToSync.Replace("\"",""), profile.Data[a].MediaUrl);
@@ -390,7 +406,7 @@ namespace Chatter
             {
                 if (!url.Contains("http://amareapp.com/?code="))
                     return string.Empty;
-                await DisplayAlert("Laman mo?",url,"Okay");
+                //await DisplayAlert("Laman mo?",url,"Okay");
                 int firstStringPosition = url.IndexOf("=");
                 int secondStringPosition = url.IndexOf("&");
                 string stringBetweenTwoStrings = url.Substring(firstStringPosition + 1,
@@ -399,7 +415,7 @@ namespace Chatter
                 //var three = two.Replace("&scope=openid%20profile%20email,email&authuser=0&prompt=none#", "");
 
                 //await DisplayAlert("test",two,"Okay");
-                await DisplayAlert("test", stringBetweenTwoStrings, "Okay");
+                //await DisplayAlert("test", stringBetweenTwoStrings, "Okay");
                 var final = await getGoogleAccessToken(stringBetweenTwoStrings);
                 //await DisplayAlert("Laman mo?2", one, "Okay");
                 return final;
@@ -498,7 +514,7 @@ namespace Chatter
             foreach (UserModel midek in userExist)
             {
                 userModel = midek;
-                await api.loadUserData(userModel);
+                await api.loadUserData(midek);
                 return;
             }
         }

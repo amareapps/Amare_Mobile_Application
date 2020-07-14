@@ -27,10 +27,10 @@ namespace Chatter
         {
             InitializeComponent();
             FlowListView.Init();
-            connectToSocket();
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "sendMessage", (sender, arg) =>
             {
                 var value = JsonConvert.SerializeObject(arg);
+                Console.WriteLine("boom panes panes" + value);
                 socket.Emit("hi", value);
             });
             try
@@ -105,15 +105,16 @@ namespace Chatter
         }
         protected override void OnStart()
         {
-
+            connectToSocket();
         }
-
         protected override void OnSleep()
         {
+            socket.Disconnect();
         }
 
         protected override void OnResume()
         {
+            connectToSocket();
         }
         private bool hasLoggedIn()
         {

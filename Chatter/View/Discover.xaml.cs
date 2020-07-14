@@ -187,7 +187,6 @@ namespace Chatter
                 }
                 else
                 {
-
                     content.Add(new StringContent(Application.Current.Properties["Id"].ToString().Replace("\"", "")), "user_id");
                     content.Add(new StringContent(currentUserIdSelected), "user_id_liked");
                     content.Add(new StringContent("0"), "visible");
@@ -196,8 +195,7 @@ namespace Chatter
                     var response = await request.Content.ReadAsStringAsync();
                     string likeduser = currentItem.username;
                     //userliked.IsVisible = true;
-                    var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
-
+                    var exec = await DisplayAlert("Discover", "You liked " + response, null, "OK");
                 }
                 imageSources.Remove(currentItem);
             }
@@ -308,6 +306,17 @@ namespace Chatter
                 //imageSources.Remove(currentItem);
             }
         }
+        private async Task autoDislikeOldUserSwipe()
+        {
+            if (coverFlowView.SelectedIndex >= 2)
+            {
+                var usertoRemove = imageSources[0];
+                string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
+                await api.saveToDislikedUser(user_id, usertoRemove.id);
+                imageSources.Remove(usertoRemove);
+                //imageSources.Remove(currentItem);
+            }
+        }
 
         private void continue_Clicked(object sender, EventArgs e)
         {
@@ -329,8 +338,13 @@ namespace Chatter
         }
         private async Task dislikeUser()
         {
-
-            coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+            await Task.Run(() =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    coverFlowView.SelectedIndex = coverFlowView.SelectedIndex;
+                });
+            });
         }
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
@@ -342,6 +356,7 @@ namespace Chatter
             if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Left)
             {
                 await dislikeUser();
+                await autoDislikeOldUserSwipe();
             }
             else if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Right)
             {

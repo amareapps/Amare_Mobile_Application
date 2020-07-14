@@ -97,6 +97,10 @@ namespace Chatter
                 lblMessagetoReply.Text = reply_message;
                 replyStack.IsVisible = true;
             });
+            if(receiver_id == "amare")
+            {
+                chatbotter.IsVisible = true;
+            }
             /*Task.Run(() =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -337,6 +341,12 @@ namespace Chatter
             }
         }
 
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            Xamarin.Forms.Button btne = (Xamarin.Forms.Button)sender;
+            await sendMessage(btne.Text);
+        }
+
         private async void voiceMessage_Released(object sender, EventArgs e)
         {
             try
@@ -363,7 +373,7 @@ namespace Chatter
         {
             imagePicker.Focus();
         }
-        private async Task sendMessage(string message)
+        private async Task sendMessage(string smessage)
         {
             ChatModel modeler = new ChatModel {
                 id = "1",
@@ -371,7 +381,7 @@ namespace Chatter
                 sender_username = Application.Current.Properties["username"].ToString(),
                 session_id = Session_Id,
                 receiver_id = Receiver_Id,
-                message = message,
+                message = smessage,
                 datetime = DateTime.Now.ToString(),
                 reply_to_id = reply_id,
                 reply_to_message = reply_message
