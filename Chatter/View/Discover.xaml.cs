@@ -26,6 +26,7 @@ using Rg.Plugins.Popup.Services;
 using Chatter.Classes;
 using System.Globalization;
 using PanCardView;
+using Chatter.View.Popup;
 
 namespace Chatter
 {
@@ -193,9 +194,9 @@ namespace Chatter
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_liked", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    string likeduser = currentItem.username;
-                    //userliked.IsVisible = true;
-                    var exec = await DisplayAlert("Discover", "You liked " + response, null, "OK");
+                    string userliked = currentItem.username;
+                    await PopupNavigation.Instance.PushAsync(new LikedUser(userliked, currentItem.image));
+                    //var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
                 }
                 imageSources.Remove(currentItem);
             }
@@ -316,11 +317,6 @@ namespace Chatter
                 imageSources.Remove(usertoRemove);
                 //imageSources.Remove(currentItem);
             }
-        }
-
-        private void continue_Clicked(object sender, EventArgs e)
-        {
-            userliked.IsVisible = false;
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

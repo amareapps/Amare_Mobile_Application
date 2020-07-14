@@ -35,12 +35,12 @@ namespace Chatter.View
             InitializeComponent();
 
             int h, w;
-            for (h = 130; h < 301; h++)
+            for (h = 300; h > 131; h--)
             {
                 int height = h;
                 heightEntry.Items.Add(height.ToString());
             }
-            for (w = 30; w < 100; w++)
+            for (w = 100; w > 31; w--)
             {
                 int weight = w;
                 weightEntry.Items.Add(weight.ToString());
