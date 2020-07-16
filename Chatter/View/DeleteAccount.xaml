@@ -7,13 +7,6 @@
              x:Class="Chatter.View.DeleteAccount" IsVisible="True">
     <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">
         <StackLayout Spacing="5">
-            <Frame BackgroundColor="#890447" HasShadow="True" Padding="10">
-            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <Image Margin="5,0,0,0" Source="warning.png" HeightRequest="25" Aspect="AspectFit" WidthRequest="25"></Image>
-                    <Label Text="Delete Account" FontSize="Large" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold"
-                    VerticalOptions="CenterAndExpand"/>
-            </StackLayout>
-            </Frame>
             <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" Padding="10,0,10,0">
                 <StackLayout >
                     <Label FontAttributes="Bold" Padding="15,15,15,5" Text="Warning! &#x0a;This cannot be undone." FontSize="Medium" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
@@ -25,8 +18,8 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Text="Cancel" Clicked="CancelButton_Clicked"  Grid.Column="0" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="30" FontAttributes="Bold" HorizontalOptions="FillAndExpand" ></Button>
-                        <Button x:Name="deleteButton" IsEnabled="False" Clicked="deleteButton_Clicked" BackgroundColor="Default" Text="Delete Account" CornerRadius="30"  Grid.Column="1" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
+                        <Button Text="Cancel" Clicked="CancelButton_Clicked"  Grid.Column="0" FontSize="12" BackgroundColor="Accent" TextColor="#EEEEEE" CornerRadius="10" FontAttributes="Bold" HorizontalOptions="FillAndExpand" ></Button>
+                        <Button x:Name="deleteButton" IsEnabled="False" Clicked="deleteButton_Clicked" FontSize="12" BackgroundColor="Default" Text="Delete Account" CornerRadius="10"  Grid.Column="1" FontAttributes="Bold" HorizontalOptions="FillAndExpand"></Button>
                     </Grid>
                 </StackLayout>
             </ScrollView>

@@ -52,30 +52,10 @@
                         </Frame.GestureRecognizers>
                     </Frame>
                     <Label Text="Discovery" Margin="5,0,5,0" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Transparent" Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="280*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Location"  Grid.Column="0"  Grid.Row="0" FontSize="Large" FontAttributes="Bold"></Label>
-                            <Picker x:Name="locationPicker" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Title="Select your location" SelectedIndexChanged="Picker_SelectedIndexChanged">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>Use current location</x:String>
-                                        <x:String>Set new location</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                            <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="1" Grid.Column="0" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                        </Grid>
-                    </Frame>
+                    
                     <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="10">
-                            <Label Text="I am looking for.." FontSize="Large" FontAttributes="Bold"></Label>
+                            <Label Text="I am looking for.." FontSize="20" FontAttributes="Bold"></Label>
                             <Grid HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Padding="10,0,10,5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"></RowDefinition>
@@ -102,41 +82,20 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
+
                     <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
-                            <Grid HorizontalOptions="CenterAndExpand">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" FontAttributes="Bold"  Text="Discovery Distance" FontSize="Large" Grid.ColumnSpan="2"></Label>
-                                <Label Grid.Column="1"  HorizontalTextAlignment="End" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
-                                <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" FontSize="Body"></Label>
-                            </Grid>
-                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"></Slider>
-                        </StackLayout>
-                    </Frame>
-                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
-                            <Grid HorizontalOptions="CenterAndExpand">
-                                <Label Grid.Column="0" FontAttributes="Bold" Text="Show Distances in" FontSize="Large" Grid.ColumnSpan="2"></Label>
-                            </Grid>
-                            <StackLayout Orientation="Horizontal" x:Name="metricLayout">
-                                <Button x:Name="btnKm" Clicked="Button_Clicked" Text="Km." HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Default" ></Button>
-                                <Button x:Name="btnMi" Clicked="Button_Clicked" Text="Mi." HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Default"></Button>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout HorizontalOptions="CenterAndExpand" Padding="10" BackgroundColor="Transparent">
-                            <Grid>
+                            <Grid HorizontalOptions="FillAndExpand" Padding="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="AUTO"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" FontAttributes="Bold" Text="Age Range" FontSize="Medium"></Label>
-                                <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0" Margin="0">
+                                <Label Grid.Column="0" FontAttributes="Bold" Text="Age Range" FontSize="20"></Label>
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Padding="0" Margin="0" VerticalOptions="Center">
                                     <Label FontSize="Body" Text="{Binding Source={x:Reference Name=ageslider}, Path=LowerValue, StringFormat='{0:N0} - '}"></Label>
                                     <Label FontSize="Body"  Text="{Binding Source={x:Reference Name=ageslider}, Path=UpperValue, StringFormat='{0:N0}'}" ></Label>
                                 </StackLayout>
@@ -144,8 +103,66 @@
                             <forms:RangeSlider ActiveColor="#3cc5d5" MaxThumbHidden="False" MinThumbHidden="False" BarHeight="7"  x:Name="ageslider" LowerValue="18"  UpperValue="100" MinimumValue="18" MaximumValue="100" TextSize="15" />
                         </StackLayout>
                     </Frame>
-
-                    <Button x:Name="saveButton" Text="APPLY CHANGES" TextColor="#3cc5d5" Margin="5,0,5,10" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2" Clicked="saveButton_Clicked"></Button>
+                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="Transparent">
+                            <Grid HorizontalOptions="FillAndExpand" Padding="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Location"  Grid.Column="0"  Grid.Row="0" FontSize="20" FontAttributes="Bold"></Label>
+                                <Picker x:Name="locationPicker" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Title="Select your location" SelectedIndexChanged="Picker_SelectedIndexChanged">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Use current location</x:String>
+                                            <x:String>Set new location</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                                <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="Transparent">
+                            <Grid HorizontalOptions="FillAndExpand" Padding="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" FontAttributes="Bold"  Text="Discovery Distance" FontSize="20" Grid.ColumnSpan="2"></Label>
+                                <Label Grid.Column="1"  HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
+                                <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Body"></Label>
+                            </Grid>
+                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"></Slider>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="Transparent">
+                            <Grid HorizontalOptions="FillAndExpand" Padding="0">
+                                <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Column="0" FontAttributes="Bold" Text="Show Distances in" FontSize="20" Grid.ColumnSpan="2"></Label>
+                            </Grid>
+                            <StackLayout Orientation="Horizontal" x:Name="metricLayout">
+                                <Button x:Name="btnKm" Clicked="Button_Clicked" Text="Km." HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Default" ></Button>
+                                <Button x:Name="btnMi" Clicked="Button_Clicked" Text="Mi." HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Default"></Button>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Button x:Name="saveButton" Text="APPLY CHANGES" TextColor="#3cc5d5" Margin="5,5,5,10" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2" Clicked="saveButton_Clicked"></Button>
 
                     <Label Margin="5,0,5,0" Text="Contact Us" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Margin="5,0,5,0" Text="Help and Support" TextColor="#3cc5d5" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2"></Button>

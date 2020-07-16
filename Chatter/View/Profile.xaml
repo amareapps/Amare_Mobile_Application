@@ -8,7 +8,8 @@
              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" 
              xmlns:local="clr-namespace:Chatter.Classes" 
              xmlns:gradient="clr-namespace:Chatter.Classes"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
              mc:Ignorable="d"
              x:Class="Chatter.Profile" BackgroundColor="White">
     <Page.Resources>

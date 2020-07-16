@@ -10,16 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace Chatter.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WelcomePage : ContentPage
+    public partial class WelcomeRules : ContentPage
     {
-        public WelcomePage()
+        public WelcomeRules()
         {
             InitializeComponent();
         }
 
         private void btnGetStarted_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new WelcomeRules());
+            App.Current.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

@@ -80,11 +80,11 @@
                     <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
                         <StackLayout Padding="0" Margin="0">
                             <StackLayout Padding="5,0,5,0">
-                                <Label Text="Describe yourself" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <Label Text="Describe yourself" HorizontalOptions="Start" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                                 <local1:CustomEditor x:Name="aboutEntry" FontSize="Small" Placeholder="Tell other users more about you" Text="{Binding about}" HeightRequest="100"></local1:CustomEditor>
                             </StackLayout>
                             <StackLayout Padding="5,10,5,0">
-                                <Label Text="Hobbies" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <Label Text="Hobbies" Margin="0,0,0,0" HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold"></Label>
                                 <local1:CustomEditor HeightRequest="80" FontSize="Small" x:Name="hobbyEntry" Placeholder="What are your hobbies?" Text="{Binding hobby}"></local1:CustomEditor>
                             </StackLayout>
                         </StackLayout>

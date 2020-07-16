@@ -2,22 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView" xmlns:gradient="clr-namespace:Chatter.Classes"
              x:Class="Chatter.View.WelcomePage" NavigationPage.HasNavigationBar="False" BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ActiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#890447" />
+            </Style>
+            <Style x:Key="InactiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="OutlineColor" Value="#890447" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center">
+        <StackLayout VerticalOptions="CenterAndExpand" HeightRequest="500">
             <ffimageloading:CachedImage WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="FINAL_AMERA.png" Margin="0"/>
-            <Label Margin="20,40,20,30" Padding="0" TextColor="Black" HorizontalTextAlignment="Center" 
-                   Text="Thank you for registering to Amare! We welcome you to a new world where &#x0a;love is limitless!" FontSize="Medium"/>
-            <StackLayout>
+            <Label Margin="20,40,20,0" Padding="0" TextColor="Black" HorizontalTextAlignment="Center" 
+                   Text="Welcome to Amare!" FontSize="Large"/>
+            <Label Margin="40,30,40,0" Padding="0" TextColor="Black" HorizontalTextAlignment="Start" 
+                   Text="Your journey to a new world where everyone celebrates equality and limitless possibilities start now!" FontSize="Medium"/>
+            <Label Margin="40,50,40,20" Padding="0" HorizontalTextAlignment="Start" 
+                   Text="You're almost done in completing the steps on how to be a wonderful member of Amare! Just click the button below for the final step!" FontSize="Small"/>
+            <!--<StackLayout>
                 <Label Margin="50,20,50,0" Padding="0" HorizontalTextAlignment="Center" 
                    Text="'The limit for love is limitless love.'" FontAttributes="Bold"></Label>
                 <Label Margin="0" Padding="0" HorizontalTextAlignment="Center" 
                    Text="©Francis de Sales" FontAttributes="Bold" FontSize="Micro"></Label>
-            </StackLayout>
-            <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="End" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="30" TextColor="White" Text="Get Started" Padding="20" Margin="0,20,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
+            </StackLayout>-->
+            <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="EndAndExpand" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="10" TextColor="White" Text="Get Started" Padding="20" Margin="0,20,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
