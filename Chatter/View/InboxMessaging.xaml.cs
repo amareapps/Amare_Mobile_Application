@@ -324,15 +324,18 @@ namespace Chatter
         private void unreadFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderByDescending(entry => entry.has_unread);
-            stackFilter.IsVisible = false;
-
+            unreadFilterButton.IsVisible = true;
+            receivedFilterButton.IsVisible = false;
+            nearbyFilterButton.IsVisible = false;
             hamburgerImage.IsVisible = true;
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.1, 0.1));
         }
         private void receivedFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderByDescending(entry => entry.datetime);
-            stackFilter.IsVisible = false;
+            unreadFilterButton.IsVisible = false;
+            receivedFilterButton.IsVisible = true;
+            nearbyFilterButton.IsVisible = false;
 
             hamburgerImage.IsVisible = true;
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.1, 0.1));
@@ -340,7 +343,9 @@ namespace Chatter
         private void nearbyFilterButton_Clicked(object sender, EventArgs e)
         {
             InboxList.ItemsSource = inboxModels.OrderBy(entry => entry.distance);
-            stackFilter.IsVisible = false;
+            unreadFilterButton.IsVisible = false;
+            receivedFilterButton.IsVisible = false;
+            nearbyFilterButton.IsVisible = true;
             hamburgerImage.IsVisible = true;
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.1, 0.1));
         }
@@ -367,11 +372,16 @@ namespace Chatter
 
         private void hamburgerEvent_Tapped(object sender, EventArgs e)
         {
-            //hamburgerImage.IsVisible = false;
-            if(!stackFilter.IsVisible)
-                stackFilter.IsVisible = true;
-            else
-                stackFilter.IsVisible = false;
+            hamburgerImage.IsVisible = false;
+            //if (!unreadFilterButton.IsVisible)
+            //{
+                //stackFilter.IsVisible = true;
+                unreadFilterButton.IsVisible = true;
+                receivedFilterButton.IsVisible = true;
+                nearbyFilterButton.IsVisible = true;
+            //}
+            //else
+            //    stackFilter.IsVisible = false;
             AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.55, 0.1));
         }
 
