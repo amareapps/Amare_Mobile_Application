@@ -103,7 +103,7 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="Height (CM)" Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                                    <Picker Title="Choose your height" x:Name="heightEntry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Picker Title="Choose your height" x:Name="heightEntry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     </Picker>
                                 <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="1" Grid.Column="1" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
                                 <Label Text="Weight (KG)" Grid.Row="2" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>

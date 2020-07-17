@@ -34,6 +34,10 @@ namespace Chatter.View
         {
             InitializeComponent();
 
+
+        }
+        protected async override void OnAppearing()
+        {
             int h, w;
             for (h = 300; h > 131; h--)
             {
@@ -45,10 +49,6 @@ namespace Chatter.View
                 int weight = w;
                 weightEntry.Items.Add(weight.ToString());
             }
-        }
-        protected async override void OnAppearing()
-        {
-
             lblAbout.Text = "About " + Application.Current.Properties["username"].ToString();
             instagramPhotos.Clear();
             await loadFromDb();
@@ -98,8 +98,8 @@ namespace Chatter.View
         }
         protected async override void OnDisappearing()
         {
-            updateDb();
             await sendToApi();
+            updateDb();
         }
         private void backButton_Clicked(object sender, EventArgs e)
         {
@@ -132,6 +132,8 @@ namespace Chatter.View
                     userModel = model;
                 }
             }
+            heightEntry.SelectedItem = userModel.height;
+            weightEntry.SelectedItem = userModel.weight;
             BindingContext = userModel;
         }
         private async Task sendToApi()
@@ -167,6 +169,8 @@ namespace Chatter.View
                 content.Add(new StringContent(isDistanceShow), "show_distance");
                 content.Add(new StringContent(userModel.location), "location");
                 content.Add(new StringContent(userModel.interest), "interest");
+                userModel.height = heightEntry.Items[heightEntry.SelectedIndex].ToString();
+                userModel.weight = weightEntry.Items[weightEntry.SelectedIndex].ToString();
                 content.Add(new StringContent(userModel.height), "height");
                 content.Add(new StringContent(userModel.weight), "weight");
                 content.Add(new StringContent(userModel.hobby), "hobby");
