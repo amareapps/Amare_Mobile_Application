@@ -68,10 +68,10 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                             <Label Text="Messages" TextColor="Black" FontSize="Large" Margin="10,0,0,0" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                             <StackLayout x:Name="hamburgerLayout" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                <StackLayout x:Name="stackFilter" IsVisible="False" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
-                                    <Button x:Name="unreadFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" FontAttributes="Bold" TextColor="White"  Margin="0" Padding="0" CornerRadius="20" ></Button>
-                                    <Button x:Name="receivedFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
-                                    <Button x:Name="nearbyFilterButton" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
+                                <StackLayout x:Name="stackFilter" IsVisible="True" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Start">
+                                    <Button x:Name="unreadFilterButton" IsVisible="True" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="unreadFilterButton_Clicked" Text="Unread" FontSize="Micro" FontAttributes="Bold" TextColor="White"  Margin="0" Padding="0" CornerRadius="20" ></Button>
+                                    <Button x:Name="receivedFilterButton" IsVisible="False" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="receivedFilterButton_Clicked" Text="Recent" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
+                                    <Button x:Name="nearbyFilterButton" IsVisible="False" BackgroundColor="#3cc5d5" WidthRequest="50" HeightRequest="30" Clicked="nearbyFilterButton_Clicked" Text="Nearby" FontSize="Micro" FontAttributes="Bold" TextColor="White" Margin="0" Padding="0" CornerRadius="20"></Button>
                                 </StackLayout>
                                 <ffimageloading:CachedImage Margin="0" VerticalOptions="Start" HorizontalOptions="EndAndExpand" x:Name="hamburgerImage" Source="hamburger.png" IsVisible="True" Aspect="AspectFit" HeightRequest="30" WidthRequest="30">
                                     <ffimageloading:CachedImage.GestureRecognizers>
