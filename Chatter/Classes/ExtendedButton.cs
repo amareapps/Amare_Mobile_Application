@@ -11,10 +11,8 @@ namespace Chatter.Classes
         /// Bindable property for button content vertical alignment.
         /// </summary>
         public static readonly BindableProperty VerticalContentAlignmentProperty =
-#pragma warning disable CS0618 // Type or member is obsolete
             BindableProperty.Create<ExtendedButton, TextAlignment>(
                 p => p.VerticalContentAlignment, TextAlignment.Center);
-#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Bindable property for button content horizontal alignment.

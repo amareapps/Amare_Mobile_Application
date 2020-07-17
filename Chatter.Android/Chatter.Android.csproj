@@ -173,9 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />
-    <AndroidAsset Include="Assets\BasikBook.ttf" />
-    <AndroidAsset Include="Assets\Nunito-Regular.ttf" />
-    <AndroidAsset Include="Assets\Nunito-Bold.ttf" />
     <AndroidAsset Include="Assets\GraphikRegular.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -218,13 +215,7 @@
     <AndroidResource Include="Resources\drawable\tzuyu.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\no_image.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\send.png" />
@@ -234,15 +225,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\heart.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\profile_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\register.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\email.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\edit.png" />
@@ -272,9 +254,6 @@
     <AndroidResource Include="Resources\drawable\ig_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\mobile.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\Amare_logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -300,12 +279,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\heartmatch.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ig_logo_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\mic_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\call.png" />
@@ -335,13 +308,7 @@
     <AndroidResource Include="Resources\drawable\audio.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\reward.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\amareheader.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\error.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\warning.png" />
@@ -359,9 +326,6 @@
     <AndroidResource Include="Resources\values\strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gradientbgnew.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\greaterthan.png" />
@@ -407,9 +371,6 @@
     <AndroidResource Include="Resources\drawable\welcomelogonew.gif" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\welcomelogonew1.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\amarewords.png" />
   </ItemGroup>
   <ItemGroup>
@@ -417,9 +378,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\playaudio.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\welcomelogo.gif" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\spotify.png" />

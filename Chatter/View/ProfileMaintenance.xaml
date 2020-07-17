@@ -81,16 +81,16 @@
                         <Label Text="I am a..." FontSize="30" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
                     </StackLayout>
             <Grid x:Name="iamGrid"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="45,0,45,0">
-                <Button x:Name="womanButton" Grid.Row="0" Padding="20,0,0,0" ImageSource="female.png" CornerRadius="30" Text="Female" Clicked="Button_Clicked" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
-                <Button x:Name="manButton" Grid.Row="1" Padding="20,0,0,0" ImageSource="male.png" CornerRadius="30" Text="Male" Clicked="Button_Clicked" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button x:Name="womanButton" Grid.Row="0" ImageSource="female.png"  CornerRadius="30" Text="Female" Clicked="Button_Clicked" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button x:Name="manButton" Grid.Row="1" ImageSource="male.png" Margin="0" CornerRadius="30" Text="Male   " Clicked="Button_Clicked" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
             </Grid>
             <StackLayout VerticalOptions="Center" Margin="0,0,0,0">
                         <Label Text="I am interested in..." FontSize="30" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold"></Label>
                     </StackLayout>
             <Grid x:Name="gridInterest" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="45,0,45,0">
-                <Button x:Name="womenInterestButton" Padding="20,0,0,0" ImageSource="female.png" Grid.Row="0" CornerRadius="30" Text="Female" Clicked="Button_Interest" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
-                <Button x:Name="menInterestButton" Padding="20,0,0,0" ImageSource="male.png" Grid.Row="1" CornerRadius="30" Text="Male" Clicked="Button_Interest" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
-                <Button x:Name="everyoneInterestButton" Padding="20,0,0,0" ImageSource="everyone.png" Grid.Row="2" CornerRadius="30" Text="Everyone" Clicked="Button_Interest" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button x:Name="womenInterestButton" ImageSource="female.png" Grid.Row="0" CornerRadius="30" Text="Female" Clicked="Button_Interest" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button x:Name="menInterestButton" ImageSource="male.png" Grid.Row="1" CornerRadius="30" Text="Male    " Clicked="Button_Interest" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
+                <Button x:Name="everyoneInterestButton" ImageSource="everyone.png" Grid.Row="2" CornerRadius="30" Text="     Everyone" Clicked="Button_Interest" BackgroundColor="Default" TextColor="Black" FontAttributes="Bold"></Button>
             </Grid>
             <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="30" BackgroundColor="Transparent" VerticalOptions="FillAndExpand">
                 <Button BackgroundColor="#3cc5d5" TextColor="White" CornerRadius="30" Text="CONTINUE" FontSize="Large" FontAttributes="Bold" VerticalOptions="End" Clicked="nextContent"></Button>

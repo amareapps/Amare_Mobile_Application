@@ -22,18 +22,20 @@
         <StackLayout VerticalOptions="CenterAndExpand" HeightRequest="500">
             <ffimageloading:CachedImage WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="FINAL_AMERA.png" Margin="0"/>
             <Label Margin="20,40,20,0" Padding="0" TextColor="Black" HorizontalTextAlignment="Center" 
-                   Text="Welcome to Amare!" FontSize="Large"/>
-            <Label Margin="40,30,40,0" Padding="0" TextColor="Black" HorizontalTextAlignment="Start" 
-                   Text="Your journey to a new world where everyone celebrates equality and limitless possibilities start now!" FontSize="Medium"/>
-            <Label Margin="40,50,40,20" Padding="0" HorizontalTextAlignment="Start" 
-                   Text="You're almost done in completing the steps on how to be a wonderful member of Amare! Just click the button below for the final step!" FontSize="Small"/>
+                   Text="Welcome to Amare!" FontSize="Large" FontAttributes="Bold"/>
+            <Label Margin="30,30,30,0" Padding="0" TextColor="Black" HorizontalTextAlignment="Center" 
+                   Text="Your journey to a new world where everyone celebrates equality and limitless possibilities start now! &#x0a;&#x0a;You're almost done in completing the steps on how to be a wonderful member of Amare! Just click the button below for the final step!" FontSize="Medium"/>
+            <Label Margin="30,50,30,0" Padding="0" HorizontalTextAlignment="Center" VerticalTextAlignment="End" VerticalOptions="EndAndExpand" 
+                   Text="'The limit for love is limitless love.'" FontSize="Caption" FontAttributes="Italic"/>
+            <Label Margin="30,0,30,0" Padding="0" HorizontalTextAlignment="Center" VerticalTextAlignment="End" VerticalOptions="EndAndExpand" 
+                   Text="©St. Francis de Sales" FontSize="Caption"/>
             <!--<StackLayout>
                 <Label Margin="50,20,50,0" Padding="0" HorizontalTextAlignment="Center" 
                    Text="'The limit for love is limitless love.'" FontAttributes="Bold"></Label>
                 <Label Margin="0" Padding="0" HorizontalTextAlignment="Center" 
                    Text="©Francis de Sales" FontAttributes="Bold" FontSize="Micro"></Label>
             </StackLayout>-->
-            <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="EndAndExpand" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="10" TextColor="White" Text="Get Started" Padding="20" Margin="0,20,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
+            <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="10" TextColor="White" Text="Final Step" Padding="10" Margin="0,30,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
