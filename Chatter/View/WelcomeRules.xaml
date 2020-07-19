@@ -20,13 +20,14 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="0" Margin="0,100,0,20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Label Margin="40,0,40,20" Padding="0" HorizontalTextAlignment="Center" 
+            <ffimageloading:CachedImage WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="imageWave" Source="FINAL_AMERA.png" Margin="0"/>
+        <Label Margin="40,50,40,20" Padding="0" HorizontalTextAlignment="Center" 
                    Text="Swipe below to see the simple rules for having a healthy journey in Amare." TextColor="Black" FontSize="Medium"/>
-            <StackLayout Margin="0,50,0,20">
-                <cards:CarouselView x:Name="autoSlider" Padding="0" Margin="40,0,40,5" HeightRequest="300">
+            <StackLayout Margin="0,0,0,20">
+                <cards:CarouselView x:Name="autoSlider" Padding="40,0,40,0" Margin="0,0,0,5" HeightRequest="300">
                     <cards:CarouselView.ItemsSource>
                         <x:Array Type="{x:Type View}">
-                            <Grid Padding="0" HorizontalOptions="Start" VerticalOptions="Start">
+                            <Grid Padding="0" HorizontalOptions="Center" VerticalOptions="Start"  >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -35,11 +36,11 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="1" FontSize="Header" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" TextColor="Accent" FontAttributes="Bold"></Label>
-                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-                                    <Label Text="Choose to be" FontSize="Medium" TextColor="Black"></Label>
-                                    <Label Text="kind." FontAttributes="Italic" TextColor="Black" FontSize="Medium" ></Label>
-                                </StackLayout>
-                            </Grid>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                        <Label Text="Choose to be" FontSize="Medium" TextColor="Black"></Label>
+                                        <Label Text="kind." FontAttributes="Italic" TextColor="Black" FontSize="Medium" ></Label>
+                                    </StackLayout>
+                                </Grid>
                             <Grid Padding="0" HorizontalOptions="Start" VerticalOptions="Start">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
