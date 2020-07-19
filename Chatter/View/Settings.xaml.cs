@@ -15,6 +15,8 @@ using Plugin.Share;
 using Plugin.Share.Abstractions;
 using Rg.Plugins.Popup.Services;
 using Json.Net;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Chatter
 {
@@ -28,6 +30,10 @@ namespace Chatter
         public Settings()
         {
             InitializeComponent();
+            
+        }
+        protected override void OnAppearing()
+        {
             loadFromDatabase();
         }
 
@@ -45,8 +51,15 @@ namespace Chatter
 
                 if (location != null)
                 {
-                    string sample = location.ToString();
-              //      await DisplayAlert("", locationString, "Okay");
+                    string sample = location.Latitude + "," + location.Longitude;
+                    var coordinates = sample.Split(',');
+                    var userModel = sqliteManager.getUserModel();
+                    var address = await getAddress(double.Parse(coordinates[0]), double.Parse(coordinates[0]));
+                    userModel.location = sample;
+                    userModel.city = address;
+                    sqliteManager.updateUserModel(userModel);
+                    locationPicker.Title = address;
+              //      
                 }
                 else
                 {
@@ -101,7 +114,7 @@ namespace Chatter
             await api.updateUser(sqliteManager.getUserModel());
             await Navigation.PopModalAsync();
         }
-        private void loadFromDatabase()
+        private async void loadFromDatabase()
         {
             //Save to Local Database
             string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
@@ -116,6 +129,7 @@ namespace Chatter
                     slider.Value = Convert.ToInt32(model.maximum_distance);
                     ageslider.LowerValue = float.Parse(model.age_start);
                     ageslider.UpperValue = float.Parse(model.age_end);
+                    
                     if (model.distance_metric == 0)
                     {
                         btnKm.BackgroundColor = Color.FromHex("3cc5d5");
@@ -139,12 +153,41 @@ namespace Chatter
                 var table2 = conn.Table<UserModel>().ToList();
                 foreach (UserModel model in table2)
                 {
+                    var coordinates = model.location.Split(',');
+                    if (string.IsNullOrEmpty(model.city))
+                    {
+                        model.city = await getAddress(double.Parse(coordinates[0]), double.Parse(coordinates[1]));
+                    }
                     locationString = model.location;
                     userName.Text = model.username;
                     setGenderPicker(Convert.ToInt32(model.interest));
+                    locationPicker.Title = model.city;
                     //showmePicker.SelectedIndex = Convert.ToInt32(model.interest);
                 }
             }
+        }
+        private async Task<string> getAddress(double lat, double lon)
+        {
+            var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
+
+            var placemark = placemarks?.FirstOrDefault();
+            string address = "";
+            if (placemark != null)
+            {
+                var geocodeAddress =
+                    $"AdminArea:       {placemark.AdminArea}\n" +
+                    $"CountryCode:     {placemark.CountryCode}\n" +
+                    $"CountryName:     {placemark.CountryName}\n" +
+                    $"FeatureName:     {placemark.FeatureName}\n" +
+                    $"Locality:        {placemark.Locality}\n" +
+                    $"PostalCode:      {placemark.PostalCode}\n" +
+                    $"SubAdminArea:    {placemark.SubAdminArea}\n" +
+                    $"SubLocality:     {placemark.SubLocality}\n" +
+                    $"SubThoroughfare: {placemark.SubThoroughfare}\n" +
+                    $"Thoroughfare:    {placemark.Thoroughfare}\n";
+                address = placemark.Locality;
+            }
+            return address;
         }
         private void logoutButton_Clicked(object sender, EventArgs e)
         {

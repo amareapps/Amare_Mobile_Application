@@ -39,9 +39,9 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-                <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
+                <cards:CarouselView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional"
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="False" >
-                    <cards:CardsView.ItemTemplate>
+                    <cards:CarouselView.ItemTemplate>
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="10" HasShadow="True">
                                 <AbsoluteLayout >
@@ -155,8 +155,8 @@
                                 </AbsoluteLayout>
                             </Frame>
                         </DataTemplate>
-                    </cards:CardsView.ItemTemplate>
-                </cards:CardsView>
+                    </cards:CarouselView.ItemTemplate>
+                </cards:CarouselView>
                 <!-- Overlay 
                 <Frame x:Name="userliked"  
                          IsVisible="False"

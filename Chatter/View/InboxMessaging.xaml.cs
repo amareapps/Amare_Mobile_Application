@@ -372,7 +372,7 @@ namespace Chatter
 
         private void hamburgerEvent_Tapped(object sender, EventArgs e)
         {
-            hamburgerImage.IsVisible = false;
+            //hamburgerImage.IsVisible = false;
             //if (!unreadFilterButton.IsVisible)
             //{
                 //stackFilter.IsVisible = true;

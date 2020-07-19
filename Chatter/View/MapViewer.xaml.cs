@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 using Chatter.Classes;
+using Xamarin.Essentials;
+
 namespace Chatter.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -47,11 +49,43 @@ namespace Chatter.View
                 return;
             //Update Location
             var userModel = sqliteManager.getUserModel();
+            var userCity = await getAddress(e.Position.Latitude,e.Position.Longitude);
             location = e.Position.Latitude.ToString() + "," + e.Position.Longitude.ToString();
             userModel.location = location;
+            userModel.city = userCity;
             sqliteManager.updateUserModel(userModel);
+            //await DisplayAlert("Address",await getAddress(e.Position.Latitude,e.Position.Longitude),"Okay");
             await api.updateUser(sqliteManager.getUserModel());
             await Navigation.PopAsync();
+        }
+        private async Task<string> getAddress(double lat,double lon)
+        {
+            //Geocoder geoCoder = new Geocoder();
+            //Position position = new Position(lat,longh);
+            //IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
+            //string address = possibleAddresses.FirstOrDefault();
+            //return address;
+
+            var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
+
+            var placemark = placemarks?.FirstOrDefault();
+            string address = "";
+            if (placemark != null)
+            {
+                var geocodeAddress =
+                    $"AdminArea:       {placemark.AdminArea}\n" +
+                    $"CountryCode:     {placemark.CountryCode}\n" +
+                    $"CountryName:     {placemark.CountryName}\n" +
+                    $"FeatureName:     {placemark.FeatureName}\n" +
+                    $"Locality:        {placemark.Locality}\n" +
+                    $"PostalCode:      {placemark.PostalCode}\n" +
+                    $"SubAdminArea:    {placemark.SubAdminArea}\n" +
+                    $"SubLocality:     {placemark.SubLocality}\n" +
+                    $"SubThoroughfare: {placemark.SubThoroughfare}\n" +
+                    $"Thoroughfare:    {placemark.Thoroughfare}\n";
+                address = placemark.Locality;
+            }
+            return address;
         }
     }
 }
