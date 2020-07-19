@@ -346,5 +346,14 @@ namespace Chatter
         {
             Navigation.PushAsync(new ModifyAccount(1,"******"));
         }
+
+        private void slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            if(e.NewValue < 1)
+            {
+                slider.Value = 1;
+                return;
+            }
+        }
     }
 }

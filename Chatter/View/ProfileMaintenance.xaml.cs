@@ -95,7 +95,7 @@ namespace Chatter
                         if (_isSocialMediaRegistation == false)
                         {
 
-                        PopupNavigation.Instance.PushAsync(new RegistrationIncomplete());
+                        await PopupNavigation.Instance.PushAsync(new RegistrationIncomplete());
 
                         continueButton.IsEnabled = true;
                             return;
@@ -103,7 +103,7 @@ namespace Chatter
                     }
                     if (imageString == string.Empty)
                     {
-                    PopupNavigation.Instance.PushAsync(new ImageRequired());
+                    await PopupNavigation.Instance.PushAsync(new ImageRequired());
                     continueButton.IsEnabled = true;
                         return;
                     }

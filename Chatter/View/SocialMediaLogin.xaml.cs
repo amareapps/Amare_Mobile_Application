@@ -243,7 +243,7 @@ namespace Chatter
                 //request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
                 //var objectionss = JsonConvert.DeserializeObject<InstagramResponse>(response);
-                await DisplayAlert("Barbie sabi ko na", response, "Okay");
+                //await DisplayAlert("Barbie sabi ko na", response, "Okay");
                 var test =  JsonConvert.DeserializeObject<SpotifyModel>(response);
                 
                 foreach (var items in test.items)
@@ -253,7 +253,7 @@ namespace Chatter
                     {
                         genress += a + ", ";
                     }
-                    await DisplayAlert("Amare Got", "Artist name:" + test.items[0].name + "\n Genres: " + genress, "Okay");
+                    //await DisplayAlert("Amare Got", "Artist name:" + test.items[0].name + "\n Genres: " + genress, "Okay");
                     await api.insertSpotify(items.name,genress,items.followers.total.ToString());
                 }
                 await Navigation.PopAsync();
@@ -498,7 +498,7 @@ namespace Chatter
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
-                await DisplayAlert("una dapat to",response,"Okay");
+                //await DisplayAlert("una dapat to",response,"Okay");
             }
             catch (Exception ex)
             {
@@ -509,7 +509,7 @@ namespace Chatter
         private async Task loginUser()
         {
             var strModel = await api.checkIfAlreadyRegistered(userModel.email);
-            await DisplayAlert("Test1", userModel.email + strModel, "Okay");
+            //await DisplayAlert("Test1", userModel.email + strModel, "Okay");
             var userExist = JsonConvert.DeserializeObject<List<UserModel>>(await api.checkIfAlreadyRegistered(userModel.email));
             foreach (UserModel midek in userExist)
             {

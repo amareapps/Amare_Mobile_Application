@@ -18,7 +18,7 @@ namespace Chatter.Model
         {
             get;
             set;
-        } = "0";
+        } = "1";
         public string age_start
         {
             get;

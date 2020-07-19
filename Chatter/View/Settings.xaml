@@ -143,7 +143,7 @@
                                 <Label Grid.Column="1"  HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
                                 <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Body"></Label>
                             </Grid>
-                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" Maximum="100"></Slider>
+                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" ValueChanged="slider_ValueChanged" Maximum="100"></Slider>
                         </StackLayout>
                     </Frame>
                     <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">

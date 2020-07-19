@@ -11,9 +11,13 @@ namespace Chatter.Classes
         {
             string[] test = value.ToString().Split('/');
             string complete = test[1] + "/" + test[0] + "/" + test[2];
-            var birthdate = System.Convert.ToDateTime(complete);
+            var birthdate = DateTime.ParseExact(complete, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var datenow = DateTime.Now.ToString("dd/MM/yyyy");
+            var convertsample = DateTime.ParseExact(datenow, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            //return value+ "  -  " + datenow;
             // Calculate the age.
-            var age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
+            var age = new DateTime(convertsample.Subtract(birthdate).Ticks).Year - 1;
             return age;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -100,6 +100,18 @@ namespace Chatter
             if(receiver_id == "amare")
             {
                 chatbotter.IsVisible = true;
+                ChatModel model = new ChatModel
+                {
+                    id = "0",                    
+                    image = Image_Source,
+                    datetime = DateTime.Now.ToString(),
+                    sender_id = "amare",
+                    sender_username = "Amare Chat Bot",
+                    session_id = "0",
+                    message = "Welcome ,\nWe wish you a happy journey here in Amare as you seek to see your soon to be a partner in this application.Buttons below are frequently asked questions that may help you answer all your concerns.",
+                    receiver_id = userLoggedIn
+                };
+                chatModels.Add(model);
             }
             /*Task.Run(() =>
             {
@@ -108,8 +120,23 @@ namespace Chatter
                     await connectionManager();
                 });
             });*/
-                //userImage.Source = Image_Source;
+            //userImage.Source = Image_Source;
+            ChatList.ItemSelected += ChatList_ItemSelected1;
             }
+
+        private void ChatList_ItemSelected1(object sender, SelectedItemChangedEventArgs e)
+        {
+            ChatModel model = e.SelectedItem as ChatModel;
+            DisplayAlert("test", model.isVisible, "Okay");
+            if (model.isVisible == "false")
+                model.isVisible = "true";
+            else
+                model.isVisible = "false";
+
+            var oldItem = chatModels.FirstOrDefault(i => i.id == model.id);
+            var oldIndex = chatModels.IndexOf(oldItem);
+            chatModels[oldIndex] = model;
+        }
 
         async Task ConnectToServerAsync()
         {
@@ -221,6 +248,7 @@ namespace Chatter
         private void ChatList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ChatModel model = e.SelectedItem as ChatModel;
+            DisplayAlert("test",model.isVisible,"Okay");
             if (model.isVisible == "false")
                 model.isVisible = "true";
             else
@@ -253,7 +281,7 @@ namespace Chatter
 
         private async void ChatList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //await DisplayAlert("Ito yun","sana","Okay");
+            await DisplayAlert("Ito yun","sana","Okay");
         }
 
         public async void LongPressEffect_LongPressed(object sender, EventArgs e)
