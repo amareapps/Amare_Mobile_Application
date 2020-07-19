@@ -57,7 +57,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Button Text="How to make a match?" BackgroundColor="White" FontSize="Micro" BorderColor="#3cc5d5" BorderWidth="1" CornerRadius="20" Clicked="Button_Clicked"></Button>
                     <Button Text="How can I find my True Love?" BackgroundColor="White" FontSize="Micro" BorderColor="#3cc5d5" BorderWidth="1" CornerRadius="20" Clicked="Button_Clicked"></Button>
-                    <Button Text="How can I know if the user I swiped right, swipe me back?" FontSize="Micro" BackgroundColor="White" BorderColor="#3cc5d5" BorderWidth="1" CornerRadius="20" Clicked="Button_Clicked"></Button>
+                    <Button Text="How can I know if the user I swiped right, swiped me back?" FontSize="Micro" BackgroundColor="White" BorderColor="#3cc5d5" BorderWidth="1" CornerRadius="20" Clicked="Button_Clicked"></Button>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

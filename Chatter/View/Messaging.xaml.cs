@@ -75,7 +75,7 @@ namespace Chatter
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "2", async (sender, arg) =>
             {
                 await Clipboard.SetTextAsync(arg.message);
-                CrossToastPopUp.Current.ShowToastMessage("Copied to clipboard");
+                CrossToastPopUp.Current.ShowToastMessage("Copied to clipboard ");
             });
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "messageReceived", async (sender, arg) =>
             {
@@ -291,7 +291,7 @@ namespace Chatter
 
         private async void Menu1_Clicked(object sender, EventArgs e)
         {
-            var unmatchUser =  await DisplayAlert("Unmatch user", "Are you sure you want to umnmatch " + Username + "?", "Yes","No");
+            var unmatchUser =  await DisplayAlert("", "Are you sure you want to umnmatch " + Username + "?", "Yes","No");
             if (unmatchUser)
             {
                 var isSuccess = await api.unmatchUser(Session_Id);
