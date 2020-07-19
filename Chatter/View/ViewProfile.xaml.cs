@@ -102,7 +102,7 @@ namespace Chatter.View
 
         private async void reportUser_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ReportUserEntry()));
+            await PopupNavigation.Instance.PushAsync(new ReportUserEntry());
         }
         private string getDistance(UserModel model)
         {

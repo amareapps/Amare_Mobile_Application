@@ -38,7 +38,7 @@ namespace Chatter.View
         }
         private async void btnReportCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await PopupNavigation.Instance.PopAllAsync();
         }
     }
 }
