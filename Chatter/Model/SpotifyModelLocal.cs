@@ -11,6 +11,7 @@ namespace Chatter.Model
         public string artist_name { get; set; }
         public string genres { get; set; }
         public string followers { get; set; }
+        public string image { get; set; } = "";
 
     }
 }

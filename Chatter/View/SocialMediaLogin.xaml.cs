@@ -243,9 +243,12 @@ namespace Chatter
                 //request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
                 //var objectionss = JsonConvert.DeserializeObject<InstagramResponse>(response);
-                //await DisplayAlert("Barbie sabi ko na", response, "Okay");
+//                await DisplayAlert("Barbie sabi ko na", response, "Okay");
                 var test =  JsonConvert.DeserializeObject<SpotifyModel>(response);
-                
+                if(test.items.Count < 1)
+                {
+                    await DisplayAlert("Error","No result found\n Your spotify might not have recently played albums/tracks","Okay");
+                }
                 foreach (var items in test.items)
                 {
                     string genress = "";
@@ -253,8 +256,8 @@ namespace Chatter
                     {
                         genress += a + ", ";
                     }
-                    //await DisplayAlert("Amare Got", "Artist name:" + test.items[0].name + "\n Genres: " + genress, "Okay");
-                    await api.insertSpotify(items.name,genress,items.followers.total.ToString());
+                     await DisplayAlert("Amare Got", "Artist name:" + test.items[0].name + "\n Genres: " + genress, "Okay");
+                    await api.insertSpotify(items.name,genress,items.followers.total.ToString(),items.images[0].url);
                 }
                 await Navigation.PopAsync();
                 //await getInstagramInfo(objectionss.user_id, objectionss.access_token);
@@ -358,13 +361,13 @@ namespace Chatter
                 }
                 await sampless();
                 await loginUser();
-                await saveDataSqlite();
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Connection Error",ex.ToString() + ", Please try again","Okay");
                 await Navigation.PopAsync(false);
             }
+            await saveDataSqlite();
         }
         private async Task<string> ExtractAccessTokenFromUrl(string url)
         {
@@ -434,9 +437,9 @@ namespace Chatter
             var response = await client.PostAsync(urls,null);
             //response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            await DisplayAlert("Nays", json, "Okay");
+            //await DisplayAlert("Nays", json, "Okay");
             var accesstoken = JsonConvert.DeserializeObject<JObject>(json).Value<string>("access_token");
-            await DisplayAlert("Nays", accesstoken, "Okay"); 
+            //await DisplayAlert("Nays", accesstoken, "Okay"); 
             return accesstoken;
             //MultipartFormDataContent content = new MultipartFormDataContent();
             //content.Add(new StringContent(google_ClientID), "client_id");
@@ -450,10 +453,11 @@ namespace Chatter
             string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
             System.IO.Directory.CreateDirectory(applicationFolderPath);
             string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            //await DisplayAlert("test",userModel.username,"Okay");
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
-                conn.CreateTable<UserModel>();
-                conn.Insert(userModel);
+                //conn.CreateTable<UserModel>();
+                //conn.Insert(userModel);
             }
             overlay.IsVisible = false;
             await loadMainPage();
@@ -470,7 +474,8 @@ namespace Chatter
                 var form = new MultipartFormDataContent();
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 var strVal =await api.checkIfAlreadyRegistered(userModel.email);
-                if (!strVal.Contains("Undefined"))
+                //await DisplayAlert("checker",strVal,"Okay");
+                if (!strVal.Contains("null") && !strVal.Contains("Undefined") && string.IsNullOrEmpty(strVal) == false)
                 {
                     var userExist = JsonConvert.DeserializeObject<List<UserModel>>(strVal);
                     foreach (UserModel midek in userExist)

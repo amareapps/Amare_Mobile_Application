@@ -104,7 +104,7 @@ namespace Chatter
                 {
                     id = "0",                    
                     image = Image_Source,
-                    datetime = DateTime.Now.ToString(),
+                    datetime = "0000-00-00 00:00:00",
                     sender_id = "amare",
                     sender_username = "Amare Chat Bot",
                     session_id = "0",

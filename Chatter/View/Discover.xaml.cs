@@ -244,12 +244,14 @@ namespace Chatter
 
             string[] test = model.birthdate.Split('/');
             string complete = test[1] + "/" + test[0] + "/" + test[2];
-            var birthdate = System.Convert.ToDateTime(complete);
+            var birthdate = DateTime.ParseExact(complete, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var datenow = DateTime.Now.ToString("dd/MM/yyyy");
+            var convertsample = DateTime.ParseExact(datenow, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             // Calculate the age.
             //var age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
 
             // Calculate the age.
-            int age = new DateTime(DateTime.Now.Subtract(birthdate).Ticks).Year - 1;
+            int age = new DateTime(convertsample.Subtract(birthdate).Ticks).Year - 1;
             //DisplayAlert("tae nmn", ageFilter + "nyare " + age.ToString() + "result: " + (age <= Convert.ToInt32(ageFilter)).ToString(),"okay");
              if (kmDistance <= Convert.ToDouble(distanceFilter) && age >= Convert.ToInt32(age_start) && age <= Convert.ToInt32(age_end))
                 return true;

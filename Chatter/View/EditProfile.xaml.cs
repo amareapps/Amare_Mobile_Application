@@ -51,6 +51,7 @@ namespace Chatter.View
             }
             lblAbout.Text = "About " + Application.Current.Properties["username"].ToString();
             instagramPhotos.Clear();
+            spotifyModelLocals.Clear();
             await loadFromDb();
             await loadFromSqlite();
             try
@@ -69,6 +70,7 @@ namespace Chatter.View
                     foreach (var spotVal in spotifyList)
                     {
                         spotifyModelLocals.Add(spotVal);
+                        //await DisplayAlert("test",spotVal.image,"Okay");
                     }
                     spotifyListView.ItemsSource = spotifyModelLocals;
                 }
@@ -87,7 +89,6 @@ namespace Chatter.View
                     }
                     instagrammer.FlowItemsSource = instagramPhotos;
                 }
-
             }
             catch (Exception ex)
             {
@@ -169,8 +170,8 @@ namespace Chatter.View
                 content.Add(new StringContent(isDistanceShow), "show_distance");
                 content.Add(new StringContent(userModel.location), "location");
                 content.Add(new StringContent(userModel.interest), "interest");
-                userModel.height = heightEntry.Items[heightEntry.SelectedIndex].ToString();
-                userModel.weight = weightEntry.Items[weightEntry.SelectedIndex].ToString();
+                userModel.height = heightEntry.SelectedIndex < 0 ? "" : heightEntry.Items[heightEntry.SelectedIndex].ToString();
+                userModel.weight = weightEntry.SelectedIndex < 0 ? "" : weightEntry.Items[weightEntry.SelectedIndex].ToString();
                 content.Add(new StringContent(userModel.height), "height");
                 content.Add(new StringContent(userModel.weight), "weight");
                 content.Add(new StringContent(userModel.hobby), "hobby");
@@ -335,7 +336,23 @@ namespace Chatter.View
 
         private async void spotifyButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SocialMediaLogin(3));
+            if (spotifyButton.Text.Contains("Disconnect"))
+            {
+                var isAccepted = await DisplayAlert("Disconnecting Instagram", "Are you sure to disconnect your Spotify account?", "YES", "NO");
+                if (isAccepted)
+                {
+                    await api.removeSpotify(Application.Current.Properties["Id"].ToString());
+                    spotifyModelLocals.Clear();
+                    spotifyListLayout.IsVisible = false;
+                    spotifyButton.Text = "Connect to Spotify";
+                }
+            }
+            else
+            {
+                await Navigation.PushAsync(new SocialMediaLogin(3));
+               //await Navigation.PushAsync(instagramLogin);
+                instagramButton.Text = "Disconnect to Instagram";
+            }
         }
     }
 }

@@ -128,6 +128,14 @@ namespace Chatter.Classes
             {
                 return;
             }
+            if (response.ToString().Contains("null"))
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(response.ToString()))
+            {
+                return;
+            }
             var looper = JsonConvert.DeserializeObject<List<SearchRefenceModel>>(response);
             foreach (SearchRefenceModel model in looper)
             {
@@ -559,7 +567,7 @@ namespace Chatter.Classes
         }
         public async Task loadUserData(UserModel model)
         {
-            Application.Current.Properties["Id"] = model.id;
+            Application.Current.Properties["Id"] =  "\"" + model.id + "\"";
             await saveToSqlite(model);
             await retrieveGallery();
             await retrieveSearchReference();
@@ -628,6 +636,20 @@ namespace Chatter.Classes
                 return false;
             }
         }
+        public async Task<bool> removeSpotify(string id)
+        {
+            try
+            {
+                var request = await client.GetAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=removeSpotify&id=" + id.Replace("\"", ""));
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public async Task<List<SpotifyModelLocal>> getSpotifyList(string id)
         {
             try
@@ -642,7 +664,7 @@ namespace Chatter.Classes
                 return null;
             }
         }
-        public async Task<bool> insertSpotify(string name, string genres,string followers)
+        public async Task<bool> insertSpotify(string name, string genres,string followers,string image)
         {
             try
             {
@@ -652,6 +674,7 @@ namespace Chatter.Classes
                 content.Add(new StringContent(name), "artist_name");
                 content.Add(new StringContent(genres), "genres");
                 content.Add(new StringContent(followers), "followers");
+                content.Add(new StringContent(image),"image");
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insertspotify", content);
                 request.EnsureSuccessStatusCode();
                 return true;
