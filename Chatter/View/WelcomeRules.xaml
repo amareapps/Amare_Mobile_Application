@@ -24,10 +24,10 @@
         <Label Margin="40,50,40,20" Padding="0" HorizontalTextAlignment="Center" 
                    Text="Swipe below to see the simple rules for having a healthy journey in Amare." TextColor="Black" FontSize="Medium"/>
             <StackLayout Margin="0,0,0,20">
-                <cards:CarouselView x:Name="autoSlider" Padding="40,0,40,0" Margin="0,0,0,5" HeightRequest="300">
+                <cards:CarouselView x:Name="autoSlider" Padding="40,0,40,0" Margin="0,0,0,0" HeightRequest="300">
                     <cards:CarouselView.ItemsSource>
                         <x:Array Type="{x:Type View}">
-                            <Grid Padding="0" HorizontalOptions="Center" VerticalOptions="Start"  >
+                            <Grid Padding="0" Margin="0,0,0,5" HorizontalOptions="Center" VerticalOptions="Start"  >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -36,12 +36,12 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="1" FontSize="Header" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" TextColor="Accent" FontAttributes="Bold"></Label>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-                                        <Label Text="Choose to be" FontSize="Medium" TextColor="Black"></Label>
-                                        <Label Text="kind." FontAttributes="Italic" TextColor="Black" FontSize="Medium" ></Label>
-                                    </StackLayout>
-                                </Grid>
-                            <Grid Padding="0" HorizontalOptions="Start" VerticalOptions="Start">
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Label Text="Choose to be" FontSize="Medium" TextColor="Black"></Label>
+                                    <Label Text="kind." FontFamily="{StaticResource BoldFont}" TextColor="Black" FontSize="Medium" ></Label>
+                                </StackLayout>
+                            </Grid>
+                            <Grid Padding="0" Margin="0,0,0,5" HorizontalOptions="Start" VerticalOptions="Start">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -50,11 +50,12 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="2" FontSize="Header" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" TextColor="Accent" FontAttributes="Bold"></Label>
-                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-                                    <Label Text="Always choose to love one another regardless of their gender preference, orientation, race, color and wealth." FontSize="Medium" TextColor="Black"></Label>
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                                    <Label Text="Always choose to love one another regardless of their:" FontSize="Medium" TextColor="Black"></Label>
+                                    <Label Text="Gender Preference and Orientation, Race, Color and Wealth." FontFamily="{StaticResource BoldFont}" Padding="0" Margin="0" FontSize="Medium" TextColor="Black"></Label>
                                 </StackLayout>
                             </Grid>
-                            <Grid Padding="0" HorizontalOptions="Start" VerticalOptions="Start">
+                            <Grid Padding="0" Margin="0,0,0,5" HorizontalOptions="Start" VerticalOptions="Start">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -63,24 +64,27 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="3" FontSize="Header" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" TextColor="Accent" FontAttributes="Bold"></Label>
-                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
-                                    <Label Text="Initiate a 'Hello' first before opening a topic, that's &#x0a;where love begins!" FontSize="Medium" TextColor="Black"></Label>
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                                        <Label Text="Initiate a" FontSize="Medium" TextColor="Black"></Label>
+                                        <Label Text="'Hello'" FontSize="Medium" FontFamily="{StaticResource BoldFont}" TextColor="Black"></Label>
+                                        <Label Text="first!" FontSize="Medium" TextColor="Black"></Label>
+                                    </StackLayout>
+                                    <Label Text="That's where your new journey in love begins!" FontSize="Medium" TextColor="Black"></Label>
                                 </StackLayout>
                             </Grid>
                         </x:Array>
                     </cards:CarouselView.ItemsSource>
                     <controls:IndicatorsControl x:Name="carouselindicator" Padding="0" Margin="0" VerticalOptions="EndAndExpand" Orientation="Horizontal" SelectedIndicatorStyle="{StaticResource ActiveIndicator}"  UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" BackgroundColor="Transparent"  HidesForSingleIndicator="True" IsUserInteractionRunning="True"/>
                 </cards:CarouselView>
-                <StackLayout>
-                <Label Margin="40,50,40,20" Padding="0" TextColor="Black" HorizontalTextAlignment="Center" 
-                    Text="Let us all love each other. &#x0a;Amare wishes you all the best in life!" FontSize="Small"></Label>
-            </StackLayout>
                 <!--<StackLayout>
                     <Label Margin="50,20,50,0" Padding="0" HorizontalTextAlignment="Center" 
                        Text="'The limit for love is limitless love.'" FontAttributes="Bold"></Label>
                     <Label Margin="0" Padding="0" HorizontalTextAlignment="Center" 
                        Text="©Francis de Sales" FontAttributes="Bold" FontSize="Micro"></Label>
                 </StackLayout>-->
+                <Label Margin="40,40,40,20" Padding="0" TextColor="Black" VerticalTextAlignment="End" HorizontalTextAlignment="Center"
+                    Text="Let us all love each other. &#x0a;Amare wishes you all the best in life!" FontSize="Small"></Label>
                 <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="10" TextColor="White" Text="Get started" Padding="10" Margin="0,30,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
             </StackLayout>
         </StackLayout>

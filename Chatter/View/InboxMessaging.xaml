@@ -101,15 +101,15 @@
                                                 <ffimageloading:CachedImage  DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
                                             </Frame>
                                             <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" FontAttributes="{Binding has_unread,Converter={StaticResource stringtoFontAtr}}" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
-                                            <StackLayout Grid.Column="2" Spacing="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End">
+                                            <!--<StackLayout Grid.Column="2" Spacing="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End">
                                                 <StackLayout Orientation="Vertical">
                                                     <StackLayout Orientation="Horizontal" Padding="0" Margin="0">
-                                                        <Label FontAttributes="Italic" Margin="0,0,0,0" FontSize="Small" TextColor="Black" HorizontalTextAlignment="End" Text="{Binding distance}"/>
-                                                        <Label FontAttributes="Italic" Padding="0" FontSize="Small" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalTextAlignment="Start" VerticalOptions="End"/>
+                                                        <Label FontAttributes="Italic" Margin="0,0,0,0" FontSize="Caption" TextColor="Black" HorizontalTextAlignment="End" Text="{Binding distance}"/>
+                                                        <Label FontAttributes="Italic" Padding="0" FontSize="Caption" TextColor="Black" Text="{Binding distance_metric}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalTextAlignment="Start" VerticalOptions="End"/>
                                                     </StackLayout>
                                                     
                                                 </StackLayout>
-                                            </StackLayout>
+                                            </StackLayout>-->
                                             <Label Margin="15,0,10,0" LineBreakMode="TailTruncation" FontSize="Small" TextColor="Black" Text="{Binding message,Converter={StaticResource convertMessage}}" Grid.Column="1" Grid.Row="1"/>
                                         </Grid>
                                     </ViewCell>

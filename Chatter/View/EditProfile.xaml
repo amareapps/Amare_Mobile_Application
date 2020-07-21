@@ -24,10 +24,10 @@
             </Frame>
             <ScrollView Padding="0,0,0,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <StackLayout Spacing="10" Margin="10,0,10,10" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
-                    <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="ImagePicker_SelectedIndexChanged" Title="Select Image">
+                    <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="ImagePicker_SelectedIndexChanged">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
-                                <x:String>Take Photo</x:String>
+                                <x:String>Take a Photo</x:String>
                                 <x:String>Choose from Gallery</x:String>
                             </x:Array>
                         </Picker.ItemsSource>
