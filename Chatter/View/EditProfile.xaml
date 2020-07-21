@@ -154,7 +154,7 @@
                                                       <RowDefinition Height="AUTO"></RowDefinition>
                                                 </Grid.RowDefinitions>
                                                 <ffimageloading:CachedImage Source="{Binding image}" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" BackgroundColor="Black" Grid.RowSpan="2" Grid.Row="0"/>
-                                                <Label Text="{Binding artist_name,StringFormat='Artirst : {0}'}" Grid.Column="1" Grid.Row="0"></Label>
+                                                <Label Text="{Binding artist_name,StringFormat='Artist : {0}'}" Grid.Column="1" Grid.Row="0"></Label>
                                                 <Label Text="{Binding genres,StringFormat='Genres : {0}'}" Grid.Column="1" Grid.Row="1"></Label>
                                             </Grid>
                                             </ViewCell>

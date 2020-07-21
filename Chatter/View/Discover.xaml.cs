@@ -336,11 +336,12 @@ namespace Chatter
         }
         private async Task dislikeUser()
         {
-            await Task.Run(() =>
+            await Task.Run(async() =>
             {
+                await autoDislikeOldUser();
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    coverFlowView.SelectedIndex = coverFlowView.SelectedIndex;
+                    coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
                 });
             });
         }
@@ -353,7 +354,7 @@ namespace Chatter
             currentUserIdSelected = currentItem.id;
             if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Left)
             {
-                await dislikeUser();
+                //await dislikeUser();
                 await autoDislikeOldUserSwipe();
             }
             else if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Right)

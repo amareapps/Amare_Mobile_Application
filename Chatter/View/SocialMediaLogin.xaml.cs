@@ -249,15 +249,17 @@ namespace Chatter
                 {
                     await DisplayAlert("Error","No result found\n Your spotify might not have recently played albums/tracks","Okay");
                 }
+                int ctr = 0;
                 foreach (var items in test.items)
                 {
                     string genress = "";
-                    foreach (string a in test.items[0].genres)
+                    foreach (string a in test.items[ctr].genres)
                     {
                         genress += a + ", ";
                     }
-                     await DisplayAlert("Amare Got", "Artist name:" + test.items[0].name + "\n Genres: " + genress, "Okay");
+                    //await DisplayAlert("Amare Got", "Artist name:" + test.items[0].name + "\n Genres: " + genress, "Okay");
                     await api.insertSpotify(items.name,genress,items.followers.total.ToString(),items.images[0].url);
+                    ctr++;
                 }
                 await Navigation.PopAsync();
                 //await getInstagramInfo(objectionss.user_id, objectionss.access_token);
