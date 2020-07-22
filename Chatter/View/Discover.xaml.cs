@@ -182,7 +182,7 @@ namespace Chatter
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateVisible", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await PopupNavigation.Instance.PushAsync(new AnimateMatched(UserProfilePicture, currentItem.image));
+                    await Navigation.PushModalAsync(new AnimateMatched(UserProfilePicture, currentItem.image));
                     //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
                     //imageSources.Remove(currentItem);
                 }
@@ -195,6 +195,7 @@ namespace Chatter
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
                     string userliked = currentItem.username;
+
                     //await PopupNavigation.Instance.PushAsync(new LikedUser(userliked, currentItem.image));
                     //var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
                 }

@@ -307,7 +307,7 @@ namespace Chatter.View
         {
             if (instagramButton.Text.Contains("Disconnect"))
             {
-                var isAccepted = await DisplayAlert("Disconnecting Instagram","Are you sure to disconnect your Instagram account?","YES","NO");
+                var isAccepted = await DisplayAlert("","Are you sure to disconnect your Instagram account?","YES","NO");
                 if (isAccepted)
                 {
                     await api.removeInstagram(Application.Current.Properties["Id"].ToString());
@@ -338,7 +338,7 @@ namespace Chatter.View
         {
             if (spotifyButton.Text.Contains("Disconnect"))
             {
-                var isAccepted = await DisplayAlert("Disconnecting Instagram", "Are you sure to disconnect your Spotify account?", "YES", "NO");
+                var isAccepted = await DisplayAlert("", "Are you sure to disconnect your Spotify account?", "YES", "NO");
                 if (isAccepted)
                 {
                     await api.removeSpotify(Application.Current.Properties["Id"].ToString());

@@ -85,11 +85,11 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <ImageButton Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" 
-                                                         HeightRequest="70" WidthRequest="70" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
-                            <Label Text="Edit Profile" Grid.Row="1" Grid.Column="0" FontSize="Small" TextColor="#3cc5d5" VerticalOptions="Center" HorizontalOptions="End"></Label>
-                            <ImageButton Grid.Row="0" Grid.Column="2" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="70" WidthRequest="70" x:Name="EditButton" Source="settings1.png"
+                                                         HeightRequest="60" WidthRequest="60" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
+                            <Label Text="Edit Profile" Grid.Row="1" Grid.Column="0" FontSize="12" TextColor="#3cc5d5" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                            <ImageButton Grid.Row="0" Grid.Column="2" Aspect="AspectFit" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="60" WidthRequest="60" x:Name="EditButton" Source="settings.png"
                                    Clicked="EditButton_Clicked"/>
-                            <Label Text="Preferences" Grid.Row="1" Grid.Column="2" FontSize="Small" TextColor="#3cc5d5" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                            <Label Text="Preferences" Grid.Row="1" Grid.Column="2" FontSize="12" TextColor="#3cc5d5" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                         </Grid>
                     </StackLayout>
                 </local:CustomFrame>

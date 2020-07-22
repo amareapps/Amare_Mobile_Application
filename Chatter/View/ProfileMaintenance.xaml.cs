@@ -314,9 +314,8 @@ namespace Chatter
         private void chooseImageButton_Clicked(object sender, EventArgs e)
         {
             var monkeyList = new List<string>();
-            monkeyList.Add("Take Photo");
+            monkeyList.Add("Take a Photo");
             monkeyList.Add("Choose from Gallery");
-            imagePicker.Title = "Select Image";
             imagePicker.ItemsSource = monkeyList;
             imagePicker.Focus();
         }

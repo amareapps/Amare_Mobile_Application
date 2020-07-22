@@ -202,8 +202,8 @@
                             </flv:FlowListView>
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Grid.Row="3" Padding="0" Margin="5,0,5,10" CornerRadius="10">
-                        <Button Text="Report this user" x:Name="reportUser" Clicked="reportUser_Clicked" BackgroundColor="#3cc5d5" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+                    <Frame HasShadow="True" Grid.Row="3" Padding="0" Margin="5,0,5,10" CornerRadius="10" WidthRequest="200" HorizontalOptions="Center">
+                        <Button Text="Report this user" x:Name="reportUser" Clicked="reportUser_Clicked"  BackgroundColor="#3cc5d5" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
                     </Frame>
                 </Grid>
             </ScrollView>
