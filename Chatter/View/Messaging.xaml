@@ -79,6 +79,6 @@
                 </Label>
                 <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="send.png" Aspect="AspectFill" CornerRadius="20" Padding="5" Margin="3" HeightRequest="20" WidthRequest="20" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="3"></ImageButton>
             </Grid>
-        </Frame>
+            </Frame>
     </StackLayout>
 </ContentPage>

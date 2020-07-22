@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -23,6 +24,51 @@ namespace MyUIDemo.Droid.CustomRenderer
         public GradientButtonRenderer(Context context) : base(context)
         {
         }
+
+        public new GradientColorStack Element
+        {
+            get
+            {
+                return (GradientColorStack)base.Element;
+            }
+        }
+
+
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
+        {
+            base.OnElementChanged(e);
+            //if (Control == null)
+            //{
+            //SetNativeControl(new Android.Widget.Button(Context));
+            //}
+            //else
+            //{
+            // Control.SetAllCaps(false);
+            //}
+
+           // if (e.NewElement == null)
+           // {
+          //      return;
+          //  }
+
+           // SetTextAlignment();
+        }
+
+       // protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+       // {
+      //      base.OnElementPropertyChanged(sender, e);
+     
+        //    if (e.PropertyName == GradientColorStack.HorizontalTextAlignmentProperty.PropertyName)
+        //    {
+         //       SetTextAlignment();
+         //   }
+       // }
+
+       // public void SetTextAlignment()
+       // {
+        //    Control.Gravity = Element.HorizontalTextAlignment.ToHorizontalGravityFlags();
+       // }
+
 
         protected override void DispatchDraw(Canvas canvas)
         {
@@ -66,5 +112,14 @@ namespace MyUIDemo.Droid.CustomRenderer
         }
 
     }
+    //public static class AlignmentHelper
+    //{
+       // public static GravityFlags ToHorizontalGravityFlags(this Xamarin.Forms.TextAlignment alignment)
+       // {
+          //  if (alignment == Xamarin.Forms.TextAlignment.Center)
+            //    return GravityFlags.AxisSpecified;
+          //  return alignment == Xamarin.Forms.TextAlignment.End ? GravityFlags.Right : GravityFlags.Left;
+       // }
+   // }
 
 }

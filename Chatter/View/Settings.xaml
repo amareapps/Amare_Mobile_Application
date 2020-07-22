@@ -162,25 +162,25 @@
                         </StackLayout>
                     </Frame>
                     
-                    <Button x:Name="saveButton" Text="APPLY CHANGES" TextColor="#3cc5d5" Margin="5,5,5,10" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2" Clicked="saveButton_Clicked"></Button>
+                    <Button x:Name="saveButton" Text="Apply Changes" TextColor="#3cc5d5" Margin="5,5,5,10" CornerRadius="10" BackgroundColor="WhiteSmoke" BorderColor="#3cc5d5" BorderWidth="2" Clicked="saveButton_Clicked"></Button>
 
                     <Label Margin="5,0,5,0" Text="Contact Us" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Margin="5,0,5,0" Text="Help and Support" TextColor="#3cc5d5" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2"></Button>
+                    <Button Margin="5,0,5,0" Text="Help and Support" TextColor="#3cc5d5" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="10" BackgroundColor="WhiteSmoke" BorderColor="#3cc5d5" BorderWidth="2"></Button>
                     <Frame IsClippedToBounds="True" Padding="0,0,0,0" CornerRadius="10" Margin="5,0,5,0">
-                        <gradient:GradientColorStack StartColor="#d4129b" EndColor="#3cc5d5" GradientColorOrientation="Horizontal" x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" Text="Share the Love" CornerRadius="30" TextColor="White" BackgroundColor="Transparent"></gradient:GradientColorStack>
+                        <gradient:GradientColorStack StartColor="#d4129b" Padding="13,0,0,0" Margin="0" ImageSource="share.png" EndColor="#3cc5d5" GradientColorOrientation="Horizontal" x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" Text="Share The Love" TextColor="White" BackgroundColor="Transparent"></gradient:GradientColorStack>
                     </Frame>
                     <Label Margin="5,0,5,0" Text="Legal" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Button Margin="5,0,5,0" Text="Privacy Policy" TextColor="#3cc5d5" Clicked="PrivacyPolicy_Clicked" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2"></Button>
-                    <Button Margin="5,0,5,0" Text="Terms of Service" TextColor="#3cc5d5" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2"></Button>
-                    <Button Margin="5,0,5,0" Text="Licenses" TextColor="#3cc5d5" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="10" BackgroundColor="Transparent" BorderColor="#3cc5d5" BorderWidth="2"></Button>
+                    <Button Margin="5,0,5,0" Text="Privacy Policy" TextColor="#3cc5d5" Clicked="PrivacyPolicy_Clicked" CornerRadius="10" BackgroundColor="WhiteSmoke" BorderColor="#3cc5d5" BorderWidth="2"></Button>
+                    <Button Margin="5,0,5,0" Text="Terms of Service" TextColor="#3cc5d5" x:Name="TermsOfService" Clicked="TermsOfService_Clicked" CornerRadius="10" BackgroundColor="WhiteSmoke" BorderColor="#3cc5d5" BorderWidth="2"></Button>
+                    <Button Margin="5,0,5,0" Text="Licenses" TextColor="#3cc5d5" x:Name="Licenses" Clicked="Licenses_Clicked" CornerRadius="10" BackgroundColor="WhiteSmoke" BorderColor="#3cc5d5" BorderWidth="2"></Button>
 
-                    <Button Margin="5,0,5,0" Text="LOGOUT" TextColor="White" BackgroundColor="#3cc5d5" BorderColor="Accent" BorderWidth="2" CornerRadius="10" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
+                    <Button Margin="5,0,5,0" Text="Logout" TextColor="White" BackgroundColor="#3cc5d5" BorderColor="Accent" BorderWidth="2" CornerRadius="10" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
                     <Grid BackgroundColor="Transparent" Padding="0" Margin="0,40,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                         <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="200"></Image>
                         <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
                     <StackLayout Margin="5,0,5,0" >
-                        <Button Margin="5,0,5,0" Text="DELETE MY ACCOUNT" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="White" BackgroundColor="#890445" FontAttributes="Bold" CornerRadius="10"></Button>
+                        <Button Margin="5,0,5,0" Text="Delete My Account" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="White" BackgroundColor="#890445" FontAttributes="Bold" CornerRadius="10"></Button>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

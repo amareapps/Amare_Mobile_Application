@@ -38,6 +38,21 @@ namespace Chatter.Droid
                 Control.SetBackground(gd);
 
                 Control.SetPadding(30, 20, 30, 20);
+
+                var nativeEditText = (global::Android.Widget.EditText)Control;
+
+                //While scrolling inside Editor stop scrolling parent view.
+                nativeEditText.OverScrollMode = OverScrollMode.Always;
+                nativeEditText.ScrollBarStyle = ScrollbarStyles.InsideInset;
+                nativeEditText.SetOnTouchListener(new DroidTouchListener());
+
+                //For Scrolling in Editor innner area
+                Control.VerticalScrollBarEnabled = true;
+                Control.ScrollBarStyle = Android.Views.ScrollbarStyles.InsideInset;
+                //Force scrollbars to be displayed
+                Android.Content.Res.TypedArray a = Control.Context.Theme.ObtainStyledAttributes(new int[0]);
+                InitializeScrollbars(a);
+                a.Recycle();
             }
         }
     }

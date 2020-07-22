@@ -24,7 +24,7 @@
         <Label Margin="40,50,40,20" Padding="0" HorizontalTextAlignment="Center" 
                    Text="Swipe below to see the simple rules for having a healthy journey in Amare." TextColor="Black" FontSize="Medium"/>
             <StackLayout Margin="0,0,0,20">
-                <cards:CarouselView x:Name="autoSlider" Padding="40,0,40,0" Margin="0,0,0,0" HeightRequest="300">
+                <cards:CarouselView x:Name="autoSlider" Padding="40,0,40,0" Margin="0,0,0,10" HeightRequest="300">
                     <cards:CarouselView.ItemsSource>
                         <x:Array Type="{x:Type View}">
                             <Grid Padding="0" Margin="0,0,0,5" HorizontalOptions="Center" VerticalOptions="Start"  >
@@ -83,7 +83,7 @@
                     <Label Margin="0" Padding="0" HorizontalTextAlignment="Center" 
                        Text="©Francis de Sales" FontAttributes="Bold" FontSize="Micro"></Label>
                 </StackLayout>-->
-                <Label Margin="40,40,40,20" Padding="0" TextColor="Black" VerticalTextAlignment="End" HorizontalTextAlignment="Center"
+                <Label Margin="40,0,40,20" Padding="0" TextColor="Black" VerticalTextAlignment="End" HorizontalTextAlignment="Center"
                     Text="Let us all love each other. &#x0a;Amare wishes you all the best in life!" FontSize="Small"></Label>
                 <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="10" TextColor="White" Text="Get started" Padding="10" Margin="0,30,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
             </StackLayout>

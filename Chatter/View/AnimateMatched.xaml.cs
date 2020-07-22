@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using Chatter.Model;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,27 @@ namespace Chatter.View
             //  heartImage.FadeTo(1, 2000);
             //  await heartImage.ScaleTo(0,100);
             //  await heartImage.ScaleTo(1,2000);
+
+        }
+
+        
+
+        private void messageEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (e.NewTextValue == string.Empty)
+            {
+                msg.IsVisible = true;
+                sendButton.IsVisible = false;
+            }
+            else
+            {
+                msg.IsVisible = false;
+                sendButton.IsVisible = true;
+            }
+        }
+
+        private async void sendButton_Clicked(object sender, EventArgs e)
+        {
 
         }
 
