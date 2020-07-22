@@ -99,6 +99,7 @@
                                            IsClippedToBounds="True"
                                            HasShadow="True">
                                                 <ffimageloading:CachedImage  DownsampleToViewSize="True" BitmapOptimizations="True" Source="{Binding image}" Aspect="AspectFill" ></ffimageloading:CachedImage>
+                                            </Frame>
                                             <Label Margin="10,0,5,0" FontSize="Medium" TextColor="Black" LineBreakMode="TailTruncation" FontAttributes="{Binding has_unread,Converter={StaticResource stringtoFontAtr}}" Text="{Binding username}" Grid.Column="1" Grid.Row="0"/>
                                             <!--<StackLayout Grid.Column="2" Spacing="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End">
                                                 <StackLayout Orientation="Vertical">

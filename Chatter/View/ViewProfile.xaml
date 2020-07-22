@@ -36,7 +36,7 @@
                     <Label FontAttributes="Bold" TextColor="#890447" HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" VerticalOptions="Center" FontSize="Medium" BackgroundColor="Transparent" Text="{Binding username, StringFormat='{0:F2}\&apos;s Profile'}"/>
                 </StackLayout>
             </Frame>
-            <ScrollView Padding="10,5,10,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <ScrollView Padding="10,5,10,10" AbsoluteLayout.LayoutFlags="All" IsClippedToBounds="False" AbsoluteLayout.LayoutBounds="0,0,1,1" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="500" />
@@ -45,27 +45,69 @@
                         <RowDefinition Height="AUTO" />
                     </Grid.RowDefinitions>
                     <Frame HasShadow="True" IsClippedToBounds="True" Grid.Row="0" CornerRadius="10" Padding="0" Margin="5,0,5,5">
-                        <cards:CarouselView x:Name="galleryView" >
+                        <cards:CarouselView x:Name="galleryView" IsCyclical="True">
                             <cards:CarouselView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout>
-                                        <Frame HasShadow="True"
-                                                       BorderColor="DarkGray"
-                                                       Margin="0"
-                                                       Padding="0"
-                                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                            <ImageButton Source="{Binding image}" 
-                                                                 HorizontalOptions="FillAndExpand" 
-                                                                 VerticalOptions="FillAndExpand" 
-                                                                 Aspect="AspectFill" Clicked="ImageButton_Clicked" />
-                                        </Frame>
-                                    </StackLayout>
+                                    <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                                            <Frame HasShadow="True"
+                                                           BorderColor="DarkGray"
+                                                           Margin="0"
+                                                           Padding="0"
+                                                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <ImageButton Source="{Binding image}" 
+                                                                     HorizontalOptions="FillAndExpand" 
+                                                                     VerticalOptions="FillAndExpand" 
+                                                                     Aspect="AspectFill" Clicked="ImageButton_Clicked" />
+                                            </Frame>
+                                        </StackLayout>
+                                        <Frame AbsoluteLayout.LayoutFlags="All"
+                                            AbsoluteLayout.LayoutBounds="0,0,0.5,1" BackgroundColor="Transparent">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer x:Name="tapLeft" Tapped="tapLeft_Tapped"></TapGestureRecognizer>
+                                            </Frame.GestureRecognizers>
+                                        </Frame >
+                                        <Frame AbsoluteLayout.LayoutFlags="All"
+                                            AbsoluteLayout.LayoutBounds="1,0,0.5,1" BackgroundColor="Transparent">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer x:Name="tapRight" Tapped="tapRight_Tapped"></TapGestureRecognizer>
+                                            </Frame.GestureRecognizers>
+                                        </Frame >
+                                        <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0.95,-1,-1">
+                                            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                                                <ImageButton 
+                                                        WidthRequest="60"
+                                                        HeightRequest="60"
+                                                        Padding="5"
+                                                         CornerRadius="60"
+                                                        Source="dislike.png" 
+                                                        Grid.Column="1" 
+                                                        BackgroundColor="White"
+                                                        x:Name="xButton" 
+                                                        VerticalOptions="Center" 
+                                                        HorizontalOptions="Center" 
+                                                        Opacity="0.7"/>
+                                                <ImageButton 
+                                                        WidthRequest="60"
+                                                        HeightRequest="60"
+                                                        CornerRadius="100"
+                                                        Padding="5"
+                                                         BackgroundColor="White"
+                                                        Source="heart.png" 
+                                                        Grid.Column="2" 
+                                                        x:Name="heartButton" 
+                                                        VerticalOptions="Center" 
+                                                        HorizontalOptions="Center" 
+                                                        Opacity="0.7"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </AbsoluteLayout>
                                 </DataTemplate>
                             </cards:CarouselView.ItemTemplate>
                             <controls:IndicatorsControl VerticalOptions="EndAndExpand" Orientation="Horizontal" SelectedIndicatorStyle="{StaticResource ActiveIndicator}"  UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" BackgroundColor="Transparent"  HidesForSingleIndicator="True" IsUserInteractionRunning="True"/>
                         </cards:CarouselView>
                     </Frame>
-                    <Frame HasShadow="True" Grid.Row="1" CornerRadius="10" Margin="5,0,5,0" BackgroundColor="White"> 
+                    <Frame HasShadow="True" Grid.Row="1" CornerRadius="10" Margin="5,0,5,0" BackgroundColor="White">
                         <StackLayout Margin="0" Padding="0">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
                                 <Label Padding="0" x:Name="nameLabel" FontAttributes="Bold" Text="{Binding username, StringFormat='{0:F2},'}" FontSize="Large"  HorizontalOptions="Center" VerticalOptions="Center"/>
