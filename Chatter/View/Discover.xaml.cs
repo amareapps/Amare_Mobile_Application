@@ -195,7 +195,7 @@ namespace Chatter
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
                     string userliked = currentItem.username;
-                    await PopupNavigation.Instance.PushAsync(new LikedUser(userliked, currentItem.image));
+                    //await PopupNavigation.Instance.PushAsync(new LikedUser(userliked, currentItem.image));
                     //var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
                 }
                 imageSources.Remove(currentItem);

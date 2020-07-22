@@ -124,10 +124,10 @@ namespace Chatter
                 image = "Amare_logo.png",
                 has_unread = "1",
                 location = "0,0",
-                username = "Amare Chat Bot",
+                username = "Amare Team",
                 datetime = DateTime.Now.ToString("MM/dd/yyyy"),
                 distance = "0",
-                message = "Hi!, I am amare chatbot",
+                message = "Hi!, I am Amare's Digital Assistant",
                 distance_metric = "0"
             };
             RecentMatchesModel initRecent = new RecentMatchesModel()
