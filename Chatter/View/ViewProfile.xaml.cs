@@ -36,6 +36,7 @@ namespace Chatter.View
         }
         protected async override void OnAppearing()
         {
+            galleryModel.Clear();
             instagramPhotos.Clear();
             await loadUser();
         }
@@ -126,6 +127,18 @@ namespace Chatter.View
                 kmDistance = Location.CalculateDistance(myLocation, otherLocation, DistanceUnits.Kilometers);
                 return Math.Round(kmDistance, 2).ToString();
             }
+        }
+
+        private void tapLeft_Tapped(object sender, EventArgs e)
+        {
+            if(galleryView.SelectedIndex > 0)
+                galleryView.SelectedIndex = galleryView.SelectedIndex - 1;
+        }
+
+        private void tapRight_Tapped(object sender, EventArgs e)
+        {
+            if(galleryView.SelectedIndex + 1 < galleryView.ItemsCount)
+                galleryView.SelectedIndex = galleryView.SelectedIndex + 1;
         }
     }
 }

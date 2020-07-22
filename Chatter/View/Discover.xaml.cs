@@ -301,7 +301,7 @@ namespace Chatter
         
         private async Task autoDislikeOldUser()
         {
-            if (coverFlowView.SelectedIndex >= 1)
+            if (coverFlowView.SelectedIndex >= 5)
             {
                 var usertoRemove = imageSources[0];
                 string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
@@ -312,7 +312,7 @@ namespace Chatter
         }
         private async Task autoDislikeOldUserSwipe()
         {
-            if (coverFlowView.SelectedIndex >= 2)
+            if (coverFlowView.SelectedIndex >= 6)
             {
                 var usertoRemove = imageSources[0];
                 string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");

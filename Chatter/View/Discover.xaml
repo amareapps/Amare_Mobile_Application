@@ -130,10 +130,11 @@
                                         <ImageButton 
                                              WidthRequest="60"
                                              HeightRequest="60"
+                                            CornerRadius="60"
                                              Padding="5"
                                              Source="heart.png" 
                                              Grid.Column="2" 
-                                             BackgroundColor="Transparent" 
+                                             BackgroundColor="White" 
                                              x:Name="heartButton" 
                                              VerticalOptions="Center" 
                                              HorizontalOptions="Center" 
@@ -142,12 +143,13 @@
                                         <ImageButton 
                                              WidthRequest="60"
                                              HeightRequest="60"
+                                            CornerRadius="60"
                                              Padding="5"
                                              Source="dislike.png" 
                                              Grid.Column="1" 
-                                             BackgroundColor="Transparent" 
+                                             BackgroundColor="White" 
                                              x:Name="xButton" 
-                                            Clicked="dislikeButton_Clicked"
+                                            Clicked="dislikeButton_Clicked" 
                                              VerticalOptions="Center" 
                                              HorizontalOptions="Center" 
                                              Opacity="0.7"/>
