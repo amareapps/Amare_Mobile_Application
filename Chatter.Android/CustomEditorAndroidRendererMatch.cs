@@ -32,14 +32,14 @@ namespace Chatter.Droid
             if (Control != null)
             {
                 GradientDrawable gd = new GradientDrawable();
-                gd.SetCornerRadius(30f);
-                gd.SetStroke(10, Android.Graphics.Color.LightGray);
-                gd.SetColor(Android.Graphics.Color.LightGray);
+                gd.SetCornerRadius(10f);
+                gd.SetStroke(10, Android.Graphics.Color.White);
+                gd.SetColor(Android.Graphics.Color.White);
                 Control.SetAutoSizeTextTypeWithDefaults(AutoSizeTextType.Uniform);
                 Control.SetMinHeight(200);
                 Control.SetBackground(gd);
 
-                Control.SetPadding(30, 20, 30, 20);
+                Control.SetPadding(30, 10, 30, 10);
 
                 var nativeEditText = (global::Android.Widget.EditText)Control;
 

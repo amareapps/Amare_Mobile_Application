@@ -8,51 +8,67 @@
                   xmlns:local="clr-namespace:Chatter.Classes"
                   mc:Ignorable="d"
              x:Class="Chatter.View.AnimateMatched" NavigationPage.HasNavigationBar="False" >
-    <RelativeLayout Padding="0">
-        <!-- Background -->
-        <Image
-            Aspect="AspectFill"
-            Source="bgmatch.png"
-            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-        </Image>
-        <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Frame BackgroundColor="Transparent" Padding="0">
-                <StackLayout Padding="10,30,10,10">
-                    <Label Text="You are limitless!" Margin="0" FontFamily="{StaticResource BoldFont}" HorizontalTextAlignment="Center" FontSize="35"
-                                    HorizontalOptions="CenterAndExpand" Padding="0" TextColor="White" />
-                    <Label Text="You've found a match!" Margin="0,0,0,20" FontFamily="{StaticResource ItalicFont}" HorizontalTextAlignment="Center" FontSize="Medium"
-                                    HorizontalOptions="CenterAndExpand" Padding="0" TextColor="White" />
-                    <Grid Padding="10,0,10,10" Margin="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="AUTO" />
-                        </Grid.RowDefinitions>
-                        <Frame CornerRadius="100" HasShadow="True" Padding="0" Margin="5" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" IsClippedToBounds="True">
-                            <ffimageloading:CachedImage BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" x:Name="yourImage" ></ffimageloading:CachedImage>
-                        </Frame>
-                        <Frame CornerRadius="100" HasShadow="True" Padding="0" Margin="5"  Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" IsClippedToBounds="True">
-                            <ffimageloading:CachedImage BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill"  HeightRequest="150" WidthRequest="150" x:Name="othersImage"></ffimageloading:CachedImage>
-                        </Frame>
-                    </Grid>
-                    <Frame BackgroundColor="#EEEEEE" CornerRadius="20" IsClippedToBounds="True" Padding="0" Margin="20,5,20,0" VerticalOptions="End">
-                        <Grid Margin="10,10,10,10">
+    <ContentView Padding="0">
+        <RelativeLayout Padding="0" BackgroundColor="#EEEEEE">
+            <!-- Background -->
+            <Image
+                Aspect="AspectFit"
+                Source="bgmatch1.png"
+                RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            </Image>
+            <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
+                <Frame BackgroundColor="Transparent" Padding="0">
+                    <StackLayout Padding="10,40,10,10">
+                        <ffimageloading:CachedImage HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="80" HeightRequest="80" Source="amare_logo_new.png" Margin="0,10,0,10"></ffimageloading:CachedImage>
+                        <Label Text="You've found a match!" Margin="0,0,0,0" Padding="10,0,10,0" FontFamily="{StaticResource BoldFont}" HorizontalTextAlignment="Center" FontSize="30"
+                                        HorizontalOptions="CenterAndExpand" TextColor="Black" />
+                        <Label Text="Greet the person first by initiating a 'Hello'!" Margin="10,5,10,20" Padding="10,0,10,0" FontFamily="{StaticResource ItalicFont}" HorizontalTextAlignment="Center" FontSize="Small"
+                                        HorizontalOptions="CenterAndExpand" TextColor="Black" />
+                        <Grid Padding="10,0,10,10" Margin="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="40"></ColumnDefinition>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <local:CustomEditorMatch x:Name="messageEntry" HeightRequest="50" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Small" ></local:CustomEditorMatch>
-                            <Image BackgroundColor="Transparent" x:Name="msg" Source="matchmessage.png" IsVisible="True" Grid.Column="2" HeightRequest="20" WidthRequest="20"></Image>
-                            <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="send.png" Aspect="AspectFit" CornerRadius="20" Padding="5" Margin="3" HeightRequest="30" WidthRequest="15" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="2"></ImageButton>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Frame CornerRadius="100" HasShadow="True" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" IsClippedToBounds="True">
+                                <Frame Margin="0" Padding="0.5" BackgroundColor="Accent" HasShadow="False" CornerRadius="100">
+                                    <Frame Margin="2" Padding="5" BackgroundColor="White" HasShadow="False" CornerRadius="100">
+                                        <Frame Margin="0" Padding="0" BackgroundColor="White" HasShadow="False" CornerRadius="100">
+                                            <Image BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill" HeightRequest="145" WidthRequest="120" x:Name="yourImage" ></Image>
+                                        </Frame>
+                                    </Frame>
+                                </Frame>
+                            </Frame>
+                            <Frame CornerRadius="100" HasShadow="True" Padding="0" Margin="0"  Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" IsClippedToBounds="True">
+                                <Frame Margin="0" Padding="0.5" BackgroundColor="Accent" HasShadow="False" CornerRadius="100">
+                                    <Frame Margin="2" Padding="5" BackgroundColor="White" HasShadow="False" CornerRadius="100">
+                                        <Frame Margin="0" Padding="0" BackgroundColor="White" HasShadow="False" CornerRadius="100">
+                                            <Image BackgroundColor="Transparent" Source="tzuyu.jpg" Aspect="AspectFill"   HeightRequest="145" WidthRequest="120" x:Name="othersImage"></Image>
+                                        </Frame>
+                                    </Frame>
+                                </Frame>
+                                </Frame>
                         </Grid>
-                    </Frame>
-                    <Button Text="Keep Going" Clicked="Button_Clicked_1" Margin="0,50,0,0" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="End" BackgroundColor="Accent" TextColor="White" CornerRadius="10"></Button>
-                </StackLayout>
-            </Frame>
-        </ScrollView>
-    </RelativeLayout>
+                    
+                        <Frame BackgroundColor="white" CornerRadius="10" IsClippedToBounds="True" Padding="0" Margin="20,5,20,0" VerticalOptions="End">
+                            <Grid Margin="10,10,10,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="30"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <local:CustomEditorMatch x:Name="messageEntry" HeightRequest="30" TextChanged="messageEntry_TextChanged"  Placeholder="Say hello!" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Small" ></local:CustomEditorMatch>
+                                <Image BackgroundColor="Transparent" x:Name="msg" Source="matchmessage.png" IsVisible="True" Grid.Column="2" HeightRequest="20" WidthRequest="20"></Image>
+                                <ImageButton BackgroundColor="Transparent" IsVisible="False" Source="sendhighreso.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" x:Name="sendButton"  Clicked="sendButton_Clicked" Grid.Column="2"></ImageButton>
+                            </Grid>
+                        </Frame>
+                        <Button Text="Keep Going" Clicked="Button_Clicked_1" Margin="0,50,0,0" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="End" BackgroundColor="Accent" TextColor="White" CornerRadius="10"></Button>
+                    </StackLayout>
+                </Frame>
+            </ScrollView>
+        </RelativeLayout>
+    </ContentView>
 </ContentPage>

@@ -28,6 +28,11 @@
             <Style TargetType="SearchBar">
                 <Setter Property="FontFamily" Value="GraphikRegular.otf#GraphikRegular"></Setter>
             </Style>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="GraphikRegular.otf#GraphikRegular" />
+                <On Platform="UWP" Value="/Assets/GraphikRegular.otf#GraphikRegular" />
+                <On Platform="iOS" Value="GraphikRegular" />
+            </OnPlatform>
             <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
                 <On Platform="Android" Value="GraphikSemibold.otf#GraphikSemibold" />
                 <On Platform="UWP" Value="/Assets/GraphikSemibold.otf#GraphikSemibold" />
