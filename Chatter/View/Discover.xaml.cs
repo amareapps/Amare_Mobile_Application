@@ -322,6 +322,39 @@ namespace Chatter
             }
         }
 
+       /*private void coverFlowView_UserInteracted(CardsView view, PanCardView.EventArgs.UserInteractedEventArgs args)
+        {
+            int threshold = 17;
+            var s = view.VerticalSwipeThresholdDistance;
+            if (args.Status == PanCardView.Enums.UserInteractionStatus.Started)
+            {
+                Console.WriteLine("HAHAHAHA2 = " + s);
+            }
+            if (args.Status == PanCardView.Enums.UserInteractionStatus.Ended)
+            {
+                Console.WriteLine("HAHAHAHA2" + view.SwipeThresholdDistance);
+            }
+        }*/
+
+        private void coverFlowView_ItemDisappearing(CardsView view, PanCardView.EventArgs.ItemDisappearingEventArgs args)
+        {
+            //args.Item as PanCardView.CardsView;
+            Console.WriteLine("testing" + args.Type.ToString());
+            view.Opacity = 0.5;
+        }
+
+        private void coverFlowView_ItemAppearing(CardsView view, PanCardView.EventArgs.ItemAppearingEventArgs args)
+        {
+            view.Opacity = 1;
+        }
+
+        private void coverFlowView_UserInteracted(CardsView view, PanCardView.EventArgs.UserInteractedEventArgs args)
+        {
+            Console.WriteLine("sana naman1!" + view.SwipeThresholdTime.ToString());
+            Console.WriteLine("sana naman2!" + view.MoveThresholdDistance.ToString());
+            Console.WriteLine("sana naman3!" + view.SwipeThresholdDistance.ToString());
+        }
+
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var sample = coverFlowView.SelectedItem as ImageStorage;
@@ -349,6 +382,7 @@ namespace Chatter
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
         {
+
             if (args.Item == null)
                 return;
             currentItem = args.Item as ImageStorage;
@@ -360,6 +394,7 @@ namespace Chatter
             }
             else if (args.Direction == PanCardView.Enums.ItemSwipeDirection.Right)
             {
+                var sample = args.Item;
                 await likeUser();
             }
             //if (coverFlowView.ItemsCount == 1)
