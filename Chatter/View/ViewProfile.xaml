@@ -76,29 +76,34 @@
                                         <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0.95,-1,-1">
                                             <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                                                 <ImageButton 
-                                                        WidthRequest="60"
-                                                        HeightRequest="60"
-                                                        Padding="5"
+                                                         WidthRequest="60"
+                                                         HeightRequest="60"
                                                          CornerRadius="60"
-                                                        Source="dislike.png" 
-                                                        Grid.Column="1" 
-                                                        BackgroundColor="White"
-                                                        x:Name="xButton" 
-                                                        VerticalOptions="Center" 
-                                                        HorizontalOptions="Center" 
-                                                        Opacity="0.7"/>
+                                                         Padding="5"
+                                                         Source="dislike.png" 
+                                                         BackgroundColor="Transparent" 
+                                                         x:Name="xButton" 
+                                                         Clicked="dislikeButton_Clicked" 
+                                                         VerticalOptions="Center" 
+                                                         HorizontalOptions="Center" 
+                                                         Opacity="0.8"
+                                                         BorderColor="White"
+                                                         BorderWidth="2"/>
                                                 <ImageButton 
-                                                        WidthRequest="60"
-                                                        HeightRequest="60"
-                                                        CornerRadius="100"
-                                                        Padding="5"
-                                                         BackgroundColor="White"
-                                                        Source="heart.png" 
-                                                        Grid.Column="2" 
-                                                        x:Name="heartButton" 
-                                                        VerticalOptions="Center" 
-                                                        HorizontalOptions="Center" 
-                                                        Opacity="0.7"/>
+                                                         WidthRequest="60"
+                                                         HeightRequest="60"
+                                                         CornerRadius="60"
+                                                         Padding="5"
+                                                         Source="heart.png" 
+                                                         BackgroundColor="Transparent" 
+                                                         x:Name="heartButton" 
+                                                         VerticalOptions="Center" 
+                                                         HorizontalOptions="Center" 
+                                                         Clicked="heartButton_Clicked"
+                                                         Opacity="0.8"
+                                                         BorderColor="White"
+                                                         BorderWidth="2"/>
+                                                
                                             </StackLayout>
                                         </StackLayout>
                                     </AbsoluteLayout>

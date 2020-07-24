@@ -130,29 +130,35 @@
                                         <ImageButton 
                                              WidthRequest="60"
                                              HeightRequest="60"
-                                            CornerRadius="60"
+                                             CornerRadius="60"
                                              Padding="5"
+                                             Margin="2"
                                              Source="heart.png" 
                                              Grid.Column="2" 
-                                             BackgroundColor="White" 
+                                             BackgroundColor="Transparent" 
                                              x:Name="heartButton" 
                                              VerticalOptions="Center" 
                                              HorizontalOptions="Center" 
                                              Clicked="heartButton_Clicked"
-                                             Opacity="0.7"/>
+                                             Opacity="0.8"
+                                             BorderColor="White"
+                                             BorderWidth="2"/>
                                         <ImageButton 
                                              WidthRequest="60"
                                              HeightRequest="60"
-                                            CornerRadius="60"
+                                             CornerRadius="60"
                                              Padding="5"
+                                             Margin="2"
                                              Source="dislike.png" 
                                              Grid.Column="1" 
-                                             BackgroundColor="White" 
+                                             BackgroundColor="Transparent" 
                                              x:Name="xButton" 
                                             Clicked="dislikeButton_Clicked" 
                                              VerticalOptions="Center" 
                                              HorizontalOptions="Center" 
-                                             Opacity="0.7"/>
+                                             Opacity="0.8"
+                                             BorderColor="White"
+                                             BorderWidth="2"/>
                                     </Grid>
                                 </AbsoluteLayout>
                             </Frame>
