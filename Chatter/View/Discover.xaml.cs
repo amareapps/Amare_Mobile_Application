@@ -294,9 +294,14 @@ namespace Chatter
         private async void tapRight_Tapped(object sender, EventArgs e)
         {
             coverFlowView.IsEnabled = false;
+            var x =  coverFlowView.CurrentView;
+            var label = x.FindByName<Label>("nopeimage");
+            label.Opacity = 1;
             await autoDislikeOldUser();
             coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
             coverFlowView.IsEnabled = true;
+            await Task.Delay(1000);
+            label.Opacity = 0;
         }
         
         private async Task autoDislikeOldUser()
@@ -341,6 +346,15 @@ namespace Chatter
             //args.Item as PanCardView.CardsView;
             Console.WriteLine("testing" + args.Type.ToString());
             view.Opacity = 0.5;
+        }
+        private async Task<bool> checkIfLastUser()
+        {
+            if(imageSources.Count() == 1)
+            {
+                var ret = await api.deleteDislikedUser(Application.Current.Properties["Id"].ToString());
+                this.OnAppearing();
+            }
+            return false;
         }
 
         private void coverFlowView_ItemAppearing(CardsView view, PanCardView.EventArgs.ItemAppearingEventArgs args)

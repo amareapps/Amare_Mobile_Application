@@ -82,8 +82,7 @@
                                                          Padding="5"
                                                          Source="dislike.png" 
                                                          BackgroundColor="Transparent" 
-                                                         x:Name="xButton" 
-                                                         Clicked="dislikeButton_Clicked" 
+                                                         x:Name="xButton"  
                                                          VerticalOptions="Center" 
                                                          HorizontalOptions="Center" 
                                                          Opacity="0.8"
@@ -99,7 +98,6 @@
                                                          x:Name="heartButton" 
                                                          VerticalOptions="Center" 
                                                          HorizontalOptions="Center" 
-                                                         Clicked="heartButton_Clicked"
                                                          Opacity="0.8"
                                                          BorderColor="White"
                                                          BorderWidth="2"/>

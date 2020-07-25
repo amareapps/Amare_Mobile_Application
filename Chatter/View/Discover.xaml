@@ -40,7 +40,7 @@
                     </StackLayout>
                 </Frame>
                 <cards:CarouselView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional" UserInteracted="coverFlowView_UserInteracted"
-                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="False" >
+                                           AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="False">
                     <cards:CarouselView.ItemTemplate>
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="10" HasShadow="True">
@@ -101,6 +101,7 @@
                                             </FlexLayout>
                                         </StackLayout>
                                     </StackLayout>
+                                    <Label x:Name="nopeimage" Text="NOPE" Opacity="0" FontSize="40" TextColor="Red" Rotation="20" AbsoluteLayout.LayoutBounds="0.9,0.1,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional"></Label>
 
                                     <Frame AbsoluteLayout.LayoutFlags="All"
                                             AbsoluteLayout.LayoutBounds="0,0,0.5,1" BackgroundColor="Transparent">
