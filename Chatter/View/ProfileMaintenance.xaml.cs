@@ -40,7 +40,7 @@ namespace Chatter
         string locationString = "";
         string imageString;
         string number = "";
-        string isShowAge = "0";
+        string isShowAge = "1";
         UserModel userModelMain = new UserModel();
         MediaFile file;
         ApiConnector api = new ApiConnector();

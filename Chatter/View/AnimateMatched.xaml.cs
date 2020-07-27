@@ -58,7 +58,8 @@ namespace Chatter.View
 
         private async void sendButton_Clicked(object sender, EventArgs e)
         {
-
+            await DisplayAlert("Message","Message successfully sent","Okay");
+            await Navigation.PopModalAsync();
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)

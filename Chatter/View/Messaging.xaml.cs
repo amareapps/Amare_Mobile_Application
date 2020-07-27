@@ -86,6 +86,9 @@ namespace Chatter
                         await api.setMessageasRead(Session_Id, userLoggedIn);
                     //await DisplayAlert("Anayre", userLoggedIn + resultModel.sender_id + resultModel.receiver_id, "Okay");
                     arg.image = Image_Source;
+                    if (chatModels.Contains(arg)) {
+                        return;
+                    }
                     chatModels.Add(arg);
                     ChatList.ItemsSource = chatModels.OrderByDescending(entry => entry.datetime);
                 }   

@@ -70,6 +70,8 @@ namespace Chatter
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
                     {
+                        if (distanceFilter == iniModel.maximum_distance && age_start == iniModel.age_start && age_end == iniModel.age_end && metric == iniModel.distance_metric)
+                            return;
                         distanceFilter = iniModel.maximum_distance;
                         age_start = iniModel.age_start;
                         age_end = iniModel.age_end;
