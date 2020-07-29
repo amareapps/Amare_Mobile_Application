@@ -78,16 +78,14 @@ namespace Chatter
             {
                 apiRequest = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&scope=openid%20profile%20email&redirect_uri=http://amareapp.com&client_id=" + google_ClientID;
             }
+            mainViewer.Source = apiRequest;
+            //var webView = new WebView
+            //{
 
-            var webView = new WebView
-            {
-                
-                Source = apiRequest,
-                HeightRequest = 1
-            };
-            webView.Navigated += WebView_Navigated;
-
-            Content = webView;
+            //    Source = apiRequest,
+            //    HeightRequest = 1
+            //};
+            mainViewer.Navigated += WebView_Navigated;
         }
         protected async override void OnAppearing()
         {
@@ -196,7 +194,7 @@ namespace Chatter
         }
         public async Task getFacebookProfileAsync(string accessToken)
         {
-
+            overlay.IsVisible = true;
             try
             {
                 using (var cl = new HttpClient())

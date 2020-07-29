@@ -1,4 +1,5 @@
-﻿using Chatter.Model;
+﻿using Chatter.Classes;
+using Chatter.Model;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -15,12 +16,17 @@ namespace Chatter.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AnimateMatched : ContentPage
     {
-        public string ImageOne, ImageTwo;
-        public AnimateMatched(string userImage,string likedUserImage)
+        public string ImageOne, ImageTwo,sessionId;
+        UserModel mainUser, secondUser;
+        MessageCenterManager messenger = new MessageCenterManager();
+        public AnimateMatched(UserModel userModel, UserModel otherUser,string session_id = "")
         {
             InitializeComponent();
-            ImageOne = userImage;
-            ImageTwo = likedUserImage;
+            ImageOne = userModel.image;
+            ImageTwo = otherUser.image;
+            sessionId = session_id;
+            mainUser = userModel;
+            secondUser = otherUser;
         }
         protected override void OnAppearing()
         {
@@ -58,13 +64,51 @@ namespace Chatter.View
 
         private async void sendButton_Clicked(object sender, EventArgs e)
         {
+            this.sendMessage(messageEntry.Text);
             await DisplayAlert("Message","Message successfully sent","Okay");
-            await Navigation.PopModalAsync();
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
+        }
+        private void sendMessage(string smessage)
+        {
+            ChatModel modeler = new ChatModel
+            {
+                id = "1",
+                sender_id = Application.Current.Properties["Id"].ToString().Replace("\"", ""),
+                sender_username = Application.Current.Properties["username"].ToString(),
+                session_id = sessionId,
+                receiver_id = secondUser.id,
+                message = smessage,
+                datetime = DateTime.Now.ToString(),
+                reply_to_id = "",
+                reply_to_message = ""
+            };
+            //string val = JsonConvert.SerializeObject(modeler);
+            messenger.sendMessage(modeler);
+            //await DisplayAlert("Test", val, "Okay");
+            //var byteMessage = System.Text.Encoding.UTF8.GetBytes(val);
+            //var segmnet = new ArraySegment<byte>(byteMessage);
+            //await wsClient.SendAsync(segmnet, WebSocketMessageType.Text, true, CancellationToken.None);
+            /*
+            var client = new HttpClient();
+            var form = new MultipartFormDataContent();
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(Application.Current.Properties["Id"].ToString().Replace("\"","")), "sender_id");
+            content.Add(new StringContent(Application.Current.Properties["username"].ToString()), "sender_username");
+            content.Add(new StringContent(Session_Id), "session_id");
+            content.Add(new StringContent(Receiver_Id), "receiver_id");
+            content.Add(new StringContent(messageEntry.Text), "message");
+            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_message", content);
+            request.EnsureSuccessStatusCode();
+            var response = await request.Content.ReadAsStringAsync();
+            //var exec = await DisplayAlert("Message", response.ToString() +  " Message Sent by: " + Application.Current.Properties["username"].ToString(), null, "OK");
+            messageEntry.Text = string.Empty;
+            messageEntry.Unfocus();
+            scrolltoBottom();
+            */
         }
 
     }

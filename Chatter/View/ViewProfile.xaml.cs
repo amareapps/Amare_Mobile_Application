@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -24,9 +25,11 @@ namespace Chatter.View
         SearchRefenceModel searchRefence = new SearchRefenceModel();
         SqliteManager sqliteManager = new SqliteManager();
         ApiConnector api = new ApiConnector();
+        bool isLiked = false;
         ObservableCollection<GalleryModel> galleryModel = new ObservableCollection<GalleryModel>();
         ObservableCollection<InstagramPhotosModel> instagramPhotos = new ObservableCollection<InstagramPhotosModel>();
-        string userId;
+        ObservableCollection<SpotifyModelLocal> spotifyModelLocals = new ObservableCollection<SpotifyModelLocal>();
+        string userId, liked_Id;
         public ViewProfile(string id)
         {
             InitializeComponent();
@@ -37,6 +40,7 @@ namespace Chatter.View
         protected async override void OnAppearing()
         {
             galleryModel.Clear();
+            spotifyModelLocals.Clear();
             instagramPhotos.Clear();
             await loadUser();
         }
@@ -48,6 +52,7 @@ namespace Chatter.View
                 otherUser = await api.getSpeificUser(userId);
                 var list = await api.otherUserImageList(userId);
                 var igPhotos = await api.getIgPhotos(userId);
+                var spotifyList = await api.getSpotifyList(userId);
                 distanceLabel.Text = getDistance(otherUser);
                 metricLabel.Text = searchRefence.distance_metric == 0 ? "Km." : "Mi.";
                 BindingContext = otherUser;
@@ -56,6 +61,21 @@ namespace Chatter.View
                     galleryModel.Add(model);
                 }
                 galleryView.ItemsSource = galleryModel;
+                
+                if (spotifyList == null)
+                {
+                    spotifyListLayout.IsVisible = false;
+                }
+                else
+                {
+                    spotifyListLayout.IsVisible = true;
+                    foreach (var spotVal in spotifyList)
+                    {
+                        spotifyModelLocals.Add(spotVal);
+                        //await DisplayAlert("test",spotVal.image,"Okay");
+                    }
+                    spotifyListView.ItemsSource = spotifyModelLocals;
+                }
                 //await DisplayAlert("Hayss", igPhotos, "Okay");
                 if (igPhotos == null)
                 {
@@ -140,5 +160,81 @@ namespace Chatter.View
             if(galleryView.SelectedIndex + 1 < galleryView.ItemsCount)
                 galleryView.SelectedIndex = galleryView.SelectedIndex + 1;
         }
+
+        private async void xButton_Clicked(object sender, EventArgs e)
+        {
+            await api.saveToDislikedUser(userId,otherUser.id);
+            await Navigation.PopModalAsync();
+        }
+
+        private async void heartButton_Clicked(object sender, EventArgs e)
+        {
+            await likeUser();
+            await Navigation.PopModalAsync();
+        }
+        private async Task likeUser()
+        {
+            try
+            {
+                await checkIfLiked();
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                //await DisplayAlert("Game",checkIfLiked().ToString(), "Okay");
+                if (isLiked)
+                {
+                    content.Add(new StringContent(liked_Id.ToString()), "id");
+                    content.Add(new StringContent("1"), "visible");
+                    var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateVisible", content);
+                    request.EnsureSuccessStatusCode();
+                    var response = await request.Content.ReadAsStringAsync();
+                    await Navigation.PushModalAsync(new AnimateMatched(userModel, otherUser,liked_Id));
+                    //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
+                    //imageSources.Remove(currentItem);
+                }
+                else
+                {
+                    content.Add(new StringContent(Application.Current.Properties["Id"].ToString().Replace("\"", "")), "user_id");
+                    content.Add(new StringContent(userId), "user_id_liked");
+                    content.Add(new StringContent("0"), "visible");
+                    var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_liked", content);
+                    request.EnsureSuccessStatusCode();
+                    var response = await request.Content.ReadAsStringAsync();
+
+                    //await PopupNavigation.Instance.PushAsync(new LikedUser(userliked, currentItem.image));
+                    //var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Connection", ex.ToString(), "Okay");
+            }
+        }
+        private async Task checkIfLiked()
+        {
+            string sample = Application.Current.Properties["Id"].ToString().Replace("\"", "") + "," + userId;
+            string strurl = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_likeexists&userparam='" + sample + "'";
+
+            using (var cl = new HttpClient())
+            {
+                var request = await cl.GetAsync(strurl);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                if (response.Contains("Undefined"))
+                {
+                    isLiked = false;
+                }
+                else if (response == "null")
+                {
+                    isLiked = false;
+                }
+                else
+                {
+                    liked_Id = response.Replace("\"", "");
+                    isLiked = true;
+                }
+            }
+        }
+
     }
 }

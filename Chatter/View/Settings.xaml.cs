@@ -37,9 +37,11 @@ namespace Chatter
             loadFromDatabase();
         }
 
-        private void backButton_Clicked(object sender, EventArgs e)
+        private async void backButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+
+            await saveToDatabase();
+            await Navigation.PopModalAsync();
         }
 
             private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,6 +76,9 @@ namespace Chatter
         private async void saveButton_Clicked(object sender, EventArgs e)
         {
             //Set to object
+            await saveToDatabase();
+        }
+        private async Task saveToDatabase() {
             SearchRefenceModel searchReference = new SearchRefenceModel()
             {
                 user_id = Application.Current.Properties["Id"].ToString().Replace("\"", ""),
@@ -107,7 +112,7 @@ namespace Chatter
             }
 
             //Update user interest
-            var userModel = sqliteManager.getUserModel();   
+            var userModel = sqliteManager.getUserModel();
             userModel.interest = genderLookingFor().ToString();
             //userModel.interest = showmePicker.SelectedIndex.ToString();
             sqliteManager.updateUserModel(userModel);
@@ -120,6 +125,9 @@ namespace Chatter
             string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
             System.IO.Directory.CreateDirectory(applicationFolderPath);
             string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+
+            slider.Value = 1;
+
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
                 conn.CreateTable<SearchRefenceModel>();
@@ -354,6 +362,16 @@ namespace Chatter
                 slider.Value = 1;
                 return;
             }
+        }
+
+        private void btnShareAmare_Pressed(object sender, EventArgs e)
+        {
+            btnShareAmare.Opacity = 0.7;
+        }
+
+        private void btnShareAmare_Released(object sender, EventArgs e)
+        {
+            btnShareAmare.Opacity = 1;
         }
     }
 }

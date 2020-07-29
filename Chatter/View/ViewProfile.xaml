@@ -43,6 +43,7 @@
                         <RowDefinition Height="AUTO" />
                         <RowDefinition Height="AUTO" />
                         <RowDefinition Height="AUTO" />
+                        <RowDefinition Height="AUTO" />
                     </Grid.RowDefinitions>
                     <Frame HasShadow="True" IsClippedToBounds="True" Grid.Row="0" CornerRadius="10" Padding="0" Margin="5,0,5,5">
                         <cards:CarouselView x:Name="galleryView" IsCyclical="True">
@@ -83,6 +84,7 @@
                                                          Source="dislike.png" 
                                                          BackgroundColor="Transparent" 
                                                          x:Name="xButton"  
+                                                        Clicked="xButton_Clicked"
                                                          VerticalOptions="Center" 
                                                          HorizontalOptions="Center" 
                                                          Opacity="0.8"
@@ -92,6 +94,7 @@
                                                          WidthRequest="60"
                                                          HeightRequest="60"
                                                          CornerRadius="60"
+                                                    Clicked="heartButton_Clicked"
                                                          Padding="5"
                                                          Source="heart.png" 
                                                          BackgroundColor="Transparent" 
@@ -221,6 +224,30 @@
                                     </FlexLayout>
                                 </Frame>
                             </Grid>
+                            <StackLayout  x:Name="spotifyListLayout" IsVisible="false">
+                                <Label TextColor="Green" FontSize="Medium" Text="Spotify"></Label>
+                                <ListView x:Name="spotifyListView" HeightRequest="200" HasUnevenRows="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Padding="10" ColumnSpacing="20">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="AUTO"></RowDefinition>
+                                                        <RowDefinition Height="AUTO"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <ffimageloading:CachedImage Source="{Binding image}" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" BackgroundColor="Black" Grid.RowSpan="2" Grid.Row="0"/>
+                                                    <Label Text="{Binding artist_name,StringFormat='Artist : {0}'}" Grid.Column="1" Grid.Row="0"></Label>
+                                                    <!---<Label Text="{Binding genres,StringFormat='Genres : {0}'}" Grid.Column="1" Grid.Row="1"></Label>-->
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
 
@@ -247,10 +274,11 @@
                             </flv:FlowListView>
                         </StackLayout>
                     </Frame>
+                    
                     <Frame HasShadow="True" Grid.Row="3" Padding="0" Margin="5,0,5,10" CornerRadius="10" WidthRequest="200" HorizontalOptions="Center">
                         <Button Text="Report this user" x:Name="reportUser" Clicked="reportUser_Clicked"  BackgroundColor="#3cc5d5" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
                     </Frame>
-                </Grid>
+                 </Grid>
             </ScrollView>
         </StackLayout>
     </ContentPage.Content>

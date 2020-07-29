@@ -27,6 +27,7 @@ using Chatter.Classes;
 using System.Globalization;
 using PanCardView;
 using Chatter.View.Popup;
+using eliteKit.MarkupExtensions;
 
 namespace Chatter
 {
@@ -42,6 +43,7 @@ namespace Chatter
         public string currentLocation = "", UserProfilePicture = "",userInterest="";
         public string distanceFilter = "",age_start = "",age_end;
         bool hasSearchReference = true;
+        UserModel userModel;
         public Discover()
         {
             InitializeComponent();
@@ -67,6 +69,15 @@ namespace Chatter
                         hasSearchReference = true;
                         //imageSources.Clear();
                     }
+                    conn.CreateTable<UserModel>();
+                    var sample1 = conn.Table<UserModel>().ToList();
+                    foreach (UserModel iniModel in sample1)
+                    {
+                        userModel = iniModel;
+                        currentLocation = iniModel.location;
+                        UserProfilePicture = iniModel.image;
+                        userInterest = iniModel.interest;
+                    }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
                     {
@@ -78,14 +89,7 @@ namespace Chatter
                         metric = iniModel.distance_metric;
                         //       await DisplayAlert("Yes!!", "User ID:" + iniModel.user_id + " Maximum Distance:"+ iniModel.maximum_distance + " Age Range:" + iniModel.age_range, "Okay");
                     }
-                    conn.CreateTable<UserModel>();
-                    var sample1 = conn.Table<UserModel>().ToList();
-                    foreach (UserModel iniModel in sample1)
-                    {
-                        currentLocation = iniModel.location;
-                        UserProfilePicture = iniModel.image;
-                        userInterest = iniModel.interest;
-                    }
+
                 }
                 await loadData();
                 //if (coverFlowView.ItemsCount == 1)
@@ -179,12 +183,18 @@ namespace Chatter
                 //await DisplayAlert("Game",checkIfLiked().ToString(), "Okay");
                 if (isLiked)
                 {
+                    UserModel otherUser = new UserModel
+                    {
+                        id = currentItem.id,
+                        username = currentItem.username,
+                        image = currentItem.image
+                    };
                     content.Add(new StringContent(liked_Id.ToString()), "id");
                     content.Add(new StringContent("1"), "visible");
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateVisible", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await Navigation.PushModalAsync(new AnimateMatched(UserProfilePicture, currentItem.image));
+                    await Navigation.PushModalAsync(new AnimateMatched(userModel, otherUser));
                     //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
                     //imageSources.Remove(currentItem);
                 }

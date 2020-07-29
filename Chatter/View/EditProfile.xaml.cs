@@ -174,7 +174,7 @@ namespace Chatter.View
                 userModel.weight = weightEntry.SelectedIndex < 0 ? "" : weightEntry.Items[weightEntry.SelectedIndex].ToString();
                 content.Add(new StringContent(userModel.height), "height");
                 content.Add(new StringContent(userModel.weight), "weight");
-                content.Add(new StringContent(userModel.hobby), "hobby");
+                content.Add(new StringContent(userModel.hobby == null ? "" : userModel.hobby), "hobby");
 
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUser", content);
                 request.EnsureSuccessStatusCode();

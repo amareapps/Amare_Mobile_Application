@@ -143,7 +143,7 @@
                                 <Label Grid.Column="1"  HorizontalTextAlignment="End" VerticalTextAlignment="Center" FontSize="Body" Text="{Binding Source={x:Reference Name=slider}, Path=Value, StringFormat='{0:N0}'}"></Label>
                                 <Label x:Name="lblMetric"  Grid.Column="2"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Body"></Label>
                             </Grid>
-                            <Slider x:Name="slider" Value="{Binding maximum_distance, Mode=TwoWay}" ValueChanged="slider_ValueChanged" Maximum="100"></Slider>
+                            <Slider x:Name="slider" ValueChanged="slider_ValueChanged" Maximum="100"></Slider>
                         </StackLayout>
                     </Frame>
                     <Frame Padding="10" Margin="5,0,5,0" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
@@ -167,7 +167,7 @@
                     <Label Margin="5,0,5,0" Text="Contact Us" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Margin="5,0,5,0" Text="Help and Support" TextColor="#3cc5d5" x:Name="HelpAndSupport" Clicked="HelpAndSupport_Clicked" CornerRadius="10" BackgroundColor="WhiteSmoke" BorderColor="#3cc5d5" BorderWidth="2"></Button>
                     <Frame IsClippedToBounds="True" Padding="0,0,0,0" CornerRadius="10" Margin="5,0,5,0">
-                        <gradient:GradientColorStack StartColor="#d4129b" Padding="13,0,0,0" Margin="0" ImageSource="share.png" EndColor="#3cc5d5" GradientColorOrientation="Horizontal" x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" Text="Share The Love" TextColor="White" BackgroundColor="Transparent"></gradient:GradientColorStack>
+                        <gradient:GradientColorStack StartColor="#d4129b" Padding="13,0,0,0" Margin="0" Pressed="btnShareAmare_Pressed" Released="btnShareAmare_Released" EndColor="#3cc5d5" GradientColorOrientation="Horizontal" x:Name="btnShareAmare" Clicked="btnShareAmare_Clicked" Text="Share The Love" TextColor="White" BackgroundColor="Transparent"></gradient:GradientColorStack>
                     </Frame>
                     <Label Margin="5,0,5,0" Text="Legal" TextColor="Black" FontSize="Large" FontAttributes="Bold"></Label>
                     <Button Margin="5,0,5,0" Text="Privacy Policy" TextColor="#3cc5d5" Clicked="PrivacyPolicy_Clicked" CornerRadius="10" BackgroundColor="WhiteSmoke" BorderColor="#3cc5d5" BorderWidth="2"></Button>
