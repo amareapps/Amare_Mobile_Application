@@ -354,5 +354,23 @@ namespace Chatter.View
                 instagramButton.Text = "Disconnect to Instagram";
             }
         }
+
+        private async void ageSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (!e.Value)
+            {
+                await Navigation.PushAsync(new Payment());
+                return;
+            }
+        }
+
+        private async void distanceSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (!e.Value)
+            {
+                await Navigation.PushAsync(new Payment());
+                return;
+            }
+        }
     }
 }

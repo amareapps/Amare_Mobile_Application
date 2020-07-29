@@ -125,9 +125,9 @@
                             <StackLayout Padding="10,10,10,0" Margin="0,0,0,5">
                                 <Grid>
                                     <Label Text="Age" FontSize="15" Grid.Column="0" Grid.Row="0"></Label>
-                                    <Switch Grid.Column="1" Grid.Row="0" IsToggled="{Binding show_age,Converter={StaticResource numbertoBool},Mode=TwoWay}" x:Name="ageSwitch" ThumbColor="#3cc5d5" OnColor="#3cc5d5" ></Switch>
+                                    <Switch Grid.Column="1" Grid.Row="0" IsToggled="{Binding show_age,Converter={StaticResource numbertoBool},Mode=TwoWay}" x:Name="ageSwitch" Toggled="ageSwitch_Toggled" ThumbColor="#3cc5d5" OnColor="#3cc5d5" ></Switch>
                                     <Label Text="Distance" FontSize="15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></Label>
-                                    <Switch Grid.Column="1" Grid.Row="1" IsToggled="{Binding show_distance,Converter={StaticResource numbertoBool},Mode=TwoWay}" x:Name="distanceSwitch" ThumbColor="#3cc5d5" OnColor="#3cc5d5"></Switch>
+                                    <Switch Grid.Column="1" Grid.Row="1" IsToggled="{Binding show_distance,Converter={StaticResource numbertoBool},Mode=TwoWay}" Toggled="distanceSwitch_Toggled" x:Name="distanceSwitch" ThumbColor="#3cc5d5" OnColor="#3cc5d5"></Switch>
                                 </Grid>
                             </StackLayout>
                         </StackLayout>

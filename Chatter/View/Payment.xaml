@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Chatter.View.Payment">
+    <ContentPage.Content>
+        <StackLayout Margin="10,30,10,10" Spacing="20">
+            <Label Text="Payment" FontSize="Large"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Grid HorizontalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"></RowDefinition>
+                    <RowDefinition Height="AUTO"></RowDefinition>
+                    <RowDefinition Height="AUTO"></RowDefinition>
+                    <RowDefinition Height="AUTO"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Text="Name" VerticalOptions="Center" FontSize="Medium" Grid.Column="0" Grid.Row="0"></Label>
+                <Entry x:Name="nameEntry" VerticalOptions="Center" Placeholder="Enter your name here" Grid.Row="0" Grid.Column="1"></Entry>
+
+                <Label VerticalOptions="Center" Text="Email" FontSize="Medium" Grid.Column="0" Grid.Row="1"></Label>
+                <Entry x:Name="emailEntry" VerticalOptions="Center" Placeholder="Enter your email here" Grid.Row="1" Grid.Column="1"></Entry>
+
+                <Label VerticalOptions="Center" Text="Card Number" FontSize="Medium" Grid.Column="0" Grid.Row="2"></Label>
+                <Entry x:Name="cardNumberEntry" VerticalOptions="Center" MaxLength="16" Placeholder="Enter card number here" Grid.Column="1" Grid.Row="2"></Entry>
+
+                <Label VerticalOptions="Center" Text="Expire Year" Grid.Column="0" FontSize="Medium" Grid.Row="3"></Label>
+                <DatePicker x:Name="expiryDate" VerticalOptions="Center" Format="MM-yyyy" Grid.Column="1" Grid.Row="3"></DatePicker>
+
+                <Label VerticalOptions="Center" Text="Cvv" Grid.Column="0" FontSize="Medium" Grid.Row="4"></Label>
+                <Entry x:Name="cvvEntry" Placeholder="---" VerticalOptions="Center" MaxLength="3" Grid.Column="1" Grid.Row="4"></Entry>
+            </Grid>
+            <Label Text="Amount: 1.00 USD" HorizontalOptions="CenterAndExpand" FontSize="Large"></Label>
+            <Button Text="Proceed" Clicked="Button_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
