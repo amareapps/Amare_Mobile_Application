@@ -359,6 +359,7 @@ namespace Chatter.View
         {
             if (!e.Value)
             {
+                ageSwitch.IsToggled = true;
                 await Navigation.PushAsync(new Payment());
                 return;
             }
@@ -368,6 +369,7 @@ namespace Chatter.View
         {
             if (!e.Value)
             {
+                distanceSwitch.IsToggled = true;
                 await Navigation.PushAsync(new Payment());
                 return;
             }

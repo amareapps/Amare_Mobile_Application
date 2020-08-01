@@ -2,11 +2,43 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converters="clr-namespace:Chatter.Classes"
              mc:Ignorable="d"
              x:Class="Chatter.App">
     <Application.Resources>
         <ResourceDictionary>
+            <converters:CardNumberToImageConverter x:Key="CardConverter"
+                                                    Amex="ic_amex.png"
+                                                    Dinners="ic_dinersclub.png"
+                                                    Discover="ic_discover.png" 
+                                                    JCB="ic_jcb.png"
+                                                    MasterCard="ic_mastercard.png" 
+                                                    Visa="ic_visa.png"
+                                                    NotRecognized="nocards.png"/>
+
+            <converters:CardNumberToImageConverter x:Key="CardLightConverter"
+                                                    Amex="americanexpresslogo.png"
+                                                    Dinners="ic_dinersclub_white.png"
+                                                    Discover="ic_discover_light.png" 
+                                                    JCB="ic_jcb.png"
+                                                    MasterCard="ic_mastercard_white.png" 
+                                                    Visa="ic_visa_white.png"
+                                                    NotRecognized="ic_chip.png"/>
+
+            <converters:CardNumberToColorConverter x:Key="CardColorConverter"
+                                                    Amex="#3177CB"
+                                                    Dinners="#1B4F8F"
+                                                    Discover="#E9752F" 
+                                                    JCB="#9E2921"
+                                                    MasterCard="#394854" 
+                                                    Visa="#2867BA"
+                                                    NotRecognized="#75849D"/>
+
+            <Color x:Key="Primary">#E5E9EE</Color>
+            <Color x:Key="PrimaryDark">#75849D</Color>
+            <Color x:Key="Secondary">#B5BBC2</Color>
+            <Color x:Key="Accent">LightGray</Color>
+            <Color x:Key="LightColor">LightGray</Color>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="GraphikRegular.otf#GraphikRegular"></Setter>
             </Style>

@@ -1,4 +1,5 @@
-﻿using Stripe;
+﻿using Chatter.ViewModel;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Chatter.View
         public Payment()
         {
             InitializeComponent();
+            this.BindingContext = new CreditCardPageViewModel();
         }
         string mycustomer;
         string getchargedID;
@@ -32,8 +34,8 @@ namespace Chatter.View
 
                 Stripe.CreditCardOptions stripcard = new Stripe.CreditCardOptions();
                 stripcard.Number = cardNumberEntry.Text;
-                stripcard.ExpYear = expiryDate.Date.Year;
-                stripcard.ExpMonth = expiryDate.Date.Month;
+                stripcard.ExpYear = Convert.ToInt32(expiryDate.Text.Split('/')[1]);
+                stripcard.ExpMonth = Convert.ToInt32(expiryDate.Text.Split('/')[0]);
                 stripcard.Cvc = cvvEntry.Text;
 
 
