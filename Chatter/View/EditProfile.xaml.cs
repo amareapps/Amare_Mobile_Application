@@ -14,6 +14,8 @@ using System.Data;
 using Plugin.Media.Abstractions;
 using Google.Protobuf.WellKnownTypes;
 using System.Collections.ObjectModel;
+using Plugin.InAppBilling;
+using Plugin.InAppBilling.Abstractions;
 
 namespace Chatter.View
 {
@@ -357,12 +359,36 @@ namespace Chatter.View
 
         private async void ageSwitch_Toggled(object sender, ToggledEventArgs e)
         {
-            if (!e.Value)
+            try
             {
-                ageSwitch.IsToggled = true;
-                await Navigation.PushAsync(new Payment());
-                return;
+                var connected = await CrossInAppBilling.Current.ConnectAsync();
+                //try to purchase item
+                var purchase = await CrossInAppBilling.Current.PurchaseAsync("mysku", ItemType.InAppPurchase, "apppayload");
+                if (purchase == null)
+                {
+                    //Not purchased
+                }
+                else
+                {
+                    //Purchased!
+                }
             }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Anyare Lods",ex.Message,"Okay");
+            }
+            finally
+            {
+                //busy = false;
+                await CrossInAppBilling.Current.DisconnectAsync();
+            }
+            
+            //if (!e.Value)
+            //{
+            //    ageSwitch.IsToggled = true;
+            //    await Navigation.PushAsync(new Payment());
+            //    return;
+            //}
         }
 
         private async void distanceSwitch_Toggled(object sender, ToggledEventArgs e)
