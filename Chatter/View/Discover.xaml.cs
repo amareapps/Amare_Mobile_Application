@@ -28,6 +28,7 @@ using System.Globalization;
 using PanCardView;
 using Chatter.View.Popup;
 using eliteKit.MarkupExtensions;
+using PanCardView.Processors;
 
 namespace Chatter
 {
@@ -293,7 +294,9 @@ namespace Chatter
 
         private async void tapLeft_Tapped(object sender, EventArgs e)
         {
+            coverFlowView.IsAutoNavigatingAnimationEnabled = false;
             coverFlowView.IsEnabled = false;
+
             if (coverFlowView.SelectedIndex > 0)
             {
                 //DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
@@ -301,6 +304,7 @@ namespace Chatter
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
             }
             coverFlowView.IsEnabled = true;
+            coverFlowView.IsAutoNavigatingAnimationEnabled = true;
         }
 
         private async void tapRight_Tapped(object sender, EventArgs e)
@@ -408,7 +412,7 @@ namespace Chatter
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
         {
-
+            coverFlowView.IsEnabled = false;
             if (args.Item == null)
                 return;
             currentItem = args.Item as ImageStorage;
@@ -423,6 +427,7 @@ namespace Chatter
                 var sample = args.Item;
                 await likeUser();
             }
+            coverFlowView.IsEnabled = true;
             //if (coverFlowView.ItemsCount == 1)
             //    maxReachFrame.IsVisible = true;
         }

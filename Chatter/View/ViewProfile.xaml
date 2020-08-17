@@ -217,7 +217,7 @@
                                 <Frame CornerRadius="10"  BackgroundColor="White" BorderColor="Accent" Grid.Row="0" Grid.Column="1" IsVisible="{Binding weight,Converter={StaticResource stringtoBool}}">
                                     <FlexLayout Direction="Row" FlowDirection="LeftToRight" AlignItems="Center" >
                                         <StackLayout Orientation="Vertical">
-                                            <ffimageloading:CachedImage Source="weightmint.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
+                                            <ffimageloading:CachedImage BitmapOptimizations="True" DownsampleToViewSize="True" Source="weightmint.png" HeightRequest="30" WidthRequest="30"  Margin="0,0,0,0">
                                             </ffimageloading:CachedImage>
                                             <Label Text="{Binding weight, StringFormat='{0:F2} KG'}" Padding="0" Margin="0" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                         </StackLayout>
@@ -239,7 +239,7 @@
                                                         <RowDefinition Height="AUTO"></RowDefinition>
                                                         <RowDefinition Height="AUTO"></RowDefinition>
                                                     </Grid.RowDefinitions>
-                                                    <ffimageloading:CachedImage Source="{Binding image}" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" BackgroundColor="Black" Grid.RowSpan="2" Grid.Row="0"/>
+                                                    <ffimageloading:CachedImage BitmapOptimizations="True" DownsampleToViewSize="True" Source="{Binding image}" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" BackgroundColor="Black" Grid.RowSpan="2" Grid.Row="0"/>
                                                     <Label Text="{Binding artist_name,StringFormat='Artist : {0}'}" Grid.Column="1" Grid.Row="0"></Label>
                                                     <!---<Label Text="{Binding genres,StringFormat='Genres : {0}'}" Grid.Column="1" Grid.Row="1"></Label>-->
                                                 </Grid>

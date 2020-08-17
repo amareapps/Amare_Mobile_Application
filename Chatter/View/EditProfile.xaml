@@ -176,7 +176,7 @@
                                                     Padding="0"
                                                     Margin="1"
                                                     IsClippedToBounds="True">
-                                            <ffimageloading:CachedImage
+                                            <ffimageloading:CachedImage BitmapOptimizations="True" DownsampleToViewSize="True"
                                                  Source="{Binding image_url}" Aspect="AspectFill">
                                                 <ffimageloading:CachedImage.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>

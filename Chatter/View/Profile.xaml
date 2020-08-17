@@ -32,9 +32,9 @@
         <AbsoluteLayout>
             <Grid Margin="0,0,0,0" Padding="0" BackgroundColor="White" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"></RowDefinition>
-                    <RowDefinition Height="450*"></RowDefinition>
-                    <RowDefinition Height="200*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="60*"></RowDefinition>
+                    <RowDefinition Height="25*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid HeightRequest="50" Margin="0,0,0,0" Padding="0" Grid.Row="0" VerticalOptions="CenterAndExpand">
                     <BoxView BackgroundColor="White" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" />
@@ -56,11 +56,15 @@
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"
                                             IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="100">
-                            <ImageButton
+                                <ffimageloading:CachedImage BitmapOptimizations="True" DownsampleToViewSize="True"
                                             x:Name="ProfileImage"  HeightRequest="200"
                                             WidthRequest="200" Source="tzuyu.jpg" 
-                                                        Aspect="AspectFill" Clicked="ProfileImage_Clicked" VerticalOptions="Center"/>
-                        </Frame>
+                                                        Aspect="AspectFill" VerticalOptions="Center">
+                                    <ffimageloading:CachedImage.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ProfileImage_Clicked"></TapGestureRecognizer>
+                                    </ffimageloading:CachedImage.GestureRecognizers>
+                                </ffimageloading:CachedImage>
+                            </Frame>
                         <!--<ActivityIndicator AbsoluteLayout.LayoutBounds="0.5, 0.5, 50, 50"
                                                 AbsoluteLayout.LayoutFlags="PositionProportional" IsRunning="True"   HeightRequest="80" WidthRequest="80"
                                                 IsVisible="False" x:Name="loadingIndicator" Color="#3cc5d5" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
@@ -76,20 +80,20 @@
                     </StackLayout>
                     <Grid Margin="0,0,0,20" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
                         <Grid.RowDefinitions>
-                                <RowDefinition Height="70"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="80*"></RowDefinition>
+                                <RowDefinition Height="20*"></RowDefinition>
                             </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="90"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="40*"></ColumnDefinition>
+                            <ColumnDefinition Width="0"></ColumnDefinition>
+                            <ColumnDefinition Width="40*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <ImageButton Aspect="AspectFit" CornerRadius="100" Padding="0" BackgroundColor="White" VerticalOptions="End" HorizontalOptions="End" 
+                            <ImageButton Aspect="AspectFit"  Grid.Row="0" Grid.Column="0" CornerRadius="100" Padding="0" BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Center" 
                                                          HeightRequest="60" WidthRequest="60" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
-                            <Label Text="Edit Profile" Padding="0" Grid.Row="1" Grid.Column="0" FontSize="12" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="End" VerticalOptions="Start"></Label>
-                            <ImageButton Grid.Row="0" CornerRadius="100" Grid.Column="2" Padding="0" Aspect="AspectFit" BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Start" HeightRequest="60" WidthRequest="60" x:Name="EditButton" Source="settings.png"
-                                   Clicked="EditButton_Clicked"/>
-                            <Label Text="Preferences" Padding="0" Grid.Row="1" Grid.Column="2" FontSize="12" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Start"></Label>
+                            <Label Text="Edit Profile" Padding="0" Grid.Row="1" FontAttributes="Bold" Grid.Column="0" FontSize="Small" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                        <ImageButton Grid.Row="0" CornerRadius="100" Grid.Column="2" Padding="0" Aspect="AspectFit" BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" x:Name="EditButton" Source="settings.png"
+                                Clicked="EditButton_Clicked"/>
+                            <Label Text="Preferences" Padding="0" Grid.Row="1" FontAttributes="Bold" Grid.Column="2" FontSize="Small" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Start"></Label>
                         </Grid>
                     </StackLayout>
                 </local:CustomFrame>

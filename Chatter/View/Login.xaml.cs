@@ -141,7 +141,7 @@ namespace Chatter
             catch (Exception ex)
             {
                 overlay.IsVisible = false;
-                await DisplayAlert("Error", ex.ToString(), "Okay");
+                await DisplayAlert("Invalid Credentials","The email or password you entered is incorrect", "Okay");
             }
         }
         private async Task saveToSqlite()

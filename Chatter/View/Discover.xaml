@@ -39,12 +39,12 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-                <cards:CardsView x:Name="coverFlowView" AbsoluteLayout.LayoutFlags="SizeProportional" UserInteracted="coverFlowView_UserInteracted"
+                <cards:CardsView x:Name="coverFlowView" IsOnlyForwardDirection="True"  AbsoluteLayout.LayoutFlags="SizeProportional" UserInteracted="coverFlowView_UserInteracted"
                                            AbsoluteLayout.LayoutBounds="0,0,1,1" ItemSwiped="coverFlowView_ItemSwiped" IsCyclical="False">
-                    <cards:CardsView.ItemTemplate>
+                    <cards:CardsView.ItemTemplate> 
                         <DataTemplate>
                             <Frame IsClippedToBounds="True" Padding="0" Margin="0,0,0,0" CornerRadius="10" HasShadow="True">
-                                <AbsoluteLayout >
+                                <AbsoluteLayout>
                                     <!-- Overlay -->
                                     <ContentView x:Name="overlay"  
                                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
@@ -61,7 +61,7 @@
                                         </StackLayout>
 
                                     </ContentView>
-                                    <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" BitmapOptimizations="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
+                                    <ffimageloading:CachedImage x:Name="userImage" DownsampleUseDipUnits="True"   BitmapOptimizations="True" Aspect="AspectFill" Source="{Binding image}" AbsoluteLayout.LayoutFlags="All"
                                     AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
                                     <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1" BackgroundColor="#40000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <Image Source="heart.png" x:Name="userliked" IsVisible="False" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></Image>

@@ -359,28 +359,31 @@ namespace Chatter.View
 
         private async void ageSwitch_Toggled(object sender, ToggledEventArgs e)
         {
-            try
+            if (!e.Value)
             {
-                var connected = await CrossInAppBilling.Current.ConnectAsync();
-                //try to purchase item
-                var purchase = await CrossInAppBilling.Current.PurchaseAsync("mysku", ItemType.InAppPurchase, "apppayload");
-                if (purchase == null)
+                try
                 {
-                    //Not purchased
+                    var connected = await CrossInAppBilling.Current.ConnectAsync();
+                    //try to purchase item
+                    var purchase = await CrossInAppBilling.Current.PurchaseAsync("age_manager", ItemType.InAppPurchase, "apppayload");
+                    if (purchase == null)
+                    {
+                        ageSwitch.IsToggled = true;
+                    }
+                    else
+                    {
+                        //Purchased!
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //Purchased!
+                    ageSwitch.IsToggled = true;
                 }
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Anyare Lods",ex.Message,"Okay");
-            }
-            finally
-            {
-                //busy = false;
-                await CrossInAppBilling.Current.DisconnectAsync();
+                finally
+                {
+                    //busy = false;
+                    await CrossInAppBilling.Current.DisconnectAsync();
+                }
             }
             
             //if (!e.Value)
@@ -395,10 +398,36 @@ namespace Chatter.View
         {
             if (!e.Value)
             {
-                distanceSwitch.IsToggled = true;
-                await Navigation.PushAsync(new Payment());
-                return;
+                try
+                {
+                    var connected = await CrossInAppBilling.Current.ConnectAsync();
+                    //try to purchase item
+                    var purchase = await CrossInAppBilling.Current.PurchaseAsync("distance_manager", ItemType.InAppPurchase, "apppayload");
+                    if (purchase == null)
+                    {
+                        ageSwitch.IsToggled = true;
+                    }
+                    else
+                    {
+                        //Purchased!
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ageSwitch.IsToggled = true;
+                }
+                finally
+                {
+                    //busy = false;
+                    await CrossInAppBilling.Current.DisconnectAsync();
+                }
             }
+            //if (!e.Value)
+            //{
+            //    distanceSwitch.IsToggled = true;
+            //    await Navigation.PushAsync(new Payment());
+            //    return;
+            //}
         }
     }
 }
