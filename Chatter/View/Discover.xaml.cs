@@ -294,7 +294,7 @@ namespace Chatter
 
         private async void tapLeft_Tapped(object sender, EventArgs e)
         {
-            coverFlowView.IsAutoNavigatingAnimationEnabled = false;
+           // coverFlowView.IsAutoNavigatingAnimationEnabled = false;
             coverFlowView.IsEnabled = false;
 
             if (coverFlowView.SelectedIndex > 0)
@@ -304,7 +304,7 @@ namespace Chatter
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
             }
             coverFlowView.IsEnabled = true;
-            coverFlowView.IsAutoNavigatingAnimationEnabled = true;
+            //coverFlowView.IsAutoNavigatingAnimationEnabled = true;
         }
 
         private async void tapRight_Tapped(object sender, EventArgs e)
@@ -357,12 +357,6 @@ namespace Chatter
             }
         }*/
 
-        private void coverFlowView_ItemDisappearing(CardsView view, PanCardView.EventArgs.ItemDisappearingEventArgs args)
-        {
-            //args.Item as PanCardView.CardsView;
-            Console.WriteLine("testing" + args.Type.ToString());
-            view.Opacity = 0.5;
-        }
         private async Task<bool> checkIfLastUser()
         {
             if(imageSources.Count() == 1)
@@ -378,12 +372,6 @@ namespace Chatter
             view.Opacity = 1;
         }
 
-        private void coverFlowView_UserInteracted(CardsView view, PanCardView.EventArgs.UserInteractedEventArgs args)
-        {
-            Console.WriteLine("sana naman1!" + view.SwipeThresholdTime.ToString());
-            Console.WriteLine("sana naman2!" + view.MoveThresholdDistance.ToString());
-            Console.WriteLine("sana naman3!" + view.SwipeThresholdDistance.ToString());
-        }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
