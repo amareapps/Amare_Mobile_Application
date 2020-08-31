@@ -9,7 +9,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -52,7 +54,8 @@ namespace Chatter.View
         {
             StringGenerator gen = new StringGenerator();
             var otpCode = gen.generateRandomString();
-            var checker = await smsSender.SendSms(otpCode, phoneEntry.Text);
+            var checker = this.sendMessage(phoneEntry.Text,otpCode);
+            //var checker = await smsSender.SendSms(otpCode, phoneEntry.Text);
             await Navigation.PushAsync(new OtpAuthentication(phoneEntry.Text), true);
         }
         private void phoneEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -72,7 +75,24 @@ namespace Chatter.View
                 }
             }
         }
+        private bool sendMessage(string number, string message)
+        {
+            var accountSid = "ACa9ae788177fcbeaccdd3869fa7bf2ac6";
+            var authToken = "65d72605163b75c07e99088cd34d2878";
+            TwilioClient.Init(accountSid, authToken);
 
+            var messageOptions = new CreateMessageOptions(
+                new PhoneNumber(dialCodeLabel.Text + number));
+            messageOptions.From = new PhoneNumber("+12027749696");
+            messageOptions.Body = message;
+
+            var messages = MessageResource.Create(messageOptions);
+            if (messages.Body.Length > 0)
+            {
+                return true;
+            }
+            return false;
+        }
         private void countryCodePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             Picker _picker = sender as Picker;

@@ -405,7 +405,7 @@ namespace Chatter.View
                     var purchase = await CrossInAppBilling.Current.PurchaseAsync("distance_manager", ItemType.InAppPurchase, "apppayload");
                     if (purchase == null)
                     {
-                        ageSwitch.IsToggled = true;
+                        distanceSwitch.IsToggled = true;
                     }
                     else
                     {
@@ -414,7 +414,7 @@ namespace Chatter.View
                 }
                 catch (Exception ex)
                 {
-                    ageSwitch.IsToggled = true;
+                    distanceSwitch.IsToggled = true;
                 }
                 finally
                 {

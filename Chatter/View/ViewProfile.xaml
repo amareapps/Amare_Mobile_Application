@@ -74,7 +74,7 @@
                                                 <TapGestureRecognizer x:Name="tapRight" Tapped="tapRight_Tapped"></TapGestureRecognizer>
                                             </Frame.GestureRecognizers>
                                         </Frame >
-                                        <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0.95,-1,-1">
+                                        <StackLayout IsVisible="{Binding isShow}" Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0.95,-1,-1">
                                             <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                                                 <ImageButton 
                                                          WidthRequest="60"

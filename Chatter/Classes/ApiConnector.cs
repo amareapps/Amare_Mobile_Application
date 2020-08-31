@@ -119,29 +119,42 @@ namespace Chatter.Classes
         }
         public async Task retrieveSearchReference()
         {
-            string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_search_reference&id='" + Application.Current.Properties["Id"].ToString() + "'";
-            var request = await client.GetAsync(urlString);
-            request.EnsureSuccessStatusCode();
-            var response = await request.Content.ReadAsStringAsync();
-            //await DisplayAlert("Erro!", response.ToString(), "Okay");
-            if (response.ToString().Contains("Undefined"))
+            SearchRefenceModel modelInit = new SearchRefenceModel();
+            modelInit.user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
+            try
             {
-                return;
+                string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_search_reference&id='" + Application.Current.Properties["Id"].ToString() + "'";
+                var request = await client.GetAsync(urlString);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                //await DisplayAlert("Erro!", response.ToString(), "Okay");
+                if (response.ToString().Contains("Undefined"))
+                {
+                    await saveSearchToSqlite(modelInit);
+                    return;
+                }
+                if (response.ToString().Contains("null"))
+                {
+                    await saveSearchToSqlite(modelInit);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(response.ToString()))
+                {
+                    await saveSearchToSqlite(modelInit);
+                    return;
+                }
+                var looper = JsonConvert.DeserializeObject<List<SearchRefenceModel>>(response);
+                foreach (SearchRefenceModel model in looper)
+                {
+                    modelInit = model;
+                    await saveSearchToSqlite(model);
+                    break;
+                }
+                await saveSearchToSqlite(modelInit);
             }
-            if (response.ToString().Contains("null"))
+            catch (Exception)
             {
-                return;
-            }
-            if (string.IsNullOrEmpty(response.ToString()))
-            {
-                return;
-            }
-            var looper = JsonConvert.DeserializeObject<List<SearchRefenceModel>>(response);
-            foreach (SearchRefenceModel model in looper)
-            {
-
-                await saveSearchToSqlite(model);
-                break;
+                await saveSearchToSqlite(modelInit);
             }
         }
 
@@ -317,15 +330,23 @@ namespace Chatter.Classes
                 return null;
             }
         }
-        public async Task saveToDislikedUser(string user_id, string usertodislike)
+        public async Task<bool> saveToDislikedUser(string user_id, string usertodislike)
         {
-            var form = new MultipartFormDataContent();
-            MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(user_id), "user_id");
-            content.Add(new StringContent(usertodislike), "disliked_user");
-            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_dislike", content);
-            request.EnsureSuccessStatusCode();
-            var response = await request.Content.ReadAsStringAsync();
+            try
+            {
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                content.Add(new StringContent(user_id), "user_id");
+                content.Add(new StringContent(usertodislike), "disliked_user");
+                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_dislike", content);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return true;
+            }
+            catch (Exception )
+            {
+                return false;
+            }
         }
         public async Task updateProfilePicture(string user_id, string image)
         {

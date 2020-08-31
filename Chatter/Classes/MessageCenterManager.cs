@@ -25,5 +25,9 @@ namespace Chatter.Classes
         {
             MessagingCenter.Send<MessageCenterManager, ChatModel>(this, "messageReceived", message);
         }
+        public void removeUser(string user_id)
+        {
+            MessagingCenter.Send<MessageCenterManager, string>(this, "removeUser", user_id);
+        }
     }
 }

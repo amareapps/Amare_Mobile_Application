@@ -475,35 +475,39 @@ namespace Chatter
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 var strVal =await api.checkIfAlreadyRegistered(userModel.email);
                 //await DisplayAlert("checker",strVal,"Okay");
-                if (!strVal.Contains("null") && !strVal.Contains("Undefined") && string.IsNullOrEmpty(strVal) == false)
+                if (!strVal.Contains("null") || !strVal.Contains("Undefined") || string.IsNullOrEmpty(strVal) == false)
                 {
                     var userExist = JsonConvert.DeserializeObject<List<UserModel>>(strVal);
                     foreach (UserModel midek in userExist)
                     {
                         userModel = midek;
-                        return;
+                        break;
                     }
-                }
-                /*if (userExist.Count > 0)
-                {
-                    await saveDataSqlite();
                     return;
-                }*/
-                content.Add(new StringContent(userModel.email), "email");
-                content.Add(new StringContent(""), "password");
-                content.Add(new StringContent(userModel.username), "username");
-                content.Add(new StringContent(userModel.gender), "gender");
-                content.Add(new StringContent(userModel.location), "location");
-                content.Add(new StringContent(userModel.image), "image");
-                content.Add(new StringContent(""), "phone_number");
-                content.Add(new StringContent(userModel.birthdate), "birthdate");
-                content.Add(new StringContent("2"), "interest");
-                content.Add(new StringContent("0"), "show_age");
-                content.Add(new StringContent(""), "school");
-                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
-                request.EnsureSuccessStatusCode();
-                var response = await request.Content.ReadAsStringAsync();
-                //await DisplayAlert("una dapat to",response,"Okay");
+                }
+                else
+                {
+                    /*if (userExist.Count > 0)
+                    {
+                        await saveDataSqlite();
+                        return;
+                    }*/
+                    content.Add(new StringContent(userModel.email), "email");
+                    content.Add(new StringContent(""), "password");
+                    content.Add(new StringContent(userModel.username), "username");
+                    content.Add(new StringContent(userModel.gender), "gender");
+                    content.Add(new StringContent(userModel.location), "location");
+                    content.Add(new StringContent(userModel.image), "image");
+                    content.Add(new StringContent(""), "phone_number");
+                    content.Add(new StringContent(userModel.birthdate), "birthdate");
+                    content.Add(new StringContent("2"), "interest");
+                    content.Add(new StringContent("0"), "show_age");
+                    content.Add(new StringContent(""), "school");
+                    var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
+                    request.EnsureSuccessStatusCode();
+                    var response = await request.Content.ReadAsStringAsync();
+                    //await DisplayAlert("una dapat to",response,"Okay");
+                }
             }
             catch (Exception ex)
             {

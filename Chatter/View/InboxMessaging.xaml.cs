@@ -391,7 +391,7 @@ namespace Chatter
             foreach(RecentMatchesModel b in matchesModel)
             {
                 if (b.image == valuer.Source.ToString().Replace("Uri: ", ""))
-                    await Navigation.PushModalAsync(new ViewProfile(b.user_id));
+                    await Navigation.PushModalAsync(new ViewProfile(b.user_id,true));
             }
         }
 

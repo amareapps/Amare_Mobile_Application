@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Chatter.Model;
 using Xamd.ImageCarousel.Forms.Plugin.Abstractions;
 using Plugin.Toast;
 using Android.Renderscripts;
@@ -48,6 +47,12 @@ namespace Chatter
         public Discover()
         {
             InitializeComponent();
+            MessagingCenter.Subscribe<MessageCenterManager, string>(this, "removeUser", async (sender, arg) =>
+            {
+                var linqresult = imageSources.Where(x => x.id == arg).FirstOrDefault() as ImageStorage;
+                await DisplayAlert("Sana!", linqresult.username,"Okay");
+                imageSources.Remove(linqresult);
+            });
             // BindingContext = new ImageStorage();
         }
         protected async override void OnAppearing()
@@ -177,12 +182,12 @@ namespace Chatter
         {
             try
             {
-                await checkIfLiked();
+                var isAlreadyLiked = await checkIfLiked();
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 //await DisplayAlert("Game",checkIfLiked().ToString(), "Okay");
-                if (isLiked)
+                if (isAlreadyLiked)
                 {
                     UserModel otherUser = new UserModel
                     {
@@ -196,6 +201,8 @@ namespace Chatter
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
                     await Navigation.PushModalAsync(new AnimateMatched(userModel, otherUser));
+                    if (response.Length > 0)
+                        imageSources.Remove(currentItem);
                     //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
                     //imageSources.Remove(currentItem);
                 }
@@ -208,18 +215,18 @@ namespace Chatter
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
                     string userliked = currentItem.username;
-
+                    if(response.Length > 0)
+                        imageSources.Remove(currentItem);
                     //await PopupNavigation.Instance.PushAsync(new LikedUser(userliked, currentItem.image));
                     //var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
                 }
-                imageSources.Remove(currentItem);
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Connection", ex.ToString(), "Okay");
             }
         }
-        private async Task checkIfLiked()
+        private async Task<bool> checkIfLiked()
         {
             string sample = Application.Current.Properties["Id"].ToString().Replace("\"","") + "," + currentUserIdSelected;
             string strurl = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_likeexists&userparam='" + sample + "'";
@@ -231,16 +238,16 @@ namespace Chatter
                 var response = await request.Content.ReadAsStringAsync();
                 if (response.Contains("Undefined"))
                 {
-                    isLiked = false; 
+                    return false; 
                 }
                 else if(response == "null")
                 {
-                    isLiked = false;
+                    return false;
                 }
                 else
                 {
                     liked_Id = Convert.ToInt32(response.Replace("\"", ""));
-                    isLiked = true;
+                    return true;
                 }
             }
         }
@@ -294,42 +301,62 @@ namespace Chatter
 
         private async void tapLeft_Tapped(object sender, EventArgs e)
         {
-           // coverFlowView.IsAutoNavigatingAnimationEnabled = false;
-            coverFlowView.IsEnabled = false;
-
+            coverFlowView.IsAutoNavigatingAnimationEnabled = false;
+            //coverFlowView.IsEnabled = false;
+            await Task.Delay(500);
             if (coverFlowView.SelectedIndex > 0)
             {
                 //DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
                 int sample = coverFlowView.SelectedIndex;
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
             }
-            coverFlowView.IsEnabled = true;
-            //coverFlowView.IsAutoNavigatingAnimationEnabled = true;
+            //coverFlowView.IsEnabled = true;
+            coverFlowView.IsAutoNavigatingAnimationEnabled = true;
         }
 
         private async void tapRight_Tapped(object sender, EventArgs e)
         {
-            coverFlowView.IsEnabled = false;
+            //coverFlowView.IsEnabled = false;
             var x =  coverFlowView.CurrentView;
             var label = x.FindByName<Label>("nopeimage");
             label.Opacity = 1;
-            await autoDislikeOldUser();
-            coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
-            coverFlowView.IsEnabled = true;
-            await Task.Delay(1000);
-            label.Opacity = 0;
+            var retVal = await autoDislikeOldUser();
+            if (retVal)
+            {
+                coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+                await Task.Delay(1000);
+                label.Opacity = 0;
+            }
+            else
+            {
+                coverFlowView.SelectedIndex = coverFlowView.SelectedIndex + 1;
+                await Task.Delay(1000);
+                label.Opacity = 0;
+            }
         }
         
-        private async Task autoDislikeOldUser()
+        private async Task<bool> autoDislikeOldUser()
         {
             if (coverFlowView.SelectedIndex >= 5)
             {
                 var usertoRemove = imageSources[0];
                 string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
-                await api.saveToDislikedUser(user_id, usertoRemove.id);
-                imageSources.Remove(usertoRemove);
+                var retVal = await api.saveToDislikedUser(user_id, usertoRemove.id);
+                if (retVal)
+                {
+                    await DisplayAlert("ss","Dito true dapat" + retVal,"Okay");
+                    imageSources.Remove(usertoRemove);
+                    return retVal;
+                }
+                else
+                {
+                    await DisplayAlert("ss", "Dito true dapat" + retVal, "Okay");
+                    imageSources.Remove(usertoRemove);
+                    return retVal;
+                }
                 //imageSources.Remove(currentItem);
             }
+            return false;
         }
         private async Task autoDislikeOldUserSwipe()
         {
@@ -337,8 +364,11 @@ namespace Chatter
             {
                 var usertoRemove = imageSources[0];
                 string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
-                await api.saveToDislikedUser(user_id, usertoRemove.id);
-                imageSources.Remove(usertoRemove);
+                var status =await api.saveToDislikedUser(user_id, usertoRemove.id);
+                if (status)
+                {
+                    imageSources.Remove(usertoRemove);
+                }
                 //imageSources.Remove(currentItem);
             }
         }
@@ -400,7 +430,7 @@ namespace Chatter
 
         private async void coverFlowView_ItemSwiped(CardsView view, PanCardView.EventArgs.ItemSwipedEventArgs args)
         {
-            coverFlowView.IsEnabled = false;
+           // coverFlowView.IsEnabled = false;
             if (args.Item == null)
                 return;
             currentItem = args.Item as ImageStorage;
@@ -415,7 +445,7 @@ namespace Chatter
                 var sample = args.Item;
                 await likeUser();
             }
-            coverFlowView.IsEnabled = true;
+            //coverFlowView.IsEnabled = true;
             //if (coverFlowView.ItemsCount == 1)
             //    maxReachFrame.IsVisible = true;
         }

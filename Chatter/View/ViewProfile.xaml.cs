@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace Chatter.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,20 +20,22 @@ namespace Chatter.View
     {
         UserModel userModel = new UserModel();
         UserModel otherUser = new UserModel();
-
+        MessageCenterManager messenger = new MessageCenterManager();
         SearchRefenceModel searchRefence = new SearchRefenceModel();
         SqliteManager sqliteManager = new SqliteManager();
         ApiConnector api = new ApiConnector();
-        bool isLiked = false;
+        bool isLiked = false,_isAlreadyLiked = false;
         ObservableCollection<GalleryModel> galleryModel = new ObservableCollection<GalleryModel>();
         ObservableCollection<InstagramPhotosModel> instagramPhotos = new ObservableCollection<InstagramPhotosModel>();
         ObservableCollection<SpotifyModelLocal> spotifyModelLocals = new ObservableCollection<SpotifyModelLocal>();
         string userId, liked_Id;
-        public ViewProfile(string id)
+        public ViewProfile(string id,bool isAlreadyLiked = false)
         {
             InitializeComponent();
             searchRefence = sqliteManager.GetSearchRefence();
-            
+
+            _isAlreadyLiked = isAlreadyLiked;
+
             userId = id;
         }
         protected async override void OnAppearing()
@@ -58,6 +59,12 @@ namespace Chatter.View
                 BindingContext = otherUser;
                 foreach (GalleryModel model in list)
                 {
+                    if (_isAlreadyLiked)
+                        model.isShow = false;
+                    else
+                    {
+                        model.isShow = true;
+                    }
                     galleryModel.Add(model);
                 }
                 galleryView.ItemsSource = galleryModel;
@@ -164,6 +171,7 @@ namespace Chatter.View
         private async void xButton_Clicked(object sender, EventArgs e)
         {
             await api.saveToDislikedUser(userId,otherUser.id);
+            messenger.removeUser(otherUser.id);
             await Navigation.PopModalAsync();
         }
 
@@ -176,19 +184,23 @@ namespace Chatter.View
         {
             try
             {
-                await checkIfLiked();
+                var isAlreadyLiked =  await checkIfLiked();
                 var client = new HttpClient();
                 var form = new MultipartFormDataContent();
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 //await DisplayAlert("Game",checkIfLiked().ToString(), "Okay");
-                if (isLiked)
+                if (isAlreadyLiked)
                 {
                     content.Add(new StringContent(liked_Id.ToString()), "id");
                     content.Add(new StringContent("1"), "visible");
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateVisible", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-                    await Navigation.PushModalAsync(new AnimateMatched(userModel, otherUser,liked_Id));
+                    if(response.Length > 0)
+                    {
+                        messenger.removeUser(otherUser.id);
+                        await Navigation.PushModalAsync(new AnimateMatched(userModel, otherUser, liked_Id));
+                    }
                     //await DisplayAlert("MATCH FOUND", "You both liked each other! Hurry and send a message!", "Okay");
                     //imageSources.Remove(currentItem);
                 }
@@ -200,17 +212,21 @@ namespace Chatter.View
                     var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_liked", content);
                     request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
-
+                    if (response.Length > 0)
+                    {
+                        messenger.removeUser(userId);
+                    }
                     //await PopupNavigation.Instance.PushAsync(new LikedUser(userliked, currentItem.image));
                     //var exec = await DisplayAlert("Discover", "You liked " + likeduser, null, "OK");
                 }
+
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Connection", ex.ToString(), "Okay");
             }
         }
-        private async Task checkIfLiked()
+        private async Task<bool> checkIfLiked()
         {
             string sample = Application.Current.Properties["Id"].ToString().Replace("\"", "") + "," + userId;
             string strurl = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_likeexists&userparam='" + sample + "'";
@@ -222,16 +238,16 @@ namespace Chatter.View
                 var response = await request.Content.ReadAsStringAsync();
                 if (response.Contains("Undefined"))
                 {
-                    isLiked = false;
+                   return false;
                 }
                 else if (response == "null")
                 {
-                    isLiked = false;
+                    return false;
                 }
                 else
                 {
                     liked_Id = response.Replace("\"", "");
-                    isLiked = true;
+                    return true;
                 }
             }
         }

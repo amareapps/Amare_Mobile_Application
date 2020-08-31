@@ -26,6 +26,8 @@ using eliteKit.MarkupExtensions;
 using SQLite;
 using Rg.Plugins.Popup.Services;
 using Chatter.View.Popup;
+using Android.Views;
+using System.Security.Policy;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Chatter.Classes.ILocSettings))]
 namespace Chatter
@@ -149,30 +151,30 @@ namespace Chatter
                     //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
                     if (string.IsNullOrEmpty(number))
                     {
-                    if (_isSocialMediaRegistation)
-                    {
-                        var testing = await api.checkIfAlreadyRegistered(userModelMain.email);
-                        await DisplayAlert("Oops!", testing, "Okay");
-                        var userExist = JsonConvert.DeserializeObject<List<UserModel>>(testing).ToList();
-                        foreach (UserModel midek in userExist)
+                        if (_isSocialMediaRegistation)
                         {
-                            userModelMain = midek;
-                            break;
+                            var testing = await api.checkIfAlreadyRegistered(userModelMain.email);
+                            await DisplayAlert("Oops!", testing, "Okay");
+                            var userExist = JsonConvert.DeserializeObject<List<UserModel>>(testing).ToList();
+                            foreach (UserModel midek in userExist)
+                            {
+                                userModelMain = midek;
+                                break;
+                            }
+                            if (userExist.Count > 0)
+                            {
+                                await saveDataSqlite();
+                                App.Current.MainPage = new NavigationPage(new WelcomePage());
+                            }
                         }
-                        if (userExist.Count > 0)
+                        else
                         {
-                            await saveDataSqlite();
+                            var userModels = await api.loginUser(emailEntry.Text, passwordEntry.Text);
+                            //overlay.IsVisible = false;
                             App.Current.MainPage = new NavigationPage(new WelcomePage());
+                            //await Navigation.PushAsync(new WelcomePage());
+                            //await Navigation.PopToRootAsync();
                         }
-                    }
-                    else
-                    {
-                        var userModels = await api.loginUser(emailEntry.Text, passwordEntry.Text);
-                        //overlay.IsVisible = false;
-                        App.Current.MainPage = new NavigationPage(new WelcomePage());
-                        //await Navigation.PushAsync(new WelcomePage());
-                        //await Navigation.PopToRootAsync();
-                    }
                     }
                     else
                     {
@@ -283,11 +285,17 @@ namespace Chatter
             else if (btne == everyoneInterestButton)
                 interestIn = "2";
         }
-        private void nextContent(object sender, EventArgs e)
+        private async void nextContent(object sender, EventArgs e)
         {
            
             if (this.CurrentPage == emailContent)
             {
+                if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text)
+                    || string.IsNullOrWhiteSpace(birthdatePicker.Date.ToString()))
+                {
+                    await DisplayAlert("Entry", "Please fill the required fields", "Okay");
+                    return;
+                }
                 this.CurrentPage = genderContent;
             }
             // else if (this.CurrentPage == passwordContent)
@@ -304,6 +312,11 @@ namespace Chatter
            //}
             else if (this.CurrentPage == genderContent)
             {
+                if (string.IsNullOrWhiteSpace(gender) || string.IsNullOrWhiteSpace(interestIn))
+                {
+                    await DisplayAlert("Entry", "Please fill the required fields", "Okay");
+                    return;
+                }
                 this.CurrentPage = pictureContent;
             }
             //else if (this.CurrentPage == interestContent) {
@@ -347,7 +360,7 @@ namespace Chatter
 
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
-                PopupNavigation.Instance.PushAsync(new ImageNotSupported());
+                await PopupNavigation.Instance.PushAsync(new ImageNotSupported());
                 return;
             }
 
@@ -396,7 +409,7 @@ namespace Chatter
         {
             if (emailEntry.Text.Length == emailEntry.MaxLength)
             {
-                PopupNavigation.Instance.PushAsync(new Max50Char());
+                await PopupNavigation.Instance.PushAsync(new Max50Char());
             }
         }
 

@@ -13,5 +13,6 @@ namespace Chatter.Model
         public string is_dp { get; set; }
         public string image { get; set; }
         public string timestamp { get; set; }
+        public bool isShow { get; set; }
     }
 }
