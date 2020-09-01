@@ -56,10 +56,15 @@
                                                            Margin="0"
                                                            Padding="0"
                                                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                <ImageButton Source="{Binding image}" 
+                                                <ffimageloading:CachedImage  Source="{Binding image}" Aspect="AspectFill" DownsampleToViewSize="True">
+                                                    <ffimageloading:CachedImage.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                                    </ffimageloading:CachedImage.GestureRecognizers>
+                                                </ffimageloading:CachedImage>
+                                               <!--- <ImageButton Source="{Binding image}" 
                                                                      HorizontalOptions="FillAndExpand" 
                                                                      VerticalOptions="FillAndExpand" 
-                                                                     Aspect="AspectFill" Clicked="ImageButton_Clicked" />
+                                                                     Aspect="AspectFill" Clicked="ImageButton_Clicked" />-->
                                             </Frame>
                                         </StackLayout>
                                         <Frame AbsoluteLayout.LayoutFlags="All"

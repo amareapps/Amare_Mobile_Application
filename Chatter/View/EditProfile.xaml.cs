@@ -16,6 +16,8 @@ using Google.Protobuf.WellKnownTypes;
 using System.Collections.ObjectModel;
 using Plugin.InAppBilling;
 using Plugin.InAppBilling.Abstractions;
+using FFImageLoading;
+using FFImageLoading.Forms;
 
 namespace Chatter.View
 {
@@ -215,7 +217,7 @@ namespace Chatter.View
                 {
                     foreach (Frame btn in looper)
                     {
-                        ImageButton sample = btn.Content as ImageButton;
+                        CachedImage sample = btn.Content as CachedImage;
                         //await DisplayAlert("Error!", sample.Source.ToString(), "Okay");
                         counter++;
                         if (sample.Source.ToString().Contains("dashed_border.png"))
@@ -279,7 +281,7 @@ namespace Chatter.View
                     int ctr1 = 0, ctr2 = 0;
                     foreach (Frame btn in looper)
                     {
-                        ImageButton sample = btn.Content as ImageButton;
+                        CachedImage sample = btn.Content as CachedImage;
                         var imager = sample.Source as FileImageSource;
                         if (imager.File == "dashed_border.png")
                         {

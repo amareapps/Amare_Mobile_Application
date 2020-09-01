@@ -355,6 +355,7 @@ namespace Chatter
 
         private async void ImageButton_Clicked(object sender, EventArgs e)
         {
+            CrossToastPopUp.Current.ShowToastMessage("This feature is not yet available");
             await Navigation.PushAsync(new SocialMediaLogin(SocialMediaPlatform.Google));
         }
     }

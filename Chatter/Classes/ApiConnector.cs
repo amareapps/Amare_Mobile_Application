@@ -113,6 +113,7 @@ namespace Chatter.Classes
             string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
+                Console.WriteLine("Anyare Pre?" + JsonConvert.SerializeObject(userSearchReference).ToString());
                 conn.CreateTable<SearchRefenceModel>();
                 conn.Insert(userSearchReference);
             }
@@ -127,6 +128,7 @@ namespace Chatter.Classes
                 var request = await client.GetAsync(urlString);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
+               
                 //await DisplayAlert("Erro!", response.ToString(), "Okay");
                 if (response.ToString().Contains("Undefined"))
                 {
@@ -154,7 +156,7 @@ namespace Chatter.Classes
             }
             catch (Exception)
             {
-                await saveSearchToSqlite(modelInit);
+                Console.WriteLine("Error mga lods");   
             }
         }
 

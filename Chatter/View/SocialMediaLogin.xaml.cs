@@ -524,7 +524,7 @@ namespace Chatter
             {
                 userModel = midek;
                 await api.loadUserData(midek);
-                return;
+                break;
             }
         }
         private async Task<string> getSpotifyAcessToken(string coder)
