@@ -25,6 +25,7 @@ using Android.OS;
 using Xamarin.Essentials;
 using Chatter.View;
 using FFImageLoading.Forms;
+using Color = Xamarin.Forms.Color;
 
 namespace Chatter
 {
@@ -218,6 +219,14 @@ namespace Chatter
             modeler = e.Item as InboxModel;
             Messaging chatForm = new Messaging(modeler.user_id,modeler.session_id,modeler.username,modeler.image,modeler.emoji);
             Navigation.PushAsync(chatForm,false);
+
+            modeler.ItemBackground = Color.Aqua;
+
+            foreach (var item in this.InboxList.ItemsSource)
+            {
+                if (item != chatForm)
+                    (item as InboxModel).ItemBackground = Color.Transparent;
+            }
         }
         private async Task loadRecentMatches()
         {

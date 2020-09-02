@@ -25827,16 +25827,19 @@ namespace Chatter.Droid
 			public const int Up = 2131165639;
 			
 			// aapt resource value: 0x7F0701C8
-			public const int vip = 2131165640;
+			public const int ViewCellBackground = 2131165640;
 			
 			// aapt resource value: 0x7F0701C9
-			public const int warning = 2131165641;
+			public const int vip = 2131165641;
 			
 			// aapt resource value: 0x7F0701CA
-			public const int weightmint = 2131165642;
+			public const int warning = 2131165642;
 			
 			// aapt resource value: 0x7F0701CB
-			public const int welcomelogonew = 2131165643;
+			public const int weightmint = 2131165643;
+			
+			// aapt resource value: 0x7F0701CC
+			public const int welcomelogonew = 2131165644;
 			
 			static Drawable()
 			{

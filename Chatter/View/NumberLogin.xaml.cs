@@ -98,6 +98,7 @@ namespace Chatter.View
             Picker _picker = sender as Picker;
             var sssdad = ObjContactList[_picker.SelectedIndex].dial_code;
             dialCodeLabel.Text = sssdad;
+
         }
     }
 }

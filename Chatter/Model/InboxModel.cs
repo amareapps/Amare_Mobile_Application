@@ -23,5 +23,6 @@ namespace Chatter.Model
         public string location { get; set; }
         public string distance { get; set; } = "";
         public string distance_metric { get; set; }
+        public object ItemBackground { get; internal set; }
     }
 }
