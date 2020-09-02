@@ -41,7 +41,6 @@ namespace Chatter
         public InboxMessaging()
         {
             InitializeComponent();
-            BindingContext = new ListViewPageViewModel();
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "messageReceived", async (sender, arg) =>
             {
                    if (arg.receiver_id == Application.Current.Properties["Id"].ToString().Replace("\"", "") ||
