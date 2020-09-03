@@ -25,6 +25,7 @@ using Android.OS;
 using Xamarin.Essentials;
 using Chatter.View;
 using FFImageLoading.Forms;
+using Color = Xamarin.Forms.Color;
 
 namespace Chatter
 {
