@@ -3,7 +3,7 @@
                   xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Chatter.Classes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   mc:Ignorable="d"
              x:Class="Chatter.View.Popup.Max50Char" IsVisible="True">
     <Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BackgroundColor="#FFEEEEEE" Margin="10" Padding="0" CornerRadius="20">

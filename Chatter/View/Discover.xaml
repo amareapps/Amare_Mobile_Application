@@ -101,7 +101,7 @@
                                             </FlexLayout>
                                         </StackLayout>
                                     </StackLayout>
-                                    <Label x:Name="nopeimage" Text="NOPE" Opacity="0" FontSize="40" TextColor="Red" Rotation="20" AbsoluteLayout.LayoutBounds="0.9,0.1,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional"></Label>
+                                    <Label x:Name="nopeimage" Text="NOPE" FontAttributes="Bold" Opacity="0" FontSize="60" BackgroundColor="Transparent" TextColor="#3cc5d5" Rotation="20" AbsoluteLayout.LayoutBounds="0.9,0.1,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional"></Label>
 
                                     <Frame AbsoluteLayout.LayoutFlags="All"
                                             AbsoluteLayout.LayoutBounds="0,0,0.5,1" BackgroundColor="Transparent">

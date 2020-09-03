@@ -88,12 +88,12 @@
                             <ColumnDefinition Width="0"></ColumnDefinition>
                             <ColumnDefinition Width="40*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                            <ImageButton Aspect="AspectFit"  Grid.Row="0" Grid.Column="0" CornerRadius="100" Padding="0" BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Center" 
+                            <ImageButton Aspect="AspectFit"  Grid.Row="0" Grid.Column="0" CornerRadius="100" Padding="0" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center" 
                                                          HeightRequest="60" WidthRequest="60" x:Name="UpdateProfileButton" Source="edit.png"  Clicked="UpdateProfileButton_Clicked"/>
-                            <Label Text="Edit Profile" Padding="0" Grid.Row="1" FontAttributes="Bold" Grid.Column="0" FontSize="Small" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Start"></Label>
-                        <ImageButton Grid.Row="0" CornerRadius="100" Grid.Column="2" Padding="0" Aspect="AspectFit" BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" x:Name="EditButton" Source="settings.png"
+                            <Label Text="Edit Profile" Margin="0,80,0,0"  Grid.Row="0" FontAttributes="Bold" Grid.Column="0" FontSize="Small" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                            <ImageButton Grid.Row="0" CornerRadius="100" Grid.Column="2" Padding="0" Aspect="AspectFit" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" x:Name="EditButton" Source="settings.png"
                                 Clicked="EditButton_Clicked"/>
-                            <Label Text="Preferences" Padding="0" Grid.Row="1" FontAttributes="Bold" Grid.Column="2" FontSize="Small" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                            <Label Text="Preferences" Margin="0,80,0,0" Grid.Row="0" FontAttributes="Bold" Grid.Column="2" FontSize="Small" TextColor="#3cc5d5" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Start"></Label>
                         </Grid>
                     </StackLayout>
                 </local:CustomFrame>

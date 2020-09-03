@@ -39,7 +39,7 @@
                         <ColumnDefinition Width="10*"></ColumnDefinition>
                         <ColumnDefinition Width="80*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <local:RoundedEntry x:Name="userNameEntry" TextChanged="userNameEntry_TextChanged" MaxLength="50" HorizontalOptions="FillAndExpand" Placeholder="First Name" FontSize="Medium" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Margin="5,0,5,0"/>
+                    <local:RoundedEntry x:Name="userNameEntry" TextChanged="userNameEntry_TextChanged" MaxLength="10" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Placeholder="Nickname" FontSize="Medium" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Margin="5,0,5,0"/>
                     <local1:CustomDatePicker x:Name="birthdatePicker" Margin="5,0,5,0" Format="MM/dd/yyyy" Placeholder="Select Date of Birth" HeightRequest="50" FontSize="Medium" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></local1:CustomDatePicker>
                 </Grid>
             </StackLayout>
@@ -118,7 +118,7 @@
 
                 <StackLayout BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout Spacing="0" >
-                        <ffimageloading:CachedImage Source="welcomelogonew.gif"  
+                        <ffimageloading:CachedImage Source="welcomelogo.gif"  
                                         HeightRequest="100"  
                                         WidthRequest="100"/>
                     </StackLayout>

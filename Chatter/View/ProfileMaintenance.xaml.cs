@@ -425,7 +425,7 @@ namespace Chatter
         {
             if (userNameEntry.Text.Length == userNameEntry.MaxLength)
             {
-                await PopupNavigation.Instance.PushAsync(new Max50Char());
+                await PopupNavigation.Instance.PushAsync(new Max10Char());
             }
         }
 

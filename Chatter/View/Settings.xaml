@@ -177,7 +177,7 @@
                     <Button Margin="5,0,5,0" Text="Logout" TextColor="White" BackgroundColor="#3cc5d5" BorderColor="Accent" BorderWidth="2" CornerRadius="10" FontAttributes="Bold" x:Name="logoutButton" Clicked="logoutButton_Clicked"></Button>
                     <Grid BackgroundColor="Transparent" Padding="0" Margin="0,40,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                         <Image Grid.Row="0" Source="FINAL_AMERA.png" WidthRequest="200"></Image>
-                        <Label Grid.Row="1" Text="Version 1.0" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
+                        <Label Grid.Row="1" Text="Version 1.1" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="Center"></Label>
                     </Grid>
                     <StackLayout Margin="5,0,5,0" >
                         <Button Margin="5,0,5,0" Text="Delete My Account" x:Name="deleteAccountButton" Clicked="deleteAccountButton_Clicked" TextColor="White" BackgroundColor="#890445" FontAttributes="Bold" CornerRadius="10"></Button>

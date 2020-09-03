@@ -8,10 +8,10 @@
     <ContentPage.Content>
         <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="20" CornerRadius="10">
             <StackLayout Spacing="10">
-                    <Label Text="As accurately as you can, please tell us what happened with this user. Choose up to three reporting categories if you need to."></Label>
+                    <Label Margin="10,0,10,0" Text="As accurately as you can, please tell us what happened with this user. Choose up to three reporting categories if you need to."></Label>
                 <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" Padding="10,0,10,0">
                     <StackLayout>
-                    <Grid Margin="10">
+                    <Grid Margin="10,5,10,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="AUTO"/>
                             <ColumnDefinition Width="*"/>
@@ -26,8 +26,10 @@
                         <Label Text="This person is trying to be someone" x:Name="lblSomeone" Grid.Row="3" Grid.Column="1" VerticalTextAlignment="Center"></Label>
 
                     </Grid>
-                    <local:CustomEditor Placeholder="Give us any additional context on what happened..." x:Name="entryReport" FontSize="Small"></local:CustomEditor>
-                    <Button CornerRadius="5" Text="Report" x:Name="btnReport" Clicked="btnReport_Clicked" BackgroundColor="Accent" TextColor="White"/>
+                    <Frame Padding="15,0,15,0" HasShadow="False" BackgroundColor="Transparent">
+                        <local:CustomEditor Placeholder="Give us any additional context on what happened..." x:Name="entryReport" FontSize="Small"></local:CustomEditor>
+                    </Frame>
+                        <Button CornerRadius="5" Text="Report" x:Name="btnReport" Clicked="btnReport_Clicked" BackgroundColor="Accent" TextColor="White"/>
                     <Button CornerRadius="5" Text="Cancel" x:Name="btnReportCancel" Clicked="btnReportCancel_Clicked" BackgroundColor="Default"/>
                     </StackLayout>
                 </ScrollView>

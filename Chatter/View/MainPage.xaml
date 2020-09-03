@@ -15,6 +15,6 @@
     <TabbedPage.Children >
         <Local:Profile IconImageSource="profile.png" Title="You"></Local:Profile>
         <Local:Discover IconImageSource="Amare_logo_new1.png" Title="Discover" ></Local:Discover>
-        <Local:InboxMessaging IconImageSource="message.png" Title="Converse"></Local:InboxMessaging>
+        <Local:InboxMessaging IconImageSource="message.png" Title="Message"></Local:InboxMessaging>
     </TabbedPage.Children>
 </TabbedPage>
