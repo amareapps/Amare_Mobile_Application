@@ -72,13 +72,12 @@
                 <StackLayout Margin="0,15,0,0" Orientation="Horizontal" HorizontalOptions="Center" IsClippedToBounds="True">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="33*"></ColumnDefinition>
-                            <ColumnDefinition Width="33*"></ColumnDefinition>
-                            <ColumnDefinition Width="33*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <ImageButton x:Name="fbLoginButton" Clicked="fbLoginButton_Clicked" Margin="5,0,5,0" Source="fb_logo.png" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="0" />
                         <ImageButton Margin="5,0,5,0" Source="ig_logo.png" Clicked="instagram_Clicked" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="1" />
-                        <ImageButton Margin="5,0,5,0" Source="google_logo.png" Clicked="ImageButton_Clicked" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="2" />
+                        <!--<ImageButton Margin="5,0,5,0" Source="google_logo.png" Clicked="ImageButton_Clicked" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="2" />-->
                     </Grid>
                 </StackLayout>
             </StackLayout>
