@@ -42,7 +42,9 @@ namespace Chatter.View
         }
         protected async override void OnAppearing()
         {
-            int h, w;
+            try
+            {
+                int h, w;
             for (h = 300; h > 131; h--)
             {
                 int height = h;
@@ -58,8 +60,7 @@ namespace Chatter.View
             spotifyModelLocals.Clear();
             await loadFromDb();
             await loadFromSqlite();
-            try
-            {
+
                 var spotifyList = await api.getSpotifyList(Application.Current.Properties["Id"].ToString().Replace("\"", ""));
                 var igPhotos = await api.getIgPhotos(Application.Current.Properties["Id"].ToString().Replace("\"", ""));
                 if (spotifyList == null)
@@ -96,7 +97,7 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
-                await DisplayAlert("test", ex.ToString(), "test");
+                await DisplayAlert("Connection Error", "You are offline, Please check your internet connection. Any changes will not be applied", "Okay");
                 instagramButton.Text = "Connect to Instagram";
                 instagrammer.IsVisible = false;
             }
@@ -184,9 +185,9 @@ namespace Chatter.View
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
             }
-            catch (Exception esss)
+            catch (Exception)
             {
-                await DisplayAlert("Edit Profile",esss.ToString(),"Okay");
+                await DisplayAlert("Connection Error", "You are offline, Please check your internet connection. Any changes will not be applied", "Okay");
             }
         }
 
@@ -236,7 +237,7 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Edit Profile",ex.ToString(),"Okay");
+                await DisplayAlert("Connection Error",ex.Message.ToString(),"Okay");
             }
         }
         private async Task saveToGallery()

@@ -155,13 +155,15 @@ namespace Chatter
                     }
                     //coverFlowView.SetBinding(CoverFlowView.ItemsSourceProperty,nameof(imageSources.));
                     coverFlowView.ItemsSource = imageSources;
+                    if (coverFlowView.ItemsCount == 0)
+                        maxReachFrame.IsVisible = true;
                     //BindableLayout.SetItemsSource(userDisplay, imageSources);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 imageSources.Clear();
-                await DisplayAlert("Discover", ex.ToString(),"Okay");
+                await DisplayAlert("Connection Error", "You are offline, Please check your internet connection.", "Okay");
             }
         }
 
@@ -344,13 +346,13 @@ namespace Chatter
                 var retVal = await api.saveToDislikedUser(user_id, usertoRemove.id);
                 if (retVal)
                 {
-                    await DisplayAlert("ss","Dito true dapat" + retVal,"Okay");
+                    //await DisplayAlert("ss","Dito true dapat" + retVal,"Okay");
                     imageSources.Remove(usertoRemove);
                     return retVal;
                 }
                 else
                 {
-                    await DisplayAlert("ss", "Dito true dapat" + retVal, "Okay");
+                    //await DisplayAlert("ss", "Dito true dapat" + retVal, "Okay");
                     imageSources.Remove(usertoRemove);
                     return retVal;
                 }
@@ -446,10 +448,18 @@ namespace Chatter
                 await likeUser();
             }
             //coverFlowView.IsEnabled = true;
-            //if (coverFlowView.ItemsCount == 1)
-            //    maxReachFrame.IsVisible = true;
+            if (coverFlowView.ItemsCount == 1)
+                maxReachFrame.IsVisible = true;
         }
-
+        private ImageStorage CreateLastItem()
+        {
+            ImageStorage lastItem = coverFlowView.SelectedItem as ImageStorage;
+            lastItem.image = "no_user.jpg";
+            lastItem.username = "";
+            lastItem.show_age = "0";
+            lastItem.show_distance = "0";
+            return lastItem;
+        }
         private async void reloadButton_Clicked(object sender, EventArgs e)
         {
             string user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");

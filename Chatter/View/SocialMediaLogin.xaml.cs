@@ -301,11 +301,11 @@ namespace Chatter
                 {
                     //await DisplayAlert("Dapat meron na",accesstoken, "Okay");
                     string commander = "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + accesstoken;
-                    string commander22 = "https://graph.facebook.com/" + user_Id + "/media&access_token="+ accesstoken;
+                    string commander22 = "https://graph.facebook.com/v3.2/" + user_Id + "?fields=id%2Cusername%2Cprofile_picture_url&access_token=" + accesstoken;
                     string commander2;
                     if (isRegistration)
                     {
-                        commander2 = "https://graph.instagram.com/me/media?fields=id,username,media_url&access_token=" + accesstoken;
+                        commander2 = "https://graph.instagram.com/"+ user_Id + "?fields=id,username,media_count&access_token=" + accesstoken;
                     }
                     else
                     {
@@ -316,6 +316,7 @@ namespace Chatter
                     var request = await cl.GetAsync(commander2);
                     //request.EnsureSuccessStatusCode();
                     var response = await request.Content.ReadAsStringAsync();
+                    Console.WriteLine("Oyy sana" + response);
                     //await DisplayAlert("Instagram", response, "Okay");
                     var profile = JsonConvert.DeserializeObject<InstagramModel>(response);
 

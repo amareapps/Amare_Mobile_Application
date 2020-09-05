@@ -29,14 +29,12 @@
                 <ffimageloading:CachedImage Source="amareheader.png" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="130" BackgroundColor="Transparent" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" />
             </Grid>
             <AbsoluteLayout x:Name="samplesss" Grid.Row="1" Grid.Column="0">
-                <Frame BackgroundColor="Transparent" CornerRadius="20">
-                    <StackLayout AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#BF949494" IsVisible="False" x:Name="maxReachFrame">
-                        <StackLayout VerticalOptions="CenterAndExpand">
-                            <Label FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
-                            </Label>
-                            <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
-                            <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="Avail one of Amare's subscriptions now to get additional swipe!" HorizontalOptions="CenterAndExpand"></Label>
-                        </StackLayout>
+                <Frame  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="False" x:Name="maxReachFrame" BackgroundColor="#BF949494" CornerRadius="20">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
+                        </Label>
+                        <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="Sorry, you have reached the last user of Amare. Refresh everytime so you can see if there's a new user and you can find the right one" HorizontalOptions="CenterAndExpand"></Label>
                     </StackLayout>
                 </Frame>
                 <cards:CardsView x:Name="coverFlowView"  AbsoluteLayout.LayoutFlags="SizeProportional" IsOnlyForwardDirection="True"
@@ -65,8 +63,12 @@
                                     AbsoluteLayout.LayoutBounds="0.1,0.9,1,1"/>
                                     <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1" BackgroundColor="#40000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <Image Source="heart.png" x:Name="userliked" IsVisible="False" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></Image>
-                                        <StackLayout Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="Start">
-                                            <StackLayout Orientation="Horizontal">
+                                        <Grid Padding="10,10,50,10" VerticalOptions="EndAndExpand" HorizontalOptions="Start">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0">
                                                 <Label Text="{Binding username}" TextColor="White" FontSize="Large" FontAttributes="Bold">
                                                     <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
@@ -94,12 +96,12 @@
                                                     <Label Text="{Binding school}" Grid.Row="0" Grid.Column="1" TextColor="White" FontSize="Medium"  FontAttributes="Bold"/>
                                                 </Grid>
                                             </FlexLayout>-->
-                                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}">
-                                                <ffimageloading:CachedImage Source="locationIcon.png" HeightRequest="20" WidthRequest="20" Margin="0,0,10,0"></ffimageloading:CachedImage>
-                                                <Label Text="{Binding distance, StringFormat='{0}'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />
-                                                <Label Text="{Binding distance_metric,StringFormat='{0} away'}" TextColor="White" FontSize="Medium" FontAttributes="Bold" />
+                                            <FlexLayout Padding="10,10,0,0" Direction="Row" FlowDirection="LeftToRight" AlignItems="Start" Grid.Row="1">
+                                                <ffimageloading:CachedImage Source="locationIcon.png" HeightRequest="20" WidthRequest="20" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}" Margin="0,0,10,0"></ffimageloading:CachedImage>
+                                                <Label Text="{Binding distance, StringFormat='{0}'}" TextColor="White" FontSize="Medium" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}" FontAttributes="Bold" />
+                                                <Label Text="{Binding distance_metric,StringFormat='{0} away'}" TextColor="White" FontSize="Medium" IsVisible="{Binding show_distance,Converter={StaticResource numbertoBool}}" FontAttributes="Bold" />
                                             </FlexLayout>
-                                        </StackLayout>
+                                        </Grid>
                                     </StackLayout>
                                     <Label x:Name="nopeimage" Text="NOPE" FontAttributes="Bold" Opacity="0" FontSize="60" BackgroundColor="Transparent" TextColor="#3cc5d5" Rotation="20" AbsoluteLayout.LayoutBounds="0.9,0.1,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional"></Label>
 

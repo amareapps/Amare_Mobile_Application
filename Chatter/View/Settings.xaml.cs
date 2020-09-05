@@ -79,99 +79,113 @@ namespace Chatter
             await saveToDatabase();
         }
         private async Task saveToDatabase() {
-            SearchRefenceModel searchReference = new SearchRefenceModel()
+            try
             {
-                user_id = Application.Current.Properties["Id"].ToString().Replace("\"", ""),
-                maximum_distance = slider.Value.ToString("0"),
-                age_start = ageslider.LowerValue.ToString("0"),
-                age_end = ageslider.UpperValue.ToString("0"),
-                distance_metric = metric
-            };
+                SearchRefenceModel searchReference = new SearchRefenceModel()
+                {
+                    user_id = Application.Current.Properties["Id"].ToString().Replace("\"", ""),
+                    maximum_distance = slider.Value.ToString("0"),
+                    age_start = ageslider.LowerValue.ToString("0"),
+                    age_end = ageslider.UpperValue.ToString("0"),
+                    distance_metric = metric
+                };
 
-            //Save to Remote Database
-            var client = new HttpClient();
-            var form = new MultipartFormDataContent();
-            MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(searchReference.user_id), "user_id");
-            content.Add(new StringContent(searchReference.maximum_distance), "maximum_distance");
-            content.Add(new StringContent(searchReference.age_start), "age_start");
-            content.Add(new StringContent(searchReference.age_end), "age_end");
-            content.Add(new StringContent(searchReference.distance_metric.ToString()), "distance_metric");
-            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=update_search_reference", content);
-            request.EnsureSuccessStatusCode();
-            var response = await request.Content.ReadAsStringAsync();
+                //Save to Remote Database
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                content.Add(new StringContent(searchReference.user_id), "user_id");
+                content.Add(new StringContent(searchReference.maximum_distance), "maximum_distance");
+                content.Add(new StringContent(searchReference.age_start), "age_start");
+                content.Add(new StringContent(searchReference.age_end), "age_end");
+                content.Add(new StringContent(searchReference.distance_metric.ToString()), "distance_metric");
+                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=update_search_reference", content);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
 
-            //Save to Local Database
-            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
-            System.IO.Directory.CreateDirectory(applicationFolderPath);
-            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
-            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
-            {
-                conn.CreateTable<SearchRefenceModel>();
-                conn.InsertOrReplace(searchReference);
+                //Save to Local Database
+                string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+                System.IO.Directory.CreateDirectory(applicationFolderPath);
+                string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+                using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+                {
+                    conn.CreateTable<SearchRefenceModel>();
+                    conn.InsertOrReplace(searchReference);
+                }
+
+                //Update user interest
+                var userModel = sqliteManager.getUserModel();
+                userModel.interest = genderLookingFor().ToString();
+                //userModel.interest = showmePicker.SelectedIndex.ToString();
+                sqliteManager.updateUserModel(userModel);
+                await api.updateUser(sqliteManager.getUserModel());
+                await Navigation.PopModalAsync();
             }
-
-            //Update user interest
-            var userModel = sqliteManager.getUserModel();
-            userModel.interest = genderLookingFor().ToString();
-            //userModel.interest = showmePicker.SelectedIndex.ToString();
-            sqliteManager.updateUserModel(userModel);
-            await api.updateUser(sqliteManager.getUserModel());
-            await Navigation.PopModalAsync();
+            catch (Exception ex)
+            {
+                await DisplayAlert("Connection Error", "You are offline, Please check your internet connection. Any changes will not be applied", "Okay");
+            }
         }
         private async void loadFromDatabase()
         {
             //Save to Local Database
-            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
-            System.IO.Directory.CreateDirectory(applicationFolderPath);
-            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
-
-            slider.Value = 1;
-
-            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            try
             {
-                conn.CreateTable<SearchRefenceModel>();
-                var table = conn.Table<SearchRefenceModel>().ToList();
-                foreach (SearchRefenceModel model in table)
-                {
-                    slider.Value = Convert.ToInt32(model.maximum_distance);
-                    ageslider.LowerValue = float.Parse(model.age_start);
-                    ageslider.UpperValue = float.Parse(model.age_end);
-                    
-                    if (model.distance_metric == 0)
-                    {
-                        btnKm.BackgroundColor = Color.FromHex("3cc5d5");
-                        btnKm.TextColor = Color.FromHex("EEEEEE");
-                        btnKm.BorderWidth = 2;
-                        btnKm.BorderColor = Color.FromHex("3cc5d5");
-                        lblMetric.Text = "Km.";
-                    }
-                    else
-                    {
-                        btnMi.BackgroundColor = Color.FromHex("3cc5d5");
-                        btnMi.TextColor = Color.FromHex("EEEEEE");
-                        btnMi.BorderWidth = 2;
-                        btnMi.BorderColor = Color.FromHex("3cc5d5");
-                        lblMetric.Text = "Mi.";
-                    }
-                    metric = model.distance_metric;
+                string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+                System.IO.Directory.CreateDirectory(applicationFolderPath);
+                string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
 
-                }
-                conn.CreateTable<UserModel>();
-                var table2 = conn.Table<UserModel>().ToList();
-                foreach (UserModel model in table2)
+                slider.Value = 1;
+
+                using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
                 {
-                    var coordinates = model.location.Split(',');
-                    if (string.IsNullOrEmpty(model.city))
+                    conn.CreateTable<SearchRefenceModel>();
+                    var table = conn.Table<SearchRefenceModel>().ToList();
+                    foreach (SearchRefenceModel model in table)
                     {
-                        model.city = await getAddress(double.Parse(coordinates[0]), double.Parse(coordinates[1]));
+                        slider.Value = Convert.ToInt32(model.maximum_distance);
+                        ageslider.LowerValue = float.Parse(model.age_start);
+                        ageslider.UpperValue = float.Parse(model.age_end);
+
+                        if (model.distance_metric == 0)
+                        {
+                            btnKm.BackgroundColor = Color.FromHex("3cc5d5");
+                            btnKm.TextColor = Color.FromHex("EEEEEE");
+                            btnKm.BorderWidth = 2;
+                            btnKm.BorderColor = Color.FromHex("3cc5d5");
+                            lblMetric.Text = "Km.";
+                        }
+                        else
+                        {
+                            btnMi.BackgroundColor = Color.FromHex("3cc5d5");
+                            btnMi.TextColor = Color.FromHex("EEEEEE");
+                            btnMi.BorderWidth = 2;
+                            btnMi.BorderColor = Color.FromHex("3cc5d5");
+                            lblMetric.Text = "Mi.";
+                        }
+                        metric = model.distance_metric;
+
                     }
-                    locationString = model.location;
-                    userName.Text = model.username;
-                    setGenderPicker(Convert.ToInt32(model.interest));
-                    locationPicker.Title = model.city;
-                    //showmePicker.SelectedIndex = Convert.ToInt32(model.interest);
+                    conn.CreateTable<UserModel>();
+                    var table2 = conn.Table<UserModel>().ToList();
+                    foreach (UserModel model in table2)
+                    {
+                        var coordinates = model.location.Split(',');
+                        if (string.IsNullOrEmpty(model.city))
+                        {
+                            model.city = await getAddress(double.Parse(coordinates[0]), double.Parse(coordinates[1]));
+                        }
+                        locationString = model.location;
+                        userName.Text = model.username;
+                        setGenderPicker(Convert.ToInt32(model.interest));
+                        locationPicker.Title = model.city;
+                        //showmePicker.SelectedIndex = Convert.ToInt32(model.interest);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Connection Error","You are offline, Please check your internet connection. Any changes will not be applied","Okay");
             }
         }
         private async Task<string> getAddress(double lat, double lon)
