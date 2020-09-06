@@ -3,49 +3,49 @@
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
           xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
           x:Class="Chatter.View.Cells.IncomingViewCell" >
-    <multigestureviewplugin:MultiGestureView 
-            VibrateOnLongPress="True" 
-            LongPressVibrationDuration="300" 
-            VibrateOnTap="True" 
-            TapVibrationDuration="150" 
-            LongPressed="MultiGestureView_LongPressed">
-        <multigestureviewplugin:MultiGestureView.Content>
-            <Frame BackgroundColor="Transparent" Rotation="180" FlowDirection="LeftToRight"
+    <ViewCell.ContextActions>
+        <MenuItem Text="Reply" Clicked="MenuItem_Clicked"/>
+        <MenuItem Text="Delete" IsDestructive="True" Clicked="MenuItem_Clicked_1"/>
+        <MenuItem Text="Copy" Clicked="MenuItem_Clicked_2"/>
+    </ViewCell.ContextActions>
+    <Frame BackgroundColor="Transparent" Rotation="180" FlowDirection="LeftToRight"
               Padding="10,5,10,0"
               HasShadow="true"
               CornerRadius="20">
 
-                <Grid ColumnSpacing="20" Padding="0,0,40,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"></ColumnDefinition>
-                        <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="40" WidthRequest="40" IsClippedToBounds="True" CornerRadius="40" Padding="0" Margin="0">
-                        <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Source="{Binding image}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50"></ffimageloading:CachedImage>
-                    </Frame>
-                    <FlexLayout Grid.RowSpan="2" Grid.Column="1" Direction="Column"
+        <Grid ColumnSpacing="20" Padding="0,0,40,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="AUTO"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Grid.Column="0" HeightRequest="40" WidthRequest="40" IsClippedToBounds="True" CornerRadius="40" Padding="0" Margin="0">
+                <ffimageloading:CachedImage x:Name="userImage" DownsampleToViewSize="True" Source="{Binding image}" Aspect="AspectFill" HeightRequest="50" WidthRequest="50">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+            </Frame>
+            <FlexLayout Grid.RowSpan="2" Grid.Column="1" Direction="Column"
                         AlignItems="Start"
                         JustifyContent="SpaceEvenly" Margin="0"  Padding="0">
-                        <Frame Padding="0" Margin="0" BackgroundColor="#ebebeb" CornerRadius="10" IsClippedToBounds="True"  Grid.Column="1">
-                            <Label Text="{Binding message}" LineBreakMode="WordWrap" Padding="10" VerticalTextAlignment="Start" TextColor="Black" />
-                        </Frame>
-                        <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" Grid.Column="1" Grid.Row="1" FontSize="Micro" HorizontalTextAlignment="Start"></Label>
-                        <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Reply</x:String>
-                                    <x:String>Delete</x:String>
-                                    <x:String>Copy</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-                    </FlexLayout>
-                </Grid>
-            </Frame>
-        </multigestureviewplugin:MultiGestureView.Content>
-    </multigestureviewplugin:MultiGestureView>
+                <Frame Padding="0" Margin="0" BackgroundColor="#ebebeb" CornerRadius="10" IsClippedToBounds="True"  Grid.Column="1">
+                    <Label Text="{Binding message}" LineBreakMode="WordWrap" Padding="10" VerticalTextAlignment="Start" TextColor="Black" />
+                </Frame>
+                <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" Grid.Column="1" Grid.Row="1" FontSize="Micro" HorizontalTextAlignment="Start"></Label>
+                <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Reply</x:String>
+                            <x:String>Delete</x:String>
+                            <x:String>Copy</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </FlexLayout>
+        </Grid>
+    </Frame>
 </ViewCell>

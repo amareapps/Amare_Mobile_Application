@@ -5,27 +5,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin"
           mc:Ignorable="d"
              x:Class="Chatter.View.Cells.OutgoingViewCellAudio">
-    <multigestureviewplugin:MultiGestureView 
-            VibrateOnLongPress="True" 
-            LongPressVibrationDuration="300" 
-            VibrateOnTap="True" 
-            TapVibrationDuration="150" 
-            LongPressed="MultiGestureView_LongPressed">
-        <multigestureviewplugin:MultiGestureView.Content>
-            <FlexLayout Margin="0,0,60,0" Padding="10,3,10,3">
-                <Frame Rotation="180"  HorizontalOptions="End" CornerRadius="20" BackgroundColor="Transparent" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-                    <Button ImageSource="playaudio.png" BackgroundColor="#adf6ff" Text="Play audio" Clicked="Button_Clicked" HorizontalOptions="Start"></Button>
-                </Frame>
-                <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Reply</x:String>
-                            <x:String>Delete</x:String>
-                            <x:String>Copy</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-            </FlexLayout>
-        </multigestureviewplugin:MultiGestureView.Content>
-    </multigestureviewplugin:MultiGestureView>
+    <ViewCell.ContextActions>
+        <MenuItem Text="Reply" Clicked="MenuItem_Clicked"/>
+        <MenuItem Text="Delete" IsDestructive="True" Clicked="MenuItem_Clicked_1"/>
+        <MenuItem Text="Copy" Clicked="MenuItem_Clicked_2"/>
+    </ViewCell.ContextActions>
+    <FlexLayout Margin="0,0,60,0" Padding="10,3,10,3">
+        <Frame Rotation="180"  HorizontalOptions="End" CornerRadius="20" BackgroundColor="Transparent" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+            <Button ImageSource="playaudio.png" BackgroundColor="#adf6ff" Text="Play audio" Clicked="Button_Clicked" HorizontalOptions="Start"></Button>
+        </Frame>
+        <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Reply</x:String>
+                    <x:String>Delete</x:String>
+                    <x:String>Copy</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+    </FlexLayout>
 </ViewCell>

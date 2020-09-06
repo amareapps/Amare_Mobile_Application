@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Chatter.Classes;
+using Chatter.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,8 @@ namespace Chatter.View.Cells
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OutgoingViewCellReplyImage : ViewCell
     {
+        MessageCenterManager notifier = new MessageCenterManager();
+        public ChatModel VM => ((ChatModel)BindingContext);
         public OutgoingViewCellReplyImage()
         {
             InitializeComponent();
@@ -26,5 +30,25 @@ namespace Chatter.View.Cells
         {
 
         }
+        private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM, 0);
+        }
+
+        private void MenuItem_Clicked_1(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM, 1);
+        }
+
+        private void MenuItem_Clicked_2(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM, 2);
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            notifier.viewImage(VM.message);
+        }
+
     }
 }

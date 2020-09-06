@@ -17,6 +17,14 @@ namespace Chatter.Classes
         {
                 MessagingCenter.Send<MessageCenterManager, ChatModel>(this, category.ToString(), message);
         }
+        public void viewImage(string imageSource)
+        {
+            MessagingCenter.Send<MessageCenterManager, string>(this, "viewImage", imageSource);
+        }
+        public void viewProfile(string user_id)
+        {
+            MessagingCenter.Send<MessageCenterManager, string>(this, "viewProfile", user_id);
+        }
         public void sendMessage(ChatModel message)
         {
             MessagingCenter.Send<MessageCenterManager, ChatModel>(this, "sendMessage",message);

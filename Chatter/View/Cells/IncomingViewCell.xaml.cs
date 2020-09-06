@@ -24,5 +24,26 @@ namespace Chatter.View.Cells
         {
             imagePicker.Focus();
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            notifier.viewProfile(VM.sender_id);
+            //await Navigation.PushModalAsync(new ViewProfile(VM.sender_id));
+        }
+
+        private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM,0);
+        }
+
+        private void MenuItem_Clicked_1(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM, 1);
+        }
+
+        private void MenuItem_Clicked_2(object sender, EventArgs e)
+        {
+            notifier.sendAction(VM, 2);
+        }
     }
 }

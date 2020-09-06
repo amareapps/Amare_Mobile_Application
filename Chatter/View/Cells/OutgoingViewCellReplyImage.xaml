@@ -5,40 +5,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:multigestureviewplugin="clr-namespace:MultiGestureViewPlugin;assembly=MultiGestureViewPlugin" xmlns:local="clr-namespace:Chatter.Classes" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
           mc:Ignorable="d"
              x:Class="Chatter.View.Cells.OutgoingViewCellReplyImage">
-    <multigestureviewplugin:MultiGestureView 
-            VibrateOnLongPress="True" 
-            LongPressVibrationDuration="300" 
-            VibrateOnTap="True" 
-            TapVibrationDuration="150" 
-            LongPressed="MultiGestureView_LongPressed">
-        <multigestureviewplugin:MultiGestureView.Content>
-            <FlexLayout FlowDirection="LeftToRight" 
+    <ViewCell.ContextActions>
+        <MenuItem Text="Reply" Clicked="MenuItem_Clicked"/>
+        <MenuItem Text="Delete" IsDestructive="True" Clicked="MenuItem_Clicked_1"/>
+        <MenuItem Text="Copy" Clicked="MenuItem_Clicked_2"/>
+    </ViewCell.ContextActions>
+    <FlexLayout FlowDirection="LeftToRight" 
                 Rotation="180" 
                 Direction="Column"
                 AlignItems="End"
                 JustifyContent="SpaceEvenly" Margin="0,0,60,0" Padding="10,3,10,3">
-                <FlexLayout.Resources>
-                    <local:MessageContentConverter x:Key="messageConverter"></local:MessageContentConverter>
-                </FlexLayout.Resources>
-                <Label Text="You replied to "></Label>
-                <Frame BackgroundColor="#adf6ff" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-                    <ffimageloading:CachedImage x:Name="imageSent" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding reply_to_message}" Aspect="AspectFill"></ffimageloading:CachedImage>
-                </Frame>
-                <Frame BackgroundColor="#adf6ff" TranslationY="-10" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
-                    <Label  Text="{Binding message}"
+        <FlexLayout.Resources>
+            <local:MessageContentConverter x:Key="messageConverter"></local:MessageContentConverter>
+        </FlexLayout.Resources>
+        <Label Text="You replied to "></Label>
+        <Frame BackgroundColor="#adf6ff" CornerRadius="20" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+            <ffimageloading:CachedImage x:Name="imageSent" HeightRequest="200" WidthRequest="150" DownsampleToViewSize="True" Source="{Binding reply_to_message}" Aspect="AspectFill"></ffimageloading:CachedImage>
+        </Frame>
+        <Frame BackgroundColor="#adf6ff" TranslationY="-10" CornerRadius="10" HasShadow="True" IsClippedToBounds="True" Padding="0" Margin="0">
+            <Label  Text="{Binding message}"
                                   TextColor="Black" Padding="10" HorizontalTextAlignment="Start" />
-                </Frame>
-                <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
-                <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Reply</x:String>
-                            <x:String>Delete</x:String>
-                            <x:String>Copy</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-            </FlexLayout>
-        </multigestureviewplugin:MultiGestureView.Content>
-    </multigestureviewplugin:MultiGestureView>
+        </Frame>
+        <Label Text="{Binding datetime}" IsVisible="{Binding isVisible}" FontSize="Micro" HorizontalOptions="End"></Label>
+        <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="imagePicker_SelectedIndexChanged" Title="Choose an option">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Reply</x:String>
+                    <x:String>Delete</x:String>
+                    <x:String>Copy</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+    </FlexLayout>
 </ViewCell>

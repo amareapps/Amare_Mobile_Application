@@ -77,6 +77,16 @@ namespace Chatter
                 await Clipboard.SetTextAsync(arg.message);
                 CrossToastPopUp.Current.ShowToastMessage("Copied to clipboard ");
             });
+            MessagingCenter.Subscribe<MessageCenterManager, string>(this, "viewImage", async (sender, arg) =>
+            {
+                List<string> test = new List<string>();
+                test.Add(arg);
+                await Navigation.PushModalAsync(new NavigationPage(new View.ImageViewer(test, "Photo")));
+            });
+            MessagingCenter.Subscribe<MessageCenterManager, string>(this, "viewProfile", async (sender, arg) =>
+            {
+                await Navigation.PushModalAsync(new ViewProfile(arg));
+            });
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "messageReceived", async (sender, arg) =>
             {
                 if ((arg.sender_id == userLoggedIn && arg.receiver_id == Receiver_Id) ||
@@ -130,7 +140,6 @@ namespace Chatter
         private void ChatList_ItemSelected1(object sender, SelectedItemChangedEventArgs e)
         {
             ChatModel model = e.SelectedItem as ChatModel;
-            DisplayAlert("test", model.isVisible, "Okay");
             if (model.isVisible == "false")
                 model.isVisible = "true";
             else
