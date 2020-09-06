@@ -75,6 +75,11 @@
                 <On Platform="UWP" Value="/Assets/GraphikRegularItalic.otf#GraphikRegularItalic" />
                 <On Platform="iOS" Value="GraphikRegularItalic" />
             </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NopeFont">
+                <On Platform="Android" Value="strasua.ttf#strasua" />
+                <On Platform="UWP" Value="/Assets/strasua.ttf#strasua" />
+                <On Platform="iOS" Value="strasua" />
+            </OnPlatform>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

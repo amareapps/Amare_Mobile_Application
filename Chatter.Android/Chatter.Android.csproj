@@ -164,6 +164,7 @@
     <Compile Include="CustomEditorAndroidRenderer.cs" />
     <Compile Include="CustomFrameAndroidRenderer.cs" />
     <Compile Include="CustomPressRenderer.cs" />
+    <AndroidAsset Include="Assets\strasua.ttf" />
     <None Include="CustomWebViewRenderer.cs" />
     <Compile Include="EntryLoginAndroidRenderer.cs" />
     <Compile Include="GradientColorStackRenderer.cs" />

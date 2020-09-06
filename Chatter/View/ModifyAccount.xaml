@@ -10,10 +10,13 @@
             <StackLayout Spacing="10">
                 <Label x:Name="accountFieldLabel" FontSize="Large" IsVisible="False"></Label>
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <local:RoundedEntry x:Name="accountFieldEntry" Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Small" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True"></local:RoundedEntry>
-                    <Image Source="show.png" x:Name="show" IsVisible="True" Opacity="0.4" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" WidthRequest="20" HeightRequest="20" Margin="20">
+                    <Label x:Name="accountFieldLabelBefore" FontSize="Large" IsVisible="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                    <local:RoundedEntry x:Name="accountFieldEntryBefore" Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Small" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsReadOnly="True"></local:RoundedEntry>
+                    <Label x:Name="accountFieldLabelAfter" FontSize="Large" IsVisible="False" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                    <local:RoundedEntry x:Name="accountFieldEntryAfter" Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="Small" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True"></local:RoundedEntry>
+                    <Image Source="show.png" x:Name="show" IsVisible="True" Opacity="0.4" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" WidthRequest="20" HeightRequest="20" Margin="20">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ShowPass_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="ShowPassAfter_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>

@@ -30,18 +30,24 @@ namespace Chatter.View
             if(category == 0)
             {
                 this.Title = "Change name";
-                accountFieldLabel.Text = "Name";
-                accountFieldEntry.Placeholder = value;
+                accountFieldLabel.Text = "Nickname";
+                accountFieldLabelBefore.Text = "Current Nickname";
+                accountFieldLabelAfter.Text = "New Nickname";
+                accountFieldLabelBefore.IsVisible = true;
+                accountFieldLabelAfter.IsVisible = true;
+                accountFieldEntryBefore.Placeholder = value;
                 show.IsVisible = false;
-                accountFieldEntry.IsPassword = false;
                 buttonUpdate.Text = "Update";
             }
             else if (category == 1)
             {
                 this.Title = "Change password";
-                accountFieldEntry.IsPassword = true;
                 accountFieldLabel.Text = "Password";
-                accountFieldEntry.Placeholder = value;
+                accountFieldLabelBefore.Text = "Current Password";
+                accountFieldLabelAfter.Text = "New Password";
+                accountFieldLabelBefore.IsVisible = true;
+                accountFieldLabelAfter.IsVisible = true;
+                accountFieldEntryBefore.Placeholder = value;
                 buttonUpdate.Text = "Update";
             }
         }
@@ -55,7 +61,7 @@ namespace Chatter.View
             if (category == 0)
             {
                 var userModel = sqliteManager.getUserModel();
-                userModel.username = accountFieldEntry.Text;
+                userModel.username = accountFieldEntryAfter.Text;
                 sqliteManager.updateUserModel(userModel);
                 var isSucess = await api.updateUserName(userModel.id, userModel.username);
                 if (!isSucess)
@@ -68,7 +74,7 @@ namespace Chatter.View
             else if (category == 1)
             {
                 var userModel = sqliteManager.getUserModel();
-                userModel.password = accountFieldEntry.Text;
+                userModel.password = accountFieldEntryAfter.Text;
                 sqliteManager.updateUserModel(userModel);
                 var isSucess = await api.updatePassword(userModel.id, userModel.password);
                 if (!isSucess)
@@ -80,9 +86,9 @@ namespace Chatter.View
             }
             await Navigation.PopAsync();
         }
-        public void ShowPass_Tapped(object sender, EventArgs args)
+        public void ShowPassAfter_Tapped(object sender, EventArgs args)
         {
-            accountFieldEntry.IsPassword = accountFieldEntry.IsPassword ? false : true;
+            accountFieldEntryAfter.IsPassword = accountFieldEntryAfter.IsPassword ? false : true;
         }
     }
 }

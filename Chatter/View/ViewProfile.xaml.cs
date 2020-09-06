@@ -71,10 +71,12 @@ namespace Chatter.View
                 
                 if (spotifyList == null)
                 {
+                    spotifyFrame.IsVisible = false;
                     spotifyListLayout.IsVisible = false;
                 }
                 else
                 {
+                    spotifyFrame.IsVisible = true;
                     spotifyListLayout.IsVisible = true;
                     foreach (var spotVal in spotifyList)
                     {
