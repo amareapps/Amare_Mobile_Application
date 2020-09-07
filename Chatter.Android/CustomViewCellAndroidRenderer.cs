@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using System.ComponentModel;
 using Android.Content;
-using Android.Graphics.Drawables;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Chatter.Classes;
 using Chatter.Droid;
 using Xamarin.Forms;
@@ -23,8 +13,8 @@ namespace Chatter.Droid
     class CustomViewCellAndroidRenderer : ViewCellRenderer
     {
         private Android.Views.View _cellCore;
-        private Drawable _unselectedBackground;
         private bool _selected;
+        private Color _unselectedBackground;
 
         protected override Android.Views.View GetCellCore(Cell item,
                                                           Android.Views.View convertView,
@@ -34,7 +24,6 @@ namespace Chatter.Droid
             _cellCore = base.GetCellCore(item, convertView, parent, context);
 
             _selected = false;
-            _unselectedBackground = _cellCore.Background;
 
             return _cellCore;
         }
@@ -54,7 +43,7 @@ namespace Chatter.Droid
                 }
                 else
                 {
-                    _cellCore.SetBackground(_unselectedBackground);
+                    _cellCore.SetBackgroundColor(Xamarin.Forms.Color.WhiteSmoke.ToAndroid());
                 }
             }
         }

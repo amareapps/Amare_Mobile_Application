@@ -31,10 +31,11 @@
             <AbsoluteLayout x:Name="samplesss" Grid.Row="1" Grid.Column="0">
                 <Frame  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="False" x:Name="maxReachFrame" BackgroundColor="#BF949494" CornerRadius="20">
                     <StackLayout VerticalOptions="CenterAndExpand">
-                        <Label FontSize="50" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="20" Text="Oops!" HorizontalOptions="CenterAndExpand">
+                        <Label FontSize="50" HorizontalTextAlignment="Center" FontFamily="{StaticResource BoldFont}" TextColor="White" Padding="20" Text="Sorry!" HorizontalOptions="CenterAndExpand">
                         </Label>
-                        <ImageButton Source="reward.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
-                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="Sorry, you have reached the last user of Amare. Refresh everytime so you can see if there's a new user and you can find the right one" HorizontalOptions="CenterAndExpand"></Label>
+                        <ImageButton Source="warning.png" x:Name="reloadButton" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" CornerRadius="100" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"></ImageButton>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,5,10,20" Text="You have reached the last registered user of Amare. Refresh everytime to see if there's a new user." HorizontalOptions="CenterAndExpand"></Label>
+                        <Label FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Padding="10,10,10,20" Text="The right one for you might be registering now!" HorizontalOptions="CenterAndExpand"></Label>
                     </StackLayout>
                 </Frame>
                 <cards:CardsView x:Name="coverFlowView"  AbsoluteLayout.LayoutFlags="SizeProportional" IsOnlyForwardDirection="True"
@@ -103,7 +104,7 @@
                                             </FlexLayout>
                                         </Grid>
                                     </StackLayout>
-                                    <Label x:Name="nopeimage" Text="NOPE" FontAttributes="Bold" Opacity="0" FontSize="60" BackgroundColor="Transparent" TextColor="#3cc5d5" Rotation="20" AbsoluteLayout.LayoutBounds="0.9,0.1,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional"></Label>
+                                    <Label x:Name="nopeimage" Text="NOPE" FontFamily="{StaticResource NopeFont}" Opacity="0" FontSize="60" BackgroundColor="Transparent" TextColor="#3cc5d5" Rotation="20" AbsoluteLayout.LayoutBounds="0.9,0.1,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional"></Label>
 
                                     <Frame AbsoluteLayout.LayoutFlags="All"
                                             AbsoluteLayout.LayoutBounds="0,0,0.5,1" BackgroundColor="Transparent">
