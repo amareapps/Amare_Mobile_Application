@@ -79,20 +79,61 @@ namespace Chatter
                     var sample1 = conn.Table<UserModel>().ToList();
                     foreach (UserModel iniModel in sample1)
                     {
-                        userModel = iniModel;
-                        currentLocation = iniModel.location;
-                        UserProfilePicture = iniModel.image;
-                        userInterest = iniModel.interest;
+                        if (currentLocation == iniModel.location &&
+                            userInterest == iniModel.interest)
+                        {
+                            userModel = iniModel;
+                            currentLocation = iniModel.location;
+                            UserProfilePicture = iniModel.image;
+                            userInterest = iniModel.interest;
+                            await DisplayAlert("Check", "kelan IF", "okay");
+                        }
+                        else
+                        {
+                            userModel = iniModel;
+                            currentLocation = iniModel.location;
+                            UserProfilePicture = iniModel.image;
+                            userInterest = iniModel.interest;
+                            imageSources.Clear();
+                            await DisplayAlert("Check", "kelan ELSE", "okay");
+                        }
+                        break;
                     }
                     //model = sample.Where(x => x.user_id == Application.Current.Properties["Id"].ToString().Replace("\"","")).ToList();
                     foreach (SearchRefenceModel iniModel in sample)
                     {
-                        if (distanceFilter == iniModel.maximum_distance && age_start == iniModel.age_start && age_end == iniModel.age_end && metric == iniModel.distance_metric)
-                            return;
-                        distanceFilter = iniModel.maximum_distance;
-                        age_start = iniModel.age_start;
-                        age_end = iniModel.age_end;
-                        metric = iniModel.distance_metric;
+                        //await DisplayAlert("Check", distanceFilter + age_start, "okay");
+                        //await DisplayAlert("Check","distance var =" + distanceFilter + " sqlite var =" + iniModel.maximum_distance, "okay");
+                        //await DisplayAlert("Check", "distance var =" + age_start + " sqlite var =" + iniModel.age_start, "okay");
+                        //await DisplayAlert("Check", "distance var =" + age_end + " sqlite var =" + iniModel.age_end, "okay");
+                        //await DisplayAlert("Check", "distance var =" + metric + " sqlite var =" + iniModel.distance_metric, "okay");
+                        if (distanceFilter == iniModel.maximum_distance && 
+                            age_start == iniModel.age_start && 
+                            age_end == iniModel.age_end && 
+                            metric == iniModel.distance_metric)
+                        {
+                            if (imageSources.Count > 0)
+                            {
+                                distanceFilter = iniModel.maximum_distance;
+                                age_start = iniModel.age_start;
+                                age_end = iniModel.age_end;
+                                metric = iniModel.distance_metric;
+                                await DisplayAlert("Check", "kelan IF SEARCH dito", "okay");
+                                return;
+                                //await DisplayAlert("Check", "kelan papasok dito", "okay");
+                            }
+                        }
+                        else
+                        {
+                            //await DisplayAlert("Check", "sa else to", "okay");
+                            distanceFilter = iniModel.maximum_distance;
+                            age_start = iniModel.age_start;
+                            age_end = iniModel.age_end;
+                            metric = iniModel.distance_metric;
+                            imageSources.Clear();
+                            await DisplayAlert("Check", "kelan ELSE SEARCH dito", "okay");
+                        }
+                        break;
                         //       await DisplayAlert("Yes!!", "User ID:" + iniModel.user_id + " Maximum Distance:"+ iniModel.maximum_distance + " Age Range:" + iniModel.age_range, "Okay");
                     }
 
@@ -122,7 +163,7 @@ namespace Chatter
                     string sample = response.ToString().Replace(@"\", "");
                     //await DisplayAlert("Discover", response, "Okay");
                     var looper = JsonConvert.DeserializeObject<List<ImageStorage>>(sample);
-                    imageSources.Clear();
+                    //imageSources.Clear();
                     if (sample.Contains("Undefined"))
                     {
                         await DisplayAlert("Discover", "No user to display", "Okay");

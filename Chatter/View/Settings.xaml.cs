@@ -110,7 +110,7 @@ namespace Chatter
                 using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
                 {
                     conn.CreateTable<SearchRefenceModel>();
-                    conn.InsertOrReplace(searchReference);
+                    conn.Update(searchReference);
                 }
 
                 //Update user interest

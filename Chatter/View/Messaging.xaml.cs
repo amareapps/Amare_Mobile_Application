@@ -85,7 +85,7 @@ namespace Chatter
             });
             MessagingCenter.Subscribe<MessageCenterManager, string>(this, "viewProfile", async (sender, arg) =>
             {
-                await Navigation.PushModalAsync(new ViewProfile(arg));
+                await Navigation.PushModalAsync(new ViewProfile(arg,true));
             });
             MessagingCenter.Subscribe<MessageCenterManager, ChatModel>(this, "messageReceived", async (sender, arg) =>
             {

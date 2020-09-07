@@ -9,6 +9,7 @@ namespace Chatter.Model
 {
     public class SearchRefenceModel
     {
+        [PrimaryKey]
         public string user_id
         {
             get; set;
