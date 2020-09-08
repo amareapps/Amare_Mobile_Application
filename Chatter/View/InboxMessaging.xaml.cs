@@ -374,16 +374,23 @@ namespace Chatter
         private void hamburgerEvent_Tapped(object sender, EventArgs e)
         {
             //hamburgerImage.IsVisible = false;
-            //if (!unreadFilterButton.IsVisible)
-            //{
-                //stackFilter.IsVisible = true;
+            if(unreadFilterButton.IsVisible && receivedFilterButton.IsVisible && nearbyFilterButton.IsVisible)
+            {
+                InboxList.ItemsSource = inboxModels.OrderByDescending(entry => entry.has_unread);
                 unreadFilterButton.IsVisible = true;
+                receivedFilterButton.IsVisible = false;
+                nearbyFilterButton.IsVisible = false;
+                hamburgerImage.IsVisible = true;
+                AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.1, 0.1));
+            }
+            else {
                 receivedFilterButton.IsVisible = true;
                 nearbyFilterButton.IsVisible = true;
-            //}
-            //else
-            //    stackFilter.IsVisible = false;
-            AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.55, 0.1));
+                unreadFilterButton.IsVisible = true;
+                //else
+                //    stackFilter.IsVisible = false;
+                AbsoluteLayout.SetLayoutBounds(hamburgerLayout, new Rectangle(0.95, 0.35, 0.55, 0.1));
+            }
         }
 
         private async void recentMatch_Tapped(object sender, EventArgs e)

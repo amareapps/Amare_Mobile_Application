@@ -104,8 +104,11 @@ namespace Chatter.View
         }
         protected async override void OnDisappearing()
         {
-            await sendToApi();
-            updateDb();
+            var isUpdated = await sendToApi();
+            if (isUpdated)
+            {
+                updateDb();
+            }
         }
         private void backButton_Clicked(object sender, EventArgs e)
         {
@@ -121,7 +124,7 @@ namespace Chatter.View
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
                 conn.CreateTable<UserModel>();
-                conn.InsertOrReplace(userModel);
+                conn.Update(userModel);
             }
         }
         private async Task loadFromDb()
@@ -142,7 +145,7 @@ namespace Chatter.View
             weightEntry.SelectedItem = userModel.weight;
             BindingContext = userModel;
         }
-        private async Task sendToApi()
+        private async Task<bool> sendToApi()
         {
             try
             {
@@ -184,10 +187,14 @@ namespace Chatter.View
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=updateUser", content);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
+                if (response.Length > 0)
+                    return true;
+                else return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await DisplayAlert("Connection Error", "You are offline, Please check your internet connection. Any changes will not be applied", "Okay");
+                await DisplayAlert("Connection Error", ex.ToString(), "Okay");
+                return false;
             }
         }
 

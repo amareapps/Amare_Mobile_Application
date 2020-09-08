@@ -86,7 +86,7 @@ namespace Chatter
                             currentLocation = iniModel.location;
                             UserProfilePicture = iniModel.image;
                             userInterest = iniModel.interest;
-                            await DisplayAlert("Check", "kelan IF", "okay");
+                            //await DisplayAlert("Check", "kelan IF", "okay");
                         }
                         else
                         {
@@ -95,7 +95,7 @@ namespace Chatter
                             UserProfilePicture = iniModel.image;
                             userInterest = iniModel.interest;
                             imageSources.Clear();
-                            await DisplayAlert("Check", "kelan ELSE", "okay");
+                           // await DisplayAlert("Check", "kelan ELSE", "okay");
                         }
                         break;
                     }
@@ -118,7 +118,7 @@ namespace Chatter
                                 age_start = iniModel.age_start;
                                 age_end = iniModel.age_end;
                                 metric = iniModel.distance_metric;
-                                await DisplayAlert("Check", "kelan IF SEARCH dito", "okay");
+                                //await DisplayAlert("Check", "kelan IF SEARCH dito", "okay");
                                 return;
                                 //await DisplayAlert("Check", "kelan papasok dito", "okay");
                             }
@@ -131,7 +131,7 @@ namespace Chatter
                             age_end = iniModel.age_end;
                             metric = iniModel.distance_metric;
                             imageSources.Clear();
-                            await DisplayAlert("Check", "kelan ELSE SEARCH dito", "okay");
+                            //await DisplayAlert("Check", "kelan ELSE SEARCH dito", "okay");
                         }
                         break;
                         //       await DisplayAlert("Yes!!", "User ID:" + iniModel.user_id + " Maximum Distance:"+ iniModel.maximum_distance + " Age Range:" + iniModel.age_range, "Okay");

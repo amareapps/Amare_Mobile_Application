@@ -34,7 +34,6 @@ namespace Chatter
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
-
     public partial class ProfileMaintenance : CarouselPage
     {
         bool _isInsert = true;
@@ -51,6 +50,8 @@ namespace Chatter
 
         public ProfileMaintenance(string _number, bool isSocialMediaRegistation = false,UserModel userModel = null)
         {
+
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
             _isSocialMediaRegistation = isSocialMediaRegistation;
             number = _number;
@@ -76,13 +77,37 @@ namespace Chatter
                     }
                 }
             }
-
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Children.Clear();
+            Children.Add(emailContent);
         }
 
         private void clearFields()
         {
             userNameEntry.Text = string.Empty;
             passwordEntry.Text = string.Empty;
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            if(this.CurrentPage == pictureContent)
+            {
+                Children.Clear();
+                Children.Add(genderContent);
+                return true;
+            }
+            else if (this.CurrentPage == genderContent)
+            {
+                Children.Clear();
+                Children.Add(emailContent);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private async void continueButton_Clicked(object sender, EventArgs e)
@@ -296,7 +321,9 @@ namespace Chatter
                     await DisplayAlert("Entry", "Please fill the required fields", "Okay");
                     return;
                 }
-                this.CurrentPage = genderContent;
+                Children.Clear();
+                Children.Add(genderContent);
+                //this.CurrentPage = genderContent;
             }
             // else if (this.CurrentPage == passwordContent)
             //{
@@ -317,7 +344,10 @@ namespace Chatter
                     await DisplayAlert("Entry", "Please fill the required fields", "Okay");
                     return;
                 }
-                this.CurrentPage = pictureContent;
+
+                Children.Clear();
+                Children.Add(pictureContent);
+                //this.CurrentPage = pictureContent;
             }
             //else if (this.CurrentPage == interestContent) {
                 //this.CurrentPage = pictureContent;
