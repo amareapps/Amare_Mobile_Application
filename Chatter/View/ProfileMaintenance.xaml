@@ -39,7 +39,7 @@
                         <ColumnDefinition Width="10*"></ColumnDefinition>
                         <ColumnDefinition Width="80*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <local:RoundedEntry x:Name="userNameEntry" TextChanged="userNameEntry_TextChanged" MaxLength="10" HorizontalOptions="FillAndExpand" Keyboard="Numeric" Placeholder="Nickname" FontSize="Medium" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Margin="5,0,5,0"/>
+                    <local:RoundedEntry x:Name="userNameEntry" TextChanged="userNameEntry_TextChanged" MaxLength="10" HorizontalOptions="FillAndExpand" Placeholder="Nickname" FontSize="Medium" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand" Margin="5,0,5,0"/>
                     <local1:CustomDatePicker x:Name="birthdatePicker" Margin="5,0,5,0" Format="MM/dd/yyyy" Placeholder="Select Date of Birth" HeightRequest="50" FontSize="Medium" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></local1:CustomDatePicker>
                 </Grid>
             </StackLayout>
@@ -101,7 +101,7 @@
         <AbsoluteLayout x:Name="finalForm">
                 <StackLayout Margin="20,0,20,20" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
                 <Frame CornerRadius="30" Padding="0" Margin="0,20,0,10" BorderColor="Accent" BackgroundColor="Transparent" HeightRequest="500" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True">
-                    <ImageButton BackgroundColor="Transparent" Margin="0" Aspect="AspectFill"  x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HeightRequest="300" Source="add_pic.png" >
+                    <ImageButton BackgroundColor="Transparent" Margin="0" Aspect="Fill"  x:Name="chooseImageButton" Clicked="chooseImageButton_Clicked" HeightRequest="300" Source="add_pic.png" >
                     </ImageButton>
                 </Frame>
                 <Picker x:Name="imagePicker" IsVisible="False" SelectedIndexChanged="imagePicker_SelectedIndexChanged"></Picker>

@@ -36,6 +36,7 @@ namespace Chatter.View
                 accountFieldLabelBefore.IsVisible = true;
                 accountFieldLabelAfter.IsVisible = true;
                 accountFieldEntryBefore.Placeholder = value;
+                accountFieldEntryAfter.IsPassword = false;
                 show.IsVisible = false;
                 buttonUpdate.Text = "Update";
             }
