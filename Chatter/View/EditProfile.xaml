@@ -45,69 +45,96 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0" OutlineColor="Accent" >
+                            <AbsoluteLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0" OutlineColor="Accent" >
+                                    <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                             </AbsoluteLayout>
+                            <AbsoluteLayout  Grid.Row="0" Grid.Column="2">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0" OutlineColor="Accent">
+                                    <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
+                            <AbsoluteLayout Grid.Row="1" Grid.Column="2">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                    <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
+                            <AbsoluteLayout  Grid.Row="2" Grid.Column="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="2" Grid.Column="0" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
                                 <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                     <ffimageloading:CachedImage.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                     </ffimageloading:CachedImage.GestureRecognizers>
                                 </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="0" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0" OutlineColor="Accent">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="1" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="2" Grid.Column="0" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="2" Grid.Column="1" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="2" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="3" Grid.Column="0" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="3" Grid.Column="1" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
-                            <Frame Grid.Row="3" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
-                                <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
-                                    <ffimageloading:CachedImage.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
-                                    </ffimageloading:CachedImage.GestureRecognizers>
-                                </ffimageloading:CachedImage>
-                            </Frame>
+                                </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
+                            <AbsoluteLayout  Grid.Row="2" Grid.Column="1">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                        <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                            <ffimageloading:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                            </ffimageloading:CachedImage.GestureRecognizers>
+                                        </ffimageloading:CachedImage>
+                                    </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
+                            <AbsoluteLayout Grid.Row="2" Grid.Column="2">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                        <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                            <ffimageloading:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                            </ffimageloading:CachedImage.GestureRecognizers>
+                                        </ffimageloading:CachedImage>
+                                    </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
+                            <AbsoluteLayout Grid.Row="3" Grid.Column="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                        <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                            <ffimageloading:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                            </ffimageloading:CachedImage.GestureRecognizers>
+                                        </ffimageloading:CachedImage>
+                                    </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
+                            <AbsoluteLayout  Grid.Row="3" Grid.Column="1">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                    <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
+                            <AbsoluteLayout  Grid.Row="3" Grid.Column="2">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="3" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                    <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                </Frame>
+                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                            </AbsoluteLayout>
                         </Grid>
                     </AbsoluteLayout>
                     <Button Margin="5,10,5,10" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" Text="Add media" BackgroundColor="#3cc5d5" Clicked="ImageButton_Clicked"></Button>

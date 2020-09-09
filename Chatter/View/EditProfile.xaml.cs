@@ -220,14 +220,14 @@ namespace Chatter.View
                 {
                     imagePath = await imageOption.UploadPhoto();
                 }
-                var looper = imageGrid.Children.Where(x => x is Frame);
+                var looper = imageGrid.Children.Where(x => x is AbsoluteLayout);
                 if (!string.IsNullOrEmpty(imagePath.Path.ToString()))
                 {
-                    foreach (Frame btn in looper)
+                    foreach (AbsoluteLayout abl in looper)
                     {
-                        CachedImage sample = btn.Content as CachedImage;
-                        //await DisplayAlert("Error!", sample.Source.ToString(), "Okay");
-                        counter++;
+                        var loopers = abl.Children.Where(x => x is Frame).FirstOrDefault() as Frame;
+                        var btnloopers = abl.Children.Where(x => x is Button).FirstOrDefault() as Button;
+                        CachedImage sample = loopers.Content as CachedImage;
                         if (sample.Source.ToString().Contains("dashed_border.png"))
                         {
                             sample.Source = imagePath.Path.ToString();
@@ -236,6 +236,7 @@ namespace Chatter.View
                             imageUrl = sample2;
                             await saveToGallery();
                             savetoSqlite();
+                            btnloopers.IsVisible = true;
                             break;
                         }
                     }
@@ -285,23 +286,26 @@ namespace Chatter.View
                     conn.CreateTable<GalleryModel>();
                     var table = conn.Table<GalleryModel>().ToList();
                     List<GalleryModel> model2 = new List<GalleryModel>();
-                    var looper = imageGrid.Children.Where(x => x is Frame);
+                    var looper = imageGrid.Children.Where(x => x is AbsoluteLayout);
                     int ctr1 = 0, ctr2 = 0;
-                    foreach (Frame btn in looper)
+                    foreach (AbsoluteLayout abl in looper)
                     {
-                        CachedImage sample = btn.Content as CachedImage;
+                        var loopers = abl.Children.Where(x => x is Frame).FirstOrDefault() as Frame;
+                        var btnloopers = abl.Children.Where(x => x is Button).FirstOrDefault() as Button;
+                        CachedImage sample = loopers.Content as CachedImage;
                         var imager = sample.Source as FileImageSource;
                         if (imager.File == "dashed_border.png")
                         {
                             foreach (GalleryModel model in table)
                             {
-                                if(!model2.Any(x=> x.id == model.id))
+                                if (!model2.Any(x => x.id == model.id))
                                 {
                                     sample.Aspect = Aspect.AspectFill;
                                     sample.Source = model.image;
                                     model2.Add(model);
+                                    btnloopers.IsVisible = true;
                                     break;
-                                }
+                                 }
                             }
                         }
                     }
@@ -310,7 +314,7 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
-                //await DisplayAlert("Error",ex.ToString(),"Okay");
+                await DisplayAlert("Error",ex.ToString(),"Okay");
                 return false;
             }
         }

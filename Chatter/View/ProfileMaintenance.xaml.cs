@@ -312,13 +312,32 @@ namespace Chatter
         }
         private async void nextContent(object sender, EventArgs e)
         {
-           
             if (this.CurrentPage == emailContent)
             {
+                if (string.IsNullOrWhiteSpace(userNameEntry.Text))
+                {
+                    userNameEntry.PlaceholderColor = Color.Red;
+                    userNameEntry.Placeholder = "Nickname is required";
+                }
+                if (string.IsNullOrWhiteSpace(emailEntry.Text))
+                {
+                    emailEntry.PlaceholderColor = Color.Red;
+                    emailEntry.Placeholder = "Email is required";
+                }
+                if (string.IsNullOrWhiteSpace(passwordEntry.Text))
+                {
+                    passwordEntry.PlaceholderColor = Color.Red;
+                    passwordEntry.Placeholder = "Password is required";
+                }
+                if (birthdatePicker.Placeholder == "Select Date of Birth")
+                {
+                    birthdatePicker.TextColor = Color.Red;
+                    birthdatePicker.Placeholder = "Birthdate is required";
+                }
                 if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text)
                     || string.IsNullOrWhiteSpace(birthdatePicker.Date.ToString()))
                 {
-                    await DisplayAlert("Entry", "Please fill the required fields", "Okay");
+                    //await DisplayAlert("Entry", "Please fill the required fields", "Okay");
                     return;
                 }
                 Children.Clear();
@@ -437,6 +456,8 @@ namespace Chatter
 
         private async void emailEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            emailEntry.PlaceholderColor = Color.Default;
+            emailEntry.Placeholder = "Email Address";
             if (emailEntry.Text.Length == emailEntry.MaxLength)
             {
                 await PopupNavigation.Instance.PushAsync(new Max50Char());
@@ -445,6 +466,8 @@ namespace Chatter
 
         private async void passwordEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            passwordEntry.PlaceholderColor = Color.Default;
+            passwordEntry.Placeholder = "Password";
             if (passwordEntry.Text.Length == passwordEntry.MaxLength)
             {
                 await PopupNavigation.Instance.PushAsync(new Max20Char());
@@ -453,10 +476,17 @@ namespace Chatter
 
         private async void userNameEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            userNameEntry.PlaceholderColor = Color.Default;
+            userNameEntry.Placeholder = "Nickname";
             if (userNameEntry.Text.Length == userNameEntry.MaxLength)
             {
                 await PopupNavigation.Instance.PushAsync(new Max10Char());
             }
+        }
+
+        private void birthdatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            birthdatePicker.TextColor = Color.Default;
         }
 
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
