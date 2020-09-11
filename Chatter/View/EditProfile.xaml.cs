@@ -30,7 +30,7 @@ namespace Chatter.View
         ApiConnector api = new ApiConnector();
         ObservableCollection<InstagramPhotosModel> instagramPhotos = new ObservableCollection<InstagramPhotosModel>();
         ObservableCollection<SpotifyModelLocal> spotifyModelLocals = new ObservableCollection<SpotifyModelLocal>();
-
+        List<GalleryModel> model2 = new List<GalleryModel>();
         FireStorage fireStorage = new FireStorage();
         string imageUrl;
 
@@ -59,7 +59,7 @@ namespace Chatter.View
             instagramPhotos.Clear();
             spotifyModelLocals.Clear();
             await loadFromDb();
-            await loadFromSqlite();
+            loadFromSqlite();
 
                 var spotifyList = await api.getSpotifyList(Application.Current.Properties["Id"].ToString().Replace("\"", ""));
                 var igPhotos = await api.getIgPhotos(Application.Current.Properties["Id"].ToString().Replace("\"", ""));
@@ -198,9 +198,20 @@ namespace Chatter.View
             }
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
+        private async void ImageButton_Clicked(object sender, EventArgs e)
         {
-            imagePicker.Focus();
+            var test = (CachedImage)sender;
+            string source = test.Source.ToString().Remove(0,4);
+            if (test.Source.ToString().Contains("dashed_border.png"))
+            {
+                imagePicker.Focus();
+            }
+            else
+            {
+                List<string> images = new List<string>();
+                images.Add(source);
+                await Navigation.PushModalAsync(new NavigationPage(new ImageViewer(images, "Photos")));
+            }
         }
         private async void ImagePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -274,10 +285,22 @@ namespace Chatter.View
                 conn.Insert(galleryModel);
             }
         }
-        private async Task<bool> loadFromSqlite()
+        private void deleteoSqlite()
+        {
+            string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
+            string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
+            using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
+            {
+                conn.CreateTable<GalleryModel>();
+                conn.Delete(galleryModel);
+            }
+        }
+        private bool loadFromSqlite(bool isRefresh = false)
         {
             try
             {
+                model2.Clear();
                 string applicationFolderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "databaseFolder");
                 System.IO.Directory.CreateDirectory(applicationFolderPath);
                 string databaseFileName = System.IO.Path.Combine(applicationFolderPath, "amera.db");
@@ -285,7 +308,6 @@ namespace Chatter.View
                 {
                     conn.CreateTable<GalleryModel>();
                     var table = conn.Table<GalleryModel>().ToList();
-                    List<GalleryModel> model2 = new List<GalleryModel>();
                     var looper = imageGrid.Children.Where(x => x is AbsoluteLayout);
                     int ctr1 = 0, ctr2 = 0;
                     foreach (AbsoluteLayout abl in looper)
@@ -294,8 +316,10 @@ namespace Chatter.View
                         var btnloopers = abl.Children.Where(x => x is Button).FirstOrDefault() as Button;
                         CachedImage sample = loopers.Content as CachedImage;
                         var imager = sample.Source as FileImageSource;
-                        if (imager.File == "dashed_border.png")
+                        if (isRefresh)
                         {
+                            sample.Source = "dashed_border.png";
+                            btnloopers.IsVisible = false;
                             foreach (GalleryModel model in table)
                             {
                                 if (!model2.Any(x => x.id == model.id))
@@ -305,16 +329,35 @@ namespace Chatter.View
                                     model2.Add(model);
                                     btnloopers.IsVisible = true;
                                     break;
-                                 }
+                                }
                             }
                         }
+                        else
+                        {
+                            if (imager.File == "dashed_border.png")
+                            {
+                                foreach (GalleryModel model in table)
+                                {
+                                    if (!model2.Any(x => x.id == model.id))
+                                    {
+                                        sample.Aspect = Aspect.AspectFill;
+                                        sample.Source = model.image;
+                                        model2.Add(model);
+                                        if(ctr1 != 0)
+                                            btnloopers.IsVisible = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        ctr1++;
                     }
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error",ex.ToString(),"Okay");
+               //DisplayAlert("Error",ex.ToString(),"Okay");
                 return false;
             }
         }
@@ -442,6 +485,78 @@ namespace Chatter.View
             //    await Navigation.PushAsync(new Payment());
             //    return;
             //}
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            galleryModel = model2[1];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            await api.deleteImageGallery(idToDelete);
+        }
+
+        private async void Button_Clicked_2(object sender, EventArgs e)
+        {
+            galleryModel = model2[2];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            await api.deleteImageGallery(idToDelete);
+        }
+
+        private async void Button_Clicked_3(object sender, EventArgs e)
+        {
+            galleryModel = model2[3];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            await api.deleteImageGallery(idToDelete);
+        }
+
+        private async void Button_Clicked_4(object sender, EventArgs e)
+        {
+            galleryModel = model2[4];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            await api.deleteImageGallery(idToDelete);
+        }
+
+        private async void Button_Clicked_5(object sender, EventArgs e)
+        {
+            galleryModel = model2[5];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            await api.deleteImageGallery(idToDelete);
+        }
+
+        private async void Button_Clicked_6(object sender, EventArgs e)
+        {
+            galleryModel = model2[6];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            await api.deleteImageGallery(idToDelete);
+        }
+
+        private async void Button_Clicked_7(object sender, EventArgs e)
+        {
+            galleryModel = model2[7];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            await api.deleteImageGallery(idToDelete);
+        }
+
+        private async void Button_Clicked_8(object sender, EventArgs e)
+        {
+            galleryModel = model2[8];
+            string idToDelete = galleryModel.id.ToString();
+            deleteoSqlite();
+            loadFromSqlite(true);
+            string value = await api.deleteImageGallery(idToDelete);
         }
     }
 }

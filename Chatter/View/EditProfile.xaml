@@ -54,7 +54,7 @@
                                     </ffimageloading:CachedImage>
                                 </Frame>
                                 <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
-                             </AbsoluteLayout>
+                            </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="0" Grid.Column="2">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0" OutlineColor="Accent">
                                     <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
@@ -63,7 +63,7 @@
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_1" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                             <AbsoluteLayout Grid.Row="1" Grid.Column="2">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
@@ -73,7 +73,7 @@
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_2" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="2" Grid.Column="0">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="2" Grid.Column="0" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
@@ -83,7 +83,7 @@
                                     </ffimageloading:CachedImage.GestureRecognizers>
                                 </ffimageloading:CachedImage>
                                 </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_3" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="2" Grid.Column="1">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
@@ -93,7 +93,7 @@
                                             </ffimageloading:CachedImage.GestureRecognizers>
                                         </ffimageloading:CachedImage>
                                     </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_4" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                             <AbsoluteLayout Grid.Row="2" Grid.Column="2">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
@@ -103,7 +103,7 @@
                                             </ffimageloading:CachedImage.GestureRecognizers>
                                         </ffimageloading:CachedImage>
                                     </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_5" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                             <AbsoluteLayout Grid.Row="3" Grid.Column="0">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
@@ -113,7 +113,7 @@
                                             </ffimageloading:CachedImage.GestureRecognizers>
                                         </ffimageloading:CachedImage>
                                     </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_6" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="3" Grid.Column="1">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
@@ -123,7 +123,7 @@
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_7" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="3" Grid.Column="2">
                                 <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="3" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
@@ -133,7 +133,7 @@
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <Button Text="x" IsVisible="False" TextColor="Red" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
+                                <Button Text="x" IsVisible="False" TextColor="Red" Clicked="Button_Clicked_8" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></Button>
                             </AbsoluteLayout>
                         </Grid>
                     </AbsoluteLayout>

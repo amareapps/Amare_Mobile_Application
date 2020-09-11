@@ -700,6 +700,22 @@ namespace Chatter.Classes
                 return false;
             }
         }
+        public async Task<string> deleteImageGallery(string id)
+        {
+            try
+            {
+                string urls = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=deleteImageGallery&id=" + id;
+                var request = await client.GetAsync(urls);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return urls;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
         public async Task<bool> insertSpotify(string name, string genres,string followers,string image)
         {
             try

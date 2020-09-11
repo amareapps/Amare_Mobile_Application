@@ -344,12 +344,14 @@ namespace Chatter
 
         private async void tapLeft_Tapped(object sender, EventArgs e)
         {
+            var x = coverFlowView.CurrentView as Frame;
             coverFlowView.IsAutoNavigatingAnimationEnabled = false;
             //coverFlowView.IsEnabled = false;
-            await Task.Delay(500);
+            await Task.Delay(250);
             if (coverFlowView.SelectedIndex > 0)
             {
                 //DisplayAlert("value mo ", coverFlowView.SelectedIndex.ToString(),"Okay");
+                await x.FadeTo(0, 250);
                 int sample = coverFlowView.SelectedIndex;
                 coverFlowView.SelectedIndex = coverFlowView.SelectedIndex - 1;
             }
