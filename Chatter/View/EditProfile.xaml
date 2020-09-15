@@ -23,7 +23,7 @@
                 </Grid>
             </Frame>
             <ScrollView Padding="0,0,0,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                <StackLayout Spacing="10" Margin="10,0,10,10" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Spacing="10" Margin="5,0,5,10" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
                     <Picker x:Name="imagePicker" IsVisible="False"  SelectedIndexChanged="ImagePicker_SelectedIndexChanged">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
@@ -33,7 +33,7 @@
                         </Picker.ItemsSource>
                     </Picker>
                     <AbsoluteLayout IsClippedToBounds="True" HorizontalOptions="FillAndExpand">
-                        <Grid Margin="5" ColumnSpacing="10" Padding="0,0,0,0" RowSpacing="10" x:Name="imageGrid" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" >
+                        <Grid Margin="3" ColumnSpacing="5" Padding="0,0,0,0" RowSpacing="5" x:Name="imageGrid" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="170"></RowDefinition>
                                 <RowDefinition Height="170"></RowDefinition>
@@ -46,211 +46,213 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <AbsoluteLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0" OutlineColor="Accent" >
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  CornerRadius="10" IsClippedToBounds="True" Margin="8,8,0,8" Padding="0" OutlineColor="Accent" >
                                     <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                         <ffimageloading:CachedImage.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="0" Grid.Column="2">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0" OutlineColor="Accent">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0" OutlineColor="Accent">
                                     <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                         <ffimageloading:CachedImage.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_1" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout Grid.Row="1" Grid.Column="2">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0">
                                     <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                         <ffimageloading:CachedImage.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_2" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="2" Grid.Column="0">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="2" Grid.Column="0" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="2" Grid.Column="0" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0">
                                 <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                     <ffimageloading:CachedImage.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                     </ffimageloading:CachedImage.GestureRecognizers>
                                 </ffimageloading:CachedImage>
                                 </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_3" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="2" Grid.Column="1">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0">
                                         <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                             <ffimageloading:CachedImage.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                             </ffimageloading:CachedImage.GestureRecognizers>
                                         </ffimageloading:CachedImage>
                                     </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_4" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout Grid.Row="2" Grid.Column="2">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0">
                                         <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                             <ffimageloading:CachedImage.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                             </ffimageloading:CachedImage.GestureRecognizers>
                                         </ffimageloading:CachedImage>
                                     </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_5" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout Grid.Row="3" Grid.Column="0">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0">
                                         <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                             <ffimageloading:CachedImage.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                             </ffimageloading:CachedImage.GestureRecognizers>
                                         </ffimageloading:CachedImage>
                                     </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_6" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="3" Grid.Column="1">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0">
                                     <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                         <ffimageloading:CachedImage.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_7" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                             <AbsoluteLayout  Grid.Row="3" Grid.Column="2">
-                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="3" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="0" Padding="0">
+                                <Frame AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Grid.Row="3" Grid.Column="2" CornerRadius="10" IsClippedToBounds="True" Margin="8" Padding="0">
                                     <ffimageloading:CachedImage LoadingPlaceholder="Loading" Aspect="AspectFill" DownsampleToViewSize="True" BackgroundColor="GhostWhite" Source="dashed_border.png">
                                         <ffimageloading:CachedImage.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ImageButton_Clicked"></TapGestureRecognizer>
                                         </ffimageloading:CachedImage.GestureRecognizers>
                                     </ffimageloading:CachedImage>
                                 </Frame>
-                                <ImageButton Source="xbutton_blue.png" IsVisible="False" Rotation="45" Clicked="Button_Clicked_8" BackgroundColor="White" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
+                                <ImageButton Source="failed1white.png" IsVisible="False" Rotation="0" Clicked="Button_Clicked_3" BackgroundColor="#980045" Padding="0" Margin="0" CornerRadius="15" AbsoluteLayout.LayoutBounds="1.01,1.01,30,30" AbsoluteLayout.LayoutFlags="PositionProportional"></ImageButton>
                             </AbsoluteLayout>
                         </Grid>
                     </AbsoluteLayout>
-                    <Button Margin="5,10,5,10" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" Text="Add media" BackgroundColor="#3cc5d5" Clicked="ImageButton_Clicked"></Button>
-                    <Label x:Name="lblAbout" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout Padding="0" Margin="0">
-                            <StackLayout Padding="5,0,5,0">
-                                <Label Text="Describe yourself" HorizontalOptions="Start" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                                <local1:CustomEditor x:Name="aboutEntry" FontSize="Small" Placeholder="Tell other users more about you" Text="{Binding about}" HeightRequest="100"></local1:CustomEditor>
+                    <StackLayout Margin="8,0,8,0" Padding="0">
+                        <Button Margin="5,10,5,10" CornerRadius="10" TextColor="White" FontAttributes="Bold" FontSize="Medium" Text="Add media" BackgroundColor="#3cc5d5" Clicked="ImageButton_Clicked"></Button>
+                        <Label x:Name="lblAbout" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
+                        <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                            <StackLayout Padding="0" Margin="0">
+                                <StackLayout Padding="5,0,5,0">
+                                    <Label Text="Describe yourself" HorizontalOptions="Start" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                    <local1:CustomEditor x:Name="aboutEntry" FontSize="Small" Placeholder="Tell other users more about you" Text="{Binding about}" HeightRequest="100"></local1:CustomEditor>
+                                </StackLayout>
+                                <StackLayout Padding="5,10,5,0">
+                                    <Label Text="Hobbies" Margin="0,0,0,0" HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold"></Label>
+                                    <local1:CustomEditor HeightRequest="80" FontSize="Small" x:Name="hobbyEntry" Placeholder="What are your hobbies?" Text="{Binding hobby}"></local1:CustomEditor>
+                                </StackLayout>
                             </StackLayout>
-                            <StackLayout Padding="5,10,5,0">
-                                <Label Text="Hobbies" Margin="0,0,0,0" HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold"></Label>
-                                <local1:CustomEditor HeightRequest="80" FontSize="Small" x:Name="hobbyEntry" Placeholder="What are your hobbies?" Text="{Binding hobby}"></local1:CustomEditor>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout Padding="0" Margin="0">
-                            <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Height (CM)" Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                                <Picker Title="Choose your height" x:Name="heightEntry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        </Frame>
+                        <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                            <StackLayout Padding="0" Margin="0">
+                                <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Height (CM)" Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                    <Picker Title="Choose your height" x:Name="heightEntry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        </Picker>
+                                    <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="1" Grid.Column="1" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="Weight (KG)" Grid.Row="2" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                    <Picker Title="Choose your weight" x:Name="weightEntry" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     </Picker>
-                                <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="1" Grid.Column="1" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                                <Label Text="Weight (KG)" Grid.Row="2" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"></Label>
-                                <Picker Title="Choose your weight" x:Name="weightEntry" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                </Picker>
-                                <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="3" Grid.Column="1" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                            </Grid>
-                            <Label Text="Job Title" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <local:RoundedEntry FontSize="Small" x:Name="jobEntry" Placeholder="Add job title" Text="{Binding job_title}"></local:RoundedEntry>
-                            <Label Text="Company" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <local:RoundedEntry FontSize="Small" x:Name="companyEntry" Placeholder="Add company" Text="{Binding company}"></local:RoundedEntry>
-                            <Label Text="School" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <local:RoundedEntry FontSize="Small" x:Name="schoolEntry" Placeholder="Add school" Text="{Binding school}"></local:RoundedEntry>
-                         </StackLayout>
-                    </Frame>
-                    <Label Text="Control Your Profile" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
-                        <StackLayout Padding="0" Margin="0">
-                            <Label Text="Show my" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <StackLayout Padding="10,10,10,0" Margin="0,0,0,5">
-                                <Grid>
-                                    <Label Text="Age" FontSize="15" Grid.Column="0" Grid.Row="0"></Label>
-                                    <Switch Grid.Column="1" Grid.Row="0" IsToggled="{Binding show_age,Converter={StaticResource numbertoBool},Mode=TwoWay}" x:Name="ageSwitch" Toggled="ageSwitch_Toggled" ThumbColor="#3cc5d5" OnColor="#3cc5d5" ></Switch>
-                                    <Label Text="Distance" FontSize="15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></Label>
-                                    <Switch Grid.Column="1" Grid.Row="1" IsToggled="{Binding show_distance,Converter={StaticResource numbertoBool},Mode=TwoWay}" Toggled="distanceSwitch_Toggled" x:Name="distanceSwitch" ThumbColor="#3cc5d5" OnColor="#3cc5d5"></Switch>
+                                    <ffimageloading:CachedImage Margin="5,0,5,0" Grid.Row="3" Grid.Column="1" Source="pickerarrow.png" InputTransparent="True" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
                                 </Grid>
+                                <Label Text="Job Title" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <local:RoundedEntry FontSize="Small" x:Name="jobEntry" Placeholder="Add job title" Text="{Binding job_title}"></local:RoundedEntry>
+                                <Label Text="Company" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <local:RoundedEntry FontSize="Small" x:Name="companyEntry" Placeholder="Add company" Text="{Binding company}"></local:RoundedEntry>
+                                <Label Text="School" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <local:RoundedEntry FontSize="Small" x:Name="schoolEntry" Placeholder="Add school" Text="{Binding school}"></local:RoundedEntry>
+                             </StackLayout>
+                        </Frame>
+                        <Label Text="Control Your Profile" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
+                        <Frame Margin="5" Grid.Column="0"  Grid.Row="0" BackgroundColor="GhostWhite" CornerRadius="10" IsClippedToBounds="True">
+                            <StackLayout Padding="0" Margin="0">
+                                <Label Text="Show my" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <StackLayout Padding="10,10,10,0" Margin="0,0,0,5">
+                                    <Grid>
+                                        <Label Text="Age" FontSize="15" Grid.Column="0" Grid.Row="0"></Label>
+                                        <Switch Grid.Column="1" Grid.Row="0" IsToggled="{Binding show_age,Converter={StaticResource numbertoBool},Mode=TwoWay}" x:Name="ageSwitch" Toggled="ageSwitch_Toggled" ThumbColor="#3cc5d5" OnColor="#3cc5d5" ></Switch>
+                                        <Label Text="Distance" FontSize="15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></Label>
+                                        <Switch Grid.Column="1" Grid.Row="1" IsToggled="{Binding show_distance,Converter={StaticResource numbertoBool},Mode=TwoWay}" Toggled="distanceSwitch_Toggled" x:Name="distanceSwitch" ThumbColor="#3cc5d5" OnColor="#3cc5d5"></Switch>
+                                    </Grid>
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    <Label Text="Share More About You" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
-                    <Frame BackgroundColor="GhostWhite" HasShadow="True" CornerRadius="10" Margin="5">
-                        <StackLayout>
-                            <Label Text="Add my Spotify playlist" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <StackLayout Padding="5,10,5,10">
-                                <Button Padding="13,0,0,0" FontAttributes="Bold" BackgroundColor="#1ed760" CornerRadius="10" ImageSource="spotify.png" TextColor="White"  x:Name="spotifyButton" Clicked="spotifyButton_Clicked" Text="Connect to Spotify"></Button>
-                            </StackLayout>
-                            <StackLayout x:Name="spotifyListLayout" IsVisible="false">
-                                <ListView x:Name="spotifyListView" HeightRequest="150" HasUnevenRows="True">
-                                    <ListView.ItemTemplate>
+                        </Frame>
+                        <Label Text="Share More About You" Margin="10,0,0,0" FontSize="Large" FontAttributes="Bold"></Label>
+                        <Frame BackgroundColor="GhostWhite" HasShadow="True" CornerRadius="10" Margin="5">
+                            <StackLayout>
+                                <Label Text="Add my Spotify playlist" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <StackLayout Padding="5,10,5,10">
+                                    <Button Padding="13,0,0,0" FontAttributes="Bold" BackgroundColor="#1ed760" CornerRadius="10" ImageSource="spotify.png" TextColor="White"  x:Name="spotifyButton" Clicked="spotifyButton_Clicked" Text="Connect to Spotify"></Button>
+                                </StackLayout>
+                                <StackLayout x:Name="spotifyListLayout" IsVisible="false">
+                                    <ListView x:Name="spotifyListView" HeightRequest="150" HasUnevenRows="True">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                <Grid Padding="10" ColumnSpacing="20">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="AUTO"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                         <RowDefinition Height="AUTO"></RowDefinition>
+                                                          <RowDefinition Height="AUTO"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <ffimageloading:CachedImage Source="{Binding image}" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" BackgroundColor="Black" Grid.RowSpan="2" Grid.Row="0"/>
+                                                    <Label Text="{Binding artist_name,StringFormat='Artist : {0}'}" Grid.Column="1" Grid.Row="0"></Label>
+                                                    <Label Text="{Binding genres,StringFormat='Genres : {0}'}" Grid.Column="1" Grid.Row="1"></Label>
+                                                </Grid>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                                <Label Text="Show my Instagram photos" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <StackLayout Padding="5,10,5,10">
+                                    <Frame IsClippedToBounds="True" Padding="0,0,0,0" Margin="0" CornerRadius="10">
+                                        <gradient:GradientColorStack StartColor="#962fbf" EndColor="#fa7e1e" Padding="13,0,0,0" GradientColorOrientation="Horizontal" BackgroundColor="Transparent" ImageSource="instagram.png" TextColor="White" FontAttributes="Bold"  x:Name="instagramButton" Clicked="instagramButton_Clicked" Text="Connect to Instagram"></gradient:GradientColorStack>
+                                    </Frame>
+                                </StackLayout>
+                                <flv:FlowListView x:Name="instagrammer" HeightRequest="360" FlowColumnCount="3" RowHeight="120" SeparatorVisibility="Default" HasUnevenRows="False">
+                                    <flv:FlowListView.FlowColumnTemplate>
                                         <DataTemplate>
-                                            <ViewCell>
-                                            <Grid Padding="10" ColumnSpacing="20">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="AUTO"></ColumnDefinition>
-                                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                     <RowDefinition Height="AUTO"></RowDefinition>
-                                                      <RowDefinition Height="AUTO"></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <ffimageloading:CachedImage Source="{Binding image}" Aspect="AspectFill" HeightRequest="40" WidthRequest="40" BackgroundColor="Black" Grid.RowSpan="2" Grid.Row="0"/>
-                                                <Label Text="{Binding artist_name,StringFormat='Artist : {0}'}" Grid.Column="1" Grid.Row="0"></Label>
-                                                <Label Text="{Binding genres,StringFormat='Genres : {0}'}" Grid.Column="1" Grid.Row="1"></Label>
-                                            </Grid>
-                                            </ViewCell>
+                                            <Frame
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Padding="0"
+                                                        Margin="1"
+                                                        IsClippedToBounds="True">
+                                                <ffimageloading:CachedImage BitmapOptimizations="True" DownsampleToViewSize="True"
+                                                     Source="{Binding image_url}" Aspect="AspectFill">
+                                                    <ffimageloading:CachedImage.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                    </ffimageloading:CachedImage.GestureRecognizers>
+                                                </ffimageloading:CachedImage>
+                                            </Frame>
                                         </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                    </flv:FlowListView.FlowColumnTemplate>
+                                </flv:FlowListView>
                             </StackLayout>
-                            <Label Text="Show my Instagram photos" Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
-                            <StackLayout Padding="5,10,5,10">
-                                <Frame IsClippedToBounds="True" Padding="0,0,0,0" Margin="0" CornerRadius="10">
-                                    <gradient:GradientColorStack StartColor="#962fbf" EndColor="#fa7e1e" Padding="13,0,0,0" GradientColorOrientation="Horizontal" BackgroundColor="Transparent" ImageSource="instagram.png" TextColor="White" FontAttributes="Bold"  x:Name="instagramButton" Clicked="instagramButton_Clicked" Text="Connect to Instagram"></gradient:GradientColorStack>
-                                </Frame>
-                            </StackLayout>
-                            <flv:FlowListView x:Name="instagrammer" HeightRequest="360" FlowColumnCount="3" RowHeight="120" SeparatorVisibility="Default" HasUnevenRows="False">
-                                <flv:FlowListView.FlowColumnTemplate>
-                                    <DataTemplate>
-                                        <Frame
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Padding="0"
-                                                    Margin="1"
-                                                    IsClippedToBounds="True">
-                                            <ffimageloading:CachedImage BitmapOptimizations="True" DownsampleToViewSize="True"
-                                                 Source="{Binding image_url}" Aspect="AspectFill">
-                                                <ffimageloading:CachedImage.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                                </ffimageloading:CachedImage.GestureRecognizers>
-                                            </ffimageloading:CachedImage>
-                                        </Frame>
-                                    </DataTemplate>
-                                </flv:FlowListView.FlowColumnTemplate>
-                            </flv:FlowListView>
-                        </StackLayout>
-                    </Frame>
+                        </Frame>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>
