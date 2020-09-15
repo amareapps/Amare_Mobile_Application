@@ -234,10 +234,11 @@ namespace Chatter.View
                 var looper = imageGrid.Children.Where(x => x is AbsoluteLayout);
                 if (!string.IsNullOrEmpty(imagePath.Path.ToString()))
                 {
+                    int ctr1 = 0;
                     foreach (AbsoluteLayout abl in looper)
                     {
                         var loopers = abl.Children.Where(x => x is Frame).FirstOrDefault() as Frame;
-                        var btnloopers = abl.Children.Where(x => x is Button).FirstOrDefault() as Button;
+                        var btnloopers = abl.Children.Where(x => x is ImageButton).FirstOrDefault() as ImageButton;
                         CachedImage sample = loopers.Content as CachedImage;
                         if (sample.Source.ToString().Contains("dashed_border.png"))
                         {
@@ -247,9 +248,11 @@ namespace Chatter.View
                             imageUrl = sample2;
                             await saveToGallery();
                             savetoSqlite();
-                            btnloopers.IsVisible = true;
+                            if (ctr1 != 0)
+                                btnloopers.IsVisible = true;
                             break;
                         }
+                        ctr1++;
                     }
                 }
                 imagePicker.SelectedIndex = -1;
@@ -313,7 +316,7 @@ namespace Chatter.View
                     foreach (AbsoluteLayout abl in looper)
                     {
                         var loopers = abl.Children.Where(x => x is Frame).FirstOrDefault() as Frame;
-                        var btnloopers = abl.Children.Where(x => x is Button).FirstOrDefault() as Button;
+                        var btnloopers = abl.Children.Where(x => x is ImageButton).FirstOrDefault() as ImageButton;
                         CachedImage sample = loopers.Content as CachedImage;
                         var imager = sample.Source as FileImageSource;
                         if (isRefresh)
@@ -326,8 +329,9 @@ namespace Chatter.View
                                 {
                                     sample.Aspect = Aspect.AspectFill;
                                     sample.Source = model.image;
-                                    model2.Add(model);
-                                    btnloopers.IsVisible = true;
+                                    model2.Add(model); 
+                                    if (ctr1 != 0)
+                                        btnloopers.IsVisible = true;
                                     break;
                                 }
                             }

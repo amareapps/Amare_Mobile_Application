@@ -25853,6 +25853,12 @@ namespace Chatter.Droid
 			// aapt resource value: 0x7F0701D0
 			public const int welcomelogonew = 2131165648;
 			
+			// aapt resource value: 0x7F0701D1
+			public const int xbutton = 2131165649;
+			
+			// aapt resource value: 0x7F0701D2
+			public const int xbutton_blue = 2131165650;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

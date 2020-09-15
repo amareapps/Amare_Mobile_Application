@@ -195,5 +195,15 @@ namespace Chatter
 
            
         }
+
+        private void btnShareAmare_Pressed(object sender, EventArgs e)
+        {
+            btnShareAmare.Opacity = 0.7;
+        }
+
+        private void btnShareAmare_Released(object sender, EventArgs e)
+        {
+            btnShareAmare.Opacity = 1;
+        }
     }
 }

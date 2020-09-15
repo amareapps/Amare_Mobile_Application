@@ -33,6 +33,7 @@ namespace Chatter.View
                 accountFieldLabel.Text = "Nickname";
                 accountFieldLabelBefore.Text = "Current Nickname";
                 accountFieldLabelAfter.Text = "New Nickname";
+                accountFieldEntryAfter.MaxLength = 15;
                 accountFieldLabelBefore.IsVisible = true;
                 accountFieldLabelAfter.IsVisible = true;
                 accountFieldEntryBefore.Placeholder = value;
