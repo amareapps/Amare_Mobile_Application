@@ -56,7 +56,15 @@ namespace Chatter.View
 
         private async void buttonUpdate_Clicked(object sender, EventArgs e)
         {
-            await updateField();
+            if (string.IsNullOrWhiteSpace(accountFieldEntryAfter.Text))
+            {
+                errorLabel.IsVisible = true;
+                errorLabel.Text = "This field is required";
+            }
+            else
+            {
+                await updateField();
+            }
         }
         private async Task updateField()
         {

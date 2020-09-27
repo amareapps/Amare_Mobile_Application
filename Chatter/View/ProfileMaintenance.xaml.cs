@@ -122,7 +122,7 @@ namespace Chatter
                         if (_isSocialMediaRegistation == false)
                         {
 
-                        await PopupNavigation.Instance.PushAsync(new RegistrationIncomplete());
+                            await PopupNavigation.Instance.PushAsync(new RegistrationIncomplete());
 
                         continueButton.IsEnabled = true;
                             return;
@@ -316,23 +316,23 @@ namespace Chatter
             {
                 if (string.IsNullOrWhiteSpace(userNameEntry.Text))
                 {
-                    userNameEntry.PlaceholderColor = Color.Red;
-                    userNameEntry.Placeholder = "Nickname is required";
+                    usernamedError.IsVisible = true;
+                    usernamedError.Text = "Username is required";
                 }
                 if (string.IsNullOrWhiteSpace(emailEntry.Text))
                 {
-                    emailEntry.PlaceholderColor = Color.Red;
-                    emailEntry.Placeholder = "Email is required";
+                    emailError.IsVisible = true;
+                    emailError.Text = "Email is required";
                 }
                 if (string.IsNullOrWhiteSpace(passwordEntry.Text))
                 {
-                    passwordEntry.PlaceholderColor = Color.Red;
-                    passwordEntry.Placeholder = "Password is required";
+                    passwordError.IsVisible = true;
+                    passwordError.Text = "Password is required";
                 }
                 if (birthdatePicker.Placeholder == "Select Date of Birth")
                 {
-                    birthdatePicker.TextColor = Color.Red;
-                    birthdatePicker.Placeholder = "Birthdate is required";
+                    birthdaterror.IsVisible = true;
+                    birthdaterror.Text = "Birthdate is required";
                 }
                 if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text)
                     || string.IsNullOrWhiteSpace(birthdatePicker.Date.ToString()))
@@ -487,6 +487,26 @@ namespace Chatter
         private void birthdatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             birthdatePicker.TextColor = Color.Default;
+        }
+
+        private void emailEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+            var entryOBj = sender as Entry;
+            if(entryOBj.Text.Length == 0)
+            {
+                emailError.IsVisible = true;
+                emailError.Text = "This field is requred";
+            }
+        }
+
+        private void passwordEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+            var entryOBj = sender as Entry;
+            if (entryOBj.Text.Length == 0)
+            {
+                passwordError.IsVisible = true;
+                passwordError.Text = "This field is requred";
+            }
         }
 
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
