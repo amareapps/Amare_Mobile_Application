@@ -81,8 +81,9 @@ namespace Chatter
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var currenter = this.CurrentPage;
             Children.Clear();
-            Children.Add(emailContent);
+            Children.Add(currenter);
         }
 
         private void clearFields()
@@ -318,24 +319,27 @@ namespace Chatter
                 {
                     usernamedError.IsVisible = true;
                     usernamedError.Text = "Username is required";
+                    return;
                 }
                 if (string.IsNullOrWhiteSpace(emailEntry.Text))
                 {
                     emailError.IsVisible = true;
                     emailError.Text = "Email is required";
+                    return;
                 }
                 if (string.IsNullOrWhiteSpace(passwordEntry.Text))
                 {
                     passwordError.IsVisible = true;
                     passwordError.Text = "Password is required";
+                    return;
                 }
-                if (birthdatePicker.Placeholder == "Select Date of Birth")
+                if (birthdatePicker.Date == null)
                 {
                     birthdaterror.IsVisible = true;
                     birthdaterror.Text = "Birthdate is required";
+                    return;
                 }
-                if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text)
-                    || string.IsNullOrWhiteSpace(birthdatePicker.Date.ToString()))
+                if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text))
                 {
                     //await DisplayAlert("Entry", "Please fill the required fields", "Okay");
                     return;
