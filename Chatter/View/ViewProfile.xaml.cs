@@ -57,17 +57,20 @@ namespace Chatter.View
                 distanceLabel.Text = getDistance(otherUser);
                 metricLabel.Text = searchRefence.distance_metric == 0 ? "Km." : "Mi.";
                 BindingContext = otherUser;
-                foreach (GalleryModel model in list)
+                if (list != null)
                 {
-                    if (_isAlreadyLiked)
-                        model.isShow = false;
-                    else
+                    foreach (GalleryModel model in list)
                     {
-                        model.isShow = true;
+                        if (_isAlreadyLiked)
+                            model.isShow = false;
+                        else
+                        {
+                            model.isShow = true;
+                        }
+                        galleryModel.Add(model);
                     }
-                    galleryModel.Add(model);
+                    galleryView.ItemsSource = galleryModel;
                 }
-                galleryView.ItemsSource = galleryModel;
                 
                 if (spotifyList == null)
                 {

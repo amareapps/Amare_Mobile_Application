@@ -168,25 +168,33 @@ namespace Chatter.Classes
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
                 conn.CreateTable<GalleryModel>();
-                conn.Insert(model);
+                conn.InsertOrReplace(model);
             }
         }
-        public async Task retrieveGallery()
+        public async Task<bool> retrieveGallery()
         {
-            string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_gallery&user_id='" + Application.Current.Properties["Id"].ToString() + "'";
-            var request = await client.GetAsync(urlString);
-            request.EnsureSuccessStatusCode();
-            var response = await request.Content.ReadAsStringAsync();
-            //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
-            if (response.ToString().Contains("Undefined"))
+            try
             {
-                return;
+                string urlString = "http://" + ApiConnection.Url + "/apier/api/test_api.php?action=fetch_gallery&user_id='" + Application.Current.Properties["Id"].ToString() + "'";
+                var request = await client.GetAsync(urlString);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                //await DisplayAlert("Error! Login_Input", response.ToString(), "Okay");
+                if (response.ToString().Contains("Undefined"))
+                {
+                    return false;
+                }
+                var modifString = response.Replace(@"\", "");
+                var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString);
+                foreach (GalleryModel model in looper)
+                {
+                    await saveGalleryToSqlite(model);
+                }
+                return true;
             }
-            var modifString = response.Replace(@"\", "");
-            var looper = JsonConvert.DeserializeObject<List<GalleryModel>>(modifString);
-            foreach (GalleryModel model in looper)
+            catch (Exception)
             {
-                await saveGalleryToSqlite(model);
+                return false;
             }
         }
         public async Task retrievInbox()

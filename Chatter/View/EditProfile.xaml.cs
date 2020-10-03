@@ -18,6 +18,7 @@ using Plugin.InAppBilling;
 using Plugin.InAppBilling.Abstractions;
 using FFImageLoading;
 using FFImageLoading.Forms;
+using Newtonsoft.Json;
 
 namespace Chatter.View
 {
@@ -242,14 +243,20 @@ namespace Chatter.View
                         CachedImage sample = loopers.Content as CachedImage;
                         if (sample.Source.ToString().Contains("dashed_border.png"))
                         {
-                            sample.Source = imagePath.Path.ToString();
-                            sample.Aspect = Aspect.AspectFill;
+                            //sample.Source = imagePath.Path.ToString();
+                            //sample.Aspect = Aspect.AspectFill;
                             var sample2 = await fireStorage.StoreImages(imagePath.GetStream(), (Application.Current.Properties["Id"].ToString().Replace("\"", "") + "_" + counter.ToString()) + DateTime.Now.ToString("MM_dd_yyyy_hh_mm_ss_fff"));
                             imageUrl = sample2;
-                            await saveToGallery();
-                            savetoSqlite();
-                            if (ctr1 != 0)
-                                btnloopers.IsVisible = true;
+                            var isSaved = await saveToGallery();
+                            if (isSaved)
+                            {
+                                var isRetrieved = await api.retrieveGallery();
+                                if (isRetrieved)
+                                    loadFromSqlite(true);
+                            }
+                            //savetoSqlite();
+                            //if (ctr1 != 0)
+                            //   btnloopers.IsVisible = true;
                             break;
                         }
                         ctr1++;
@@ -259,23 +266,31 @@ namespace Chatter.View
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Connection Error",ex.Message.ToString(),"Okay");
+                await DisplayAlert("Connection Error",ex.ToString(),"Okay");
             }
         }
-        private async Task saveToGallery()
+        private async Task<bool> saveToGallery()
         {
-            galleryModel.user_id = Application.Current.Properties["Id"].ToString().Replace("\"","");
-            galleryModel.image = imageUrl;
-            galleryModel.timestamp = System.DateTime.Now.ToString();
-            var client = new HttpClient();
-            var form = new MultipartFormDataContent();
-            MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(galleryModel.user_id), "user_id");
-            content.Add(new StringContent("0"), "is_dp");
-            content.Add(new StringContent(imageUrl), "image");
-            var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_gallery", content);
-            request.EnsureSuccessStatusCode();
-            var response = await request.Content.ReadAsStringAsync();
+            try
+            {
+                galleryModel.user_id = Application.Current.Properties["Id"].ToString().Replace("\"", "");
+                galleryModel.image = imageUrl;
+                galleryModel.timestamp = System.DateTime.Now.ToString();
+                var client = new HttpClient();
+                var form = new MultipartFormDataContent();
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                content.Add(new StringContent(galleryModel.user_id), "user_id");
+                content.Add(new StringContent("0"), "is_dp");
+                content.Add(new StringContent(imageUrl), "image");
+                var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert_gallery", content);
+                request.EnsureSuccessStatusCode();
+                var response = await request.Content.ReadAsStringAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         private void savetoSqlite()
         {
@@ -285,6 +300,10 @@ namespace Chatter.View
             using (SQLiteConnection conn = new SQLiteConnection(databaseFileName))
             {
                 conn.CreateTable<GalleryModel>();
+                foreach (GalleryModel test in conn.Table<GalleryModel>())
+                {
+                    DisplayAlert("Ano b to",JsonConvert.SerializeObject(test),"Okie");
+                }
                 conn.Insert(galleryModel);
             }
         }

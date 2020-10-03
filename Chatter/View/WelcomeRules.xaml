@@ -85,7 +85,7 @@
                 </StackLayout>-->
                 <Label Margin="40,0,40,20" Padding="0" TextColor="Black" VerticalTextAlignment="End" HorizontalTextAlignment="Center"
                     Text="Let us all love each other. &#x0a;Amare wishes you all the best in life!" FontSize="Small"></Label>
-                <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="10" TextColor="White" Text="Get started" Padding="10" Margin="0,30,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
+                <Button x:Name="btnGetStarted" WidthRequest="150" VerticalOptions="EndAndExpand" HorizontalOptions="Center" FontAttributes="Bold" CornerRadius="10" TextColor="White" Text="Get started" Padding="10" Margin="0,30,0,10" BackgroundColor="#3cc5d5"  Clicked="btnGetStarted_Clicked"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -28,10 +28,17 @@ namespace Chatter.View
             await imageLogo.ScaleTo(1,1000);
             await imageLogo.ScaleTo(0.8, 100, Easing.CubicIn);
             await imageLogo.ScaleTo(1.3, 100,Easing.CubicOut);
-            await imageLogo.ScaleTo(0,500,Easing.CubicIn);
-            if (hasLoggedIn())
+            var finish = await imageLogo.ScaleTo(0,500,Easing.CubicIn);
+            if (finish)
             {
-                App.Current.MainPage = new NavigationPage(new MainPage());
+                if (hasLoggedIn())
+                {
+                    App.Current.MainPage = new NavigationPage(new MainPage());
+                }
+                else
+                {
+                    App.Current.MainPage = new NavigationPage(new Login(servicer));
+                }
             }
             else
             {

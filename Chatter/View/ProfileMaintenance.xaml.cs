@@ -42,6 +42,7 @@ namespace Chatter
         string imageString;
         string number = "";
         string isShowAge = "1";
+        string dateSelected = "";
         UserModel userModelMain = new UserModel();
         MediaFile file;
         ApiConnector api = new ApiConnector();
@@ -172,7 +173,14 @@ namespace Chatter
                     //await DisplayAlert("test",birthdatePicker.Date.ToString("MM/dd/yyyy"),"Okay");
 
                     await uploadtoServer();
-                    await sampless();
+                    var isSuccess = await sampless();
+                    if (!isSuccess)
+                    {
+                        overlay.IsVisible = false;
+                        continueButton.IsEnabled = true;
+                        await DisplayAlert("Oops!", "The email you entered is already exists", "Okay");
+                        return;
+                    }
                     //await Navigation.PushAsync(new ImageSelection());
                     //await DisplayAlert("Image Selection", string.IsNullOrEmpty(number).ToString(), "Okay");
                     if (string.IsNullOrEmpty(number))
@@ -210,6 +218,7 @@ namespace Chatter
                             await DisplayAlert("Oops!", value.username, "Okay");
                         }
                         overlay.IsVisible = false;
+                        continueButton.IsEnabled = false;
                         App.Current.MainPage = new NavigationPage(new WelcomePage());
                         //await Navigation.PushAsync(new WelcomePage());
                         //await Navigation.PopToRootAsync();
@@ -233,7 +242,7 @@ namespace Chatter
             }
             overlay.IsVisible = false;
         }
-        private async Task sampless()
+        private async Task<bool> sampless()
         {
             try
             {
@@ -247,17 +256,23 @@ namespace Chatter
                 content.Add(new StringContent(locationString), "location");
                 content.Add(new StringContent(imageString), "image");
                 content.Add(new StringContent(number), "phone_number");
-                content.Add(new StringContent(birthdatePicker.Date.ToString("MM/dd/yyyy")), "birthdate");
+                content.Add(new StringContent(dateSelected), "birthdate");
                 content.Add(new StringContent(interestIn), "interest");
                 content.Add(new StringContent(isShowAge), "show_age");
-
+                
                 var request = await client.PostAsync("http://" + ApiConnection.Url + "/apier/api/test_api.php?action=insert", content);
                 request.EnsureSuccessStatusCode();
                 var response = await request.Content.ReadAsStringAsync();
+                if (response.Contains("0"))
+                {
+                    return false;
+                }
+                return true;
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Oops!",ex.ToString(),"Okay");
+                return false;
             }
         }
         private async Task uploadtoServer()
@@ -319,27 +334,23 @@ namespace Chatter
                 {
                     usernamedError.IsVisible = true;
                     usernamedError.Text = "Username is required";
-                    return;
                 }
                 if (string.IsNullOrWhiteSpace(emailEntry.Text))
                 {
                     emailError.IsVisible = true;
                     emailError.Text = "Email is required";
-                    return;
                 }
                 if (string.IsNullOrWhiteSpace(passwordEntry.Text))
                 {
                     passwordError.IsVisible = true;
                     passwordError.Text = "Password is required";
-                    return;
                 }
-                if (birthdatePicker.Date == null)
+                if (string.IsNullOrWhiteSpace(dateSelected))
                 {
                     birthdaterror.IsVisible = true;
                     birthdaterror.Text = "Birthdate is required";
-                    return;
                 }
-                if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text))
+                if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text) || string.IsNullOrWhiteSpace(dateSelected))
                 {
                     //await DisplayAlert("Entry", "Please fill the required fields", "Okay");
                     return;
@@ -490,7 +501,7 @@ namespace Chatter
 
         private void birthdatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            birthdatePicker.TextColor = Color.Default;
+            dateSelected = birthdatePicker.Date.ToString("MM/dd/yyyy");
         }
 
         private void emailEntry_Unfocused(object sender, FocusEventArgs e)
