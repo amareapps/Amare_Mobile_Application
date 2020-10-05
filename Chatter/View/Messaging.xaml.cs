@@ -116,13 +116,13 @@ namespace Chatter
                 chatbotter.IsVisible = true;
                 ChatModel model = new ChatModel
                 {
-                    id = "0",                    
+                    id = "0",
                     image = Image_Source,
                     datetime = "0000-00-00 00:00:00",
                     sender_id = "amare",
                     sender_username = "Amare Chat Bot",
                     session_id = "0",
-                    message = "Welcome! \n\nWe wish you a happy journey here in Amare as you seek to see your soon to be a partner in this application. \n\nButtons below are frequently asked questions that may help you answer all your concerns.",
+                    message = "Welcome!\n\nWe wish you a happy journey here in Amare as you seek to see your soon to be a partner in this application. \n\nButtons below are frequently asked questions that may help you answer all your concerns.",
                     receiver_id = userLoggedIn
                 };
                 chatModels.Add(model);
