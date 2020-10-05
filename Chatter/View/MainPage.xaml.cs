@@ -23,6 +23,10 @@ namespace Chatter
         {
             InitializeComponent();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
+        }
         protected async override void OnCurrentPageChanged()
         {
             if(this.CurrentPage.ToString() == "Chatter.Discover")

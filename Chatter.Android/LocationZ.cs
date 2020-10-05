@@ -24,16 +24,18 @@ namespace Chatter.Droid
     public class LocationZ : ILocSettings
     {
         [Obsolete]
-        public void OpenSettings()
+        public bool OpenSettings()
         {
             LocationManager LM = (LocationManager)Forms.Context.GetSystemService(Context.LocationService);
             if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
             {
                 Context ctx = Forms.Context;
                 ctx.StartActivity(new Intent(Android.Provider.Settings.ActionLocationSourceSettings));
+                return true;
             }
             else
             {
+                return false;
                 //this is handled in the PCL
             }
         }

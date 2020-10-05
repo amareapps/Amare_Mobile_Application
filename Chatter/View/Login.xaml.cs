@@ -21,6 +21,7 @@ using SQLite;
 using Plugin.Toast;
 using Android.Text.Method;
 using Rg.Plugins.Popup.Extensions;
+using Chatter.Classes;
 
 namespace Chatter
 {
@@ -30,7 +31,7 @@ namespace Chatter
         UserModel userLogged = new UserModel();
         SearchRefenceModel userSearchReference = new SearchRefenceModel();
         List<GalleryModel> galleryModel = new List<GalleryModel>();
-
+        SqliteManager sqliteManager = new SqliteManager();
         SmsSender smsSender = new SmsSender();
 
         public class SocialMediaPlatform
@@ -38,6 +39,10 @@ namespace Chatter
             public static readonly int Facebook = 0;
             public static readonly int Instagram = 1;
             public static readonly int Google = 2;
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
         }
         public Login(IOAuth2Service oAuth2Service = null)
         {
@@ -95,6 +100,7 @@ namespace Chatter
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
             overlay.IsVisible = true;
+            sqliteManager.logoutUser();
             string sample = emailEntry.Text + "," + passEntry.Text;
             if (emailEntry.Text == string.Empty || passEntry.Text == string.Empty)
             {

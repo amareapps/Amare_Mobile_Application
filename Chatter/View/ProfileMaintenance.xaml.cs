@@ -132,15 +132,19 @@ namespace Chatter
                     }
                     if (imageString == string.Empty)
                     {
-                    await PopupNavigation.Instance.PushAsync(new ImageRequired());
-                    continueButton.IsEnabled = true;
+                        await PopupNavigation.Instance.PushAsync(new ImageRequired());
+                        continueButton.IsEnabled = true;
                         return;
                     }
                     var myAction = await DisplayAlert("Turn On Location", "Letting us know your location will make it easier for you to find the love that's waiting for you here in Amare! Do you want to turn your location on?", "YES", "NO");
                     if (myAction)
                     {
                         //DependencyService.Get<ISettingsService>().OpenSettings();
-                        global::Xamarin.Forms.DependencyService.Get<global::Chatter.Classes.ILocSettings>().OpenSettings();
+                        var isOpen = global::Xamarin.Forms.DependencyService.Get<global::Chatter.Classes.ILocSettings>().OpenSettings();
+                        if (isOpen) {
+                            continueButton.IsEnabled = true;
+                            return;
+                        }
                     }
                     else
                     {
@@ -158,13 +162,15 @@ namespace Chatter
                             return;
                         }
                         locationString = location.Latitude.ToString() + "," + location.Longitude.ToString();
+                        overlay.IsVisible = true;
+                        finalForm.RaiseChild(overlay);
                     }
                     else
                     {
                         locationString = locationLast.Latitude.ToString() + "," + locationLast.Longitude.ToString();
+                        overlay.IsVisible = true;
+                        finalForm.RaiseChild(overlay);
                     }
-                    overlay.IsVisible = true;
-                    finalForm.RaiseChild(overlay);
                     Application.Current.Properties["Name"] = _isSocialMediaRegistation == true ? userModelMain.username : userNameEntry.Text;
                     Application.Current.Properties["Password"] = _isSocialMediaRegistation == true ? "" : passwordEntry.Text;
                     Application.Current.Properties["Email"] = _isSocialMediaRegistation == true ? userModelMain.email : emailEntry.Text;
@@ -227,6 +233,7 @@ namespace Chatter
             catch (Exception ex)
             {
                 await DisplayAlert("Unabel to continue", ex.ToString(), "Okay");
+                overlay.IsVisible = false;
                 continueButton.IsEnabled = true;
             }
         }
@@ -350,7 +357,16 @@ namespace Chatter
                     birthdaterror.IsVisible = true;
                     birthdaterror.Text = "Birthdate is required";
                 }
-                if (string.IsNullOrWhiteSpace(userNameEntry.Text) || string.IsNullOrWhiteSpace(emailEntry.Text) || string.IsNullOrWhiteSpace(passwordEntry.Text) || string.IsNullOrWhiteSpace(dateSelected))
+                if (!emailEntry.Text.Contains('@'))
+                {
+                    emailError.IsVisible = true;
+                    emailError.Text = "Invalid email address";
+                }
+                if (string.IsNullOrWhiteSpace(userNameEntry.Text) ||
+                    string.IsNullOrWhiteSpace(emailEntry.Text) || 
+                    string.IsNullOrWhiteSpace(passwordEntry.Text) || 
+                    string.IsNullOrWhiteSpace(dateSelected) || 
+                    !emailEntry.Text.Contains('@'))
                 {
                     //await DisplayAlert("Entry", "Please fill the required fields", "Okay");
                     return;
@@ -507,11 +523,12 @@ namespace Chatter
         private void emailEntry_Unfocused(object sender, FocusEventArgs e)
         {
             var entryOBj = sender as Entry;
-            if(entryOBj.Text.Length == 0)
+            if (entryOBj.Text.Length == 0)
             {
                 emailError.IsVisible = true;
                 emailError.Text = "This field is requred";
             }
+   
         }
 
         private void passwordEntry_Unfocused(object sender, FocusEventArgs e)

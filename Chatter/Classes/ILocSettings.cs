@@ -6,6 +6,6 @@ namespace Chatter.Classes
 {
     public interface ILocSettings
     {
-        void OpenSettings();
+        bool OpenSettings();
     }
 }

@@ -50,7 +50,7 @@ namespace Chatter
             MessagingCenter.Subscribe<MessageCenterManager, string>(this, "removeUser", async (sender, arg) =>
             {
                 var linqresult = imageSources.Where(x => x.id == arg).FirstOrDefault() as ImageStorage;
-                await DisplayAlert("Sana!", linqresult.username,"Okay");
+                //await DisplayAlert("Sana!", linqresult.username,"Okay");
                 imageSources.Remove(linqresult);
             });
             // BindingContext = new ImageStorage();
