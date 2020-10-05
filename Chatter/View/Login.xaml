@@ -19,6 +19,7 @@
                 <RowDefinition Height="30*"></RowDefinition>
                 <RowDefinition Height="40*"></RowDefinition>
                 <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Margin="10" Grid.Row="0" Grid.ColumnSpan="3">
                 <Image Source="FINAL_AMERA.png" Aspect="AspectFit" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="FillAndExpand" WidthRequest="300">
@@ -29,9 +30,9 @@
             </StackLayout>
             <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Padding="0,0,0,10">
                 <StackLayout VerticalOptions="CenterAndExpand">
-                    <local:EntryLogin x:Name="emailEntry" TextChanged="emailEntry_TextChanged" MaxLength="50" TextColor="White" Keyboard="Email" Placeholder="Enter Email Address" FontAttributes="Italic" FontSize="Small" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"></local:EntryLogin>
+                    <local:EntryLogin x:Name="emailEntry" TextChanged="emailEntry_TextChanged" MaxLength="50" TextColor="White" Keyboard="Email" Placeholder="Enter Email Address" FontSize="Small" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"></local:EntryLogin>
                     <Grid HorizontalOptions="FillAndExpand">
-                        <local:EntryLogin HorizontalOptions="FillAndExpand" x:Name="passEntry" TextChanged="passEntry_TextChanged" MaxLength="20" TextColor="White" Placeholder="Enter Password" FontAttributes="Italic" VerticalOptions="CenterAndExpand" FontSize="Small" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True" ></local:EntryLogin>
+                        <local:EntryLogin HorizontalOptions="FillAndExpand" x:Name="passEntry" TextChanged="passEntry_TextChanged" MaxLength="20" TextColor="White" Placeholder="Enter Password" VerticalOptions="CenterAndExpand" FontSize="Small" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsPassword="True" ></local:EntryLogin>
                         <Image Source="show.png" x:Name="show" IsVisible="True" Opacity="0.4" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" WidthRequest="20" HeightRequest="20" Margin="15">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ShowPass_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
@@ -69,16 +70,26 @@
                 <ffimageloading:CachedImage Source="or.png" Margin="0,15,0,0" Aspect="AspectFit" HeightRequest="50" WidthRequest="200" Grid.Row="4" Grid.ColumnSpan="3" VerticalOptions="Center"></ffimageloading:CachedImage>-->
             <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,0" VerticalOptions="End">
                 <Label Text="Or login using" Padding="0,5,0,5" TextColor="White" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="5" Grid.ColumnSpan="3"></Label>
-                <StackLayout Margin="0,15,0,0" Orientation="Horizontal" HorizontalOptions="Center" IsClippedToBounds="True">
+                <StackLayout Margin="0,15,0,15" Orientation="Horizontal" HorizontalOptions="Center" IsClippedToBounds="True">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <ImageButton x:Name="fbLoginButton" Clicked="fbLoginButton_Clicked" Margin="5,0,5,0" Source="fb_logo.png" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="0" />
-                        <ImageButton Margin="5,0,5,0" Source="ig_logo.png" Clicked="instagram_Clicked" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="1" />
-                        <!--<ImageButton Margin="5,0,5,0" Source="google_logo.png" Clicked="ImageButton_Clicked" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="2" />-->
+                        <!-- <ImageButton Margin="5,0,5,0" Source="ig_logo.png" Clicked="instagram_Clicked" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="1" />
+                        <ImageButton Margin="5,0,5,0" Source="google_logo.png" Clicked="ImageButton_Clicked" HeightRequest="45" WidthRequest="45" BackgroundColor="Transparent"  Grid.Column="2" />-->
                     </Grid>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.ColumnSpan="3" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="End">
+                <Label Text="By signing in, you agree to the" FontSize="Micro" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start"></Label>
+                <StackLayout Orientation="Horizontal">
+                <Label Text="Terms and Conditions" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start">
+                    <Label.GestureRecognizers >
+                        <TapGestureRecognizer x:Name="TermsandCondiButton" Tapped="TermsandCondiButton_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="of this app" FontSize="Micro" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start"></Label>
                 </StackLayout>
             </StackLayout>
         </Grid>

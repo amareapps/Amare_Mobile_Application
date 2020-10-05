@@ -38,5 +38,10 @@
 	<style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
 		<item name="android:headerBackground">#890447</item>
 	</style>
+  
+		<style name="AppToolbarTheme" parent="ThemeOverlay.AppCompat.Light.ActionBar">
+      <item name="android:colorBackground">#2196F3</item>
+      <item name="android:textColor">#000080</item>
+    </style>
 
 </resources>

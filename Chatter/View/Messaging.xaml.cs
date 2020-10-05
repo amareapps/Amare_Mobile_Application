@@ -57,6 +57,7 @@ namespace Chatter
             Emoji = emoji;
             Image_Source = imagesource;
             InitializeComponent();
+            
             this.Title = username;
             //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
             //((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Red;
@@ -121,7 +122,7 @@ namespace Chatter
                     sender_id = "amare",
                     sender_username = "Amare Chat Bot",
                     session_id = "0",
-                    message = "Welcome ,\nWe wish you a happy journey here in Amare as you seek to see your soon to be a partner in this application.Buttons below are frequently asked questions that may help you answer all your concerns.",
+                    message = "Welcome! \n\nWe wish you a happy journey here in Amare as you seek to see your soon to be a partner in this application. \n\nButtons below are frequently asked questions that may help you answer all your concerns.",
                     receiver_id = userLoggedIn
                 };
                 chatModels.Add(model);

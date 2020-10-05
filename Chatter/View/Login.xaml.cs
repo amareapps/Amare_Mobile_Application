@@ -56,6 +56,12 @@ namespace Chatter
             Navigation.PushAsync(edit);
         }
 
+        private void TermsandCondiButton_Tapped(object sender, EventArgs e)
+        {
+            var termsandcondi = new TermsAndConditions("");
+            Navigation.PushAsync(termsandcondi);
+        }
+
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new Login_Input());
